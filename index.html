@@ -2,7 +2,10 @@
 <html lang="es">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="theme-color" content="#002F6C">
     <title>Gobierno Bolivariano de Venezuela | Sistema de Información Territorial y Flujo Noticioso</title>
     
     <!-- Google Fonts: Montserrat (Universal) y Oswald (Gobernadores y Presidencia) -->
@@ -42,8 +45,16 @@
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
 
     <style>
+        :root {
+            --sat: env(safe-area-inset-top, 0px);
+            --sab: env(safe-area-inset-bottom, 0px);
+            --sal: env(safe-area-inset-left, 0px);
+            --sar: env(safe-area-inset-right, 0px);
+        }
+        
         *, html, body, input, select, button, div, span, p, h1, h2, h3, h4, h5, h6, table, tr, th, td {
             font-family: 'Montserrat', sans-serif !important;
+            -webkit-tap-highlight-color: transparent;
         }
         
         .oswald-governor, .oswald-title, .oswald-presidential {
@@ -53,10 +64,10 @@
         }
         
         body, html { 
-            margin: 0; padding: 0; min-height: 100vh; width: 100%; 
+            margin: 0; padding: 0; min-height: 100vh; min-height: 100dvh; width: 100%; 
             background-color: #f8fafc; overflow-x: hidden; scroll-behavior: smooth; 
         }
-        #main-wrapper { display: flex; flex-direction: column; width: 100%; min-height: 100vh; }
+        #main-wrapper { display: flex; flex-direction: column; width: 100%; min-height: 100vh; min-height: 100dvh; }
         #app-container { display: flex; width: 100vw; opacity: 0; position: relative; z-index: 10; }
         
         /* BARRA LATERAL IZQUIERDA: REDUCIDA EN 25% (262px) CON TRANSICIÓN ULTRA-FLUIDA */
@@ -64,7 +75,7 @@
             width: 262px; min-width: 262px; max-width: 262px; 
             background: white; box-shadow: 2px 0 14px rgba(0,0,0,0.08); 
             z-index: 1000; padding: 1rem 0.85rem; display: flex; flex-direction: column; 
-            transition: transform 1.5s cubic-bezier(0.16, 1, 0.3, 1); 
+            transition: transform 1.5s cubic-bezier(0.16, 1, 0.3, 1), left 0.4s ease; 
         }
         #map { flex-grow: 1; height: 100%; z-index: 1; }
         
@@ -96,13 +107,54 @@
         .state-news-marker:hover { background-color: #005EB8; transform: scale(1.28); border-color: #fef08a; }
         .state-news-marker.active-filter { background-color: #D97706; border-color: white; transform: scale(1.35); }
 
-        #mobile-filter-btn { display: none; position: absolute; bottom: 20px; left: 50%; transform: translateX(-50%); z-index: 1000; }
+        #mobile-filter-btn { display: none; }
         
+        /* REGLAS RESPONSIVAS DEDICADAS A SMARTPHONES Y IPHONE (PANTALLAS <= 768px) */
         @media (max-width: 768px) {
-            #filters-panel { position: absolute; left: -262px; height: 100%; width: 262px; min-width: 262px; }
-            #filters-panel.open { left: 0; }
-            #mobile-filter-btn { display: block; }
-            #details-panel { width: 100%; right: -100%; }
+            #filters-panel { 
+                position: fixed !important; 
+                top: 0 !important; 
+                left: -320px !important; 
+                height: 100% !important; 
+                height: 100dvh !important;
+                width: 300px !important; 
+                min-width: 300px !important; 
+                max-width: 86vw !important; 
+                z-index: 5000 !important;
+                box-shadow: 14px 0 40px rgba(0,0,0,0.35) !important;
+                transition: left 0.4s cubic-bezier(0.16, 1, 0.3, 1) !important;
+                padding-top: max(1rem, env(safe-area-inset-top)) !important;
+                padding-bottom: max(1rem, env(safe-area-inset-bottom)) !important;
+            }
+            #filters-panel.open { left: 0 !important; }
+            
+            #details-panel { 
+                position: fixed !important; 
+                top: 0 !important; 
+                right: -100vw !important; 
+                width: 100vw !important; 
+                max-width: 100vw !important; 
+                height: 100% !important; 
+                height: 100dvh !important;
+                z-index: 5000 !important;
+                box-shadow: -14px 0 40px rgba(0,0,0,0.35) !important;
+                transition: right 0.45s cubic-bezier(0.16, 1, 0.3, 1) !important;
+                padding-top: env(safe-area-inset-top) !important;
+                padding-bottom: env(safe-area-inset-bottom) !important;
+            }
+            #details-panel.open { right: 0 !important; }
+            
+            .close-btn {
+                top: max(0.85rem, env(safe-area-inset-top)) !important;
+                right: 0.85rem !important;
+                width: 38px !important;
+                height: 38px !important;
+                font-size: 1.5rem !important;
+            }
+
+            #region-banner {
+                padding-bottom: max(6px, env(safe-area-inset-bottom)) !important;
+            }
         }
         
         select {
@@ -194,9 +246,27 @@
 
         @media (max-width: 768px) {
             #apple-dock-floating-container {
-                left: 6px;
-                max-width: calc(100vw - 12px);
-                padding-left: 0;
+                left: 8px !important;
+                bottom: max(6px, env(safe-area-inset-bottom)) !important;
+                max-width: calc(100vw - 16px) !important;
+                padding-left: 0 !important;
+            }
+            .apple-dock-shelf {
+                padding: 24px 6px 6px 6px !important;
+            }
+            #apple-dock {
+                gap: 8px !important;
+                padding-top: 36px !important;
+            }
+            .apple-dock-icon {
+                width: 50px !important;
+                height: 50px !important;
+                border-radius: 16px !important;
+            }
+            .apple-dock-name {
+                font-size: 8px !important;
+                padding: 2px 6px !important;
+                margin-top: 4px !important;
             }
         }
 
@@ -369,48 +439,48 @@
             
             <!-- 1. ESCUDO DE ARMAS DE VENEZUELA (APARECE DE GOLPE CON TRANSICIÓN) -->
             <div id="splash-escudo-container" class="opacity-0 scale-50 mb-2 sm:mb-3 flex items-center justify-center">
-                <div class="relative p-3 sm:p-4 rounded-3xl bg-white/10 backdrop-blur-md border-2 border-amber-400/60 shadow-[0_16px_50px_rgba(0,0,0,0.6)] ring-4 ring-amber-400/30">
+                <div class="relative p-2.5 sm:p-4 rounded-3xl bg-white/10 backdrop-blur-md border-2 border-amber-400/60 shadow-[0_16px_50px_rgba(0,0,0,0.6)] ring-4 ring-amber-400/30">
                     <img 
                         id="splash-escudo-img"
                         src="./img/banderas/escudo_de_venezuela.svg" 
                         alt="Escudo de Armas de la República Bolivariana de Venezuela" 
-                        class="w-24 h-24 sm:w-32 sm:h-32 md:w-36 md:h-36 object-contain drop-shadow-[0_10px_25px_rgba(0,0,0,0.7)]"
+                        class="w-20 h-20 sm:w-28 sm:h-28 md:w-36 md:h-36 object-contain drop-shadow-[0_10px_25px_rgba(0,0,0,0.7)]"
                         onerror="this.onerror=null; this.src='https://upload.wikimedia.org/wikipedia/commons/4/46/Coat_of_arms_of_Venezuela.svg';"
                     />
                 </div>
             </div>
 
             <!-- 2. LOGO ANCHO DE LA REPÚBLICA (SE INTEGRA CON EL ESCUDO) -->
-            <div id="splash-logo-container" class="opacity-0 translate-y-8 w-full flex items-center justify-center my-1.5 sm:my-3">
+            <div id="splash-logo-container" class="opacity-0 translate-y-8 w-full flex items-center justify-center my-1.5 sm:my-3 px-2">
                 <img 
                     id="splash-gov-logo"
                     src="https://pbs.twimg.com/media/Gxy2xw_WIAAN7Vz?format=webp&name=large" 
                     alt="Gobierno Bolivariano de Venezuela" 
-                    class="w-full max-w-md sm:max-w-xl md:max-w-2xl h-auto object-contain drop-shadow-[0_12px_30px_rgba(0,0,0,0.55)] rounded-2xl"
+                    class="w-full max-w-[85vw] sm:max-w-xl md:max-w-2xl h-auto object-contain drop-shadow-[0_12px_30px_rgba(0,0,0,0.55)] rounded-2xl"
                     onerror="this.onerror=null; this.src='https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ3bDuiBQKoyd9r394G-okztcIp9VWr1tV6HYac6fNBlXt6yK4ROIf3uePG&s=10';"
                 />
             </div>
 
             <!-- 3. BIENVENIDO CIUDADANO (EN MONTSERRAT GRANDE) -->
-            <div id="splash-welcome-container" class="opacity-0 translate-y-[-30px] pointer-events-none my-2 sm:my-3">
-                <h1 class="text-white text-3xl sm:text-5xl md:text-6xl font-black tracking-wider uppercase drop-shadow-[0_8px_25px_rgba(0,0,0,0.85)]" style="font-family: 'Montserrat', sans-serif !important;">
+            <div id="splash-welcome-container" class="opacity-0 translate-y-[-30px] pointer-events-none my-2 sm:my-3 px-2">
+                <h1 class="text-white text-2xl sm:text-4xl md:text-6xl font-black tracking-wider uppercase drop-shadow-[0_8px_25px_rgba(0,0,0,0.85)]" style="font-family: 'Montserrat', sans-serif !important;">
                     BIENVENIDO CIUDADANO
                 </h1>
-                <span class="text-amber-400 font-extrabold tracking-[0.25em] text-[10px] sm:text-xs uppercase block mt-1.5" style="font-family: 'Montserrat', sans-serif !important;">
+                <span class="text-amber-400 font-extrabold tracking-[0.2em] sm:tracking-[0.25em] text-[9px] sm:text-xs uppercase block mt-1.5" style="font-family: 'Montserrat', sans-serif !important;">
                     SISTEMA DE SEGUIMIENTO Y COBERTURA TERRITORIAL
                 </span>
             </div>
 
             <!-- 4. INDICADOR DE CARGA CON BARRA TRICOLOR AMARILLA, AZUL Y ROJA -->
-            <div id="splash-loading-indicator" class="w-full max-w-xs sm:max-w-md flex flex-col items-center mt-3 sm:mt-5">
+            <div id="splash-loading-indicator" class="w-full max-w-[78vw] sm:max-w-md flex flex-col items-center mt-3 sm:mt-5">
                 <!-- Barra Tricolor de Venezuela: Amarillo, Azul y Rojo -->
-                <div class="w-full h-3.5 bg-black/50 rounded-full overflow-hidden border border-white/30 shadow-[inset_0_2px_6px_rgba(0,0,0,0.7)] mb-3 p-[2px] relative">
+                <div class="w-full h-3 sm:h-3.5 bg-black/50 rounded-full overflow-hidden border border-white/30 shadow-[inset_0_2px_6px_rgba(0,0,0,0.7)] mb-2.5 sm:mb-3 p-[2px] relative">
                     <div id="splash-progress-bar" class="h-full rounded-full transition-all duration-300 relative overflow-hidden" style="width: 0%; background: linear-gradient(90deg, #FCE300 0%, #FCE300 33.33%, #003882 33.33%, #003882 66.66%, #DA291C 66.66%, #DA291C 100%); box-shadow: 0 0 14px rgba(252, 227, 0, 0.6);">
                         <div class="absolute inset-0 bg-white/25 animate-pulse pointer-events-none"></div>
                     </div>
                 </div>
-                <div class="flex items-center gap-2 text-blue-100 text-xs sm:text-sm font-bold tracking-widest uppercase" style="font-family: 'Montserrat', sans-serif !important;">
-                    <span class="w-2.5 h-2.5 rounded-full bg-amber-400 animate-ping"></span>
+                <div class="flex items-center gap-2 text-blue-100 text-[11px] sm:text-sm font-bold tracking-widest uppercase" style="font-family: 'Montserrat', sans-serif !important;">
+                    <span class="w-2 h-2 sm:w-2.5 sm:h-2.5 rounded-full bg-amber-400 animate-ping"></span>
                     <span id="splash-loading-text">Cargando Cobertura Territorial y Medios...</span>
                 </div>
             </div>
@@ -418,12 +488,24 @@
         </div>
     </div>
 
+    <!-- BACKDROP MÓVIL PARA EL PANEL DE FILTROS -->
+    <div id="filters-backdrop" class="hidden md:hidden fixed inset-0 bg-black/60 backdrop-blur-xs z-[4990]" onclick="toggleMobileFilters(true)"></div>
+
     <!-- WRAPPER PRINCIPAL -->
     <div id="main-wrapper">
         <div id="app-container" class="relative">
             
             <!-- PANEL LATERAL IZQUIERDO: FILTROS Y RETRATO OFICIAL -->
             <div id="filters-panel">
+                <!-- CABECERA MÓVIL CON BOTÓN DE CERRAR -->
+                <div class="md:hidden flex items-center justify-between pb-2.5 border-b border-gray-200 mb-2">
+                    <div class="flex items-center gap-2">
+                        <span class="w-2 h-2 rounded-full bg-nativa-light animate-ping"></span>
+                        <span class="text-xs font-black text-nativa-marine uppercase tracking-wider font-montserrat">Filtros y Controles</span>
+                    </div>
+                    <button onclick="toggleMobileFilters(true)" class="w-8 h-8 rounded-full bg-gray-100 hover:bg-gray-200 text-gray-700 flex items-center justify-center text-xl font-bold transition-all">&times;</button>
+                </div>
+
                 <!-- Branding Header Institucional: Únicamente el Logo Horizontal Grande a Todo lo Ancho -->
                 <div class="-mx-[0.85rem] -mt-4 mb-2 overflow-hidden border-b border-gray-200/90 bg-white shadow-xs">
                     <img 
@@ -598,11 +680,16 @@
                 </div>
             </div>
 
-            <!-- BOTÓN MÓVIL PARA MOSTRAR FILTROS -->
-            <button id="mobile-filter-btn" onclick="toggleMobileFilters()" class="bg-nativa-marine text-white font-bold text-xs py-2.5 px-5 rounded-full shadow-xl flex items-center gap-2 border border-white/20">
-                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 4a1 1 0 011-1h16a1 1 0 011 1v2.586a1 1 0 01-.293.707l-6.414 6.414a1 1 0 00-.293.707V17l-4 4v-6.586a1 1 0 00-.293-.707L3.293 7.293A1 1 0 013 6.586V4z"/></svg>
-                <span>Filtros y Controles</span>
-            </button>
+            <!-- BARRA FLOTANTE MÓVIL EN EL MAPA (IPHONE / SMARTPHONES) -->
+            <div id="mobile-top-bar" class="md:hidden absolute top-3 left-3 z-[1200] flex items-center gap-2">
+                <button onclick="toggleMobileFilters()" class="bg-[#002F6C]/95 hover:bg-[#002F6C] active:scale-95 text-white font-black text-[11px] py-2 px-3.5 rounded-full shadow-lg border border-white/30 backdrop-blur-md flex items-center gap-1.5 transition-all cursor-pointer">
+                    <svg class="w-3.5 h-3.5 text-amber-300" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h7"/></svg>
+                    <span>Filtros</span>
+                </button>
+                <button onclick="showNationalOverview()" class="bg-white/95 hover:bg-white active:scale-95 text-nativa-marine font-black text-[11px] py-2 px-3 rounded-full shadow-lg border border-gray-200 backdrop-blur-md flex items-center gap-1.5 transition-all cursor-pointer">
+                    <span>🇻🇪 Nacional</span>
+                </button>
+            </div>
 
             <!-- PANEL DESLIZANTE DERECHO (ANCHO COMPACTO 420px): DOSSIER EJECUTIVO / REGIONAL -->
             <div id="details-panel">
@@ -12454,9 +12541,9 @@
 
         function adjustLayoutHeight() {
             const windowHeight = window.innerHeight;
-            const bannerHeight = document.getElementById('region-banner').offsetHeight;
-            const footerHeight = document.getElementById('corporate-footer').offsetHeight;
-            const availableHeight = windowHeight - bannerHeight;
+            const bannerEl = document.getElementById('region-banner');
+            const bannerHeight = bannerEl ? bannerEl.offsetHeight : 0;
+            const availableHeight = Math.max(280, windowHeight - bannerHeight);
             
             const appContainer = document.getElementById('app-container');
             if (appContainer) {
@@ -12471,12 +12558,14 @@
         // CONFIGURACIÓN DEL MAPA LEAFLET (OPENSTREETMAP 100% ABIERTO)
         // ==========================================
         function initMap() {
+            const isMobile = window.innerWidth < 768;
             map = L.map('map', {
                 zoomControl: false,
-                attributionControl: false
-            }).setView([7.6, -66.0], 6);
+                attributionControl: false,
+                touchZoom: true
+            }).setView([7.6, -66.0], isMobile ? 5.2 : 6);
 
-            L.control.zoom({ position: 'bottomright' }).addTo(map);
+            L.control.zoom({ position: isMobile ? 'topright' : 'bottomright' }).addTo(map);
 
             L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
                 maxZoom: 18,
@@ -13148,6 +13237,11 @@
             document.getElementById('state-select').value = stateKey;
             updateCustomStateTriggerUI(stateKey);
             
+            // En smartphones/iPhone, cerrar el drawer de filtros automáticamente
+            if (window.innerWidth < 768) {
+                toggleMobileFilters(true);
+            }
+            
             // 1. ZOOM CINEMÁTICO AL ESTADO CENTRADO CON SUFICIENTE AIRE A LAS FRANJAS
             const layer = stateLayers.get(stateKey);
             const isDesktop = window.innerWidth >= 1024;
@@ -13158,10 +13252,10 @@
             // Derecha: panel de detalles del estado (360px)
             // Abajo: franja azul institucional (~95px)
             // Arriba: holgura para respiración estética
-            const padLeft = isDesktop ? 300 : (isTablet ? 280 : 35);
-            const padRight = isDesktop ? 390 : (isTablet ? 370 : 35);
-            const padTop = 60;
-            const padBottom = 140;
+            const padLeft = isDesktop ? 300 : (isTablet ? 280 : 15);
+            const padRight = isDesktop ? 390 : (isTablet ? 370 : 15);
+            const padTop = isDesktop ? 60 : 65;
+            const padBottom = isDesktop ? 140 : 160;
 
             if (layer) {
                 map.flyToBounds(layer.getBounds(), {
@@ -13386,9 +13480,9 @@
             container.innerHTML = html;
             const panel = document.getElementById('details-panel');
             const isAlreadyOpen = panel.classList.contains('open');
-            panel.classList.add('open');
+            const panelWidth = window.innerWidth < 768 ? window.innerWidth : 360;
             if (!isAlreadyOpen) {
-                gsap.fromTo(panel, { right: -360 }, { right: 0, duration: 3.0, ease: "power3.out" });
+                gsap.fromTo(panel, { right: -panelWidth }, { right: 0, duration: window.innerWidth < 768 ? 0.9 : 3.0, ease: "power3.out" });
             } else {
                 gsap.fromTo(container, { opacity: 0.3 }, { opacity: 1, duration: 0.6, ease: "power2.out" });
             }
@@ -13623,7 +13717,8 @@
                 // PANEL CERRADO: Inyectar dossier y deslizar suavemente desde la derecha
                 container.innerHTML = buildStateHtml();
                 panel.classList.add('open');
-                gsap.fromTo(panel, { right: -360 }, { right: 0, duration: 3.0, ease: "power3.out" });
+                const panelWidth = window.innerWidth < 768 ? window.innerWidth : 360;
+                gsap.fromTo(panel, { right: -panelWidth }, { right: 0, duration: window.innerWidth < 768 ? 0.9 : 3.0, ease: "power3.out" });
             }
         }
 
@@ -13633,9 +13728,10 @@
                 window.stateDetailsTimer = null;
             }
             const panel = document.getElementById('details-panel');
+            const panelWidth = window.innerWidth < 768 ? window.innerWidth : 360;
             gsap.to(panel, {
-                right: -360,
-                duration: 3.0,
+                right: -panelWidth,
+                duration: window.innerWidth < 768 ? 0.8 : 3.0,
                 ease: "power3.inOut",
                 onComplete: () => {
                     panel.classList.remove('open');
@@ -13733,7 +13829,7 @@
                         </div>
 
                         <!-- VENEZUELA CON METADATA COMPLETA: POBLACIÓN, ESTADOS, MUNICIPIOS Y PIB EN USD -->
-                        <div class="flex-1 min-w-[240px]">
+                        <div class="flex-1 min-w-0 w-full md:w-auto">
                             <div class="flex flex-wrap items-center gap-2 sm:gap-2.5">
                                 <h3 class="text-xl sm:text-2xl md:text-3xl font-black uppercase tracking-wide text-white oswald-title drop-shadow-md">
                                     VENEZUELA
@@ -13742,7 +13838,7 @@
                                     VISIÓN GENERAL PAÍS
                                 </span>
                             </div>
-                            <div class="flex flex-wrap items-center gap-2 sm:gap-3.5 text-[11px] sm:text-xs md:text-sm text-blue-100 mt-1 sm:mt-1.5">
+                            <div class="grid grid-cols-2 sm:flex sm:flex-wrap items-center gap-1.5 sm:gap-3.5 text-[10px] sm:text-xs md:text-sm text-blue-100 mt-1 sm:mt-1.5">
                                 <span class="oswald-title text-amber-200">POBLACIÓN: <b class="text-amber-300 bg-amber-950/60 border border-amber-400/40 px-2 py-0.5 rounded font-black">28.838.497 HAB.</b></span>
                                 <span class="oswald-title">ESTADOS: <b class="text-white bg-white/10 px-2 py-0.5 rounded font-black">24 ENTIDADES</b></span>
                                 <span class="oswald-title text-blue-200">MUNICIPIOS: <b class="text-white bg-blue-500/80 px-2.5 py-0.5 rounded font-black">335 MUN.</b></span>
@@ -13752,8 +13848,8 @@
                         </div>
                     </div>
 
-                    <div class="flex items-center gap-3 w-full md:w-auto justify-end">
-                        <div class="flex items-center gap-2 bg-amber-400 hover:bg-amber-300 text-slate-950 px-4 sm:px-5 py-2 sm:py-3 rounded-xl shadow-md font-black text-xs sm:text-sm uppercase tracking-wide transition-all oswald-title cursor-pointer">
+                    <div class="flex items-center gap-3 w-full md:w-auto justify-end mt-2 md:mt-0">
+                        <div class="flex items-center justify-center gap-2 bg-amber-400 hover:bg-amber-300 text-slate-950 px-4 sm:px-5 py-2.5 sm:py-3 rounded-xl shadow-md font-black text-xs sm:text-sm uppercase tracking-wide transition-all oswald-title cursor-pointer w-full sm:w-auto">
                             <span id="table-toggle-label">
                                 ${isBannerExpanded ? 'Contraer Listado y Datos' : 'Ver Listado Completo'}
                             </span>
@@ -13793,7 +13889,7 @@
                         </div>
 
                         <!-- NOMBRE, GOBERNADOR Y ESTADÍSTICAS EN TIPOGRAFÍA OSWALD (25% MÁS GRANDE) -->
-                        <div class="flex-1 min-w-[240px]">
+                        <div class="flex-1 min-w-0 w-full md:w-auto">
                             <div class="flex flex-wrap items-center gap-2 sm:gap-2.5">
                                 <h3 class="text-xl sm:text-2xl md:text-3xl font-black uppercase tracking-wide text-white oswald-title drop-shadow-md">
                                     ESTADO ${s.name.toUpperCase()}
@@ -13802,7 +13898,7 @@
                                     ENFOQUE TERRITORIAL
                                 </span>
                             </div>
-                            <div class="flex flex-wrap items-center gap-2 sm:gap-4 text-[11px] sm:text-xs md:text-sm text-blue-100 mt-1 sm:mt-1.5">
+                            <div class="grid grid-cols-2 sm:flex sm:flex-wrap items-center gap-1.5 sm:gap-4 text-[10px] sm:text-xs md:text-sm text-blue-100 mt-1 sm:mt-1.5">
                                 <span class="oswald-title">CAPITAL: <b class="text-white bg-white/10 px-2 py-0.5 rounded">${s.capital || 'N/A'}</b></span>
                                 <span class="oswald-title text-amber-200">POBLACIÓN: <b class="text-amber-300 bg-amber-950/60 border border-amber-400/40 px-2 py-0.5 rounded">${s.poblacion || 'N/A'}</b></span>
                                 <span class="oswald-title text-blue-200">NOTICIAS: <b class="text-white bg-blue-500/80 px-2.5 py-0.5 rounded font-black">${count} ARTÍCULOS</b></span>
@@ -13811,11 +13907,11 @@
                         </div>
                     </div>
 
-                    <div class="flex flex-wrap items-center gap-2 sm:gap-3 w-full md:w-auto justify-end">
-                        <button onclick="event.stopPropagation(); resetAllFilters();" class="text-xs sm:text-sm font-black text-blue-100 hover:text-white bg-white/10 hover:bg-white/20 px-3.5 sm:px-4 py-2 sm:py-2.5 rounded-xl border border-white/20 transition-all flex items-center gap-1.5 cursor-pointer shadow-xs oswald-title">
+                    <div class="flex flex-wrap items-center gap-2 sm:gap-3 w-full md:w-auto justify-start sm:justify-end mt-2 md:mt-0">
+                        <button onclick="event.stopPropagation(); resetAllFilters();" class="text-xs sm:text-sm font-black text-blue-100 hover:text-white bg-white/10 hover:bg-white/20 px-3.5 sm:px-4 py-2 sm:py-2.5 rounded-xl border border-white/20 transition-all flex items-center gap-1.5 cursor-pointer shadow-xs oswald-title flex-1 sm:flex-none justify-center">
                             <span>Volver a Visión General</span>
                         </button>
-                        <div class="flex items-center gap-2 bg-amber-400 hover:bg-amber-300 text-slate-950 px-4 sm:px-5 py-2 sm:py-3 rounded-xl shadow-md font-black text-xs sm:text-sm uppercase tracking-wide transition-all oswald-title cursor-pointer">
+                        <div class="flex items-center justify-center gap-2 bg-amber-400 hover:bg-amber-300 text-slate-950 px-4 sm:px-5 py-2.5 sm:py-3 rounded-xl shadow-md font-black text-xs sm:text-sm uppercase tracking-wide transition-all oswald-title cursor-pointer flex-1 sm:flex-none">
                             <span id="table-toggle-label">
                                 ${isBannerExpanded ? 'Ocultar Noticias a Fondo' : 'Ver Noticias a Fondo'}
                             </span>
@@ -14272,8 +14368,18 @@
             });
         }
 
-        function toggleMobileFilters() {
-            document.getElementById('filters-panel').classList.toggle('open');
+        function toggleMobileFilters(forceClose = false) {
+            const panel = document.getElementById('filters-panel');
+            const backdrop = document.getElementById('filters-backdrop');
+            if (!panel) return;
+            const isOpen = panel.classList.contains('open');
+            if (isOpen || forceClose) {
+                panel.classList.remove('open');
+                if (backdrop) backdrop.classList.add('hidden');
+            } else {
+                panel.classList.add('open');
+                if (backdrop) backdrop.classList.remove('hidden');
+            }
         }
 
         document.addEventListener("DOMContentLoaded", initApp);
