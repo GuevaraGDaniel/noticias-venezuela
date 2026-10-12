@@ -4945,48 +4945,63 @@
         // ==========================================
         // INICIALIZACIÓN DE LA APLICACIÓN
         // ==========================================
-        async function initApp() {
-            document.querySelectorAll('#splash-flag-container, #header-flag-slot, #footer-flag-slot').forEach(el => {
-                el.innerHTML = getVenezuelaFlagSvg();
-            });
-
-            adjustLayoutHeight();
-            window.addEventListener('resize', adjustLayoutHeight);
-
-            // 1. Inicializar Mapa con OpenStreetMap 100% abierto
-            initMap();
-
-            // 2. Cargar Noticias (con fallback autónomo) y detectar ciudades/estados
-            await loadNewsData();
-
-            // 3. Renderizar polígonos GeoJSON y Marcadores con las noticias ya mapeadas
-            renderGeoJSON();
-            updateMarkers();
-
-            // 4. Poblar opciones de filtros
-            populateFilterOptions();
-
-            // 5. Inicializar el Apple Dock Interactivo con GSAP
-            renderAppleDock();
-            initAppleDockMagnification();
-
-            // 6. Aplicar filtros y mostrar Vista Nacional con Delcy
-            applyFilters();
-            showNationalOverview();
-            renderBottomBannerHeader();
-
-            // Animación de entrada GSAP
-            setTimeout(() => {
-                const overlay = document.getElementById('loading-overlay');
+        function dismissOverlay() {
+            const overlay = document.getElementById('loading-overlay');
+            const app = document.getElementById('app-container');
+            const footer = document.getElementById('corporate-footer');
+            if (overlay && overlay.style.display !== 'none') {
                 overlay.style.opacity = '0';
                 setTimeout(() => {
                     overlay.style.display = 'none';
-                    const app = document.getElementById('app-container');
-                    const footer = document.getElementById('corporate-footer');
-                    gsap.to([app, footer], { opacity: 1, duration: 0.8, ease: "power2.out" });
-                }, 700);
-            }, 900);
+                    if (app) app.style.opacity = '1';
+                    if (footer) footer.style.opacity = '1';
+                    if (typeof gsap !== 'undefined') {
+                        gsap.to([app, footer], { opacity: 1, duration: 0.6, ease: "power2.out" });
+                    }
+                }, 400);
+            }
         }
+
+        async function initApp() {
+            try {
+                document.querySelectorAll('#splash-flag-container, #header-flag-slot, #footer-flag-slot').forEach(el => {
+                    el.innerHTML = getVenezuelaFlagSvg();
+                });
+
+                adjustLayoutHeight();
+                window.addEventListener('resize', adjustLayoutHeight);
+
+                // 1. Inicializar Mapa con OpenStreetMap 100% abierto
+                initMap();
+
+                // 2. Cargar Noticias (con fallback autónomo) y detectar ciudades/estados
+                await loadNewsData();
+
+                // 3. Renderizar polígonos GeoJSON y Marcadores con las noticias ya mapeadas
+                renderGeoJSON();
+                updateMarkers();
+
+                // 4. Poblar opciones de filtros
+                populateFilterOptions();
+
+                // 5. Inicializar el Apple Dock Interactivo con GSAP
+                renderAppleDock();
+                initAppleDockMagnification();
+
+                // 6. Aplicar filtros y mostrar Vista Nacional con Delcy
+                applyFilters();
+                showNationalOverview();
+                renderBottomBannerHeader();
+            } catch (err) {
+                console.error("[Monitor País] Error durante la inicialización:", err);
+            } finally {
+                // Siempre descartar pantalla de carga
+                setTimeout(dismissOverlay, 600);
+            }
+        }
+
+        // Failsafe absoluto de 2 segundos para asegurar que el dashboard nunca se congele en la carga
+        setTimeout(dismissOverlay, 2000);
 
         function adjustLayoutHeight() {
             const windowHeight = window.innerHeight;
@@ -5702,7 +5717,7 @@
                                 <h2 class="text-xs font-black uppercase tracking-widest text-blue-200">ESTADO ${stateData.name.toUpperCase()}</h2>
                             </div>
                             <h3 class="text-lg sm:text-xl font-black leading-snug drop-shadow-md text-white oswald-title">
-                                ${{stateData.governor}}
+                                ${stateData.governor}
                             </h3>
                             <p class="text-xs font-bold text-amber-300 mt-0.5 oswald-title">
                                 ${stateData.governorTitle || 'GOBERNADOR(A) CONSTITUCIONAL'}
