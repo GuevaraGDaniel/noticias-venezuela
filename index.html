@@ -162,36 +162,39 @@
         }
 
         /* ==========================================
-           APPLE DOCK FLOTANTE: NACIENDO DESDE LA IZQUIERDA (HORIZONTAL CON SCROLL Y LUPA GSAP)
+           APPLE DOCK FLOTANTE: TRANSPARENTE, DESDE EL BORDE IZQUIERDO Y CON ETIQUETAS OSWALD
            ========================================== */
         #apple-dock-floating-container {
             position: absolute;
             bottom: 24px;
-            left: 370px; /* Nace desde el borde izquierdo del mapa (al lado del panel de filtros) */
+            left: 350px; /* Nace estrictamente pegado al borde izquierdo del mapa */
             z-index: 1000;
             display: flex;
             flex-direction: column;
             align-items: flex-start;
             pointer-events: auto;
             transition: opacity 0.3s ease, transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
-            max-width: calc(100vw - 420px);
+            max-width: calc(100vw - 410px);
+            padding-left: 4px;
         }
 
         @media (max-width: 768px) {
             #apple-dock-floating-container {
-                left: 12px;
-                max-width: calc(100vw - 24px);
+                left: 4px;
+                max-width: calc(100vw - 8px);
+                padding-left: 0;
             }
         }
 
+        /* BANDEJA DEL DOCK COMPLETAMENTE TRANSPARENTE (SIN FONDO BLANCO) */
         .apple-dock-shelf {
-            background: rgba(255, 255, 255, 0.82);
-            backdrop-filter: blur(25px);
-            -webkit-backdrop-filter: blur(25px);
-            border: 1.5px solid rgba(255, 255, 255, 0.95);
-            box-shadow: 0 20px 45px -8px rgba(0, 47, 108, 0.28), inset 0 1px 0 rgba(255, 255, 255, 0.9);
-            border-radius: 28px;
-            padding: 8px 16px 14px 16px;
+            background: transparent !important;
+            backdrop-filter: none !important;
+            -webkit-backdrop-filter: none !important;
+            border: none !important;
+            box-shadow: none !important;
+            border-radius: 0;
+            padding: 0 4px 6px 0;
             display: flex;
             align-items: flex-end;
             max-width: 100%;
@@ -202,19 +205,57 @@
         }
 
         .apple-dock-shelf::-webkit-scrollbar {
-            height: 6px;
+            height: 4px;
         }
         .apple-dock-shelf::-webkit-scrollbar-track {
-            background: rgba(0, 47, 108, 0.06);
+            background: rgba(0, 47, 108, 0.05);
             border-radius: 10px;
-            margin: 0 16px;
         }
         .apple-dock-shelf::-webkit-scrollbar-thumb {
-            background: #005EB8;
+            background: rgba(0, 94, 184, 0.5);
             border-radius: 10px;
         }
         .apple-dock-shelf::-webkit-scrollbar-thumb:hover {
             background: #002F6C;
+        }
+
+        /* ETIQUETA EN TIPOGRAFÍA OSWALD ARRIBA DE CADA ÍCONO */
+        .apple-dock-label {
+            font-family: 'Oswald', sans-serif !important;
+            font-size: 10px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.04em;
+            color: #0f172a;
+            background: rgba(255, 255, 255, 0.94);
+            backdrop-filter: blur(8px);
+            -webkit-backdrop-filter: blur(8px);
+            padding: 2.5px 7px;
+            border-radius: 6px;
+            border: 1px solid rgba(0, 47, 108, 0.2);
+            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
+            margin-bottom: 5px;
+            white-space: nowrap;
+            pointer-events: none;
+            transition: all 0.2s ease;
+            text-align: center;
+            max-width: 95px;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+        .apple-dock-item:hover .apple-dock-label {
+            color: #ffffff;
+            background: #002F6C;
+            border-color: #005EB8;
+            box-shadow: 0 4px 10px rgba(0, 94, 184, 0.5);
+            transform: scale(1.06);
+        }
+        .apple-dock-item.active-dock .apple-dock-label {
+            color: #ffffff;
+            background: #005EB8;
+            border-color: #fef08a;
+            font-weight: 800;
+            box-shadow: 0 0 8px rgba(0, 94, 184, 0.5);
         }
 
         /* Contenedor estrictamente horizontal de los items del dock */
@@ -224,7 +265,7 @@
             flex-wrap: nowrap !important;
             align-items: flex-end;
             gap: 12px;
-            padding-top: 42px; /* Margen superior amplio para magnificación de íconos gigantes */
+            padding-top: 48px; /* Margen superior amplio para magnificación de íconos gigantes */
             padding-bottom: 4px;
         }
 
@@ -343,8 +384,8 @@
                 <!-- CONTENEDOR CON SCROLL SUAVE -->
                 <div class="space-y-3 flex-grow overflow-y-auto pr-1">
 
-                    <!-- SECCIÓN DELCY RODRÍGUEZ: RETRATO OFICIAL EXACTO DE WIKIPEDIA -->
-                    <div class="bg-gradient-to-b from-[#002F6C] to-[#00478f] rounded-2xl p-3.5 text-white shadow-md border border-blue-900 relative overflow-hidden group">
+                    <!-- SECCIÓN DINÁMICA: RETRATO OFICIAL DE DELCY vs PORTAL SELECCIONADO -->
+                    <div id="left-identity-card" class="bg-gradient-to-b from-[#002F6C] to-[#00478f] rounded-2xl p-3.5 text-white shadow-md border border-blue-900 relative overflow-hidden group">
                         <div class="flex items-center justify-between mb-2">
                             <span class="text-[9px] font-black uppercase tracking-wider text-amber-300 bg-amber-950/80 px-2 py-0.5 rounded-full border border-amber-400/50 flex items-center gap-1">
                                 <span class="w-1.5 h-1.5 rounded-full bg-amber-400 animate-ping"></span>
@@ -5043,6 +5084,7 @@
                 initAppleDockMagnification();
 
                 // 6. Aplicar filtros y mostrar Vista Nacional con Delcy
+                renderLeftIdentityCard();
                 applyFilters();
                 showNationalOverview();
                 renderBottomBannerHeader();
@@ -5276,7 +5318,7 @@
                     item.setAttribute('data-title', `${s.name} • ${s.governor}`);
 
                     item.innerHTML = `
-                        <div class="apple-dock-tooltip">${s.name} (${count})</div>
+                        <div class="apple-dock-label oswald-title">${s.name}</div>
                         <div class="apple-dock-icon relative overflow-hidden ${isActive ? 'border-blue-600' : 'border-white'}">
                             <img src="${photo}" alt="${s.governor}" class="w-full h-full object-cover object-top" onerror="this.onerror=null; this.src=createInstitutionalSvgAvatar('${s.governor}', 'GOB', false);"/>
                             <img src="${flag}" referrerpolicy="no-referrer" class="absolute bottom-0 right-0 w-4.5 h-3.5 object-cover rounded-tl-[3px] shadow-xs border-t border-l border-white" onerror="this.src='https://upload.wikimedia.org/wikipedia/commons/thumb/0/06/Flag_of_Venezuela.svg/320px-Flag_of_Venezuela.svg.png';"/>
@@ -5308,7 +5350,7 @@
                     item.setAttribute('data-title', `Portal: ${med}`);
 
                     item.innerHTML = `
-                        <div class="apple-dock-tooltip">${med} (${count})</div>
+                        <div class="apple-dock-label oswald-title">${med}</div>
                         <div class="apple-dock-icon p-1.5 ${isActive ? 'border-blue-600' : 'border-gray-200'}">
                             <img src="${logo}" alt="${med}" class="w-full h-full object-contain" onerror="this.src='https://images.vexels.com/media/users/3/135862/isolated/preview/813118c691d25b47377c69ff75167a8d-icono-de-pato.png'"/>
                         </div>
@@ -5416,8 +5458,141 @@
         }
 
         function selectMediaFromDock(medio) {
+            if (currentSelectedMedia === medio) {
+                clearMediaSelection();
+                return;
+            }
             currentSelectedMedia = medio;
+            renderLeftIdentityCard();
             applyFilters();
+
+            // Resaltar ícono en el dock
+            document.querySelectorAll('.apple-dock-item').forEach(el => {
+                if (el.getAttribute('data-key') === medio) {
+                    el.classList.add('active-dock');
+                } else {
+                    el.classList.remove('active-dock');
+                }
+            });
+
+            if (!currentSelectedState) {
+                showNationalOverview();
+            } else {
+                showStateDetails(currentSelectedState);
+            }
+        }
+
+        function clearMediaSelection() {
+            currentSelectedMedia = null;
+            document.querySelectorAll('.apple-dock-item').forEach(el => el.classList.remove('active-dock'));
+            renderLeftIdentityCard();
+            applyFilters();
+        }
+
+        function renderLeftIdentityCard() {
+            const cardContainer = document.getElementById('left-identity-card');
+            if (!cardContainer) return;
+
+            if (!currentSelectedMedia) {
+                // MODO 1: ÁMBITO NACIONAL (DELCY RODRÍGUEZ EN VIVO)
+                cardContainer.innerHTML = `
+                    <div class="flex items-center justify-between mb-2">
+                        <span class="text-[9px] font-black uppercase tracking-wider text-amber-300 bg-amber-950/80 px-2 py-0.5 rounded-full border border-amber-400/50 flex items-center gap-1">
+                            <span class="w-1.5 h-1.5 rounded-full bg-amber-400 animate-ping"></span>
+                            <span>ÁMBITO NACIONAL</span>
+                        </span>
+                        <span class="text-[9px] font-bold text-blue-200">Miraflores</span>
+                    </div>
+
+                    <div class="flex flex-col items-center text-center mt-1">
+                        <button 
+                            onclick="showNationalOverview()" 
+                            class="relative p-1 rounded-full bg-white/20 backdrop-blur-md border-2 border-amber-400 shadow-xl hover:scale-105 active:scale-95 transition-all cursor-pointer group-hover:border-white mb-2"
+                            title="Ver Flujo Completo del Ámbito Nacional"
+                        >
+                            <img 
+                                src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/a3/Delcy_Rodr%C3%ADguez_portrait.jpg/250px-Delcy_Rodr%C3%ADguez_portrait.jpg" 
+                                alt="Delcy Rodríguez" 
+                                class="w-20 h-20 sm:w-24 sm:h-24 rounded-full object-cover object-top border-2 border-white shadow-md"
+                                onerror="this.src='./img/gobernadores/delcy_rodriguez.jpg'"
+                                referrerpolicy="no-referrer"
+                            />
+                            <span class="absolute bottom-0 right-1 bg-amber-500 text-slate-950 font-black text-[8px] px-2 py-0.5 rounded-full border border-white shadow-xs">
+                                EN VIVO
+                            </span>
+                        </button>
+
+                        <h3 class="text-sm font-black text-white oswald-title tracking-wide leading-tight uppercase">
+                            DELCY ELOÍNA RODRÍGUEZ GÓMEZ
+                        </h3>
+                        <span class="text-[10px] font-black text-amber-300 oswald-title mt-0.5 tracking-wider">
+                            PRESIDENTA ENCARGADA
+                        </span>
+
+                        <button 
+                            onclick="showNationalOverview()" 
+                            class="w-full mt-2.5 bg-amber-400 hover:bg-amber-300 text-slate-950 font-black text-[10px] py-1.5 px-3 rounded-lg shadow-sm transition-all flex items-center justify-center gap-1.5 uppercase tracking-wide cursor-pointer"
+                        >
+                            <span>Ver Noticias Nacionales</span>
+                            <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6"/></svg>
+                        </button>
+                    </div>
+                `;
+            } else {
+                // MODO 2: PORTAL INFORMATIVO EN ENFOQUE (TÍTULO Y LOGO EN GRANDE)
+                const logoUrl = getPortalLogoUrl(currentSelectedMedia);
+                const mediaNews = rawNewsData.filter(n => n.medio === currentSelectedMedia);
+                const statesCovered = new Set(mediaNews.map(n => n.stateKey)).size;
+
+                cardContainer.innerHTML = `
+                    <div class="flex items-center justify-between mb-2">
+                        <span class="text-[9px] font-black uppercase tracking-wider text-emerald-300 bg-emerald-950/80 px-2 py-0.5 rounded-full border border-emerald-400/50 flex items-center gap-1">
+                            <span class="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse"></span>
+                            <span>PORTAL EN ENFOQUE</span>
+                        </span>
+                        <span class="text-[9px] font-bold text-blue-200">Cobertura de Medios</span>
+                    </div>
+
+                    <div class="flex flex-col items-center text-center mt-1">
+                        <div class="relative p-2.5 rounded-2xl bg-white shadow-xl border-2 border-blue-400 mb-2 w-20 h-20 sm:w-24 sm:h-24 flex items-center justify-center">
+                            <img 
+                                src="${logoUrl}" 
+                                alt="${currentSelectedMedia}" 
+                                class="w-full h-full object-contain"
+                                onerror="this.src='https://images.vexels.com/media/users/3/135862/isolated/preview/813118c691d25b47377c69ff75167a8d-icono-de-pato.png'"
+                            />
+                            <span class="absolute -bottom-1 -right-1 bg-blue-600 text-white font-black text-[8px] px-1.5 py-0.5 rounded-full border border-white shadow-xs">
+                                ${mediaNews.length}
+                            </span>
+                        </div>
+
+                        <h3 class="text-sm sm:text-base font-black text-white oswald-title tracking-wide leading-tight uppercase">
+                            ${currentSelectedMedia}
+                        </h3>
+                        <span class="text-[10px] font-black text-amber-300 oswald-title mt-0.5 tracking-wider">
+                            ${statesCovered} ESTADOS CUBIERTOS
+                        </span>
+
+                        <div class="w-full flex gap-1.5 mt-2.5">
+                            <button 
+                                onclick="clearMediaSelection()" 
+                                class="flex-1 bg-white/20 hover:bg-white/30 text-white font-bold text-[9px] py-1.5 px-2 rounded-lg border border-white/30 transition-all flex items-center justify-center gap-1 cursor-pointer"
+                                title="Restaurar Ámbito Nacional con Delcy Rodríguez"
+                            >
+                                <span>Volver a Delcy</span>
+                            </button>
+                            <button 
+                                onclick="showNationalOverview()" 
+                                class="flex-1 bg-amber-400 hover:bg-amber-300 text-slate-950 font-black text-[9px] py-1.5 px-2 rounded-lg transition-all flex items-center justify-center gap-1 cursor-pointer"
+                            >
+                                <span>Ver Noticias</span>
+                            </button>
+                        </div>
+                    </div>
+                `;
+            }
+
+            gsap.fromTo(cardContainer, { scale: 0.96, opacity: 0.8 }, { scale: 1, opacity: 1, duration: 0.35, ease: "power2.out" });
         }
 
         function populateFilterOptions() {
@@ -5482,6 +5657,7 @@
             currentSelectedMedia = null;
             currentSelectedState = null;
             setDatePreset('all');
+            renderLeftIdentityCard();
 
             // Restablecer dock flotante en visión general
             const dockContainer = document.getElementById('apple-dock-floating-container');
