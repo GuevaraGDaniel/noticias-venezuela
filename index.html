@@ -5888,39 +5888,53 @@
         }
 
         // ==========================================
-        // ZOOM ESTRICTO AL ESTADO Y OCULTAR DOCK
+        // ZOOM CINEMÁTICO AL ESTADO CENTRADO CON AIRE A LAS FRANJAS
         // ==========================================
         function focusState(stateKey) {
             currentSelectedState = stateKey;
             document.getElementById('state-select').value = stateKey;
             updateCustomStateTriggerUI(stateKey);
             
-            // 1. ZOOM LENTO Y CINEMÁTICO AL ESTADO (6 SEGUNDOS EXACTOS)
+            // 1. ZOOM CINEMÁTICO AL ESTADO CENTRADO CON SUFICIENTE AIRE A LAS FRANJAS
             const layer = stateLayers.get(stateKey);
+            const isDesktop = window.innerWidth >= 1024;
+            const isTablet = window.innerWidth >= 768 && window.innerWidth < 1024;
+
+            // Franjas que rodean el mapa para calcular el centro visual despejado:
+            // Izquierda: panel de filtros blanco (262px)
+            // Derecha: panel de detalles del estado (360px)
+            // Abajo: franja azul institucional (~95px)
+            // Arriba: holgura para respiración estética
+            const padLeft = isDesktop ? 300 : (isTablet ? 280 : 35);
+            const padRight = isDesktop ? 390 : (isTablet ? 370 : 35);
+            const padTop = 60;
+            const padBottom = 140;
+
             if (layer) {
                 map.flyToBounds(layer.getBounds(), {
-                    padding: [70, 70],
-                    maxZoom: 8.5,
-                    duration: 6.0,
-                    easeLinearity: 0.15
+                    paddingTopLeft: [padLeft, padTop],
+                    paddingBottomRight: [padRight, padBottom],
+                    maxZoom: 7.6,
+                    duration: 4.5,
+                    easeLinearity: 0.18
                 });
             } else {
                 const meta = venezuelaStatesData[stateKey];
                 if (meta && meta.lat && meta.lng) {
-                    map.flyTo([meta.lat, meta.lng], 8, { 
-                        duration: 6.0, 
-                        easeLinearity: 0.15 
+                    map.flyTo([meta.lat, meta.lng], 7.2, { 
+                        duration: 4.5, 
+                        easeLinearity: 0.18 
                     });
                 }
             }
 
-            // 2. DESAPARECER EL DOCK FLOTANTE CON TRANSICIÓN GSAP SUAVE (3.0 SEGUNDOS)
+            // 2. DESAPARECER EL DOCK FLOTANTE CON TRANSICIÓN GSAP SUAVE (2.2 SEGUNDOS)
             const dockContainer = document.getElementById('apple-dock-floating-container');
             if (dockContainer) {
                 gsap.to(dockContainer, {
                     y: 120,
                     opacity: 0,
-                    duration: 3.0,
+                    duration: 2.2,
                     ease: "power2.inOut",
                     onComplete: () => {
                         dockContainer.style.display = 'none';
@@ -5931,7 +5945,7 @@
             // 3. Mostrar Dossier del Estado
             showStateDetails(stateKey);
 
-            // 4. Transformar Banner Inferior en Oswald y animar salida de abajo hacia arriba en 5 segundos
+            // 4. Transformar Banner Inferior en Oswald y animar salida fluida
             renderBottomBannerHeader();
             renderBottomBannerExpandedContent();
 
@@ -5952,19 +5966,27 @@
             updateCustomStateTriggerUI('NACIONAL');
             const container = document.getElementById('details-content-wrapper');
             
-            // Reaparecer Dock en Visión General con transición lenta (3.0 SEGUNDOS)
+            // Reaparecer Dock en Visión General con transición suave
             const dockContainer = document.getElementById('apple-dock-floating-container');
             if (dockContainer) {
                 dockContainer.style.display = 'flex';
                 gsap.fromTo(dockContainer, 
                     { y: 80, opacity: 0 }, 
-                    { y: 0, opacity: 1, duration: 3.0, ease: "power3.out" }
+                    { y: 0, opacity: 1, duration: 2.5, ease: "power3.out" }
                 );
             }
 
-            // Zoom out suave y cinemático al mapa de Venezuela (6.0 SEGUNDOS)
+            // Zoom out cinemático al mapa de Venezuela centrado en el espacio despejado
+            const isDesktop = window.innerWidth >= 1024;
+            const padLeft = isDesktop ? 290 : 25;
+            const padRight = isDesktop ? 390 : 25;
             if (map) {
-                map.flyTo([7.6, -66.0], 6, { duration: 6.0, easeLinearity: 0.15 });
+                map.flyToBounds([[0.6, -73.4], [12.5, -59.8]], {
+                    paddingTopLeft: [padLeft, 45],
+                    paddingBottomRight: [padRight, 130],
+                    duration: 4.5,
+                    easeLinearity: 0.18
+                });
             }
 
             const nationalNews = rawNewsData.filter(n => n.stateKey === "NACIONAL");
@@ -6626,6 +6648,16 @@
             }
         }
 
+        let bannerResizeTimer = null;
+        function throttledMapInvalidate() {
+            if (!bannerResizeTimer) {
+                bannerResizeTimer = setTimeout(() => {
+                    bannerResizeTimer = null;
+                    if (map) map.invalidateSize({ debounceMove: true });
+                }, 140);
+            }
+        }
+
         function toggleRegionTable() {
             isBannerExpanded = !isBannerExpanded;
             const banner = document.getElementById('region-banner');
@@ -6636,7 +6668,14 @@
             const labelEl = document.getElementById('table-toggle-label');
             const iconEl = document.getElementById('table-toggle-icon');
 
-            // 1. Actualización suave del texto del botón y del ícono sin reconstruir toda la cabecera
+            // Detener cualquier animación en curso para evitar conflictos y bugs
+            if (window.activeBannerTimeline) {
+                window.activeBannerTimeline.kill();
+                window.activeBannerTimeline = null;
+            }
+            gsap.killTweensOf([container, appContainer, banner]);
+
+            // Actualización suave del texto del botón y del ícono
             if (labelEl) {
                 if (!currentSelectedState) {
                     labelEl.textContent = isBannerExpanded ? 'Contraer Listado y Datos' : 'Ver Listado Completo';
@@ -6654,7 +6693,7 @@
 
             if (isBannerExpanded) {
                 // ==========================================
-                // MODO APERTURA: Despliegue Suave, Prolongado y Cinemático (4.8s)
+                // MODO APERTURA: Despliegue Suave, Optimizado y Fluido
                 // ==========================================
                 banner.classList.remove('table-collapsed');
                 banner.classList.add('table-open');
@@ -6663,61 +6702,58 @@
 
                 const expandedContent = document.getElementById('banner-expanded-content');
                 if (expandedContent) {
-                    gsap.set(expandedContent, { opacity: 0, y: 25 });
+                    gsap.set(expandedContent, { opacity: 0, y: 15 });
                 }
 
                 container.style.display = 'block';
                 container.style.overflow = 'hidden';
 
-                const targetBannerHeight = Math.min(window.innerHeight * 0.72, 750);
+                const targetBannerHeight = Math.min(window.innerHeight * 0.68, 620);
                 const headerHeight = headerContent ? headerContent.offsetHeight : 85;
                 const targetAppHeight = Math.max(260, window.innerHeight - targetBannerHeight - headerHeight);
 
-                const openTl = gsap.timeline();
+                const tl = gsap.timeline({
+                    onComplete: () => {
+                        container.style.overflowY = 'auto';
+                        container.style.maxHeight = '650px';
+                        adjustLayoutHeight();
+                        if (map) map.invalidateSize();
+                        window.activeBannerTimeline = null;
+                    }
+                });
+                window.activeBannerTimeline = tl;
 
-                // 1. Despliegue de altura de la tabla con curva suave inOut (sin tirones al inicio ni al final)
-                openTl.fromTo(container, 
+                // 1. Despliegue de altura de la tabla y adaptación del app-container (2.0s)
+                tl.fromTo(container, 
                     { height: 0, opacity: 0 }, 
                     { 
                         height: targetBannerHeight, 
                         opacity: 1, 
-                        duration: 4.8, 
-                        ease: "power3.inOut"
+                        duration: 2.0, 
+                        ease: "power2.inOut" 
                     }, 
                     0
                 );
 
-                // 2. Ajuste sincronizado y milimétrico del contenedor de mapa
-                openTl.to(appContainer, {
+                tl.to(appContainer, {
                     height: targetAppHeight,
-                    duration: 4.8,
-                    ease: "power3.inOut",
-                    onUpdate: () => {
-                        if (map) map.invalidateSize({ debounceMove: false });
-                    }
+                    duration: 2.0,
+                    ease: "power2.inOut",
+                    onUpdate: throttledMapInvalidate
                 }, 0);
 
-                // 3. Revelación progresiva y elegante del contenido interno (tablas y noticias)
+                // 2. Aparición progresiva del contenido interno
                 if (expandedContent) {
-                    openTl.to(expandedContent, {
+                    tl.to(expandedContent, {
                         opacity: 1,
                         y: 0,
-                        duration: 3.2,
+                        duration: 1.2,
                         ease: "power2.out"
-                    }, 1.4);
+                    }, 0.6);
                 }
-
-                openTl.add(() => {
-                    container.style.overflowY = 'auto';
-                    container.style.maxHeight = '750px';
-                    container.style.height = 'auto';
-                    adjustLayoutHeight();
-                    if (map) map.invalidateSize();
-                });
             } else {
                 // ==========================================
-                // MODO CIERRE: Contracción Cinemática Progresiva (4.2s)
-                // ("Cuando llegue a lo azul, vuelve poniendo todo poco a poco en su lugar mientras se va moviendo a su sitio")
+                // MODO CIERRE: Contracción Cinemática Suave y Sincronizada
                 // ==========================================
                 if (footer) footer.classList.remove('hidden-by-table');
 
@@ -6726,70 +6762,60 @@
 
                 container.style.overflow = 'hidden';
 
-                const closeTl = gsap.timeline();
+                const tl = gsap.timeline({
+                    onComplete: () => {
+                        container.style.display = 'none';
+                        banner.classList.remove('table-open');
+                        banner.classList.add('table-collapsed');
+                        adjustLayoutHeight();
+                        if (map) map.invalidateSize();
+                        window.activeBannerTimeline = null;
+                    }
+                });
+                window.activeBannerTimeline = tl;
 
-                // FASE 1: El contenido interno se desvanece suavemente
+                // 1. Desvanecimiento suave del contenido interno
                 const expandedContent = document.getElementById('banner-expanded-content');
                 if (expandedContent) {
-                    closeTl.to(expandedContent, {
+                    tl.to(expandedContent, {
                         opacity: 0,
-                        y: 15,
-                        duration: 1.8,
+                        y: 10,
+                        duration: 0.6,
                         ease: "power2.in"
                     }, 0);
                 }
 
-                // El listado blanco se contrae hacia arriba dirigiéndose a la franja azul
-                closeTl.to(container, {
+                // 2. Contracción del listado y expansión de app-container (1.8s)
+                tl.to(container, {
                     height: 0,
                     opacity: 0,
-                    duration: 4.2,
-                    ease: "power3.inOut"
+                    duration: 1.8,
+                    ease: "power2.inOut"
                 }, 0);
 
-                // Simultáneamente, app-container va creciendo suavemente para acompañar el movimiento de la franja azul
-                closeTl.to(appContainer, {
+                tl.to(appContainer, {
                     height: finalAppHeight,
-                    duration: 4.5,
-                    ease: "power3.inOut",
-                    onUpdate: () => {
-                        if (map) map.invalidateSize({ debounceMove: false });
-                    }
+                    duration: 1.8,
+                    ease: "power2.inOut",
+                    onUpdate: throttledMapInvalidate
                 }, 0);
 
-                // FASE 2: Justo cuando el barrido blanco alcanza la franja azul (~3.8s - 4.2s):
-                // En lugar de cerrarse de golpe, todo se coloca poco a poco en su lugar de forma fluida
-                closeTl.add(() => {
-                    container.style.display = 'none';
-                    banner.classList.remove('table-open');
-                    banner.classList.add('table-collapsed');
-                }, 4.2);
-
-                // La franja azul se asienta suavemente en su sitio inferior definitivo
-                closeTl.fromTo(banner, 
-                    { y: 16 }, 
-                    { y: 0, duration: 2.2, ease: "power2.out" }, 
-                    3.8
+                // 3. Asentamiento del banner y reaparición del dock al llegar a lo azul
+                tl.fromTo(banner, 
+                    { y: 12 }, 
+                    { y: 0, duration: 1.2, ease: "power2.out" }, 
+                    1.2
                 );
 
-                // El Apple Dock flotante (si estamos en Visión General) reemerge suavemente hacia su sitio
                 const dockContainer = document.getElementById('apple-dock-floating-container');
                 if (dockContainer && !currentSelectedState) {
                     dockContainer.style.display = 'flex';
-                    closeTl.fromTo(dockContainer, 
-                        { y: 40, opacity: 0.3 }, 
-                        { y: 0, opacity: 1, duration: 2.4, ease: "power2.out" }, 
-                        3.8
+                    tl.fromTo(dockContainer, 
+                        { y: 35, opacity: 0.3 }, 
+                        { y: 0, opacity: 1, duration: 1.4, ease: "power2.out" }, 
+                        1.2
                     );
                 }
-
-                // Ajuste milimétrico final de Leaflet
-                closeTl.add(() => {
-                    adjustLayoutHeight();
-                    if (map) {
-                        map.invalidateSize();
-                    }
-                }, 4.8);
             }
         }
 
