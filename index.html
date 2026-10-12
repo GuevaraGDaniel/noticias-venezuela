@@ -119,12 +119,12 @@
             width: 100% !important; 
             overflow: visible !important;
             box-shadow: 0 -10px 40px rgba(0, 24, 70, 0.5); 
-            transition: all 1.8s cubic-bezier(0.16, 1, 0.3, 1); 
+            transition: background-color 0.6s ease, box-shadow 0.6s ease; 
         }
 
         #banner-header-content {
             overflow: visible !important;
-            transition: all 1.8s cubic-bezier(0.16, 1, 0.3, 1);
+            transition: background-color 0.4s ease;
         }
         
         @media (min-width: 768px) {
@@ -6638,49 +6638,133 @@
             const banner = document.getElementById('region-banner');
             const footer = document.getElementById('corporate-footer');
             const container = document.getElementById('region-table-container');
+            const appContainer = document.getElementById('app-container');
+            const headerContent = document.getElementById('banner-header-content');
+            const labelEl = document.getElementById('table-toggle-label');
+            const iconEl = document.getElementById('table-toggle-icon');
+
+            // 1. Actualización suave del texto del botón y del ícono sin reconstruir toda la cabecera (evita parpadeos o saltos)
+            if (labelEl) {
+                if (!currentSelectedState) {
+                    labelEl.textContent = isBannerExpanded ? 'Contraer Listado y Datos' : 'Ver Listado Completo';
+                } else {
+                    labelEl.textContent = isBannerExpanded ? 'Ocultar Noticias a Fondo' : 'Ver Noticias a Fondo';
+                }
+            }
+            if (iconEl) {
+                if (isBannerExpanded) {
+                    iconEl.classList.add('rotate-180');
+                } else {
+                    iconEl.classList.remove('rotate-180');
+                }
+            }
 
             if (isBannerExpanded) {
+                // ==========================================
+                // MODO APERTURA: Despliegue Suave y Progresivo
+                // ==========================================
                 banner.classList.remove('table-collapsed');
                 banner.classList.add('table-open');
                 if (footer) footer.classList.add('hidden-by-table');
-                renderBottomBannerHeader();
                 renderBottomBannerExpandedContent();
 
-                // Animación GSAP ultra-suave y cinemática de apertura
                 container.style.display = 'block';
                 container.style.overflow = 'hidden';
+
+                const targetBannerHeight = Math.min(window.innerHeight * 0.72, 750);
+                const headerHeight = headerContent ? headerContent.offsetHeight : 85;
+                const targetAppHeight = Math.max(260, window.innerHeight - targetBannerHeight - headerHeight);
+
+                // Coordinar contracción de app-container con la apertura del listado
+                gsap.to(appContainer, {
+                    height: targetAppHeight,
+                    duration: 2.8,
+                    ease: "power2.out",
+                    onUpdate: () => {
+                        if (map) map.invalidateSize({ debounceMove: false });
+                    }
+                });
+
                 gsap.fromTo(container, 
                     { height: 0, opacity: 0 }, 
                     { 
-                        height: 'auto', 
+                        height: targetBannerHeight, 
                         opacity: 1, 
-                        duration: 3.0, 
-                        ease: "power3.out",
+                        duration: 2.8, 
+                        ease: "power2.out",
                         onComplete: () => {
                             container.style.overflowY = 'auto';
-                            container.style.maxHeight = '780px';
+                            container.style.maxHeight = '750px';
+                            container.style.height = 'auto';
                             adjustLayoutHeight();
                         }
                     }
                 );
             } else {
+                // ==========================================
+                // MODO CIERRE: Contracción Cinemática Progresiva
+                // ("Cuando llegue a lo azul, vuelve poniendo todo poco a poco en su lugar mientras se va moviendo a su sitio")
+                // ==========================================
                 if (footer) footer.classList.remove('hidden-by-table');
-                renderBottomBannerHeader();
 
-                // Animación GSAP ultra-suave y cinemática de cierre (3.0 SEGUNDOS)
+                const headerHeight = headerContent ? headerContent.offsetHeight : 85;
+                const finalAppHeight = Math.max(300, window.innerHeight - headerHeight);
+
                 container.style.overflow = 'hidden';
-                gsap.to(container, {
+
+                const tl = gsap.timeline();
+
+                // FASE 1: El listado blanco se contrae hacia arriba dirigiéndose a la franja azul
+                tl.to(container, {
                     height: 0,
                     opacity: 0,
-                    duration: 3.0,
-                    ease: "power3.inOut",
-                    onComplete: () => {
-                        container.style.display = 'none';
-                        banner.classList.remove('table-open');
-                        banner.classList.add('table-collapsed');
-                        adjustLayoutHeight();
+                    duration: 2.4,
+                    ease: "power2.inOut"
+                }, 0);
+
+                // Simultáneamente, app-container va creciendo suavemente para acompañar el movimiento de la franja azul
+                tl.to(appContainer, {
+                    height: finalAppHeight,
+                    duration: 2.8,
+                    ease: "power2.out",
+                    onUpdate: () => {
+                        if (map) map.invalidateSize({ debounceMove: false });
                     }
-                });
+                }, 0.15);
+
+                // FASE 2: Justo cuando el barrido blanco alcanza la franja azul (~2.2s - 2.4s):
+                // En lugar de cerrarse de golpe, todo se coloca poco a poco en su lugar de forma fluida
+                tl.add(() => {
+                    container.style.display = 'none';
+                    banner.classList.remove('table-open');
+                    banner.classList.add('table-collapsed');
+                }, 2.4);
+
+                // La franja azul se asienta suavemente en su sitio inferior definitivo
+                tl.fromTo(banner, 
+                    { y: 16 }, 
+                    { y: 0, duration: 1.8, ease: "power2.out" }, 
+                    2.2
+                );
+
+                // El Apple Dock flotante (si estamos en Visión General) reemerge suavemente hacia su sitio
+                const dockContainer = document.getElementById('apple-dock-floating-container');
+                if (dockContainer && !currentSelectedState) {
+                    dockContainer.style.display = 'flex';
+                    tl.fromTo(dockContainer, 
+                        { y: 40, opacity: 0.3 }, 
+                        { y: 0, opacity: 1, duration: 2.0, ease: "power2.out" }, 
+                        2.3
+                    );
+                }
+
+                // Ajuste milimétrico final de Leaflet
+                tl.add(() => {
+                    adjustLayoutHeight();
+                    if (map) {
+                        map.invalidateSize();
+                    }
+                }, 2.8);
             }
         }
 
