@@ -397,12 +397,19 @@
             
             <!-- PANEL LATERAL IZQUIERDO: FILTROS Y RETRATO OFICIAL -->
             <div id="filters-panel">
-                <!-- Branding Header Institucional (Únicamente el Logo del Gobierno Bolivariano) -->
-                <div class="border-b border-gray-100 pb-3 mb-2.5 flex items-center justify-center">
+                <!-- Branding Header Institucional: Logo Horizontal a Todo lo Ancho + Logo Pequeño Debajo -->
+                <div class="-mx-[0.85rem] -mt-4 mb-2 overflow-hidden border-b border-gray-200/90 bg-white">
+                    <img 
+                        src="https://pbs.twimg.com/media/Gxy2xw_WIAAN7Vz?format=webp&name=large" 
+                        alt="Gobierno Bolivariano de Venezuela" 
+                        class="w-full h-auto object-cover object-center block"
+                    />
+                </div>
+                <div class="border-b border-gray-100 pb-2 mb-2 flex items-center justify-center">
                     <img 
                         src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ3bDuiBQKoyd9r394G-okztcIp9VWr1tV6HYac6fNBlXt6yK4ROIf3uePG&s=10" 
                         alt="Gobierno Bolivariano de Venezuela" 
-                        class="h-11 sm:h-12 w-auto object-contain drop-shadow-xs transition-transform duration-700 hover:scale-105"
+                        class="h-10 sm:h-11 w-auto object-contain drop-shadow-xs transition-transform duration-700 hover:scale-105"
                     />
                 </div>
 
@@ -5943,6 +5950,10 @@
         // VISTA 1: ÁMBITO NACIONAL (DELCY RODRÍGUEZ EN VIVO)
         // ==========================================
         function showNationalOverview() {
+            if (window.stateDetailsTimer) {
+                clearTimeout(window.stateDetailsTimer);
+                window.stateDetailsTimer = null;
+            }
             currentSelectedState = null;
             document.getElementById('state-select').value = 'NACIONAL';
             updateCustomStateTriggerUI('NACIONAL');
@@ -6098,8 +6109,13 @@
 
             container.innerHTML = html;
             const panel = document.getElementById('details-panel');
+            const isAlreadyOpen = panel.classList.contains('open');
             panel.classList.add('open');
-            gsap.fromTo(panel, { right: -360 }, { right: 0, duration: 3.0, ease: "power3.out" });
+            if (!isAlreadyOpen) {
+                gsap.fromTo(panel, { right: -360 }, { right: 0, duration: 3.0, ease: "power3.out" });
+            } else {
+                gsap.fromTo(container, { opacity: 0.3 }, { opacity: 1, duration: 0.6, ease: "power2.out" });
+            }
         }
 
         // ==========================================
@@ -6109,6 +6125,12 @@
             currentSelectedState = stateKey;
             const stateData = venezuelaStatesData[stateKey] || { name: stateKey, governor: "Autoridad Regional", poblacion: "Censo INE" };
             const container = document.getElementById('details-content-wrapper');
+            const panel = document.getElementById('details-panel');
+
+            if (window.stateDetailsTimer) {
+                clearTimeout(window.stateDetailsTimer);
+                window.stateDetailsTimer = null;
+            }
 
             const photo = stateData.photoLocal || `./img/gobernadores/${stateKey.toLowerCase().replace(/ /g, '_')}.jpg`;
             const flag = stateData.flagLocal || stateData.flag || 'https://upload.wikimedia.org/wikipedia/commons/0/06/Flag_of_Venezuela.svg';
@@ -6117,7 +6139,8 @@
             const stateWeekNews = stateNews.filter(n => isDateInRange(n.parsedDate, 'week'));
             const uniqueMedia = new Set(stateNews.map(n => n.medio)).size;
 
-            let html = `
+            function buildStateHtml() {
+                let html = `
                 <!-- Cabecera del Estado con Bandera Oficial de Wikipedia y Retrato del Gobernador -->
                 <div class="bg-gradient-to-b from-nativa-marine to-nativa-light pt-8 pb-6 px-6 text-white relative shadow-inner">
                     <div class="flex items-center justify-between mb-3">
@@ -6216,57 +6239,123 @@
                         <span class="text-[10px] font-bold text-nativa-light bg-blue-50 px-2 py-0.5 rounded-full">${stateNews.length} artículos</span>
                     </div>
                     <div class="space-y-3">
-            `;
-
-            if (stateNews.length === 0) {
-                html += `
-                    <div class="p-6 text-center text-gray-400 italic bg-slate-50 rounded-xl border border-gray-200">
-                        No se registran noticias recientes en este estado que coincidan con los filtros actuales.
-                    </div>
                 `;
-            } else {
-                stateNews.forEach(n => {
-                    const dateStr = n.parsedDate.toLocaleDateString('es-ES', { day: 'numeric', month: 'short', year: 'numeric' });
-                    const logoUrl = getPortalLogoUrl(n.medio, n.url);
+
+                if (stateNews.length === 0) {
                     html += `
-                        <div class="news-card bg-gray-50 hover:bg-white p-3.5 rounded-xl border border-gray-200 hover:border-nativa-light shadow-2xs hover:shadow-md transition-all">
-                            <div class="flex justify-between items-start gap-2 mb-2">
-                                <div class="flex items-center gap-2.5">
-                                    <div class="w-8 h-8 rounded-lg bg-white p-1 border border-gray-200 shadow-2xs flex items-center justify-center shrink-0">
-                                        <img src="${logoUrl}" alt="${n.medio}" class="w-full h-full object-contain" onerror="this.onerror=null; this.src=INSTITUTIONAL_MEDIA_FALLBACK;"/>
-                                    </div>
-                                    <div>
-                                        <span class="bg-blue-100 text-nativa-marine text-[9px] font-black px-2 py-0.5 rounded uppercase">${n.medio}</span>
-                                        <span class="block text-[9px] text-gray-400 font-semibold mt-0.5">${dateStr}</span>
-                                    </div>
-                                </div>
-                                <span class="text-[9px] font-bold text-blue-700 bg-blue-50 px-1.5 py-0.5 rounded border border-blue-200">${stateData.name}</span>
-                            </div>
-                            <h5 class="text-xs font-bold text-gray-900 leading-snug mb-1.5 hover:text-nativa-light cursor-pointer" onclick="window.open('${n.url}', '_blank')">${n.titular}</h5>
-                            ${n.extracto ? `<p class="text-[11px] text-gray-600 line-clamp-2 mb-2 font-medium leading-relaxed">${n.extracto}</p>` : ''}
-                            <div class="flex justify-between items-center pt-1 border-t border-gray-100">
-                                <a href="${n.url}" target="_blank" class="text-[11px] font-bold text-nativa-light hover:text-nativa-marine flex items-center">
-                                    Leer artículo completo <svg class="w-3 h-3 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path></svg>
-                                </a>
-                                <span class="text-[9px] text-gray-400 font-medium">Cobertura Regional</span>
-                            </div>
+                        <div class="p-6 text-center text-gray-400 italic bg-slate-50 rounded-xl border border-gray-200">
+                            No se registran noticias recientes en este estado que coincidan con los filtros actuales.
                         </div>
                     `;
-                });
+                } else {
+                    stateNews.forEach(n => {
+                        const dateStr = n.parsedDate.toLocaleDateString('es-ES', { day: 'numeric', month: 'short', year: 'numeric' });
+                        const logoUrl = getPortalLogoUrl(n.medio, n.url);
+                        html += `
+                            <div class="news-card bg-gray-50 hover:bg-white p-3.5 rounded-xl border border-gray-200 hover:border-nativa-light shadow-2xs hover:shadow-md transition-all">
+                                <div class="flex justify-between items-start gap-2 mb-2">
+                                    <div class="flex items-center gap-2.5">
+                                        <div class="w-8 h-8 rounded-lg bg-white p-1 border border-gray-200 shadow-2xs flex items-center justify-center shrink-0">
+                                            <img src="${logoUrl}" alt="${n.medio}" class="w-full h-full object-contain" onerror="this.onerror=null; this.src=INSTITUTIONAL_MEDIA_FALLBACK;"/>
+                                        </div>
+                                        <div>
+                                            <span class="bg-blue-100 text-nativa-marine text-[9px] font-black px-2 py-0.5 rounded uppercase">${n.medio}</span>
+                                            <span class="block text-[9px] text-gray-400 font-semibold mt-0.5">${dateStr}</span>
+                                        </div>
+                                    </div>
+                                    <span class="text-[9px] font-bold text-blue-700 bg-blue-50 px-1.5 py-0.5 rounded border border-blue-200">${stateData.name}</span>
+                                </div>
+                                <h5 class="text-xs font-bold text-gray-900 leading-snug mb-1.5 hover:text-nativa-light cursor-pointer" onclick="window.open('${n.url}', '_blank')">${n.titular}</h5>
+                                ${n.extracto ? `<p class="text-[11px] text-gray-600 line-clamp-2 mb-2 font-medium leading-relaxed">${n.extracto}</p>` : ''}
+                                <div class="flex justify-between items-center pt-1 border-t border-gray-100">
+                                    <a href="${n.url}" target="_blank" class="text-[11px] font-bold text-nativa-light hover:text-nativa-marine flex items-center">
+                                        Leer artículo completo <svg class="w-3 h-3 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path></svg>
+                                    </a>
+                                    <span class="text-[9px] text-gray-400 font-medium">Cobertura Regional</span>
+                                </div>
+                            </div>
+                        `;
+                    });
+                }
+
+                html += `
+                        </div>
+                    </div>
+                `;
+                return html;
             }
 
-            html += `
-                    </div>
-                </div>
-            `;
+            const isAlreadyOpen = panel.classList.contains('open');
 
-            container.innerHTML = html;
-            const panel = document.getElementById('details-panel');
-            panel.classList.add('open');
-            gsap.fromTo(panel, { right: -360 }, { right: 0, duration: 3.0, ease: "power3.out" });
+            if (isAlreadyOpen) {
+                // PANEL YA ESTÁ ABIERTO: Mantenerlo afuera (sin ocultar ni rebotar)
+                // y mostrar estado de carga in situ durante 2 segundos con bandera parpadeando y barra de progreso
+                container.innerHTML = `
+                    <div class="h-full min-h-[460px] flex flex-col items-center justify-center p-8 text-center bg-gradient-to-b from-[#00224d] via-[#002F6C] to-[#001736] text-white">
+                        <!-- BANDERA DEL ESTADO PARPADEANDO (ANIMATE-PULSE) -->
+                        <div class="relative mb-6">
+                            <div class="relative rounded-2xl overflow-hidden border-3 border-amber-400 shadow-[0_16px_36px_rgba(0,0,0,0.65)] ring-4 ring-amber-400/40 bg-slate-900 animate-pulse">
+                                <img 
+                                    src="${flag}" 
+                                    referrerpolicy="no-referrer" 
+                                    alt="${stateData.name}" 
+                                    class="w-32 h-20 sm:w-36 sm:h-22 object-cover" 
+                                    onerror="this.onerror=null; this.src='${fallbackFlag}';"
+                                />
+                            </div>
+                            <div class="absolute -bottom-2.5 -right-2.5 w-8 h-8 rounded-full bg-blue-600 border-2 border-white flex items-center justify-center shadow-lg">
+                                <svg class="animate-spin w-4 h-4 text-amber-300" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+                                    <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
+                                    <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8v8H4z"></path>
+                                </svg>
+                            </div>
+                        </div>
+
+                        <span class="text-[9px] font-black uppercase tracking-widest text-amber-300 bg-amber-950/80 px-3 py-1 rounded-full border border-amber-400/50 mb-2.5 shadow-xs oswald-title">
+                            ENFOQUE TERRITORIAL
+                        </span>
+
+                        <h3 class="text-xl sm:text-2xl font-black uppercase text-white tracking-wider oswald-title mb-1 drop-shadow-md">
+                            ESTADO ${stateData.name.toUpperCase()}
+                        </h3>
+                        <p class="text-xs font-bold text-blue-200 oswald-title mb-6">
+                            Actualizando dossier territorial y noticias...
+                        </p>
+
+                        <!-- BARRA DE CARGA PROGRESIVA (0% A 100% EN 2 SEGUNDOS) -->
+                        <div class="w-full max-w-[240px] bg-white/15 rounded-full h-2.5 overflow-hidden p-0.5 border border-white/20 shadow-inner mb-2.5">
+                            <div id="state-loading-progress-bar" class="bg-gradient-to-r from-amber-400 via-yellow-300 to-amber-500 h-full rounded-full transition-all duration-[2000ms] ease-out w-0 shadow-[0_0_12px_rgba(251,191,36,0.85)]"></div>
+                        </div>
+                        <span class="text-[9px] font-bold text-blue-200/90 tracking-wider">ACTUALIZANDO DATOS OFICIALES (2s)</span>
+                    </div>
+                `;
+
+                // Iniciar animación de la barra de carga hacia 100%
+                setTimeout(() => {
+                    const pbar = document.getElementById('state-loading-progress-bar');
+                    if (pbar) pbar.style.width = '100%';
+                }, 40);
+
+                // Esperar exactamente 2.0 segundos para renderizar el contenido completo de manera ultra fluida
+                window.stateDetailsTimer = setTimeout(() => {
+                    container.innerHTML = buildStateHtml();
+                    gsap.fromTo(container, { opacity: 0.25 }, { opacity: 1, duration: 0.65, ease: "power2.out" });
+                    window.stateDetailsTimer = null;
+                }, 2000);
+
+            } else {
+                // PANEL CERRADO: Inyectar dossier y deslizar suavemente desde la derecha
+                container.innerHTML = buildStateHtml();
+                panel.classList.add('open');
+                gsap.fromTo(panel, { right: -360 }, { right: 0, duration: 3.0, ease: "power3.out" });
+            }
         }
 
         function closeDetails() {
+            if (window.stateDetailsTimer) {
+                clearTimeout(window.stateDetailsTimer);
+                window.stateDetailsTimer = null;
+            }
             const panel = document.getElementById('details-panel');
             gsap.to(panel, {
                 right: -360,
@@ -6389,7 +6478,7 @@
                         </button>
                         <div class="flex items-center gap-2 bg-amber-400 hover:bg-amber-300 text-slate-950 px-4 sm:px-5 py-2 sm:py-3 rounded-xl shadow-md font-black text-xs sm:text-sm uppercase tracking-wide transition-all oswald-title cursor-pointer">
                             <span id="table-toggle-label">
-                                ${isBannerExpanded ? 'Ocultar Noticias' : 'Ver Noticias del Estado'}
+                                ${isBannerExpanded ? 'Ocultar Noticias a Fondo' : 'Ver Noticias a Fondo'}
                             </span>
                             <svg id="table-toggle-icon" class="w-4 h-4 transform transition-transform duration-500 ${isBannerExpanded ? 'rotate-180' : ''}" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
                         </div>
