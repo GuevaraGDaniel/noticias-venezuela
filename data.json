@@ -1,18 +1,402 @@
 [
   {
     "estado_relacionado": "Nacional",
-    "titular": "VenAmCham fortalece lazos comerciales entre Venezuela y EE. UU. en reunión de alto nivel",
-    "medio": "Globovisión",
-    "url": "https://www.globovision.com/economia/62797/venamcham-evalua-oportunidades-para-empresas-estadounidenses-en-venezuela",
-    "fecha": "2026-10-12T20:30:25.430369+00:00",
-    "extracto": "VenAmCham fortalece lazos comerciales entre Venezuela y EE. UU. en reunión de alto nivel"
+    "titular": "Winona Ryder volverá a trabajar con Tim Burton en la tercera temporada de \"Merlina\"",
+    "medio": "Notitarde",
+    "url": "https://www.notitarde.com.ve/revista-del-domingo/95667/la-actriz-winona-ryder-volvera-a-trabajar-con-tim-burton-en-la-tercera-temporada-de-wednesday",
+    "fecha": "2026-10-12T22:08:30.712009+00:00",
+    "extracto": "La actriz y el cineasta volvieron a colaborar hace un par de años en la secuela de \"Beetlejuice\", en la cual también participó Jenna Ortega"
+  },
+  {
+    "estado_relacionado": "Nacional",
+    "titular": "Warner confirma nueva propuesta de Paramount pero mantiene su apoyo a la oferta de Netflix",
+    "medio": "Notitarde",
+    "url": "https://www.notitarde.com.ve/revista-del-domingo/95674/warner-confirma-nueva-propuesta-de-paramount-pero-mantiene-su-apoyo-a-la-oferta-de-netflix",
+    "fecha": "2026-10-12T22:08:30.711421+00:00",
+    "extracto": "WBD no entró en detalles, de acuerdo con Bloomberg, la nueva oferta mejora la propuesta anterior"
+  },
+  {
+    "estado_relacionado": "Nacional",
+    "titular": "Todos los nominados a los Premios Goya 2026: A qué hora y dónde ver la ceremonia",
+    "medio": "Notitarde",
+    "url": "https://www.notitarde.com.ve/revista-del-domingo/95677/todos-los-nominados-a-los-premios-goya-2026-a-que-hora-y-donde-ver-la-ceremonia",
+    "fecha": "2026-10-12T22:08:30.710879+00:00",
+    "extracto": "El horario estimado de inicio de la gala principal para Venezuela es a las 5:00 p.m."
+  },
+  {
+    "estado_relacionado": "Nacional",
+    "titular": "Madres carabobeñas disfrutaron de un hermoso homenaje en Il Contadino",
+    "medio": "Notitarde",
+    "url": "https://www.notitarde.com.ve/revista-del-domingo/100585/madres-carabobenas-disfrutaron-de-un-hermoso-homenaje-en-il-contadino",
+    "fecha": "2026-10-12T22:08:30.710479+00:00",
+    "extracto": "Por parte de Notitarde y Revista del Domingo"
+  },
+  {
+    "estado_relacionado": "Trujillo",
+    "titular": "Diócesis de Trujillo conmemorará el natalicio y primer aniversario de canonización de San José Gregorio Hernández",
+    "medio": "Notitarde",
+    "url": "https://www.notitarde.com.ve/cultura/108136/diocesis-de-trujillo-conmemorara-el-natalicio-y-primer-aniversario-de-canonizacion-de-san-jose",
+    "fecha": "2026-10-12T22:08:30.709917+00:00",
+    "extracto": "Las celebraciones arrancarán el 1 de octubre con la bajada solemne de la imagen, una misa central y un concierto de sanación"
+  },
+  {
+    "estado_relacionado": "Zulia",
+    "titular": "Cordonazo de San Francisco: Día de lluvia y descargas eléctricas en Venezuela",
+    "medio": "Notitarde",
+    "url": "https://www.notitarde.com.ve/cultura/108444/cordonazo-de-san-francisco-dia-de-lluvia-y-descargas-electricas-en-venezuela",
+    "fecha": "2026-10-12T22:08:30.709232+00:00",
+    "extracto": "El Inameh hizo mención a esta fecha e indicó que este \"evento coincide con el desplazamiento de la Zona de Convergencia Intertropical y el paso de ondas tropicales\" en el país"
+  },
+  {
+    "estado_relacionado": "Mérida",
+    "titular": "Presentadas en Mérida Antologías Poéticas publicadas en El Salvador y Cuba de Tarek William Saab",
+    "medio": "Notitarde",
+    "url": "https://www.notitarde.com.ve/cultura/108684/presentadas-en-merida-antologias-poeticas-publicadas-en-el-salvador-y-cuba-de-tarek-william-saab",
+    "fecha": "2026-10-12T22:08:30.708901+00:00",
+    "extracto": "Durante la emotiva jornada, Saab compartió reflexiones y lecturas sobre sus 45 años de trayectoria literaria"
+  },
+  {
+    "estado_relacionado": "Nacional",
+    "titular": "Impulsan masificación cultural con apertura de la Casa de Música en Ocumare de la Costa",
+    "medio": "Notitarde",
+    "url": "https://www.notitarde.com.ve/cultura/108896/impulsan-masificacion-cultural-con-apertura-de-la-casa-de-musica-en-ocumare-de-la-costa",
+    "fecha": "2026-10-12T22:08:30.708244+00:00",
+    "extracto": "Durante la inspección, las autoridades constataron que la escuela de música cuenta con el acondicionamiento total en sus espacios"
+  },
+  {
+    "estado_relacionado": "Miranda",
+    "titular": "Un plato referente y emblemático en Miranda: Dulce de naranja rellena",
+    "medio": "Notitarde",
+    "url": "https://www.notitarde.com.ve/carabobo/107198/el-dulce-de-naranja-rellena-de-coco-de-los-platos-referentes-en-miranda",
+    "fecha": "2026-10-12T22:08:30.707852+00:00",
+    "extracto": "Nancy Latouche, no es solo conocida por sus habilidades culturales, también se destaca en el área de la gastronomía y en un momento de su vida decidió elaborar la receta"
+  },
+  {
+    "estado_relacionado": "Nacional",
+    "titular": "Pabellón criollo vs. encebollado ecuatoriano: Semifinal del Mundial de Ibai Llanos (+Video)",
+    "medio": "Notitarde",
+    "url": "https://www.notitarde.com.ve/bon-appetit/107279/pabellon-criollo-vs-encebollado-ecuatoriano-semifinal-del-mundial-de-ibai-llanos-video",
+    "fecha": "2026-10-12T22:08:30.707220+00:00",
+    "extracto": "La competencia enfrenta a platos representativos de distintos países mediante votaciones de los usuarios en redes sociales"
+  },
+  {
+    "estado_relacionado": "Nacional",
+    "titular": "\"Se repite la historia\": Venezuela y Perú en la final del Mundial de Comidas de Ibai Llanos (+Video)",
+    "medio": "Notitarde",
+    "url": "https://www.notitarde.com.ve/bon-appetit/107636/se-repite-la-historia-venezuela-y-peru-en-la-final-del-mundial-de-comidas-de-ibai-llanos-video",
+    "fecha": "2026-10-12T22:08:30.706510+00:00",
+    "extracto": "El pabellón criollo venezolano se impuso con 2.308.000 votos ante Ecuador que obtuvo 1.511.000 votos, con el encebollado"
+  },
+  {
+    "estado_relacionado": "Nacional",
+    "titular": "Venezuela vs. Perú: Ibai Llanos lanza la final del Mundial de Comidas (+Video)",
+    "medio": "Notitarde",
+    "url": "https://www.notitarde.com.ve/bon-appetit/107695/venezuela-vs-peru-ibai-llanos-lanza-la-final-del-mundial-de-comidas-video",
+    "fecha": "2026-10-12T22:08:30.705447+00:00",
+    "extracto": "Emocionó a sus seguidores al incorporar en la competición la cachapa, la reina pepiada y el plato tradicional navideño venezolano: hallaca, ensalada de gallina, pan de jamón y pernil, junto al pabellón criollo que arrasó desde el inicio"
+  },
+  {
+    "estado_relacionado": "Nacional",
+    "titular": "¿Gemini caído? Lo que reportan los usuarios este 8-Oct",
+    "medio": "Notitarde",
+    "url": "https://www.notitarde.com.ve/ciencia-y-tec/108676/gemini-caido-lo-que-reportan-los-usuarios-este-8oct",
+    "fecha": "2026-10-12T22:08:30.704831+00:00",
+    "extracto": "Según con reportes publicados en redes sociales por los internautas, las principales fallas estarían relacionadas con la generación de respuestas"
+  },
+  {
+    "estado_relacionado": "Nacional",
+    "titular": "Starlink obtiene autorización legal para operar en Venezuela",
+    "medio": "Notitarde",
+    "url": "https://www.notitarde.com.ve/ciencia-y-tec/108757/starlink-obtiene-autorizacion-legal-para-operar-en-venezuela",
+    "fecha": "2026-10-12T22:08:30.704412+00:00",
+    "extracto": "Así lo informó la Comisión Nacional de Telecomunicaciones (Conatel)"
+  },
+  {
+    "estado_relacionado": "Nacional",
+    "titular": "¡Tricampeones en robótica! Venezuela hace historia en la FIRST Global Challenge 2026",
+    "medio": "Notitarde",
+    "url": "https://www.notitarde.com.ve/ciencia-y-tec/108863/tricampeones-en-robotica-venezuela-hace-historia-en-la-first-global-challenge-2026",
+    "fecha": "2026-10-12T22:08:30.703643+00:00",
+    "extracto": "El gran gran líder de esta hazaña fue \"Guaira\", un robot diseñado y ensamblado por el equipo nacional que demostró una superioridad técnica impecable en la arena de competencia"
+  },
+  {
+    "estado_relacionado": "Nacional",
+    "titular": "Paso a paso: Así se activa la nueva cuenta bancaria virtual de EE. UU. en Airtm para venezolanos",
+    "medio": "Notitarde",
+    "url": "https://www.notitarde.com.ve/ciencia-y-tec/108922/paso-a-paso-asi-se-activa-la-nueva-cuenta-bancaria-virtual-de-ee-uu-en-airtm-para-venezolanos",
+    "fecha": "2026-10-12T22:08:30.702956+00:00",
+    "extracto": "Los titulares pueden disponer de un número de ruta (routing number) y un número de cuenta corriente (checking) a su nombre"
+  },
+  {
+    "estado_relacionado": "Nacional",
+    "titular": "ABCDiario: ​C de Cuando el cochino está gordo, hasta el rabo es chicharrón",
+    "medio": "Notitarde",
+    "url": "https://www.notitarde.com.ve/opinion/108842/c-de-cuando-el-cochino-esta-gordo-hasta-el-rabo-es-chicharron",
+    "fecha": "2026-10-12T22:08:30.702265+00:00",
+    "extracto": "Hubo una época en que los micrófonos no se respondían con palabras raras ni discursos aburridos, sino con pura astucia criolla y refranes para salir del paso"
+  },
+  {
+    "estado_relacionado": "Nacional",
+    "titular": "Tomás Socías López: La inflación",
+    "medio": "Notitarde",
+    "url": "https://www.notitarde.com.ve/opinion/108878/tomas-socias-lopez-la-inflacion",
+    "fecha": "2026-10-12T22:08:30.701041+00:00",
+    "extracto": "Se trata de un índice de medición política y de la aceptación o no aceptación, unido a otras mediciones, de los sistemas económicos para gestiones de gobierno y de los presidentes"
+  },
+  {
+    "estado_relacionado": "Nacional",
+    "titular": "Llegan a Venezuela nuevos equipos y repuestos destinados a mejorar el Sistema Eléctrico",
+    "medio": "Notitarde",
+    "url": "https://www.notitarde.com.ve/pais/108920/llegan-a-venezuela-nuevos-equipos-y-repuestos-destinados-a-mejorar-el-sistema-electrico",
+    "fecha": "2026-10-12T22:08:30.700371+00:00",
+    "extracto": "Las nuevas adquisiciones fueron posibles gracias a \"las alianzas del Gobierno Nacional con el sector privado y el esfuerzo de los ingenieros venezolanos\""
+  },
+  {
+    "estado_relacionado": "Nacional",
+    "titular": "BCV y banca pública y privada articulan acciones monetarias para consolidar la estabilidad económica",
+    "medio": "Notitarde",
+    "url": "https://www.notitarde.com.ve/pais/108928/bcv-y-banca-publica-y-privada-articulan-acciones-monetarias-para-consolidar-la-estabilidad",
+    "fecha": "2026-10-12T22:08:30.699795+00:00",
+    "extracto": "La jornada estuvo encabezada por el presidente del Banco Central de Venezuela, Luis Pérez González"
+  },
+  {
+    "estado_relacionado": "Nacional",
+    "titular": "Delcy Rodríguez destaca el inicio de la LVBP y rinde homenaje a las víctimas del doblete sísmico",
+    "medio": "Notitarde",
+    "url": "https://www.notitarde.com.ve/pais/108929/delcy-rodriguez-destaca-el-inicio-de-la-lvbp-y-rinde-homenaje-a-las-victimas-del-doblete-sismico",
+    "fecha": "2026-10-12T22:08:30.699110+00:00",
+    "extracto": "\"Yo deseo lo mejor en esta liga profesional, que suelten la pelota y que gane el mejor\", manifestó la presidenta de Venezuela, Delcy Rodríguez"
+  },
+  {
+    "estado_relacionado": "Nacional",
+    "titular": "Alerta sanitaria en Venezuela por lote falsificado de medicamento oncológico",
+    "medio": "Notitarde",
+    "url": "https://www.notitarde.com.ve/salud/108525/alerta-sanitaria-en-venezuela-por-lote-falsificado-de-medicamento-oncologico",
+    "fecha": "2026-10-12T22:08:30.698508+00:00",
+    "extracto": "Confirman que el lote no figura en registros oficiales de fabricación ni ha ingresado al país mediante canales de importación formal"
+  },
+  {
+    "estado_relacionado": "Nacional",
+    "titular": "OMS evalúa como \"muy bajo\" el riesgo sanitario para Europa tras un posible caso fatal de peste neumónica en Rusia",
+    "medio": "Notitarde",
+    "url": "https://www.notitarde.com.ve/salud/108566/oms-evalua-como-muy-bajo-el-riesgo-sanitario-para-europa-tras-un-posible-caso-fatal-de-peste-en",
+    "fecha": "2026-10-12T22:08:30.697821+00:00",
+    "extracto": "La institución fue notificada por las autoridades rusas sobre la muerte de la laboratorista, ocurrida el pasado 2 de octubre"
+  },
+  {
+    "estado_relacionado": "Nacional",
+    "titular": "¿Tienes problemas con el sueño?: Este fruto seco podría ayudar",
+    "medio": "Notitarde",
+    "url": "https://www.notitarde.com.ve/salud/108874/tienes-problemas-con-el-sueno-este-fruto-seco-podria-ayudar",
+    "fecha": "2026-10-12T22:08:30.697240+00:00",
+    "extracto": "Investigadores analizaron estudios sobre los nutrientes y componentes bioactivos de este fruto seco y sus posibles efectos sobre el descanso"
+  },
+  {
+    "estado_relacionado": "Nacional",
+    "titular": "Zelenski acepta la \"tregua\" de Trump, Putin da largas y la Unión Europea adopta más sanciones",
+    "medio": "Notitarde",
+    "url": "https://www.notitarde.com.ve/internacional/108912/zelenski-acepta-la-tregua-de-trump-putin-da-largas-y-la-union-europea-adopta-mas-sanciones",
+    "fecha": "2026-10-12T22:08:30.696335+00:00",
+    "extracto": "\"Estamos listos para respetar un alto el fuego energético si Rusia está lista para hacer lo mismo. Estamos de acuerdo si ellos están de acuerdo\", dijo Zelenski en una intervención por videoconferencia ante el Foro de Seguridad de Varsovia"
+  },
+  {
+    "estado_relacionado": "Nacional",
+    "titular": "Hijas de Petro denunciarán al dueño de revista Semana por acusación contra ex primera dama",
+    "medio": "Notitarde",
+    "url": "https://www.notitarde.com.ve/internacional/108916/hijas-de-petro-denunciaran-al-dueno-de-revista-semana-por-acusacion-contra-ex-primera-dama",
+    "fecha": "2026-10-12T22:08:30.695510+00:00",
+    "extracto": "La reacción del exmandatario se produce después de que la revista publicara el fin de semana una entrevista con la española Eva Ferrer, quien fue asesora de Alcocer y consejera de su gobierno (2022-2026)"
+  },
+  {
+    "estado_relacionado": "Nacional",
+    "titular": "Países latinoamericanos piden en la FAO innovación y multilateralismo contra el hambre",
+    "medio": "Notitarde",
+    "url": "https://www.notitarde.com.ve/internacional/108919/paises-latinoamericanos-piden-en-la-fao-innovacion-y-multilateralismo-contra-el-hambre",
+    "fecha": "2026-10-12T22:08:30.694778+00:00",
+    "extracto": "Durante la inauguración del Foro Mundial de la Alimentación 2026, los representantes latinoamericanos coincidieron en que la seguridad alimentaria es imprescindible para el desarrollo"
+  },
+  {
+    "estado_relacionado": "Aragua",
+    "titular": "Tigres de Aragua inicia su camino en la temporada 2026-2027 de la LVBP",
+    "medio": "Notitarde",
+    "url": "https://www.notitarde.com.ve/deportes/108921/tigres-de-aragua-inicia-su-camino-en-la-temporada-20262027-de-la-lvbp",
+    "fecha": "2026-10-12T22:08:30.694644+00:00",
+    "extracto": "El torneo rinde homenaje a la victoria nacional bajo la denominación “Campeones del Clásico Mundial de Béisbol 2026”"
+  },
+  {
+    "estado_relacionado": "Nacional",
+    "titular": "Cristiano Ronaldo asegura ser “el jugador más completo” de la historia",
+    "medio": "Notitarde",
+    "url": "https://www.notitarde.com.ve/deportes/108924/cristiano-ronaldo-asegura-ser-el-jugador-mas-completo-de-la-historia",
+    "fecha": "2026-10-12T22:08:30.693993+00:00",
+    "extracto": "Durante la conversación, el futbolista fue cuestionado sobre las comparaciones con otras grandes figuras del futbol mundial, entre ellas Lionel Messi, Pelé y Diego Armando Maradona"
+  },
+  {
+    "estado_relacionado": "La Guaira",
+    "titular": "Magallanes revela su primer lineup para defender el título",
+    "medio": "Notitarde",
+    "url": "https://www.notitarde.com.ve/deportes/108927/magallanes-revela-su-primer-lineup-para-defender-el-titulo",
+    "fecha": "2026-10-12T22:08:30.693515+00:00",
+    "extracto": "Arranca la temporada 2026-2027 de la LVBP con el duelo entre los Tiburones de La Guaira ante los Navegantes del Magallanes"
+  },
+  {
+    "estado_relacionado": "Cojedes",
+    "titular": "Una mujer resultó lesionada tras derrape de una motocicleta en Cojedes",
+    "medio": "Notitarde",
+    "url": "https://www.notitarde.com.ve/sucesos/108882/una-mujer-resulto-lesionada-tras-derrape-de-una-motocicleta-en-cojedes",
+    "fecha": "2026-10-12T22:08:30.693298+00:00",
+    "extracto": "El hecho se produjo en horas de la madrugada en la avenida Rómulo Betancourt, adyacente al NEC del municipio San Carlos"
+  },
+  {
+    "estado_relacionado": "Carabobo",
+    "titular": "Bomberos de Valencia y Carabobo rescatan a un septuagenario atrapado en Residencias Los Pinos",
+    "medio": "Notitarde",
+    "url": "https://www.notitarde.com.ve/sucesos/108911/bomberos-de-valencia-y-carabobo-rescatan-a-un-septuagenario-atrapado-en-residencias-los-pinos",
+    "fecha": "2026-10-12T22:08:30.693096+00:00",
+    "extracto": "Los vecinos alertaron a la Policía Municipal de Valencia, organismo que coordinó con los cuerpos de bomberos"
+  },
+  {
+    "estado_relacionado": "Anzoátegui",
+    "titular": "Adolescente gravemente herido tras impactar su moto de agua contra una lancha en Lechería",
+    "medio": "Notitarde",
+    "url": "https://www.notitarde.com.ve/sucesos/108925/adolescente-gravemente-herido-tras-impactar-su-moto-de-agua-contra-una-lancha-en-lecheria",
+    "fecha": "2026-10-12T22:08:30.692994+00:00",
+    "extracto": "Cámaras de seguridad de la zona residencial registraron el momento exacto del suceso"
+  },
+  {
+    "estado_relacionado": "Nacional",
+    "titular": "Muere Penélope Knuth, exviolista de la Orquesta Sinfónica de Venezuela, tras accidente en Chile",
+    "medio": "Notitarde",
+    "url": "https://www.notitarde.com.ve/espectaculos/108865/muere-penelope-knuth-exviolista-de-la-orquesta-sinfonica-de-venezuela-tras-accidente-en-chile",
+    "fecha": "2026-10-12T22:08:30.692166+00:00",
+    "extracto": "Los diez heridos fueron trasladados al hospital, y tres de ellos presentan lesiones de gravedad, entre los cuales se encuentra un hombre de 62 años, quien tiene un trauma pulmonar bilateral y hemotórax"
+  },
+  {
+    "estado_relacionado": "Distrito Capital",
+    "titular": "Cristian Noguera brilla en EE.UU. con dos nominaciones en los Lone Star EMMY® Awards",
+    "medio": "Notitarde",
+    "url": "https://www.notitarde.com.ve/espectaculos/108886/cristian-noguera-brilla-en-eeuu-con-dos-nominaciones-en-los-lone-star-emmy-awards",
+    "fecha": "2026-10-12T22:08:30.691629+00:00",
+    "extracto": "Su carrera comenzó en Venezuela a los 18 años como asistente en productoras de Caracas"
+  },
+  {
+    "estado_relacionado": "Nacional",
+    "titular": "Gracie Bon responde tras ser criticada por fotografiarse entre escombros en Panamá (+Fotos)",
+    "medio": "Notitarde",
+    "url": "https://www.notitarde.com.ve/espectaculos/108917/gracie-bon-responde-tras-ser-criticada-por-fotografiarse-entre-escombros-en-panama",
+    "fecha": "2026-10-12T22:08:30.690777+00:00",
+    "extracto": "Cientos de comentarios han llenado la publicación cuestionando a la mujer por la necesidad de las fotografías después de la tragedia"
+  },
+  {
+    "estado_relacionado": "Nacional",
+    "titular": "Muere el actor de “Breaking Bad”, RJ Mitte a los 34 años",
+    "medio": "Notitarde",
+    "url": "https://www.notitarde.com.ve/espectaculos/108930/muere-el-actor-de-breaking-bad-rj-mitte-a-los-34-anos",
+    "fecha": "2026-10-12T22:08:30.690205+00:00",
+    "extracto": "Sus representantes confirmaron su fallecimiento en un comunicado: “Con profunda tristeza compartimos la trágica noticia del fallecimiento de RJ Mitte\""
+  },
+  {
+    "estado_relacionado": "Carabobo",
+    "titular": "Iglesias del eje oriental de Carabobo presentan afectaciones en sus estructuras internas y externas (+Video)",
+    "medio": "Notitarde",
+    "url": "https://www.notitarde.com.ve/carabobo/104017/iglesias-del-eje-oriental-de-carabobo-presentan-afectaciones-en-sus-estructuras-internas-y-externas",
+    "fecha": "2026-10-12T22:08:30.690019+00:00",
+    "extracto": "Templos de Guacara y San Joaquín se mantienen cerrados"
+  },
+  {
+    "estado_relacionado": "Nacional",
+    "titular": "Reto La Calceta dejó en evidencia la destreza física y superación personal de cada competidor (+Fotos)",
+    "medio": "Notitarde",
+    "url": "https://www.notitarde.com.ve/carabobo/88803/reto-la-calceta-dejo-en-evidencia-la-destreza-fisica-y-superacion-personal-de-cada-competidor",
+    "fecha": "2026-10-12T22:08:30.689449+00:00",
+    "extracto": "Un evento que contó con más de 300 atletas provenientes de diversas partes del país"
+  },
+  {
+    "estado_relacionado": "Nacional",
+    "titular": "Bonos activos en Patria del 12 al 17 de octubre: Montos y beneficiarios",
+    "medio": "Notitarde",
+    "url": "https://www.notitarde.com.ve/economia/108864/bonos-activos-en-patria-del-12-al-17-de-octubre-montos-y-beneficiarios",
+    "fecha": "2026-10-12T22:08:30.688807+00:00",
+    "extracto": "Los beneficiarios de estas nuevas asignaciones por parte del Gobierno nacional recibirán una notificación de texto personalizada desde el número corto 3532"
+  },
+  {
+    "estado_relacionado": "Nacional",
+    "titular": "UC rendirá homenaje al escritor y poeta Carlos Osorio Granado",
+    "medio": "Notitarde",
+    "url": "https://www.notitarde.com.ve/carabobo/108883/uc-rendira-homenaje-al-escritor-y-poeta-carlos-osorio-granado",
+    "fecha": "2026-10-12T22:08:30.688280+00:00",
+    "extracto": "Osorio Granado, poeta, traductor, artista plástico y músico se consolidó como figura intelectual en la región central"
+  },
+  {
+    "estado_relacionado": "Nacional",
+    "titular": "Jornadas de salud integral y dignidad escolar transforman comunidades",
+    "medio": "Notitarde",
+    "url": "https://www.notitarde.com.ve/carabobo/108884/jornadas-de-salud-integral-y-dignidad-escolar-transforman-comunidades",
+    "fecha": "2026-10-12T22:08:30.687939+00:00",
+    "extracto": "En el municipio San Joaquín"
+  },
+  {
+    "estado_relacionado": "Nacional",
+    "titular": "Conmemoran en Juan José Mora el Día de la Resistencia Indígena con actos solemnes y culturales",
+    "medio": "Notitarde",
+    "url": "https://www.notitarde.com.ve/carabobo/108910/conmemoran-en-juan-jose-mora-el-dia-de-la-resistencia-indigena-con-actos-solemnes-y-culturales",
+    "fecha": "2026-10-12T22:08:30.687340+00:00",
+    "extracto": "​Durante el acto solemne, la alcaldesa Emily Riera ofreció unas palabras centradas en el valor histórico de esta efeméride"
+  },
+  {
+    "estado_relacionado": "Nacional",
+    "titular": "Conmemorarán Día de la Resistencia Indígena con taller de bandanas, plumas y tradición",
+    "medio": "Notitarde",
+    "url": "https://www.notitarde.com.ve/carabobo/108923/conmemoraran-dia-de-la-resistencia-indigena-con-taller-de-bandanas-plumas-y-tradicion",
+    "fecha": "2026-10-12T22:08:30.686416+00:00",
+    "extracto": "Continuando con la programación correspondiente al mes de octubre, en “El Autobús de Nancy”, el viernes 15 de octubre en el marco de la efemérides “Día Mundial de la Alimentación”, se tiene planificado el taller gastronómico lleno de imaginación"
+  },
+  {
+    "estado_relacionado": "Carabobo",
+    "titular": "LVBP 2026-2027: Calendario, transmisión y todo sobre la jornada inaugural de hoy",
+    "medio": "Notitarde",
+    "url": "https://www.notitarde.com.ve/deportes/108904/lvbp-20262027-calendario-transmision-y-todo-sobre-la-jornada-inaugural-de-hoy",
+    "fecha": "2026-10-12T22:08:30.686131+00:00",
+    "extracto": "El juego oficial de apertura tendrá como escenario el Estadio José Bernardo Pérez de Valencia este lunes 12 de octubre, donde los vigentes campeones, Navegantes del Magallanes recibirán a Tiburones de La Guaira"
+  },
+  {
+    "estado_relacionado": "Nacional",
+    "titular": "SINSECRETOSCB: El Gordelio Bello y el Dopadín, dos rufianes de postín",
+    "medio": "Notitarde",
+    "url": "https://www.notitarde.com.ve/opinion/108877/sinsecretoscb-el-gordelio-bello-y-el-dopadin-dos-rufianes-de-postin",
+    "fecha": "2026-10-12T22:08:30.685542+00:00",
+    "extracto": "Uno de estos aturdidos pero ocurrentes truhanes es “Dopadín”, que también es conocido con el estigmatizante alias del “Dopado Caminante”"
+  },
+  {
+    "estado_relacionado": "Nacional",
+    "titular": "Álvaro Pulido, socio de Alex Saab, comparecerá este martes ante una corte de Miami tras ser entregado por Venezuela",
+    "medio": "Notitarde",
+    "url": "https://www.notitarde.com.ve/internacional/108909/alvaro-pulido-socio-de-alex-saab-comparecera-este-martes-ante-una-corte-de-miami-tras-ser-entregado",
+    "fecha": "2026-10-12T22:08:30.684803+00:00",
+    "extracto": "El Departamento de Estado había ofrecido anteriormente una recompensa de hasta $10 millones por información que condujera a su arresto o condena"
+  },
+  {
+    "estado_relacionado": "Nacional",
+    "titular": "Delcy Rodríguez y Luis Abinader abordan cooperación energética y consular en reunión en Roma",
+    "medio": "Notitarde",
+    "url": "https://www.notitarde.com.ve/pais/108918/luis-abinader-y-delcy-rodriguez-abordan-cooperacion-energetica-y-consular-en-reunion-en-roma",
+    "fecha": "2026-10-12T22:08:30.684213+00:00",
+    "extracto": "En este primer encuentro giró en torno a la cooperación energética, las relaciones consulares y el turismo"
+  },
+  {
+    "estado_relacionado": "Nacional",
+    "titular": "Delcy Rodríguez anuncia el \"Plan Venezuela Alimenta\" para alcanzar la meta de Hambre Cero",
+    "medio": "Notitarde",
+    "url": "https://www.notitarde.com.ve/pais/108903/presidenta-delcy-rodriguez-anuncia-el-plan-venezuela-alimenta-para-alcanzar-la-meta-de-hambre-cero",
+    "fecha": "2026-10-12T22:08:30.683457+00:00",
+    "extracto": "Además, en su intervención, la mandataria nacional adelantó que en los próximos días presentará ante el país un proyecto de ley para la economía local"
   },
   {
     "estado_relacionado": "Nacional",
     "titular": "Nuevas rutas marítimas y acuerdos comerciales sellan participación de Venezuela en Conxemar",
     "medio": "Globovisión",
     "url": "https://www.globovision.com/economia/62815/nuevas-rutas-maritimas-y-acuerdos-comerciales-sellan-participacion-de-venezuela-en-conxemar",
-    "fecha": "2026-10-12T20:30:25.430214+00:00",
+    "fecha": "2026-10-12T22:08:15.565208+00:00",
     "extracto": "Nuevas rutas marítimas y acuerdos comerciales sellan participación de Venezuela en Conxemar"
   },
   {
@@ -20,7 +404,7 @@
     "titular": "Firma de Wall Street prepara inversión de hasta US$1.000 millones en minería venezolana",
     "medio": "Globovisión",
     "url": "https://www.globovision.com/economia/62823/esta-pequena-firma-de-wall-street-apuesta-hasta-us1000-millones-por-la-mineria-de-venezuela",
-    "fecha": "2026-10-12T20:30:25.429940+00:00",
+    "fecha": "2026-10-12T22:08:15.564908+00:00",
     "extracto": "Firma de Wall Street prepara inversión de hasta US$1.000 millones en minería venezolana"
   },
   {
@@ -28,7 +412,7 @@
     "titular": "Presidenta Delcy Rodríguez anuncia un crecimiento de 6,5% en el tercer trimestre y 22 trimestres consecutivos al alza",
     "medio": "Globovisión",
     "url": "https://www.globovision.com/economia/62839/delcy-rodriguez-venezuela-lidera-por-tercer-ano-consecutivo-el-crecimiento-en-america-latina",
-    "fecha": "2026-10-12T20:30:25.429762+00:00",
+    "fecha": "2026-10-12T22:08:15.564533+00:00",
     "extracto": "Presidenta Delcy Rodríguez anuncia un crecimiento de 6,5% en el tercer trimestre y 22 trimestres consecutivos al alza"
   },
   {
@@ -36,7 +420,7 @@
     "titular": "Presidente de Fedecámaras propone al sector público una alianza para reimpulsar la economía en su 82.ª Asamblea Anual",
     "medio": "Globovisión",
     "url": "https://www.globovision.com/economia/62840/presidente-de-fedecamaras-propone-al-sector-publico-una-alianza-para-reimpulsar-la-economia-en-su",
-    "fecha": "2026-10-12T20:30:25.429574+00:00",
+    "fecha": "2026-10-12T22:08:15.564165+00:00",
     "extracto": "Presidente de Fedecámaras propone al sector público una alianza para reimpulsar la economía en su 82.ª Asamblea Anual"
   },
   {
@@ -44,7 +428,7 @@
     "titular": "Gobierno de Venezuela prevé \"un gran crecimiento\" del empleo y remuneraciones a partir de 2027",
     "medio": "Globovisión",
     "url": "https://www.globovision.com/politica/62842/presidenta-delcy-rodriguez-preve-un-gran-crecimiento-del-empleo-y-remuneraciones-a-partir-de-2027",
-    "fecha": "2026-10-12T20:30:25.429379+00:00",
+    "fecha": "2026-10-12T22:08:15.563792+00:00",
     "extracto": "Gobierno de Venezuela prevé \"un gran crecimiento\" del empleo y remuneraciones a partir de 2027"
   },
   {
@@ -52,7 +436,7 @@
     "titular": "Ejecutivo descarta la dolarización de Venezuela: “No es el camino hacia el crecimiento”",
     "medio": "Globovisión",
     "url": "https://www.globovision.com/economia/62843/ejecutivo-descarta-la-dolarizacion-de-venezuela-no-es-el-camino-hacia-el-crecimiento",
-    "fecha": "2026-10-12T20:30:25.429213+00:00",
+    "fecha": "2026-10-12T22:08:15.563475+00:00",
     "extracto": "Ejecutivo descarta la dolarización de Venezuela: “No es el camino hacia el crecimiento”"
   },
   {
@@ -60,7 +444,7 @@
     "titular": "Del campo trujillano a Shanghái: el café de especialidad venezolano conquista el mercado global",
     "medio": "Globovisión",
     "url": "https://www.globovision.com/economia/62850/exportaciones-de-cafe-venezolano-crecen-mas-de-60-y-se-expenden-a-20-paises",
-    "fecha": "2026-10-12T20:30:25.429052+00:00",
+    "fecha": "2026-10-12T22:08:15.563177+00:00",
     "extracto": "Del campo trujillano a Shanghái: el café de especialidad venezolano conquista el mercado global"
   },
   {
@@ -68,7 +452,7 @@
     "titular": "Venezuela recibirá 12.000 millones de dólares en financiamiento durante 2 años",
     "medio": "Globovisión",
     "url": "https://www.globovision.com/economia/62862/venezuela-recibira-12000-millones-de-dolares-en-financiamiento-durante-2-anos",
-    "fecha": "2026-10-12T20:30:25.428892+00:00",
+    "fecha": "2026-10-12T22:08:15.562866+00:00",
     "extracto": "Venezuela recibirá 12.000 millones de dólares en financiamiento durante 2 años"
   },
   {
@@ -76,7 +460,7 @@
     "titular": "Infocifras prevé que los primeros desembolsos petroleros llegarán a inicios de 2027",
     "medio": "Globovisión",
     "url": "https://www.globovision.com/economia/62871/infocifras-preve-que-los-primeros-desembolsos-petroleros-llegaran-a-inicios-de-2027",
-    "fecha": "2026-10-12T20:30:25.428734+00:00",
+    "fecha": "2026-10-12T22:08:15.562581+00:00",
     "extracto": "Infocifras prevé que los primeros desembolsos petroleros llegarán a inicios de 2027"
   },
   {
@@ -84,7 +468,7 @@
     "titular": "Presidenta Delcy Rodríguez pide que los salarios crezcan “por encima del PIB” desde 2027",
     "medio": "Globovisión",
     "url": "https://www.globovision.com/sociedad/62874/delcy-rodriguez-pide-que-desde-2027-todo-crecimiento-en-la-remuneracion-de-los-trabajadores-este",
-    "fecha": "2026-10-12T20:30:25.428586+00:00",
+    "fecha": "2026-10-12T22:08:15.562297+00:00",
     "extracto": "Presidenta Delcy Rodríguez pide que los salarios crezcan “por encima del PIB” desde 2027"
   },
   {
@@ -92,7 +476,7 @@
     "titular": "Los precios del petróleo suben ante la llegada del huracán Isaías a EEUU",
     "medio": "Globovisión",
     "url": "https://www.globovision.com/economia/62899/los-precios-del-petroleo-suben-ante-la-llegada-del-huracan-isaias-a-eeuu",
-    "fecha": "2026-10-12T20:30:25.428388+00:00",
+    "fecha": "2026-10-12T22:08:15.561930+00:00",
     "extracto": "Los precios del petróleo suben ante la llegada del huracán Isaías a EEUU"
   },
   {
@@ -100,7 +484,7 @@
     "titular": "Sector automotor proyecta crecimiento: Asdrúbal Oliveros destaca expansión y oportunidades en Venezuela",
     "medio": "Globovisión",
     "url": "https://www.globovision.com/economia/62957/sector-automotor-proyecta-crecimiento-asdrubal-oliveros-destaca-expansion-y-oportunidades-en",
-    "fecha": "2026-10-12T20:30:25.428237+00:00",
+    "fecha": "2026-10-12T22:08:15.561649+00:00",
     "extracto": "Sector automotor proyecta crecimiento: Asdrúbal Oliveros destaca expansión y oportunidades en Venezuela"
   },
   {
@@ -108,7 +492,7 @@
     "titular": "Venezuela está negociando 44 acuerdos más en materia de petróleo, dice Delcy Rodríguez",
     "medio": "Globovisión",
     "url": "https://www.globovision.com/economia/62969/gobierno-negocia-44-nuevos-acuerdos-petroleros-y-proyecta-mayor-impacto-en-la-produccion-nacional",
-    "fecha": "2026-10-12T20:30:25.428032+00:00",
+    "fecha": "2026-10-12T22:08:15.561332+00:00",
     "extracto": "Venezuela está negociando 44 acuerdos más en materia de petróleo, dice Delcy Rodríguez"
   },
   {
@@ -116,7 +500,7 @@
     "titular": "Petróleos de Venezuela proyecta elevar refinación a 600.000 barriles diarios",
     "medio": "Globovisión",
     "url": "https://www.globovision.com/economia/62973/petroleos-de-venezuela-proyecta-elevar-refinacion-a-600000-barriles-diarios",
-    "fecha": "2026-10-12T20:30:25.427850+00:00",
+    "fecha": "2026-10-12T22:08:15.560974+00:00",
     "extracto": "Petróleos de Venezuela proyecta elevar refinación a 600.000 barriles diarios"
   },
   {
@@ -124,7 +508,7 @@
     "titular": "BCV y banca articulan acciones de política monetaria para consolidar la estabilidad",
     "medio": "Globovisión",
     "url": "https://www.globovision.com/economia/63017/bcv-y-banca-articulan-acciones-de-politica-monetaria-para-consolidar-la-estabilidad",
-    "fecha": "2026-10-12T20:30:25.427635+00:00",
+    "fecha": "2026-10-12T22:08:15.560586+00:00",
     "extracto": "BCV y banca articulan acciones de política monetaria para consolidar la estabilidad"
   },
   {
@@ -132,7 +516,7 @@
     "titular": "Termozulia activará la unidad TZ7 en las próximas horas y aportará 150 MW en beneficio de 42 mil familias",
     "medio": "Globovisión",
     "url": "https://www.globovision.com/sociedad/62646/termozulia-activara-la-unidad-tz7-en-las-proximas-horas-y-aportara-150-mw-en-beneficio-de-40-mil",
-    "fecha": "2026-10-12T20:30:25.010832+00:00",
+    "fecha": "2026-10-12T22:08:15.193702+00:00",
     "extracto": "Termozulia activará la unidad TZ7 en las próximas horas y aportará 150 MW en beneficio de 42 mil familias"
   },
   {
@@ -140,7 +524,7 @@
     "titular": "Fuerte tormenta en Maracaibo dejó 770 viviendas dañadas y vías colapsadas",
     "medio": "Globovisión",
     "url": "https://www.globovision.com/regiones/62648/plan-de-contingencia-activo-fuerte-tormenta-en-maracaibo-deja-770-viviendas-danadas-y-vias",
-    "fecha": "2026-10-12T20:30:25.010655+00:00",
+    "fecha": "2026-10-12T22:08:15.193346+00:00",
     "extracto": "Fuerte tormenta en Maracaibo dejó 770 viviendas dañadas y vías colapsadas"
   },
   {
@@ -148,7 +532,7 @@
     "titular": "El SAIME despliega jornada de cedulación en La Guaira",
     "medio": "Globovisión",
     "url": "https://www.globovision.com/regiones/62686/el-saime-despliega-jornada-de-cedulacion-en-la-guaira",
-    "fecha": "2026-10-12T20:30:25.010527+00:00",
+    "fecha": "2026-10-12T22:08:15.193095+00:00",
     "extracto": "El SAIME despliega jornada de cedulación en La Guaira"
   },
   {
@@ -156,7 +540,7 @@
     "titular": "Gobierno incorpora 150 megavatios al SEN tras activar la unidad TZ5 en Termozulia",
     "medio": "Globovisión",
     "url": "https://www.globovision.com/regiones/62690/ministro-rolando-alcala-anuncia-la-incorporacion-de-150-megavatios-al-sen-desde-termozulia-5",
-    "fecha": "2026-10-12T20:30:25.010426+00:00",
+    "fecha": "2026-10-12T22:08:15.192900+00:00",
     "extracto": "Gobierno incorpora 150 megavatios al SEN tras activar la unidad TZ5 en Termozulia"
   },
   {
@@ -164,7 +548,7 @@
     "titular": "Cierres parciales este martes en la vía Anzoátegui-Monagas por traslado de autotransformador",
     "medio": "Globovisión",
     "url": "https://www.globovision.com/regiones/62691/cierres-temporales-este-martes-en-la-via-anzoateguimonagas-por-traslado-de-equipo-electrico",
-    "fecha": "2026-10-12T20:30:25.010267+00:00",
+    "fecha": "2026-10-12T22:08:15.192603+00:00",
     "extracto": "Cierres parciales este martes en la vía Anzoátegui-Monagas por traslado de autotransformador"
   },
   {
@@ -172,7 +556,7 @@
     "titular": "Inameh prevé lluvias en Oriente, Llanos, Los Andes y Zulia para este martes",
     "medio": "Globovisión",
     "url": "https://www.globovision.com/sociedad/62715/inameh-preve-lluvias-en-oriente-llanos-los-andes-y-zulia-para-este-martes",
-    "fecha": "2026-10-12T20:30:25.010231+00:00",
+    "fecha": "2026-10-12T22:08:15.192538+00:00",
     "extracto": "Inameh prevé lluvias en Oriente, Llanos, Los Andes y Zulia para este martes"
   },
   {
@@ -180,7 +564,7 @@
     "titular": "Parque Zoológico El Pinar es referente en preservación, reproducción y bienestar de la fauna silvestre de Venezuela",
     "medio": "Globovisión",
     "url": "https://www.globovision.com/regiones/62733/parque-zoologico-el-pinar-es-referente-en-preservacion-reproduccion-y-bienestar-de-la-fauna-de",
-    "fecha": "2026-10-12T20:30:25.010100+00:00",
+    "fecha": "2026-10-12T22:08:15.192276+00:00",
     "extracto": "Parque Zoológico El Pinar es referente en preservación, reproducción y bienestar de la fauna silvestre de Venezuela"
   },
   {
@@ -188,7 +572,7 @@
     "titular": "La oficina del Saime en Turén suspenderá la atención al público este miércoles 7 de octubre",
     "medio": "Globovisión",
     "url": "https://www.globovision.com/regiones/62737/la-oficina-del-saime-en-turen-suspendera-la-atencion-al-publico-este-miercoles-7-de-octubre",
-    "fecha": "2026-10-12T20:30:25.009912+00:00",
+    "fecha": "2026-10-12T22:08:15.191914+00:00",
     "extracto": "La oficina del Saime en Turén suspenderá la atención al público este miércoles 7 de octubre"
   },
   {
@@ -196,7 +580,7 @@
     "titular": "Autoridades de Baruta sofocan incendio en dos viviendas de Santa Cruz del Este",
     "medio": "Globovisión",
     "url": "https://www.globovision.com/regiones/62748/autoridades-de-baruta-sofocan-incendio-en-dos-viviendas-de-santa-cruz-del-este",
-    "fecha": "2026-10-12T20:30:25.009784+00:00",
+    "fecha": "2026-10-12T22:08:15.191658+00:00",
     "extracto": "Autoridades de Baruta sofocan incendio en dos viviendas de Santa Cruz del Este"
   },
   {
@@ -204,7 +588,7 @@
     "titular": "Ministerio de Transporte cerrará la Troncal 10 por 24 horas este 7 y 8 de octubre por reparaciones",
     "medio": "Globovisión",
     "url": "https://www.globovision.com/regiones/62753/ministerio-de-transporte-cerrara-la-troncal-10-por-24-horas-este-7-y-8-de-octubre-por-reparaciones",
-    "fecha": "2026-10-12T20:30:25.009676+00:00",
+    "fecha": "2026-10-12T22:08:15.191475+00:00",
     "extracto": "Ministerio de Transporte cerrará la Troncal 10 por 24 horas este 7 y 8 de octubre por reparaciones"
   },
   {
@@ -212,7 +596,7 @@
     "titular": "Termozulia suma otros 150 megavatios para el Sistema Eléctrico Nacional en menos de 24 horas",
     "medio": "Globovisión",
     "url": "https://www.globovision.com/regiones/62764/activacion-de-la-unidad-termoelectrica-tz7-en-zulia-aporto-150-megavatios-al-sistema-electrico",
-    "fecha": "2026-10-12T20:30:25.003330+00:00",
+    "fecha": "2026-10-12T22:08:15.191132+00:00",
     "extracto": "Termozulia suma otros 150 megavatios para el Sistema Eléctrico Nacional en menos de 24 horas"
   },
   {
@@ -220,7 +604,7 @@
     "titular": "Onda tropical número 55 se desplaza del centro al occidente del país",
     "medio": "Globovisión",
     "url": "https://www.globovision.com/sociedad/62780/onda-tropical-numero-55-se-desplaza-del-centro-al-occidente-del-pais",
-    "fecha": "2026-10-12T20:30:25.003154+00:00",
+    "fecha": "2026-10-12T22:08:15.190790+00:00",
     "extracto": "Onda tropical número 55 se desplaza del centro al occidente del país"
   },
   {
@@ -228,7 +612,7 @@
     "titular": "Alcaldía de Caracas activa equipos de emergencia por fuertes lluvias",
     "medio": "Globovisión",
     "url": "https://www.globovision.com/regiones/62784/alcaldia-de-caracas-activa-equipos-de-emergencia-por-fuertes-lluvias",
-    "fecha": "2026-10-12T20:30:25.003020+00:00",
+    "fecha": "2026-10-12T22:08:15.190533+00:00",
     "extracto": "Alcaldía de Caracas activa equipos de emergencia por fuertes lluvias"
   },
   {
@@ -236,7 +620,7 @@
     "titular": "Funvisis reporta dos sismos en la región central de Venezuela durante la madrugada de este jueves",
     "medio": "Globovisión",
     "url": "https://www.globovision.com/regiones/62803/funvisis-registro-este-jueves-sismo-de-magnitud-34-en-la-region-central-del-pais",
-    "fecha": "2026-10-12T20:30:25.002894+00:00",
+    "fecha": "2026-10-12T22:08:15.190287+00:00",
     "extracto": "Funvisis reporta dos sismos en la región central de Venezuela durante la madrugada de este jueves"
   },
   {
@@ -244,7 +628,7 @@
     "titular": "Inameh pronostica este jueves lluvias con descarga eléctrica en gran parte del país y temperaturas de hasta 39°C",
     "medio": "Globovisión",
     "url": "https://www.globovision.com/regiones/62806/inameh-pronostica-este-jueves-lluvias-con-descarga-electrica-en-gran-parte-del-pais-y-temperaturas",
-    "fecha": "2026-10-12T20:30:25.002726+00:00",
+    "fecha": "2026-10-12T22:08:15.189963+00:00",
     "extracto": "Inameh pronostica este jueves lluvias con descarga eléctrica en gran parte del país y temperaturas de hasta 39°C"
   },
   {
@@ -252,7 +636,7 @@
     "titular": "Más de 300 personas se despliegan en Carrizal tras lluvias",
     "medio": "Globovisión",
     "url": "https://www.globovision.com/regiones/62872/mas-de-300-personas-se-despliegan-en-carrizal-tras-lluvias",
-    "fecha": "2026-10-12T20:30:25.002538+00:00",
+    "fecha": "2026-10-12T22:08:15.189595+00:00",
     "extracto": "Más de 300 personas se despliegan en Carrizal tras lluvias"
   },
   {
@@ -260,7 +644,7 @@
     "titular": "Zulia impulsa alianzas productivas y busca generar miles de empleos mediante inversión pública y privada",
     "medio": "Globovisión",
     "url": "https://www.globovision.com/economia/62878/zulia-impulsa-alianzas-productivas-y-busca-generar-miles-de-empleos-mediante-inversion-publica-y",
-    "fecha": "2026-10-12T20:30:25.002314+00:00",
+    "fecha": "2026-10-12T22:08:15.189266+00:00",
     "extracto": "Zulia impulsa alianzas productivas y busca generar miles de empleos mediante inversión pública y privada"
   },
   {
@@ -268,7 +652,7 @@
     "titular": "Realizan caminata y bailoterapia en Guayana Esequiba en la lucha contra el cáncer de mama",
     "medio": "Globovisión",
     "url": "https://www.globovision.com/regiones/62890/realizan-caminata-y-bailoterapia-en-guayana-esequiba-en-la-lucha-contra-el-cancer-de-mama",
-    "fecha": "2026-10-12T20:30:25.002151+00:00",
+    "fecha": "2026-10-12T22:08:15.188957+00:00",
     "extracto": "Realizan caminata y bailoterapia en Guayana Esequiba en la lucha contra el cáncer de mama"
   },
   {
@@ -276,8 +660,1024 @@
     "titular": "Gobierno Nacional entrega totalmente renovada la Escuela Gran Mariscal de Ayacucho en Ospino",
     "medio": "Globovisión",
     "url": "https://www.globovision.com/sociedad/62989/gobierno-nacional-entrega-totalmente-renovada-la-escuela-gran-mariscal-de-ayacucho-en-ospino",
-    "fecha": "2026-10-12T20:30:25.001959+00:00",
+    "fecha": "2026-10-12T22:08:15.188593+00:00",
     "extracto": "Gobierno Nacional entrega totalmente renovada la Escuela Gran Mariscal de Ayacucho en Ospino"
+  },
+  {
+    "estado_relacionado": "Nacional",
+    "titular": "conflictos internacionales",
+    "medio": "Banca y Negocios",
+    "url": "https://www.bancaynegocios.com/tag/conflictos-internacionales/",
+    "fecha": "2026-10-12T22:08:14.975137+00:00",
+    "extracto": "conflictos internacionales"
+  },
+  {
+    "estado_relacionado": "Nacional",
+    "titular": "Desafíos de 2022, lo que viene en el futuro inmediato según The Economist",
+    "medio": "Banca y Negocios",
+    "url": "https://www.bancaynegocios.com/desafios-de-2022-lo-que-viene-en-el-futuro-inmediato-segun-the-economist/",
+    "fecha": "2026-10-12T22:08:14.974927+00:00",
+    "extracto": "Desafíos de 2022, lo que viene en el futuro inmediato según The Economist"
+  },
+  {
+    "estado_relacionado": "Nacional",
+    "titular": "Departamento de Estado afirma que la consolidación democrática en Venezuela demanda estabilidad, recuperación y fortalecimiento institucional",
+    "medio": "Globovisión",
+    "url": "https://www.globovision.com/politica/62864/ee-uu-condiciona-las-elecciones-en-venezuela-a-la-construccion-de-una-republica-duradera",
+    "fecha": "2026-10-12T22:08:14.772439+00:00",
+    "extracto": "Departamento de Estado afirma que la consolidación democrática en Venezuela demanda estabilidad, recuperación y fortalecimiento institucional"
+  },
+  {
+    "estado_relacionado": "Táchira",
+    "titular": "Rubio dice que el diálogo de la oposición con el Gobierno tiene \"todo el apoyo\" de EE. UU.",
+    "medio": "Globovisión",
+    "url": "https://www.globovision.com/politica/62876/rubio-dice-que-el-dialogo-de-la-oposicion-con-el-gobierno-tiene-todo-el-apoyo-de-ee-uu",
+    "fecha": "2026-10-12T22:08:14.772053+00:00",
+    "extracto": "Rubio dice que el diálogo de la oposición con el Gobierno tiene \"todo el apoyo\" de EE. UU."
+  },
+  {
+    "estado_relacionado": "Nacional",
+    "titular": "Tercera ronda de diálogo del 14 de octubre se centrará en la renovación del TSJ y garantías electorales",
+    "medio": "Globovisión",
+    "url": "https://www.globovision.com/politica/62884/renovacion-del-tsj-y-garantias-electorales-centraran-la-tercera-ronda-de-dialogo-el-proximo-14-de",
+    "fecha": "2026-10-12T22:08:14.771779+00:00",
+    "extracto": "Tercera ronda de diálogo del 14 de octubre se centrará en la renovación del TSJ y garantías electorales"
+  },
+  {
+    "estado_relacionado": "Nacional",
+    "titular": "Venezuela se solidariza con Panamá y ofrece asistencia tras terremoto de magnitud 7.7",
+    "medio": "Globovisión",
+    "url": "https://www.globovision.com/politica/62903/venezuela-ofrece-asistencia-a-panama-tras-recientes-movimientos-teluricos",
+    "fecha": "2026-10-12T22:08:14.771452+00:00",
+    "extracto": "Venezuela se solidariza con Panamá y ofrece asistencia tras terremoto de magnitud 7.7"
+  },
+  {
+    "estado_relacionado": "Nacional",
+    "titular": "Tania Díaz desde México: \"La unidad es nuestra garantía de victoria\"",
+    "medio": "Globovisión",
+    "url": "https://www.globovision.com/politica/62910/tania-diaz-desde-mexico-la-unidad-es-nuestra-garantia-de-victoria",
+    "fecha": "2026-10-12T22:08:14.771174+00:00",
+    "extracto": "Tania Díaz desde México: \"La unidad es nuestra garantía de victoria\""
+  },
+  {
+    "estado_relacionado": "Nacional",
+    "titular": "Alcalde Gustavo Duque sostuvo encuentro de trabajo con Dinorah Figuera en Washington",
+    "medio": "Globovisión",
+    "url": "https://www.globovision.com/politica/62931/alcalde-gustavo-duque-sostuvo-encuentro-de-trabajo-con-dinorah-figuera-en-washington",
+    "fecha": "2026-10-12T22:08:14.770914+00:00",
+    "extracto": "Alcalde Gustavo Duque sostuvo encuentro de trabajo con Dinorah Figuera en Washington"
+  },
+  {
+    "estado_relacionado": "Nacional",
+    "titular": "Venezuela expresa solidaridad con Chile tras intensas lluvias y aluviones",
+    "medio": "Globovisión",
+    "url": "https://www.globovision.com/politica/62943/venezuela-expresa-solidaridad-con-chile-tras-intensas-lluvias-y-aluviones",
+    "fecha": "2026-10-12T22:08:14.770626+00:00",
+    "extracto": "Venezuela expresa solidaridad con Chile tras intensas lluvias y aluviones"
+  },
+  {
+    "estado_relacionado": "Nacional",
+    "titular": "Presidenta Delcy Rodríguez llega a Roma para participar en el Foro Mundial de la Alimentación 2026",
+    "medio": "Globovisión",
+    "url": "https://www.globovision.com/politica/62954/presidenta-delcy-rodriguez-llega-a-roma-para-participar-en-el-foro-mundial-de-la-alimentacion-2026",
+    "fecha": "2026-10-12T22:08:14.770370+00:00",
+    "extracto": "Presidenta Delcy Rodríguez llega a Roma para participar en el Foro Mundial de la Alimentación 2026"
+  },
+  {
+    "estado_relacionado": "Nacional",
+    "titular": "“Panamá no está sola”: Presidenta Delcy Rodríguez reafirma solidaridad tras conversación con el presidente Mulino",
+    "medio": "Globovisión",
+    "url": "https://www.globovision.com/politica/62952/panama-no-esta-sola-presidenta-delcy-rodriguez-reafirma-solidaridad-tras-conversacion-con-el-mulino",
+    "fecha": "2026-10-12T22:08:14.770049+00:00",
+    "extracto": "“Panamá no está sola”: Presidenta Delcy Rodríguez reafirma solidaridad tras conversación con el presidente Mulino"
+  },
+  {
+    "estado_relacionado": "Nacional",
+    "titular": "Delcy Rodríguez desde Roma: “Estamos mostrando importantes avances con el objetivo de volver nuevamente a Hambre Cero en Venezuela”",
+    "medio": "Globovisión",
+    "url": "https://www.globovision.com/politica/62972/presidenta-delcy-rodriguez-desde-roma-venezuela-retoma-el-camino-hacia-hambre-cero",
+    "fecha": "2026-10-12T22:08:14.769682+00:00",
+    "extracto": "Delcy Rodríguez desde Roma: “Estamos mostrando importantes avances con el objetivo de volver nuevamente a Hambre Cero en Venezuela”"
+  },
+  {
+    "estado_relacionado": "Nacional",
+    "titular": "Gobierno nacional presenta balance del Plan Venezuela Renace tras 100 días del doble terremoto",
+    "medio": "Globovisión",
+    "url": "https://www.globovision.com/politica/62987/gobierno-nacional-presenta-balance-del-plan-venezuela-renace-tras-100-dias-del-doble-terremoto",
+    "fecha": "2026-10-12T22:08:14.769286+00:00",
+    "extracto": "Gobierno nacional presenta balance del Plan Venezuela Renace tras 100 días del doble terremoto"
+  },
+  {
+    "estado_relacionado": "Nacional",
+    "titular": "Más de 16 mil familias recibieron 461 créditos para condominios, informa la presidenta Rodríguez",
+    "medio": "Globovisión",
+    "url": "https://www.globovision.com/politica/62990/mas-de-16-mil-familias-recibieron-financiamiento-y-nuevas-viviendas-informa-la-presidenta-rodriguez",
+    "fecha": "2026-10-12T22:08:14.768964+00:00",
+    "extracto": "Más de 16 mil familias recibieron 461 créditos para condominios, informa la presidenta Rodríguez"
+  },
+  {
+    "estado_relacionado": "Nacional",
+    "titular": "Delcy Rodríguez llega este lunes a la sede de la FAO en Roma para participar en el Foro Mundial de la Alimentación",
+    "medio": "Globovisión",
+    "url": "https://www.globovision.com/politica/62993/presidenta-delcy-rodriguez-arriba-a-sede-de-la-fao-para-sumarse-al-foro-mundial-de-la-alimentacion",
+    "fecha": "2026-10-12T22:08:14.768591+00:00",
+    "extracto": "Delcy Rodríguez llega este lunes a la sede de la FAO en Roma para participar en el Foro Mundial de la Alimentación"
+  },
+  {
+    "estado_relacionado": "Nacional",
+    "titular": "Día de la Resistencia Indígena: Delcy Rodríguez destaca la herencia y dignidad de los pueblos originarios",
+    "medio": "Globovisión",
+    "url": "https://www.globovision.com/politica/62992/dia-de-la-resistencia-indigena-delcy-rodriguez-destaca-la-herencia-y-dignidad-de-los-pueblos",
+    "fecha": "2026-10-12T22:08:14.767990+00:00",
+    "extracto": "Día de la Resistencia Indígena: Delcy Rodríguez destaca la herencia y dignidad de los pueblos originarios"
+  },
+  {
+    "estado_relacionado": "Nacional",
+    "titular": "Leer noticias recientes",
+    "medio": "Banca y Negocios",
+    "url": "https://www.bancaynegocios.com/news/",
+    "fecha": "2026-10-12T22:08:13.073092+00:00",
+    "extracto": "Leer noticias recientes"
+  },
+  {
+    "estado_relacionado": "Nacional",
+    "titular": "Gobierno de Panamá declara emergencia para canalizar hasta 100 millones de dólares tras terremoto",
+    "medio": "Banca y Negocios",
+    "url": "https://www.bancaynegocios.com/gobierno-de-panama-declara-emergencia-para-canalizar-hasta-100-millones-de-dolares-tras-terremoto/",
+    "fecha": "2026-10-12T22:08:13.072952+00:00",
+    "extracto": "Gobierno de Panamá declara emergencia para canalizar hasta 100 millones de dólares tras terremoto"
+  },
+  {
+    "estado_relacionado": "Nacional",
+    "titular": "Delcy Rodríguez llega a Italia: Desarrollará agenda de seguridad alimentaria en el Foro Mundial de la FAO",
+    "medio": "Banca y Negocios",
+    "url": "https://www.bancaynegocios.com/delcy-rodriguez-llega-a-italia-desarrollara-agenda-de-seguridad-alimentaria-en-el-foro-mundial-de-la-fao/",
+    "fecha": "2026-10-12T22:08:13.072502+00:00",
+    "extracto": "Delcy Rodríguez llega a Italia: Desarrollará agenda de seguridad alimentaria en el Foro Mundial de la FAO"
+  },
+  {
+    "estado_relacionado": "Nacional",
+    "titular": "Zelenski dispuesto a una tregua energética con Rusia",
+    "medio": "Banca y Negocios",
+    "url": "https://www.bancaynegocios.com/zelenski-dispuesto-a-una-tregua-energetica-con-rusia/",
+    "fecha": "2026-10-12T22:08:13.072134+00:00",
+    "extracto": "Zelenski dispuesto a una tregua energética con Rusia"
+  },
+  {
+    "estado_relacionado": "Nacional",
+    "titular": "#Perfil Nathalie Quintero: Ingeniera venezolana en la columna vertebral del programa Artemis",
+    "medio": "Banca y Negocios",
+    "url": "https://www.bancaynegocios.com/perfil-nathalie-quintero-ingeniera-venezolana-en-la-columna-vertebral-del-programa-artemis/",
+    "fecha": "2026-10-12T22:08:13.071907+00:00",
+    "extracto": "#Perfil Nathalie Quintero: Ingeniera venezolana en la columna vertebral del programa Artemis"
+  },
+  {
+    "estado_relacionado": "Nacional",
+    "titular": "Invierten US$40 millones en la renovación del Trasnocho Cultural y el Hotel Paseo Las Mercedes",
+    "medio": "Banca y Negocios",
+    "url": "https://www.bancaynegocios.com/invierten-us40-millones-en-la-renovacion-del-trasnocho-cultural-y-el-hotel-paseo-las-mercedes/",
+    "fecha": "2026-10-12T22:08:13.071589+00:00",
+    "extracto": "Invierten US$40 millones en la renovación del Trasnocho Cultural y el Hotel Paseo Las Mercedes"
+  },
+  {
+    "estado_relacionado": "Nacional",
+    "titular": "Culmina la contingencia aérea en Colombia tras el terremoto registrado en Panamá",
+    "medio": "Banca y Negocios",
+    "url": "https://www.bancaynegocios.com/culmina-la-contingencia-aerea-en-colombia-tras-el-terremoto-registrado-en-panama/",
+    "fecha": "2026-10-12T22:08:13.071260+00:00",
+    "extracto": "Culmina la contingencia aérea en Colombia tras el terremoto registrado en Panamá"
+  },
+  {
+    "estado_relacionado": "Nacional",
+    "titular": "Román Maniglia: «No quiero que el Seniat crezca a base de multas, sino de crecimiento económico»",
+    "medio": "Banca y Negocios",
+    "url": "https://www.bancaynegocios.com/roman-maniglia-no-quiero-que-el-seniat-crezca-a-base-de-multas-sino-de-crecimiento-economico/",
+    "fecha": "2026-10-12T22:08:13.070984+00:00",
+    "extracto": "Román Maniglia: «No quiero que el Seniat crezca a base de multas, sino de crecimiento económico»"
+  },
+  {
+    "estado_relacionado": "Nacional",
+    "titular": "Sector asegurador acumuló $871 millones en primas al mes de agosto y proyecta cerrar 2026 con alza de 20%",
+    "medio": "Banca y Negocios",
+    "url": "https://www.bancaynegocios.com/sector-asegurador-acumulo-871-millones-en-primas-al-mes-de-agosto-y-proyecta-cerrar-2026-con-alza-de-20-porciento/",
+    "fecha": "2026-10-12T22:08:13.070649+00:00",
+    "extracto": "Sector asegurador acumuló $871 millones en primas al mes de agosto y proyecta cerrar 2026 con alza de 20%"
+  },
+  {
+    "estado_relacionado": "Nacional",
+    "titular": "Wall Street cierra verde tras semana volátil marcada por alza del rendimiento de la deuda",
+    "medio": "Banca y Negocios",
+    "url": "https://www.bancaynegocios.com/wall-street-cierra-verde-tras-semana-volatil-marcada-por-alza-del-rendimiento-de-la-deuda/",
+    "fecha": "2026-10-12T22:08:13.070306+00:00",
+    "extracto": "Wall Street cierra verde tras semana volátil marcada por alza del rendimiento de la deuda"
+  },
+  {
+    "estado_relacionado": "Nacional",
+    "titular": "Bloomberg: Grupo de acreedores de Venezuela crece y ahora concentra casi 40% de la deuda total",
+    "medio": "Banca y Negocios",
+    "url": "https://www.bancaynegocios.com/bloomberg-grupo-de-acreedores-de-venezuela-crece-y-ahora-concentra-casi-40porciento-de-la-deuda-total/",
+    "fecha": "2026-10-12T22:08:13.070005+00:00",
+    "extracto": "Bloomberg: Grupo de acreedores de Venezuela crece y ahora concentra casi 40% de la deuda total"
+  },
+  {
+    "estado_relacionado": "Distrito Capital",
+    "titular": "Sunaval: Monto negociado en la Bolsa de Caracas se multiplicó más de 50 veces entre 2020 y 2026",
+    "medio": "Banca y Negocios",
+    "url": "https://www.bancaynegocios.com/sunaval-monto-negociado-en-la-bolsa-de-caracas-se-multiplico-mas-de-50-veces-entre-2020-y-2026/",
+    "fecha": "2026-10-12T22:08:13.069678+00:00",
+    "extracto": "Sunaval: Monto negociado en la Bolsa de Caracas se multiplicó más de 50 veces entre 2020 y 2026"
+  },
+  {
+    "estado_relacionado": "Nacional",
+    "titular": "Telecomunicaciones: cuando el rezago cambiario se convierte en un impuesto a la inversión",
+    "medio": "Banca y Negocios",
+    "url": "https://www.bancaynegocios.com/telecomunicaciones-cuando-el-rezago-cambiario-se-convierte-en-un-impuesto-a-la-inversion/",
+    "fecha": "2026-10-12T22:08:13.069363+00:00",
+    "extracto": "Telecomunicaciones: cuando el rezago cambiario se convierte en un impuesto a la inversión"
+  },
+  {
+    "estado_relacionado": "Nacional",
+    "titular": "Delcy Rodríguez anuncia reforma tributaria en Venezuela: «Va a ocurrir este año»",
+    "medio": "Banca y Negocios",
+    "url": "https://www.bancaynegocios.com/delcy-rodriguez-anuncia-reforma-tributaria-en-venezuela-va-a-ocurrir-este-ano/",
+    "fecha": "2026-10-12T22:08:13.069056+00:00",
+    "extracto": "Delcy Rodríguez anuncia reforma tributaria en Venezuela: «Va a ocurrir este año»"
+  },
+  {
+    "estado_relacionado": "Falcón",
+    "titular": "Comerciantes de Falcón reportan caída del 70% en las ventas por cortes eléctricos prolongados",
+    "medio": "Banca y Negocios",
+    "url": "https://www.bancaynegocios.com/comerciantes-de-falcon-reportan-caida-del-70-porciento-en-las-ventas-por-cortes-electricos-prolongados/",
+    "fecha": "2026-10-12T22:08:13.068771+00:00",
+    "extracto": "Comerciantes de Falcón reportan caída del 70% en las ventas por cortes eléctricos prolongados"
+  },
+  {
+    "estado_relacionado": "Nacional",
+    "titular": "Equivale a US$117,85: Pagan Bono de «Corresponsabilidad y Formación» de octubre a trabajadores de nómina especial",
+    "medio": "Banca y Negocios",
+    "url": "https://www.bancaynegocios.com/equivale-a-us117punto85-pagan-bono-de-corresponsabilidad-y-formacion-de-octubre-a-trabajadores-de-nomina-especial/",
+    "fecha": "2026-10-12T22:08:13.068627+00:00",
+    "extracto": "Equivale a US$117,85: Pagan Bono de «Corresponsabilidad y Formación» de octubre a trabajadores de nómina especial"
+  },
+  {
+    "estado_relacionado": "Nacional",
+    "titular": "INTT anuncia restricción de circulación para vehículos de carga pesada por 48 horas",
+    "medio": "Banca y Negocios",
+    "url": "https://www.bancaynegocios.com/intt-anuncia-restriccion-de-circulacion-para-vehiculos-de-carga-pesada-por-48-horas/",
+    "fecha": "2026-10-12T22:08:13.068267+00:00",
+    "extracto": "INTT anuncia restricción de circulación para vehículos de carga pesada por 48 horas"
+  },
+  {
+    "estado_relacionado": "Nueva Esparta",
+    "titular": "Exportaciones no petroleras desde Nueva Esparta incrementan 54% en lo que va de 2026",
+    "medio": "Banca y Negocios",
+    "url": "https://www.bancaynegocios.com/exportaciones-no-petroleras-desde-nueva-esparta-incrementan-54-porciento-en-lo-que-va-de-2026/",
+    "fecha": "2026-10-12T22:08:13.067979+00:00",
+    "extracto": "Exportaciones no petroleras desde Nueva Esparta incrementan 54% en lo que va de 2026"
+  },
+  {
+    "estado_relacionado": "Nacional",
+    "titular": "Jorge Roig prevé que se alcanzarán acuerdos laborales respaldados por Gobierno, empresarios y trabajadores",
+    "medio": "Banca y Negocios",
+    "url": "https://www.bancaynegocios.com/jorge-roig-preve-que-se-alcanzaran-acuerdos-laborales-respaldados-por-gobierno-empresarios-y-trabajadores/",
+    "fecha": "2026-10-12T22:08:13.067753+00:00",
+    "extracto": "Jorge Roig prevé que se alcanzarán acuerdos laborales respaldados por Gobierno, empresarios y trabajadores"
+  },
+  {
+    "estado_relacionado": "Nacional",
+    "titular": "Banco Central de Argentina pierde 1.000 millones de dólares en operación respaldada con oro",
+    "medio": "Banca y Negocios",
+    "url": "https://www.bancaynegocios.com/banco-central-de-argentina-pierde-1000-millones-de-dolares-en-operacion-respaldada-con-oro/",
+    "fecha": "2026-10-12T22:08:13.067374+00:00",
+    "extracto": "Banco Central de Argentina pierde 1.000 millones de dólares en operación respaldada con oro"
+  },
+  {
+    "estado_relacionado": "Nacional",
+    "titular": "El Plan Venezuela Renace entrega viviendas a familias del Campamento José Gervasio Artigas",
+    "medio": "Banca y Negocios",
+    "url": "https://www.bancaynegocios.com/el-plan-venezuela-renace-entrega-viviendas-a-familias-del-campamento-jose-gervasio-artigas/",
+    "fecha": "2026-10-12T22:08:13.067036+00:00",
+    "extracto": "El Plan Venezuela Renace entrega viviendas a familias del Campamento José Gervasio Artigas"
+  },
+  {
+    "estado_relacionado": "La Guaira",
+    "titular": "Bancamiga impulsa la recuperación económica de La Guaira con el programa Gente que se levanta",
+    "medio": "Banca y Negocios",
+    "url": "https://www.bancaynegocios.com/bancamiga-impulsa-la-recuperacion-economica-de-la-guaira-con-el-programa-gente-que-se-levanta/",
+    "fecha": "2026-10-12T22:08:13.066718+00:00",
+    "extracto": "Bancamiga impulsa la recuperación económica de La Guaira con el programa Gente que se levanta"
+  },
+  {
+    "estado_relacionado": "Nacional",
+    "titular": "Bancaribe devela todos los detalles de la Ruta Bancaribe 2026 junto a sus aliados y patrocinantes",
+    "medio": "Banca y Negocios",
+    "url": "https://www.bancaynegocios.com/bancaribe-devela-todos-los-detalles-de-la-ruta-bancaribe-2026-junto-a-sus-aliados-y-patrocinantes/",
+    "fecha": "2026-10-12T22:08:13.066452+00:00",
+    "extracto": "Bancaribe devela todos los detalles de la Ruta Bancaribe 2026 junto a sus aliados y patrocinantes"
+  },
+  {
+    "estado_relacionado": "Nacional",
+    "titular": "Cartera de créditos aumentará 40% en 2026, pero el encaje legal le restará 10 puntos de crecimiento",
+    "medio": "Banca y Negocios",
+    "url": "https://www.bancaynegocios.com/cartera-de-credito-aumentara-40-en-2026-pero-el-encaje-legal-le-restara-10-puntos-de-crecimiento/",
+    "fecha": "2026-10-12T22:08:13.066115+00:00",
+    "extracto": "Cartera de créditos aumentará 40% en 2026, pero el encaje legal le restará 10 puntos de crecimiento"
+  },
+  {
+    "estado_relacionado": "Nacional",
+    "titular": "Banco de Venezuela acompaña al Plan Venezuela Renace en entrega de créditos sociales a familias afectadas por el doblete sísmico",
+    "medio": "Banca y Negocios",
+    "url": "https://www.bancaynegocios.com/banco-de-venezuela-acompana-al-plan-venezuela-renace-en-entrega-de-creditos-sociales-a-familias-afectadas-por-el-doblete-sismico/",
+    "fecha": "2026-10-12T22:08:13.065743+00:00",
+    "extracto": "Banco de Venezuela acompaña al Plan Venezuela Renace en entrega de créditos sociales a familias afectadas por el doblete sísmico"
+  },
+  {
+    "estado_relacionado": "Nacional",
+    "titular": "AN difunde lista de aspirantes de la sociedad civil para integrar el Comité de Postulaciones Judiciales",
+    "medio": "Banca y Negocios",
+    "url": "https://www.bancaynegocios.com/an-difunde-lista-de-aspirantes-de-la-sociedad-civil-para-integrar-el-comite-de-postulaciones-judiciales/",
+    "fecha": "2026-10-12T22:08:13.064893+00:00",
+    "extracto": "AN difunde lista de aspirantes de la sociedad civil para integrar el Comité de Postulaciones Judiciales"
+  },
+  {
+    "estado_relacionado": "Nacional",
+    "titular": "El petróleo de Texas sube un 2,1% pendiente de Oriente Medio y del acuerdo Ucrania-Rusia",
+    "medio": "Banca y Negocios",
+    "url": "https://www.bancaynegocios.com/el-petroleo-de-texas-sube-un-2punto1-porciento-pendiente-de-oriente-medio-y-del-acuerdo-ucrania-rusia/",
+    "fecha": "2026-10-12T22:08:13.064523+00:00",
+    "extracto": "El petróleo de Texas sube un 2,1% pendiente de Oriente Medio y del acuerdo Ucrania-Rusia"
+  },
+  {
+    "estado_relacionado": "Nacional",
+    "titular": "El índice global de pobreza aumenta por primera vez desde su creación en 2010",
+    "medio": "Banca y Negocios",
+    "url": "https://www.bancaynegocios.com/el-indice-global-de-pobreza-aumenta-por-primera-vez-desde-su-creacion-en-2010/",
+    "fecha": "2026-10-12T22:08:13.064208+00:00",
+    "extracto": "El índice global de pobreza aumenta por primera vez desde su creación en 2010"
+  },
+  {
+    "estado_relacionado": "La Guaira",
+    "titular": "Más de 2.000 comercios y emprendimientos en La Guaira recibieron US$19 millones en financiamiento",
+    "medio": "Banca y Negocios",
+    "url": "https://www.bancaynegocios.com/mas-de-2000-comercios-y-emprendimientos-en-la-guaira-recibieron-us19-millones-en-financiamiento/",
+    "fecha": "2026-10-12T22:08:13.063924+00:00",
+    "extracto": "Más de 2.000 comercios y emprendimientos en La Guaira recibieron US$19 millones en financiamiento"
+  },
+  {
+    "estado_relacionado": "Nacional",
+    "titular": "Vehículos eléctricos e híbridos registraron ventas récord en Colombia",
+    "medio": "Banca y Negocios",
+    "url": "https://www.bancaynegocios.com/ventas-de-vehiculos-electricos-e-hibridos-registraron-ventas-record-en-colombia/",
+    "fecha": "2026-10-12T22:08:13.063630+00:00",
+    "extracto": "Vehículos eléctricos e híbridos registraron ventas récord en Colombia"
+  },
+  {
+    "estado_relacionado": "Nacional",
+    "titular": "Venezuela se incorpora al Foro Mundial de la Alimentación 2026 de la FAO en Roma",
+    "medio": "Banca y Negocios",
+    "url": "https://www.bancaynegocios.com/venezuela-se-incorpora-al-foro-mundial-de-la-alimentacion-2026-de-la-fao-en-roma/",
+    "fecha": "2026-10-12T22:08:13.063374+00:00",
+    "extracto": "Venezuela se incorpora al Foro Mundial de la Alimentación 2026 de la FAO en Roma"
+  },
+  {
+    "estado_relacionado": "Nacional",
+    "titular": "Autoridades económicas hablan de inflación y deuda en el foro del FMI y el Banco Mundial",
+    "medio": "Banca y Negocios",
+    "url": "https://www.bancaynegocios.com/autoridades-economicas-hablan-de-inflacion-y-deuda-en-el-foro-del-fmi-y-el-banco-mundial/",
+    "fecha": "2026-10-12T22:08:13.063071+00:00",
+    "extracto": "Autoridades económicas hablan de inflación y deuda en el foro del FMI y el Banco Mundial"
+  },
+  {
+    "estado_relacionado": "Nacional",
+    "titular": "La UE aprueba el mayor paquete de sanciones selectivas contra Rusia con casi 1.600 nombres",
+    "medio": "Banca y Negocios",
+    "url": "https://www.bancaynegocios.com/la-ue-aprueba-el-mayor-paquete-de-sanciones-selectivas-contra-rusia-con-casi-1-600-nombres/",
+    "fecha": "2026-10-12T22:08:13.062739+00:00",
+    "extracto": "La UE aprueba el mayor paquete de sanciones selectivas contra Rusia con casi 1.600 nombres"
+  },
+  {
+    "estado_relacionado": "Distrito Capital",
+    "titular": "Leones del Caracas anunció precios de las entradas en el Monumental para la temporada 2026-2027",
+    "medio": "Banca y Negocios",
+    "url": "https://www.bancaynegocios.com/leones-del-caracas-anuncio-precios-de-las-entradas-en-el-monumental-para-la-temporada-2026-2027/",
+    "fecha": "2026-10-12T22:08:13.062424+00:00",
+    "extracto": "Leones del Caracas anunció precios de las entradas en el Monumental para la temporada 2026-2027"
+  },
+  {
+    "estado_relacionado": "Nacional",
+    "titular": "Entre el 80% y 90% del flujo de petróleo del golfo Pérsico se ha restablecido, según EEUU",
+    "medio": "Banca y Negocios",
+    "url": "https://www.bancaynegocios.com/entre-el-80-porciento-y-90-porciento-del-flujo-de-petroleo-del-golfo-persico-se-ha-restablecido-segun-eeuu/",
+    "fecha": "2026-10-12T22:08:13.062110+00:00",
+    "extracto": "Entre el 80% y 90% del flujo de petróleo del golfo Pérsico se ha restablecido, según EEUU"
+  },
+  {
+    "estado_relacionado": "Nacional",
+    "titular": "BDT y Ronald Acuña: ¡Jugada rápida, pago seguro!",
+    "medio": "Banca y Negocios",
+    "url": "https://www.bancaynegocios.com/bdt-y-ronald-acuna-jugada-rapida-pago-seguro/",
+    "fecha": "2026-10-12T22:08:13.061771+00:00",
+    "extracto": "BDT y Ronald Acuña: ¡Jugada rápida, pago seguro!"
+  },
+  {
+    "estado_relacionado": "Nacional",
+    "titular": "ACNUR solo cuenta con 35% de los fondos necesarios para 2026 y ha perdido 8.000 empleados",
+    "medio": "Banca y Negocios",
+    "url": "https://www.bancaynegocios.com/acnur-solo-cuenta-con-35-porciento-de-los-fondos-necesarios-para-2026-y-ha-perdido-8000-empleados/",
+    "fecha": "2026-10-12T22:08:13.061550+00:00",
+    "extracto": "ACNUR solo cuenta con 35% de los fondos necesarios para 2026 y ha perdido 8.000 empleados"
+  },
+  {
+    "estado_relacionado": "Nacional",
+    "titular": "Cuba actualiza ley de petróleo y gas para atraer inversiones en medio de la crisis",
+    "medio": "Banca y Negocios",
+    "url": "https://www.bancaynegocios.com/cuba-actualiza-ley-de-petroleo-y-gas-para-atraer-inversiones-en-medio-de-la-crisis/",
+    "fecha": "2026-10-12T22:08:13.061229+00:00",
+    "extracto": "Cuba actualiza ley de petróleo y gas para atraer inversiones en medio de la crisis"
+  },
+  {
+    "estado_relacionado": "Nacional",
+    "titular": "Petróleo WTI cierra en 93,74 dólares tras ataques en Arabia Saudí y Ucrania",
+    "medio": "Banca y Negocios",
+    "url": "https://www.bancaynegocios.com/petroleo-wti-cierra-en-93punto74-dolares-tras-ataques-en-arabia-saudi-y-ucrania/",
+    "fecha": "2026-10-12T22:08:13.060921+00:00",
+    "extracto": "Petróleo WTI cierra en 93,74 dólares tras ataques en Arabia Saudí y Ucrania"
+  },
+  {
+    "estado_relacionado": "Nacional",
+    "titular": "Meta presenta nuevo modelo de IA y afirma que está al nivel de OpenAI y Anthropic",
+    "medio": "Banca y Negocios",
+    "url": "https://www.bancaynegocios.com/meta-presenta-nuevo-modelo-de-ia-y-afirma-que-esta-al-nivel-de-openai-y-anthropic/",
+    "fecha": "2026-10-12T22:08:13.060603+00:00",
+    "extracto": "Meta presenta nuevo modelo de IA y afirma que está al nivel de OpenAI y Anthropic"
+  },
+  {
+    "estado_relacionado": "Nacional",
+    "titular": "Wall Street cierra mixto tras subida del petróleo y pendiente del dato de inflación",
+    "medio": "Banca y Negocios",
+    "url": "https://www.bancaynegocios.com/wall-street-cierra-mixto-tras-subida-del-petroleo-y-pendiente-del-dato-de-inflacion/",
+    "fecha": "2026-10-12T22:08:13.060305+00:00",
+    "extracto": "Wall Street cierra mixto tras subida del petróleo y pendiente del dato de inflación"
+  },
+  {
+    "estado_relacionado": "Nacional",
+    "titular": "Lo + y lo - de la banca",
+    "medio": "Banca y Negocios",
+    "url": "https://www.bancaynegocios.com/lo-positivo-y-lo-negativo-de-la-banca/",
+    "fecha": "2026-10-12T22:08:13.059898+00:00",
+    "extracto": "Lo + y lo - de la banca"
+  },
+  {
+    "estado_relacionado": "Falcón",
+    "titular": "NetUno expandió sus servicios a Falcón y otras zonas del país donde ya tiene presencia",
+    "medio": "Banca y Negocios",
+    "url": "https://www.bancaynegocios.com/netuno-expandio-sus-servicios-a-falcon-y-otras-zonas-del-pais-donde-ya-tiene-presencia/",
+    "fecha": "2026-10-12T22:08:13.059690+00:00",
+    "extracto": "NetUno expandió sus servicios a Falcón y otras zonas del país donde ya tiene presencia"
+  },
+  {
+    "estado_relacionado": "Nacional",
+    "titular": "Anuncia la llegada a Venezuela de repuestos y equipos para recuperación de termoeléctricas",
+    "medio": "Banca y Negocios",
+    "url": "https://www.bancaynegocios.com/anuncia-la-llegada-a-venezuela-de-repuestos-y-equipos-para-recuperacion-de-termoelectricas/",
+    "fecha": "2026-10-12T22:08:13.059541+00:00",
+    "extracto": "Anuncia la llegada a Venezuela de repuestos y equipos para recuperación de termoeléctricas"
+  },
+  {
+    "estado_relacionado": "Nacional",
+    "titular": "Robert E. Hall y Michael Woodford ganaron el Nobel de Economía por sus aportes al diseño macroeconómico",
+    "medio": "Banca y Negocios",
+    "url": "https://www.bancaynegocios.com/robert-e-hall-y-michael-woodford-ganaron-el-nobel-de-economia-por-sus-aportes-al-diseno-macroeconomico/",
+    "fecha": "2026-10-12T22:08:13.059159+00:00",
+    "extracto": "Robert E. Hall y Michael Woodford ganaron el Nobel de Economía por sus aportes al diseño macroeconómico"
+  },
+  {
+    "estado_relacionado": "Nacional",
+    "titular": "Un latinoamericano y un español integran la lista: Estas son las 20 personas más ricas del mundo",
+    "medio": "Banca y Negocios",
+    "url": "https://www.bancaynegocios.com/un-latinoamericano-y-un-espanol-integran-la-lista-estas-son-las-20-personas-mas-ricas-del-mundo/",
+    "fecha": "2026-10-12T22:08:13.058805+00:00",
+    "extracto": "Un latinoamericano y un español integran la lista: Estas son las 20 personas más ricas del mundo"
+  },
+  {
+    "estado_relacionado": "Nacional",
+    "titular": "#Análisis: ¿Emigrar como opción? La disonancia de una recuperación que no termina de llegar",
+    "medio": "Banca y Negocios",
+    "url": "https://www.bancaynegocios.com/analisis-emigrar-como-opcion-la-disonancia-de-una-recuperacion-que-no-termina-de-llegar/",
+    "fecha": "2026-10-12T22:08:13.058479+00:00",
+    "extracto": "#Análisis: ¿Emigrar como opción? La disonancia de una recuperación que no termina de llegar"
+  },
+  {
+    "estado_relacionado": "Nacional",
+    "titular": "Delcy Rodríguez anuncia una nueva ley para impulsar la producción alimentaria de Venezuela",
+    "medio": "Banca y Negocios",
+    "url": "https://www.bancaynegocios.com/delcy-rodriguez-anuncia-una-nueva-ley-para-impulsar-la-produccion-alimentaria-de-venezuela/",
+    "fecha": "2026-10-12T22:08:13.058166+00:00",
+    "extracto": "Delcy Rodríguez anuncia una nueva ley para impulsar la producción alimentaria de Venezuela"
+  },
+  {
+    "estado_relacionado": "Nacional",
+    "titular": "#InformePrivado El fin de las reglas conocidas: rigor fiscal, choque de liquidez y el nuevo estándar corporativo",
+    "medio": "Banca y Negocios",
+    "url": "https://www.bancaynegocios.com/informeprivado-el-fin-de-las-reglas-conocidas-rigor-fiscal-choque-de-liquidez-y-el-nuevo-estandar-corporativo/",
+    "fecha": "2026-10-12T22:08:13.057858+00:00",
+    "extracto": "#InformePrivado El fin de las reglas conocidas: rigor fiscal, choque de liquidez y el nuevo estándar corporativo"
+  },
+  {
+    "estado_relacionado": "Nacional",
+    "titular": "BCV y banca articulan acciones de política monetaria para consolidar la estabilidad",
+    "medio": "Banca y Negocios",
+    "url": "https://www.bancaynegocios.com/bcv-y-banca-articulan-acciones-de-politica-monetaria-para-consolidar-la-estabilidad/",
+    "fecha": "2026-10-12T22:08:13.057488+00:00",
+    "extracto": "BCV y banca articulan acciones de política monetaria para consolidar la estabilidad"
+  },
+  {
+    "estado_relacionado": "Nacional",
+    "titular": "Venezuela y República Dominicana evalúan reanudar las compras directas de combustibles",
+    "medio": "Banca y Negocios",
+    "url": "https://www.bancaynegocios.com/venezuela-y-republica-dominicana-evaluan-reanudar-las-compras-directas-de-combustibles/",
+    "fecha": "2026-10-12T22:08:13.057196+00:00",
+    "extracto": "Venezuela y República Dominicana evalúan reanudar las compras directas de combustibles"
+  },
+  {
+    "estado_relacionado": "Nacional",
+    "titular": "Glosario Económico-Financiero",
+    "medio": "Banca y Negocios",
+    "url": "https://www.bancaynegocios.com/glosario-economicofinanciero/",
+    "fecha": "2026-10-12T22:08:13.056807+00:00",
+    "extracto": "Glosario Económico-Financiero"
+  },
+  {
+    "estado_relacionado": "Nacional",
+    "titular": "Economía Internacional",
+    "medio": "Banca y Negocios",
+    "url": "https://www.bancaynegocios.com/category/economia/economia-internacional/",
+    "fecha": "2026-10-12T22:08:13.056298+00:00",
+    "extracto": "Economía Internacional"
+  },
+  {
+    "estado_relacionado": "Nacional",
+    "titular": "Inaugurado Parque Lineal Río Guaire",
+    "medio": "Globovisión",
+    "url": "https://www.globovision.com/sociedad/63013/inaugurado-parque-lineal-rio-guaire",
+    "fecha": "2026-10-12T22:08:12.904580+00:00",
+    "extracto": "Inaugurado Parque Lineal Río Guaire"
+  },
+  {
+    "estado_relacionado": "Aragua",
+    "titular": "El Zoológico Las Delicias de Maracay presenta oficialmente a nuevos cachorros de león",
+    "medio": "Globovisión",
+    "url": "https://www.globovision.com/sociedad/63002/el-zoologico-las-delicias-de-maracay-presenta-oficialmente-a-nuevos-cachorros-de-leon",
+    "fecha": "2026-10-12T22:08:12.904401+00:00",
+    "extracto": "El Zoológico Las Delicias de Maracay presenta oficialmente a nuevos cachorros de león"
+  },
+  {
+    "estado_relacionado": "Nacional",
+    "titular": "Venezuela conmemora el Día de la Resistencia Indígena a 534 años de lucha y soberanía ancestral",
+    "medio": "Globovisión",
+    "url": "https://www.globovision.com/sociedad/62999/venezuela-conmemora-el-dia-de-la-resistencia-indigena-a-534-anos-de-lucha-y-soberania-ancestral",
+    "fecha": "2026-10-12T22:08:12.904264+00:00",
+    "extracto": "Venezuela conmemora el Día de la Resistencia Indígena a 534 años de lucha y soberanía ancestral"
+  },
+  {
+    "estado_relacionado": "Distrito Capital",
+    "titular": "La Ruta de Lola: lo que debes saber del evento en Caracas por el Mes Rosa",
+    "medio": "Globovisión",
+    "url": "https://www.globovision.com/sociedad/62825/la-ruta-de-lola-reunira-a-ciclistas-y-motociclistas-este-10-de-octubre-en-apoyo-a-la-prevencion-del",
+    "fecha": "2026-10-12T22:08:12.903884+00:00",
+    "extracto": "La Ruta de Lola: lo que debes saber del evento en Caracas por el Mes Rosa"
+  },
+  {
+    "estado_relacionado": "Nacional",
+    "titular": "Nobel de Economía para estadounidenses Hall y Woodford",
+    "medio": "Globovisión",
+    "url": "https://www.globovision.com/economia/62996/nobel-de-economia-para-estadounidenses-hall-y-woodford",
+    "fecha": "2026-10-12T22:08:12.902811+00:00",
+    "extracto": "Nobel de Economía para estadounidenses Hall y Woodford"
+  },
+  {
+    "estado_relacionado": "Nacional",
+    "titular": "Venezuela y Angola evalúan alianzas agroalimentarias en el marco del Foro Mundial de la FAO",
+    "medio": "Globovisión",
+    "url": "https://www.globovision.com/politica/63015/venezuela-y-angola-evaluan-alianzas-agroalimentarias-en-el-marco-del-foro-mundial-de-la-fao",
+    "fecha": "2026-10-12T22:08:12.902398+00:00",
+    "extracto": "Venezuela y Angola evalúan alianzas agroalimentarias en el marco del Foro Mundial de la FAO"
+  },
+  {
+    "estado_relacionado": "Nacional",
+    "titular": "Pedro Maioriello: Villa del Rosario produce 150 mil litros de leche diarios para abastecer el centro del país",
+    "medio": "Globovisión",
+    "url": "https://www.globovision.com/regiones/63001/pedro-maioriello-villa-del-rosario-produce-150-mil-litros-de-leche-diarios-para-abastecer-el-centro",
+    "fecha": "2026-10-12T22:08:12.902087+00:00",
+    "extracto": "Pedro Maioriello: Villa del Rosario produce 150 mil litros de leche diarios para abastecer el centro del país"
+  },
+  {
+    "estado_relacionado": "Nacional",
+    "titular": "BCV revisa estrategias del mercado cambiario con sector público y privado",
+    "medio": "Globovisión",
+    "url": "https://www.globovision.com/economia/63028/bcv-revisa-estrategias-del-mercado-cambiario",
+    "fecha": "2026-10-12T22:08:12.901717+00:00",
+    "extracto": "BCV revisa estrategias del mercado cambiario con sector público y privado"
+  },
+  {
+    "estado_relacionado": "Nacional",
+    "titular": "Venezuela denuncia ante la FAO el impacto de los bloqueos económicos en la desnutrición global",
+    "medio": "Globovisión",
+    "url": "https://www.globovision.com/politica/63027/venezuela-denuncia-ante-la-fao-el-impacto-de-los-bloqueos-economicos-en-la-desnutricion-global",
+    "fecha": "2026-10-12T22:08:12.901451+00:00",
+    "extracto": "Venezuela denuncia ante la FAO el impacto de los bloqueos económicos en la desnutrición global"
+  },
+  {
+    "estado_relacionado": "Nacional",
+    "titular": "Delcy Rodríguez y Luis Abinader se reúnen en Roma para fortalecer la cooperación entre Venezuela y República Dominicana",
+    "medio": "Globovisión",
+    "url": "https://www.globovision.com/politica/63016/delcy-rodriguez-y-el-mandatario-dominicano-luis-abinader-afianzan-alianzas-bilatelares-en-roma",
+    "fecha": "2026-10-12T22:08:12.900988+00:00",
+    "extracto": "Delcy Rodríguez y Luis Abinader se reúnen en Roma para fortalecer la cooperación entre Venezuela y República Dominicana"
+  },
+  {
+    "estado_relacionado": "Nacional",
+    "titular": "Delcy Rodríguez en la FAO: Venezuela redujo la subalimentación del 5,3 % en 2025 al 3 % en 2026",
+    "medio": "Globovisión",
+    "url": "https://www.globovision.com/politica/63010/delcy-rodriguez-venezuela-redujo-la-subalimentacion-de-53-en-2025-a-3-en-2026",
+    "fecha": "2026-10-12T22:08:12.900533+00:00",
+    "extracto": "Delcy Rodríguez en la FAO: Venezuela redujo la subalimentación del 5,3 % en 2025 al 3 % en 2026"
+  },
+  {
+    "estado_relacionado": "Nacional",
+    "titular": "Delcy Rodríguez afirma en la FAO que el diálogo con la oposición y con EE. UU. ha dado estabilidad para producir y crecer",
+    "medio": "Globovisión",
+    "url": "https://www.globovision.com/politica/63007/delcy-rodriguez-el-dialogo-nacional-y-diplomatico-aporta-estabilidad-politica-para-impulsar-la",
+    "fecha": "2026-10-12T22:08:12.899972+00:00",
+    "extracto": "Delcy Rodríguez afirma en la FAO que el diálogo con la oposición y con EE. UU. ha dado estabilidad para producir y crecer"
+  },
+  {
+    "estado_relacionado": "Nacional",
+    "titular": "Presidenta Delcy Rodríguez anuncia en la FAO el Plan Venezuela Alimenta para alcanzar el “hambre cero”",
+    "medio": "Globovisión",
+    "url": "https://www.globovision.com/politica/63008/delcy-rodriguez-presenta-el-plan-venezuela-alimenta-durante-el-foro-mundial-de-la-alimentacion",
+    "fecha": "2026-10-12T22:08:12.899410+00:00",
+    "extracto": "Presidenta Delcy Rodríguez anuncia en la FAO el Plan Venezuela Alimenta para alcanzar el “hambre cero”"
+  },
+  {
+    "estado_relacionado": "Nacional",
+    "titular": "Vestir el arbolito exige una inversión mínima de $300",
+    "medio": "Diario Avance Miranda",
+    "url": "https://diarioavance.com/vestir-el-arbolito-exige-una-inversion-minima-de-300/",
+    "fecha": "2026-10-12T22:01:30+00:00",
+    "extracto": "Recibir la época decembrina es una tradición que en los últimos años representa un reto para las familias La entrada Vestir el arbolito exige una inversión mínima de $300 se publicó primero en Diario Avance ."
+  },
+  {
+    "estado_relacionado": "Nacional",
+    "titular": "VIDEO | «La basura nos tiene invadidos»: Habitantes de Bararida denuncian acumulación de desechos en sus calles principales #12Oct",
+    "medio": "El Impulso",
+    "url": "https://www.elimpulso.com/2026/10/12/video-la-basura-nos-tiene-invadidos-habitantes-de-bararida-denuncian-acumulacion-de-desechos-en-sus-calles-principales-12oct/",
+    "fecha": "2026-10-12T22:00:00+00:00",
+    "extracto": "Vecinos de los diversos sectores de la urbanización Bararida manifestaron su preocupación ante la constante acumulación de basura en las principales calles y accesos del sector. La entrada VIDEO | «La basura nos tiene invadidos»: Habitantes de Bararida denuncian acumulación de desechos en sus calles principales #12Oct ..."
+  },
+  {
+    "estado_relacionado": "Anzoátegui",
+    "titular": "CPNB frustra secuestro y rescata a dos personas en el estado Aragua",
+    "medio": "VTV",
+    "url": "https://vtv.com.ve/cpnb-frustra-secuestro-rescata-dos-personas-aragua/",
+    "fecha": "2026-10-12T21:58:07+00:00",
+    "extracto": "Comisiones del Cuerpo de Policía Nacional Bolivariana (CPNB) lograron el rescate de dos ciudadanos que se encontraban secuestrados en una zona montañosa del estado Aragua, tras trasladarse desde el estado Anzoátegui para concretar la compra de un vehículo de carga. Sujetos armados interceptaron a las víctimas al llegar..."
+  },
+  {
+    "estado_relacionado": "Nacional",
+    "titular": "Fundehullan reporta la excarcelación de Marlon Maya, integrante de Vente Venezuela",
+    "medio": "El Carabobeño",
+    "url": "https://www.el-carabobeno.com/fundehullan-reporta-la-excarcelacion-de-marlon-maya-integrante-de-vente-venezuela/",
+    "fecha": "2026-10-12T21:51:52+00:00",
+    "extracto": "Fundehullan denunció previamente que el Estado impidió el acceso a abogados de confianza para Maya y a sus familiares al tribunal The post Fundehullan reporta la excarcelación de Marlon Maya, integrante de Vente Venezuela appeared first on El Carabobeño ."
+  },
+  {
+    "estado_relacionado": "Nacional",
+    "titular": "Restauración de iglesia San Juan Bautista finaliza en noviembre",
+    "medio": "Diario Avance Miranda",
+    "url": "https://diarioavance.com/restauracion-de-iglesia-san-juan-bautista-finaliza-en-noviembre/",
+    "fecha": "2026-10-12T21:50:27+00:00",
+    "extracto": "La restauración de la iglesia San Juan Bautista de Carrizal culmina en un lapso estimado de cinco semanas, La entrada Restauración de iglesia San Juan Bautista finaliza en noviembre se publicó primero en Diario Avance ."
+  },
+  {
+    "estado_relacionado": "Aragua",
+    "titular": "Concejo Municipal de Girardot rinde homenaje a los salseros con nuevos acuerdos",
+    "medio": "VTV",
+    "url": "https://vtv.com.ve/concejo-municipal-girardot-homenaje-salseros-nuevos-acuerdos/",
+    "fecha": "2026-10-12T21:47:45+00:00",
+    "extracto": "Desde el popular sector 23 de Enero, el Concejo Municipal de Girardot, en el estado Aragua, celebró una Sesión Especial en conmemoración del Día Nacional de la Salsa, rindiendo homenaje a la identidad y a los exponentes de este género estrechamente ligado al sentir popular. Durante el acto, el presidente del Concejo, Á..."
+  },
+  {
+    "estado_relacionado": "Táchira",
+    "titular": "Táchira se prepara para el simulacro regional de evacuación sísmica",
+    "medio": "Últimas Noticias",
+    "url": "https://news.google.com/rss/articles/CBMiqwFBVV95cUxOWEtnYldWWll6WW40a2psOVF5NUFkNUZrOUNGS1g1aW5WVjNfWXJaQWVhR3ZJSk1Ba0EzLW1rS1pHamRwa1pEXzB6bVB1VFVSY1V6UWtqN0gwNW1tLUFWMFFJT2hFTWxyU2xsSnFJd3pZZFFqa0E3bjZRdXppcERRcjRqUW84Mm1mSnR0LWlidU10YlVBenNQSHk5WU4zdEhOaEZZZzJXb2FrVkU?oc=5",
+    "fecha": "2026-10-12T21:46:31+00:00",
+    "extracto": "Táchira se prepara para el simulacro regional de evacuación sísmica Últimas Noticias"
+  },
+  {
+    "estado_relacionado": "Nacional",
+    "titular": "Grisanti: Autoridades económicas venezolanas deben explicar de una vez hacia dónde quieren llevar al país #12Oct",
+    "medio": "El Impulso",
+    "url": "https://www.elimpulso.com/2026/10/12/grisanti-autoridades-economicas-venezolanas-deben-explicar-de-una-vez-hacia-donde-quieren-llevar-al-pais-12oct/",
+    "fecha": "2026-10-12T21:45:00+00:00",
+    "extracto": "En Venezuela, necesitamos que las autoridades económicas expliquen de una vez hacia dónde quieren llevar al país. señala Alejandro Grisanti, socio fundador de Ecoanalítica, en base a recomendaciones que hacen los ganadores del Premio Nóbel de Economía, Robert Hall y Michael Woodford y que considera “deja una lección fu..."
+  },
+  {
+    "estado_relacionado": "Nacional",
+    "titular": "Reportan excarcelación de integrante del partido de Vente Venezuela",
+    "medio": "Caraota Digital",
+    "url": "https://caraotadigital.net/venezuela/reportan-excarcelacion-de-integrante-del-partido-de-vente-venezuela/",
+    "fecha": "2026-10-12T21:42:39+00:00",
+    "extracto": "EFE.- La Fundación de Derechos Humanos de los Llanos (Fundehullan) informó este lunes que fue liberado Marlon Maya, abogado y miembro del partido Vente Venezuela (VV), liderado por María Corina Machado, luego de haber sido detenido el viernes en la noche sin orden judicial. En una publicación en X, la ONG señaló que Ma..."
+  },
+  {
+    "estado_relacionado": "Nacional",
+    "titular": "Comienza el béisbol venezolano con un mensaje de unidad de la presidenta Delcy Rodríguez",
+    "medio": "VTV",
+    "url": "https://vtv.com.ve/comienza-beisbol-venezolano-unidad-presidenta-rodriguez/",
+    "fecha": "2026-10-12T21:39:17+00:00",
+    "extracto": "A propósito del inicio de la nueva temporada de la Liga Venezolana Profesional de Béisbol (LVBP), la presidenta de la República Bolivariana de Venezuela, Delcy Rodríguez, destacó el arranque del torneo que une la pasión de millones de venezolanos a través de ocho equipos. En un mensaje difundido a través de su canal of..."
+  },
+  {
+    "estado_relacionado": "Nacional",
+    "titular": "Vuelve la luz al C.C. Los Nuevos Teques",
+    "medio": "Diario Avance Miranda",
+    "url": "https://diarioavance.com/vuelve-la-luz-al-c-c-los-nuevos-teques/",
+    "fecha": "2026-10-12T21:38:38+00:00",
+    "extracto": "A eso de las 11:00 a. m. de este lunes 12 de octubre, el Centro Comercial Los Nuevos La entrada Vuelve la luz al C.C. Los Nuevos Teques se publicó primero en Diario Avance ."
+  },
+  {
+    "estado_relacionado": "Nacional",
+    "titular": "Corte IDH examinará caso de las víctimas del 11 de abril 2002, informó el Foro Penal",
+    "medio": "Caraota Digital",
+    "url": "https://caraotadigital.net/mundo/corte-idh-examinara-caso-de-las-victimas-del-11-de-abril-2002-informo-el-foro-penal/",
+    "fecha": "2026-10-12T21:37:52+00:00",
+    "extracto": "La Corte Interamericana de Derechos Humanos (Corte IDH) examinará el caso de las víctimas del 11 de abril de 2002, cuando 19 personas fueron asesinadas y más de 300 resultaron heridas de bala, en el marco del «golpe de Estado» en Venezuela. La ONG Foto Penal informó en redes sociales sobre la evaluación que hará […] La..."
+  },
+  {
+    "estado_relacionado": "Nacional",
+    "titular": "Rehabilitan la Panamericana tras cierre por lluvias",
+    "medio": "Diario Avance Miranda",
+    "url": "https://diarioavance.com/rehabilitan-la-panamericana-tras-cierre-por-lluvias/",
+    "fecha": "2026-10-12T21:33:34+00:00",
+    "extracto": "La vía quedó despejada en los kilómetros 20 y 24 Este lunes, 12 de octubre, culminaron las labores La entrada Rehabilitan la Panamericana tras cierre por lluvias se publicó primero en Diario Avance ."
+  },
+  {
+    "estado_relacionado": "Aragua",
+    "titular": "Activan plan de contingencia por derrumbes en la vía a Choroní",
+    "medio": "Últimas Noticias",
+    "url": "https://news.google.com/rss/articles/CBMiowFBVV95cUxNeDJHek1FRWtOcGRQVFdzVU1FVXA0bERmTVdEUHg2bG9hbkQtT2tyMWFpWVBpcW9oUE5xemJhQXBfS0NvcHdOaDA3MGNpNTA1WVB6U3hfanNUUDlTa1lad3p4LTA3QVN5akJ2V2t1TWZNeUkxRWctbVd1bUxPMWhINEd3NU1RSjF1YkZJd1AwVGpySzZyX1JET1pTUGFuOE5hSzk4?oc=5",
+    "fecha": "2026-10-12T21:31:32+00:00",
+    "extracto": "Activan plan de contingencia por derrumbes en la vía a Choroní Últimas Noticias"
+  },
+  {
+    "estado_relacionado": "Nacional",
+    "titular": "Luis Abinader y Delcy Rodríguez abordaron cooperación energética y consular en Roma",
+    "medio": "El Carabobeño",
+    "url": "https://www.el-carabobeno.com/abinader-y-delcy-rodriguez-abordan-cooperacion-energetica-y-consular-en-reunion-en-roma/",
+    "fecha": "2026-10-12T21:31:25+00:00",
+    "extracto": "En este primer encuentro de Abinader y Rodríguez la conversación giró en torno a la cooperación energética, las relaciones consulares y el turismo, informó la Presidencia de República Dominicana The post Luis Abinader y Delcy Rodríguez abordaron cooperación energética y consular en Roma appeared first on El Carabobeño ..."
+  },
+  {
+    "estado_relacionado": "Nacional",
+    "titular": "Más de 200 viviendas afectadas tras riada en distrito de Gorkha en Nepal",
+    "medio": "VTV",
+    "url": "https://vtv.com.ve/mas-200-viviendas-afectadas-riada-nepal/",
+    "fecha": "2026-10-12T21:29:29+00:00",
+    "extracto": "Las autoridades de Nepal elevaron este lunes a más de 200 viviendas afectadas por la riada registrada el domingo en varias localidades del centro del país. Según el ejército nepalí, se logró el rescate de 95 personas, entre ellas nueve extranjeros, mientras que cinco ciudadanos permanecen desaparecidos. La Autoridad de..."
+  },
+  {
+    "estado_relacionado": "Nacional",
+    "titular": "Comunidad venezolana en Roma protestó por la presencia de Delcy Rodríguez en foro de la FAO",
+    "medio": "El Nacional",
+    "url": "https://www.elnacional.com/2026/10/comunidad-venezolana-en-roma-protesta-por-la-presencia-de-delcy-rodriguez-en-un-foro-de-la-fao/",
+    "fecha": "2026-10-12T21:24:00+00:00",
+    "extracto": "Los manifestantes acusan a la presidenta encargada de ser una de las responsables \"del hambre y la miseria\" que afecta al país. The post Comunidad venezolana en Roma protestó por la presencia de Delcy Rodríguez en foro de la FAO appeared first on EL NACIONAL ."
+  },
+  {
+    "estado_relacionado": "Nacional",
+    "titular": "Exdiputado Guzamana exige representación indígena en el TSJ y en el CNE",
+    "medio": "El Carabobeño",
+    "url": "https://www.el-carabobeno.com/exdiputado-guzamana-exige-representacion-indigena-en-el-tsj-y-en-el-cne/",
+    "fecha": "2026-10-12T21:22:02+00:00",
+    "extracto": "En un video publicado en X, Guzamana denunció que miembros de las comunidades indígenas han sido víctimas de detenciones arbitrarias a los que se les ha aplicado la ley ordinaria, cuando hay una legislación especial para las etnias The post Exdiputado Guzamana exige representación indígena en el TSJ y en el CNE appeare..."
+  },
+  {
+    "estado_relacionado": "Miranda",
+    "titular": "Los Teques reivindica la resistencia indígena y su historia milenaria",
+    "medio": "Diario Avance Miranda",
+    "url": "https://diarioavance.com/los-teques-reivindica-la-resistencia-indigena-y-su-historia-milenaria/",
+    "fecha": "2026-10-12T21:18:36+00:00",
+    "extracto": "Se reunieron a honrar a los antepasados en el Paseo que se construyó en su honor “Uno de La entrada Los Teques reivindica la resistencia indígena y su historia milenaria se publicó primero en Diario Avance ."
+  },
+  {
+    "estado_relacionado": "Carabobo",
+    "titular": "Juegos Deportivos Nacionales Comunales inician en Carabobo con encendido del Fuego Patrio",
+    "medio": "VTV",
+    "url": "https://vtv.com.ve/deportivos-nacionales-comunales-encendido-fuego-patrio/",
+    "fecha": "2026-10-12T21:13:30+00:00",
+    "extracto": "Desde el inmortal Campo de Carabobo ejecutaron el encendido del Fuego Patrio de los «IV Juegos Deportivos Nacionales Comunales 2026″, que se llevarán a cabo del 17 al 31 de octubre. Este evento deportivo reunirá a atletas de distintos territorios del país en 16 disciplinas deportivas y tendrá como sedes a Lara, Caracas..."
+  },
+  {
+    "estado_relacionado": "Nacional",
+    "titular": "Murió RJ Mitte, el actor que interpretó a Walter White Jr. en Breaking Bad",
+    "medio": "El Nacional",
+    "url": "https://www.elnacional.com/2026/10/murio-rj-mitte-el-actor-que-interpreto-a-walter-white-jr-en-breaking-bad/",
+    "fecha": "2026-10-12T21:08:00+00:00",
+    "extracto": "El intérprete de 34 años falleció este lunes en Texas. Sus representantes confirmaron la trágica noticia y destacaron su incansable labor como activista por la inclusión de personas con discapacidad. The post Murió RJ Mitte, el actor que interpretó a Walter White Jr. en Breaking Bad appeared first on EL NACIONAL ."
+  },
+  {
+    "estado_relacionado": "Nacional",
+    "titular": "Primer Encuentro de Innovación y Robótica fortalece el desarrollo tecnológico nacional",
+    "medio": "VTV",
+    "url": "https://vtv.com.ve/encuentro-innovacion-robotica-fortalece-desarrollo-tecnologico-nacional/",
+    "fecha": "2026-10-12T21:03:33+00:00",
+    "extracto": "Con el lema “Ciencia que transforma”, se llevó a cabo el Primer Encuentro de Innovación, Robótica y Tecnologías Aplicadas en las instalaciones de la Universidad Nacional de las Ciencias Dr. Humberto Fernández-Morán, espacio que reunió a jóvenes talentos e investigadores del área tecnológica. Durante la jornada, integra..."
+  },
+  {
+    "estado_relacionado": "Carabobo",
+    "titular": "LVBP inicia la temporada 2026-2027 este 12 de octubre con Magallanes como favorito al título #12Oct",
+    "medio": "El Impulso",
+    "url": "https://www.elimpulso.com/2026/10/12/lvbp-inicia-la-temporada-2026-2027-este-12-de-octubre-con-magallanes-como-favorito-al-titulo-12oct/",
+    "fecha": "2026-10-12T21:02:56+00:00",
+    "extracto": "La LVBP inicia este 12 de octubre la temporada 2026-2027 con Magallanes y Tiburones en Valencia, nuevas figuras y tecnología ABS. La entrada LVBP inicia la temporada 2026-2027 este 12 de octubre con Magallanes como favorito al título #12Oct se publicó primero en El Impulso ."
+  },
+  {
+    "estado_relacionado": "La Guaira",
+    "titular": "Forman a 114 voluntarios como rescatistas tras terremotos en La Guaira",
+    "medio": "Últimas Noticias",
+    "url": "https://news.google.com/rss/articles/CBMisgFBVV95cUxQdlMtRy1XSlpNVGpXeTFmZ2VfdGdWRGtBRmdQcXBXRUwybktYRzhxZDc3MG9zMXZnSmlORVY3QlJ6aWRicmk2dC1paHNQQlFfU21UOGtXVWlhNUxtLXZlbGowck9oRmdicFI0OWdycW9zZVpQV2FHTWdCM0pfTDhnc0lVV1Z1MlAtOFNmSUxUTHBTTnRnZHBtMXh4NWpKOU9IRnNDM0J6M0FrVmlScUxxSlp3?oc=5",
+    "fecha": "2026-10-12T21:02:36+00:00",
+    "extracto": "Forman a 114 voluntarios como rescatistas tras terremotos en La Guaira Últimas Noticias"
+  },
+  {
+    "estado_relacionado": "Yaracuy",
+    "titular": "Fedecámaras Yaracuy anuncia creación del premio de periodismo «Carlos Pinto Domínguez»",
+    "medio": "Yaracuy al Día",
+    "url": "https://yaracuyaldia.com/yaracuy/economia/fedecamaras-yaracuy-anuncia-creacion-del-premio-de-periodismo-carlos-pinto-dominguez/?utm_source=rss&utm_medium=rss&utm_campaign=fedecamaras-yaracuy-anuncia-creacion-del-premio-de-periodismo-carlos-pinto-dominguez",
+    "fecha": "2026-10-12T21:02:29+00:00",
+    "extracto": "La directiva de Fedecámaras Yaracuy anunció este lunes 12 de octubre la creación del Premio de Periodismo Mención Área Económica «Carlos Pinto Domínguez», quien fue fundador del diario Yaracuy al Día y reconocido empresario en la entidad. Lea también:El aguacate de Yaracuy conquista el mercado internacional; su sabor y..."
+  },
+  {
+    "estado_relacionado": "Monagas",
+    "titular": "Valeria Osorio logra 6 medallas en Nacional de Levantamiento de Pesas",
+    "medio": "El Periódico de Monagas",
+    "url": "https://elperiodicodemonagas.com.ve/deportes/valeria-osorio-logra-6-medallas-en-nacional-de-levantamiento-de-pesas/",
+    "fecha": "2026-10-12T21:00:39+00:00",
+    "extracto": "Con un total de 31 medallas, incluyendo 12 de oro, la representación… La entrada Valeria Osorio logra 6 medallas en Nacional de Levantamiento de Pesas se publicó primero en El Periódico de Monagas Noticias de Maturín Monagas Venezuela. ."
+  },
+  {
+    "estado_relacionado": "Nacional",
+    "titular": "Pescadores y acuicultores impulsan estrategias para fortalecer la producción nacional",
+    "medio": "VTV",
+    "url": "https://vtv.com.ve/pescadores-acuicultores-estrategias-fortalecer-produccion-nacional/",
+    "fecha": "2026-10-12T21:00:35+00:00",
+    "extracto": "Más de 200 pescadores y acuicultores de 16 estados y distintas regiones del país participaron en el I Encuentro Nacional de Articulación Estratégica MinPesca-UNPA: “Soberanía Azul, Producción y Poder Popular”, donde construyeron propuestas para orientar el desarrollo del sector a corto, mediano y largo plazo. Los asist..."
+  },
+  {
+    "estado_relacionado": "Nacional",
+    "titular": "Habilitan más de 20 comedores universitarios para favorecer a los estudiantes del país",
+    "medio": "VTV",
+    "url": "https://vtv.com.ve/habilitan-20-comedores-universitarios-estudiantes-pais/",
+    "fecha": "2026-10-12T20:56:14+00:00",
+    "extracto": "Habilitan más de 20 comedores de universidades públicas en el territorio nacional, lo que representa un 66,67 % más de comedores y alcanza la cifra de 229.700 bandejas mensuales. Este crecimiento se logró a través del Programa de Alimentación y Nutrición Universitaria. Este nuevo modelo de gestión del Ministerio del Po..."
+  },
+  {
+    "estado_relacionado": "Nacional",
+    "titular": "Otro lesionado por derrape en frontera",
+    "medio": "La Nación Táchira",
+    "url": "https://lanacionweb.com/frontera/otro-lesionado-por-derrape-en-frontera/",
+    "fecha": "2026-10-12T20:50:31+00:00",
+    "extracto": "Un hombre resultó lesionado este lunes 12 de octubre, cerca de las 11 de la mañana, en accidente de tránsito registrado en vía hacia la frontera. La moto en la que se desplazaba el ciudadano terminó derrapando en la carretera principal que conecta a Capacho con San Antonio, justo a la altura de El Descanso. […]"
+  },
+  {
+    "estado_relacionado": "Nacional",
+    "titular": "Embajada de Estados Unidos: El diálogo suma progreso a la transición democrática en Venezuela",
+    "medio": "El Pitazo",
+    "url": "https://elpitazo.net/politica/embajada-de-estados-unidos-el-dialogo-suma-progreso-a-la-transicion-democratica-en-venezuela/",
+    "fecha": "2026-10-12T20:50:19+00:00",
+    "extracto": "La Embajada de Estados Unidos en Venezuela afirmó que las conversaciones de reconciliación política entre representantes del Gobierno interino que lidera Delcy Rodríguez y de la Asamblea Nacional electa en 2015, dirigida por Dinorah Figuera, han generado «avances concretos hacia una transición democrática en el país». ..."
+  },
+  {
+    "estado_relacionado": "Táchira",
+    "titular": "Cierres viales en San Cristóbal por simulacro sísmico este martes 13 de octubre",
+    "medio": "La Nación Táchira",
+    "url": "https://lanacionweb.com/regional/cierres-viales-en-san-cristobal-por-simulacro-sismico-este-martes-13-de-octubre/",
+    "fecha": "2026-10-12T20:49:43+00:00",
+    "extracto": "Protección Civil Táchira realizará este martes 13 de octubre, el décimo simulacro de evento sísmico en el estado, con cierres viales en el centro de San Cristóbal y participación de escuelas y comunidades. La actividad busca aumentar la educación preventiva y mejorar los tiempos de reacción de la población ante un movi..."
+  },
+  {
+    "estado_relacionado": "Bolívar",
+    "titular": "Tímido el tránsito binacional este 12Oct",
+    "medio": "La Nación Táchira",
+    "url": "https://lanacionweb.com/frontera/timido-el-transito-binacional-este-12oct/",
+    "fecha": "2026-10-12T20:48:46+00:00",
+    "extracto": "El tránsito por el puente internacional Simón Bolívar, que conecta a La Parada con San Antonio del Táchira, luce bastante tímido este lunes festivo. En ambos carriles del paso binacional, la circulación era bastante fluida, tal y como se aprecia en las imágenes captadas al mediodía. Desde la avenida Venezuela del munic..."
+  },
+  {
+    "estado_relacionado": "Nacional",
+    "titular": "Anuncian la llegada de equipos y repuestos para el SEN, esperan recuperar el sistema a «mediano plazo»",
+    "medio": "Caraota Digital",
+    "url": "https://caraotadigital.net/venezuela/anuncian-la-llegada-de-equipos-y-repuestos-para-el-sen-esperan-recuperar-el-sistema-a-mediano-plazo/",
+    "fecha": "2026-10-12T20:46:21+00:00",
+    "extracto": "El gobierno nacional anunció la llegada de equipos y repuestos para las plantas termoeléctricas del país, con el objetivo de hacer frente a la crisis que azota la mayor parte del territorio y fortalecer el Sistema Eléctrico Nacional (SEN). El Ministerio de Comunicación e Información brindó detalles sobre la llegada de ..."
+  },
+  {
+    "estado_relacionado": "Nacional",
+    "titular": "Reciente terremoto en Panamá liberó la energía acumulada en un siglo",
+    "medio": "El Nacional",
+    "url": "https://www.elnacional.com/2026/10/reciente-terremoto-en-panama-libero-la-energia-acumulada-en-un-siglo/",
+    "fecha": "2026-10-12T20:46:00+00:00",
+    "extracto": "El Instituto de Geociencias de la Universidad de Panamá situó la magnitud de ese terremoto del viernes con epicentro en la península de Azuero, en el suroeste del país, en 7,5, mientras que el Servicio Geológico de Estados Unidos (USGS) lo elevó a 7,7. The post Reciente terremoto en Panamá liberó la energía acumulada e..."
+  },
+  {
+    "estado_relacionado": "Táchira",
+    "titular": "Gremio docente de la UNET exige respuestas ante el retraso del bono de profesionalización",
+    "medio": "La Nación Táchira",
+    "url": "https://lanacionweb.com/regional/gremio-docente-de-la-unet-exige-respuestas-ante-el-retraso-del-bono-de-profesionalizacion/",
+    "fecha": "2026-10-12T20:45:31+00:00",
+    "extracto": "Un grupo de profesores de la Universidad Nacional Experimental del Táchira (UNET) exigen al Ministerio del Poder Popular para la Educación Universitaria el pago del bono de profesionalización, correspondiente a los docentes activos, el cual debió ser cancelado entre el 29 y 30 de septiembre. Carolina Casanova, presiden..."
+  },
+  {
+    "estado_relacionado": "Lara",
+    "titular": "#PulsoEmpresarial Arturos rinde homenaje al sabor guaro y lanza en Barquisimeto sus nuevos Chicharrones de Pollo",
+    "medio": "El Impulso",
+    "url": "https://www.elimpulso.com/2026/10/12/pulsoempresarial-arturos-rinde-homenaje-al-sabor-guaro-y-lanza-en-barquisimeto-sus-nuevos-chicharrones-de-pollo/",
+    "fecha": "2026-10-12T20:45:00+00:00",
+    "extracto": "En el marco de su campaña \"Hecho en Venezuela, como tú\", la cadena presentó esta propuesta desarrollada como una iniciativa exclusivamente regional para la capital larense La entrada #PulsoEmpresarial Arturos rinde homenaje al sabor guaro y lanza en Barquisimeto sus nuevos Chicharrones de Pollo se publicó primero en El..."
+  },
+  {
+    "estado_relacionado": "Distrito Capital",
+    "titular": "Cadena perpetua para femicida de madre venezolana: la petición de la fiscalía chilena",
+    "medio": "El Pitazo",
+    "url": "https://elpitazo.net/migracion/cadena-perpetua-para-femicida-de-madre-venezolana-la-peticion-de-la-fiscalia-chilena/",
+    "fecha": "2026-10-12T20:43:57+00:00",
+    "extracto": "Caracas.- La Fiscalía de Chile pidió cadena perpetua para Humberto Alejandro Pernía Rodríguez, declarado culpable del femicidio de su expareja, la madre venezolana Daymari Nalief Toledo Castillo, quien fue atacada con 27 puñaladas mientras estaba en su trabajo, en Talca, Región del Maule. El dato se conoció a través de..."
+  },
+  {
+    "estado_relacionado": "Monagas",
+    "titular": "Comercios en Maturín trabajaron con normalidad este 12-Oct",
+    "medio": "El Periódico de Monagas",
+    "url": "https://elperiodicodemonagas.com.ve/monagas/maturin/comercios-en-maturin-trabajaron-con-normalidad-este-12-oct/",
+    "fecha": "2026-10-12T20:42:53+00:00",
+    "extracto": "Los comercios en el centro de Maturín trabajaron con normalidad este 12… La entrada Comercios en Maturín trabajaron con normalidad este 12-Oct se publicó primero en El Periódico de Monagas Noticias de Maturín Monagas Venezuela. ."
+  },
+  {
+    "estado_relacionado": "Aragua",
+    "titular": "Estudiantes tachirenses representarán a Venezuela en el Mundial de Robótica en Malasia",
+    "medio": "La Nación Táchira",
+    "url": "https://lanacionweb.com/regional/estudiantes-tachirenses-representaran-a-venezuela-en-el-mundial-de-robotica-en-malasia/",
+    "fecha": "2026-10-12T20:41:12+00:00",
+    "extracto": "​Una delegación de estudiantes de Táchira obtuvo medallas de oro y bronce en el Campeonato Nacional de Robótica en Aragua, asegurando su clasificación directa al Campeonato Internacional Tenoxian 2026 en Malasia. La Autoridad Única de Educación, Dra. Berzabeth Gandica, dio a conocer el logro de los alumnos (de entre 10..."
+  },
+  {
+    "estado_relacionado": "Portuguesa",
+    "titular": "Colapsó puente recién inaugurado tras fuertes lluvias en Portuguesa",
+    "medio": "Últimas Noticias",
+    "url": "https://news.google.com/rss/articles/CBMirwFBVV95cUxQVlFHNHBCNTl5MkVvdDF3a1pnMWdpemJtWWVsM2VjeUNydG5qU0ZGMGhGcFNiLVUwZmRrUXJJZHJsQzJTNEdqSXFWLVRObi1ldjVwNFlvNml3eHROZEtwcnluTGh4YlNjUlF5Q2l2dTdVbzM4TEdhWXJwMjZtN1F3T2ZYZTJmdE5qVE1fNjBpTEg4ZjczRU1JMGtwOXEwV3p4SDJWMjI1QUtraUg4ZVJJ?oc=5",
+    "fecha": "2026-10-12T20:39:32+00:00",
+    "extracto": "Colapsó puente recién inaugurado tras fuertes lluvias en Portuguesa Últimas Noticias"
+  },
+  {
+    "estado_relacionado": "Nacional",
+    "titular": "Ataque de las FARC con carro bomba deja tres heridos",
+    "medio": "Diario Avance Miranda",
+    "url": "https://diarioavance.com/ataque-de-las-farc-con-carro-bomba-deja-tres-heridos/",
+    "fecha": "2026-10-12T20:37:59+00:00",
+    "extracto": "Un atentado con carro bomba dejó un saldo de tres civiles heridos en el departamento del Cauca, Colombia. La entrada Ataque de las FARC con carro bomba deja tres heridos se publicó primero en Diario Avance ."
+  },
+  {
+    "estado_relacionado": "Nacional",
+    "titular": "“Niñas madres” migrantes: víctimas de delitos sexuales en Colombia",
+    "medio": "La Nación Táchira",
+    "url": "https://lanacionweb.com/frontera/ninas-madres-migrantes-victimas-de-delitos-sexuales-en-colombia/",
+    "fecha": "2026-10-12T20:33:32+00:00",
+    "extracto": "Por Paula Andrea Jiménez Entre 2019 y 2026 , más de 17 mil niñas y adolescentes migrantes y refugiadas venezolanas han sido víctimas de violencia sexual, física, psicológica, negligencia y abandono en Colombia, de acuerdo a cifras consultadas por Laboratorio Migrante al Observatorio Nacional de Violencias de Género de ..."
+  },
+  {
+    "estado_relacionado": "Nacional",
+    "titular": "El Vaticano suspende la agenda del papa hasta el 20 de octubre",
+    "medio": "Diario Avance Miranda",
+    "url": "https://diarioavance.com/el-vaticano-suspende-la-agenda-del-papa-hasta-el-20-de-octubre/",
+    "fecha": "2026-10-12T20:30:53+00:00",
+    "extracto": "Por una intervención quirúrgica La Santa Sede anunció la suspensión temporal de todas las audiencias y compromisos oficiales La entrada El Vaticano suspende la agenda del papa hasta el 20 de octubre se publicó primero en Diario Avance ."
+  },
+  {
+    "estado_relacionado": "Nacional",
+    "titular": "Inicia primera etapa de postulaciones al Programa Nacional de Becas Universitarias",
+    "medio": "VTV",
+    "url": "https://vtv.com.ve/inicia-primera-etapa-postulaciones-becas-universitarias/",
+    "fecha": "2026-10-12T20:30:45+00:00",
+    "extracto": "Anuncian la primera etapa del proceso de postulación del Programa Nacional de Becas Universitarias, la cual se desarrollará del 09 al 16 de octubre a través del portal oficial https://becasuniversitarias.mppeu.gob.ve/. El esquema se hará efectivo a partir del mes de noviembre y establece un incremento sustancial para g..."
+  },
+  {
+    "estado_relacionado": "Nacional",
+    "titular": "VenAmCham fortalece lazos comerciales entre Venezuela y EE. UU. en reunión de alto nivel",
+    "medio": "Globovisión",
+    "url": "https://www.globovision.com/economia/62797/venamcham-evalua-oportunidades-para-empresas-estadounidenses-en-venezuela",
+    "fecha": "2026-10-12T20:30:25.430369+00:00",
+    "extracto": "VenAmCham fortalece lazos comerciales entre Venezuela y EE. UU. en reunión de alto nivel"
   },
   {
     "estado_relacionado": "Nacional",
@@ -289,339 +1689,11 @@
   },
   {
     "estado_relacionado": "Nacional",
-    "titular": "Departamento de Estado afirma que la consolidación democrática en Venezuela demanda estabilidad, recuperación y fortalecimiento institucional",
-    "medio": "Globovisión",
-    "url": "https://www.globovision.com/politica/62864/ee-uu-condiciona-las-elecciones-en-venezuela-a-la-construccion-de-una-republica-duradera",
-    "fecha": "2026-10-12T20:30:24.542800+00:00",
-    "extracto": "Departamento de Estado afirma que la consolidación democrática en Venezuela demanda estabilidad, recuperación y fortalecimiento institucional"
-  },
-  {
-    "estado_relacionado": "Táchira",
-    "titular": "Rubio dice que el diálogo de la oposición con el Gobierno tiene \"todo el apoyo\" de EE. UU.",
-    "medio": "Globovisión",
-    "url": "https://www.globovision.com/politica/62876/rubio-dice-que-el-dialogo-de-la-oposicion-con-el-gobierno-tiene-todo-el-apoyo-de-ee-uu",
-    "fecha": "2026-10-12T20:30:24.542547+00:00",
-    "extracto": "Rubio dice que el diálogo de la oposición con el Gobierno tiene \"todo el apoyo\" de EE. UU."
-  },
-  {
-    "estado_relacionado": "Nacional",
-    "titular": "Tercera ronda de diálogo del 14 de octubre se centrará en la renovación del TSJ y garantías electorales",
-    "medio": "Globovisión",
-    "url": "https://www.globovision.com/politica/62884/renovacion-del-tsj-y-garantias-electorales-centraran-la-tercera-ronda-de-dialogo-el-proximo-14-de",
-    "fecha": "2026-10-12T20:30:24.542403+00:00",
-    "extracto": "Tercera ronda de diálogo del 14 de octubre se centrará en la renovación del TSJ y garantías electorales"
-  },
-  {
-    "estado_relacionado": "Nacional",
-    "titular": "Venezuela se solidariza con Panamá y ofrece asistencia tras terremoto de magnitud 7.7",
-    "medio": "Globovisión",
-    "url": "https://www.globovision.com/politica/62903/venezuela-ofrece-asistencia-a-panama-tras-recientes-movimientos-teluricos",
-    "fecha": "2026-10-12T20:30:24.542205+00:00",
-    "extracto": "Venezuela se solidariza con Panamá y ofrece asistencia tras terremoto de magnitud 7.7"
-  },
-  {
-    "estado_relacionado": "Nacional",
-    "titular": "Tania Díaz desde México: \"La unidad es nuestra garantía de victoria\"",
-    "medio": "Globovisión",
-    "url": "https://www.globovision.com/politica/62910/tania-diaz-desde-mexico-la-unidad-es-nuestra-garantia-de-victoria",
-    "fecha": "2026-10-12T20:30:24.542035+00:00",
-    "extracto": "Tania Díaz desde México: \"La unidad es nuestra garantía de victoria\""
-  },
-  {
-    "estado_relacionado": "Nacional",
-    "titular": "Alcalde Gustavo Duque sostuvo encuentro de trabajo con Dinorah Figuera en Washington",
-    "medio": "Globovisión",
-    "url": "https://www.globovision.com/politica/62931/alcalde-gustavo-duque-sostuvo-encuentro-de-trabajo-con-dinorah-figuera-en-washington",
-    "fecha": "2026-10-12T20:30:24.541884+00:00",
-    "extracto": "Alcalde Gustavo Duque sostuvo encuentro de trabajo con Dinorah Figuera en Washington"
-  },
-  {
-    "estado_relacionado": "Nacional",
-    "titular": "Venezuela expresa solidaridad con Chile tras intensas lluvias y aluviones",
-    "medio": "Globovisión",
-    "url": "https://www.globovision.com/politica/62943/venezuela-expresa-solidaridad-con-chile-tras-intensas-lluvias-y-aluviones",
-    "fecha": "2026-10-12T20:30:24.541719+00:00",
-    "extracto": "Venezuela expresa solidaridad con Chile tras intensas lluvias y aluviones"
-  },
-  {
-    "estado_relacionado": "Nacional",
-    "titular": "Presidenta Delcy Rodríguez llega a Roma para participar en el Foro Mundial de la Alimentación 2026",
-    "medio": "Globovisión",
-    "url": "https://www.globovision.com/politica/62954/presidenta-delcy-rodriguez-llega-a-roma-para-participar-en-el-foro-mundial-de-la-alimentacion-2026",
-    "fecha": "2026-10-12T20:30:24.541563+00:00",
-    "extracto": "Presidenta Delcy Rodríguez llega a Roma para participar en el Foro Mundial de la Alimentación 2026"
-  },
-  {
-    "estado_relacionado": "Nacional",
-    "titular": "“Panamá no está sola”: Presidenta Delcy Rodríguez reafirma solidaridad tras conversación con el presidente Mulino",
-    "medio": "Globovisión",
-    "url": "https://www.globovision.com/politica/62952/panama-no-esta-sola-presidenta-delcy-rodriguez-reafirma-solidaridad-tras-conversacion-con-el-mulino",
-    "fecha": "2026-10-12T20:30:24.541371+00:00",
-    "extracto": "“Panamá no está sola”: Presidenta Delcy Rodríguez reafirma solidaridad tras conversación con el presidente Mulino"
-  },
-  {
-    "estado_relacionado": "Nacional",
-    "titular": "Delcy Rodríguez desde Roma: “Estamos mostrando importantes avances con el objetivo de volver nuevamente a Hambre Cero en Venezuela”",
-    "medio": "Globovisión",
-    "url": "https://www.globovision.com/politica/62972/presidenta-delcy-rodriguez-desde-roma-venezuela-retoma-el-camino-hacia-hambre-cero",
-    "fecha": "2026-10-12T20:30:24.541148+00:00",
-    "extracto": "Delcy Rodríguez desde Roma: “Estamos mostrando importantes avances con el objetivo de volver nuevamente a Hambre Cero en Venezuela”"
-  },
-  {
-    "estado_relacionado": "Nacional",
-    "titular": "Gobierno nacional presenta balance del Plan Venezuela Renace tras 100 días del doble terremoto",
-    "medio": "Globovisión",
-    "url": "https://www.globovision.com/politica/62987/gobierno-nacional-presenta-balance-del-plan-venezuela-renace-tras-100-dias-del-doble-terremoto",
-    "fecha": "2026-10-12T20:30:24.540879+00:00",
-    "extracto": "Gobierno nacional presenta balance del Plan Venezuela Renace tras 100 días del doble terremoto"
-  },
-  {
-    "estado_relacionado": "Nacional",
-    "titular": "Más de 16 mil familias recibieron 461 créditos para condominios, informa la presidenta Rodríguez",
-    "medio": "Globovisión",
-    "url": "https://www.globovision.com/politica/62990/mas-de-16-mil-familias-recibieron-financiamiento-y-nuevas-viviendas-informa-la-presidenta-rodriguez",
-    "fecha": "2026-10-12T20:30:24.540641+00:00",
-    "extracto": "Más de 16 mil familias recibieron 461 créditos para condominios, informa la presidenta Rodríguez"
-  },
-  {
-    "estado_relacionado": "Nacional",
-    "titular": "Delcy Rodríguez llega este lunes a la sede de la FAO en Roma para participar en el Foro Mundial de la Alimentación",
-    "medio": "Globovisión",
-    "url": "https://www.globovision.com/politica/62993/presidenta-delcy-rodriguez-arriba-a-sede-de-la-fao-para-sumarse-al-foro-mundial-de-la-alimentacion",
-    "fecha": "2026-10-12T20:30:24.540417+00:00",
-    "extracto": "Delcy Rodríguez llega este lunes a la sede de la FAO en Roma para participar en el Foro Mundial de la Alimentación"
-  },
-  {
-    "estado_relacionado": "Nacional",
-    "titular": "conflictos internacionales",
-    "medio": "Banca y Negocios",
-    "url": "https://www.bancaynegocios.com/tag/conflictos-internacionales/",
-    "fecha": "2026-10-12T20:30:24.509380+00:00",
-    "extracto": "conflictos internacionales"
-  },
-  {
-    "estado_relacionado": "Nacional",
-    "titular": "Desafíos de 2022, lo que viene en el futuro inmediato según The Economist",
-    "medio": "Banca y Negocios",
-    "url": "https://www.bancaynegocios.com/desafios-de-2022-lo-que-viene-en-el-futuro-inmediato-segun-the-economist/",
-    "fecha": "2026-10-12T20:30:24.509258+00:00",
-    "extracto": "Desafíos de 2022, lo que viene en el futuro inmediato según The Economist"
-  },
-  {
-    "estado_relacionado": "Nacional",
-    "titular": "Winona Ryder volverá a trabajar con Tim Burton en la tercera temporada de \"Merlina\"",
-    "medio": "Notitarde",
-    "url": "https://www.notitarde.com.ve/revista-del-domingo/95667/la-actriz-winona-ryder-volvera-a-trabajar-con-tim-burton-en-la-tercera-temporada-de-wednesday",
-    "fecha": "2026-10-12T20:30:23.810859+00:00",
-    "extracto": "La actriz y el cineasta volvieron a colaborar hace un par de años en la secuela de \"Beetlejuice\", en la cual también participó Jenna Ortega"
-  },
-  {
-    "estado_relacionado": "Nacional",
-    "titular": "Warner confirma nueva propuesta de Paramount pero mantiene su apoyo a la oferta de Netflix",
-    "medio": "Notitarde",
-    "url": "https://www.notitarde.com.ve/revista-del-domingo/95674/warner-confirma-nueva-propuesta-de-paramount-pero-mantiene-su-apoyo-a-la-oferta-de-netflix",
-    "fecha": "2026-10-12T20:30:23.810567+00:00",
-    "extracto": "WBD no entró en detalles, de acuerdo con Bloomberg, la nueva oferta mejora la propuesta anterior"
-  },
-  {
-    "estado_relacionado": "Nacional",
-    "titular": "Todos los nominados a los Premios Goya 2026: A qué hora y dónde ver la ceremonia",
-    "medio": "Notitarde",
-    "url": "https://www.notitarde.com.ve/revista-del-domingo/95677/todos-los-nominados-a-los-premios-goya-2026-a-que-hora-y-donde-ver-la-ceremonia",
-    "fecha": "2026-10-12T20:30:23.810315+00:00",
-    "extracto": "El horario estimado de inicio de la gala principal para Venezuela es a las 5:00 p.m."
-  },
-  {
-    "estado_relacionado": "Nacional",
-    "titular": "Madres carabobeñas disfrutaron de un hermoso homenaje en Il Contadino",
-    "medio": "Notitarde",
-    "url": "https://www.notitarde.com.ve/revista-del-domingo/100585/madres-carabobenas-disfrutaron-de-un-hermoso-homenaje-en-il-contadino",
-    "fecha": "2026-10-12T20:30:23.810130+00:00",
-    "extracto": "Por parte de Notitarde y Revista del Domingo"
-  },
-  {
-    "estado_relacionado": "Trujillo",
-    "titular": "Diócesis de Trujillo conmemorará el natalicio y primer aniversario de canonización de San José Gregorio Hernández",
-    "medio": "Notitarde",
-    "url": "https://www.notitarde.com.ve/cultura/108136/diocesis-de-trujillo-conmemorara-el-natalicio-y-primer-aniversario-de-canonizacion-de-san-jose",
-    "fecha": "2026-10-12T20:30:23.809864+00:00",
-    "extracto": "Las celebraciones arrancarán el 1 de octubre con la bajada solemne de la imagen, una misa central y un concierto de sanación"
-  },
-  {
-    "estado_relacionado": "Zulia",
-    "titular": "Cordonazo de San Francisco: Día de lluvia y descargas eléctricas en Venezuela",
-    "medio": "Notitarde",
-    "url": "https://www.notitarde.com.ve/cultura/108444/cordonazo-de-san-francisco-dia-de-lluvia-y-descargas-electricas-en-venezuela",
-    "fecha": "2026-10-12T20:30:23.809518+00:00",
-    "extracto": "El Inameh hizo mención a esta fecha e indicó que este \"evento coincide con el desplazamiento de la Zona de Convergencia Intertropical y el paso de ondas tropicales\" en el país"
-  },
-  {
-    "estado_relacionado": "Mérida",
-    "titular": "Presentadas en Mérida Antologías Poéticas publicadas en El Salvador y Cuba de Tarek William Saab",
-    "medio": "Notitarde",
-    "url": "https://www.notitarde.com.ve/cultura/108684/presentadas-en-merida-antologias-poeticas-publicadas-en-el-salvador-y-cuba-de-tarek-william-saab",
-    "fecha": "2026-10-12T20:30:23.809329+00:00",
-    "extracto": "Durante la emotiva jornada, Saab compartió reflexiones y lecturas sobre sus 45 años de trayectoria literaria"
-  },
-  {
-    "estado_relacionado": "Nacional",
-    "titular": "Impulsan masificación cultural con apertura de la Casa de Música en Ocumare de la Costa",
-    "medio": "Notitarde",
-    "url": "https://www.notitarde.com.ve/cultura/108896/impulsan-masificacion-cultural-con-apertura-de-la-casa-de-musica-en-ocumare-de-la-costa",
-    "fecha": "2026-10-12T20:30:23.809019+00:00",
-    "extracto": "Durante la inspección, las autoridades constataron que la escuela de música cuenta con el acondicionamiento total en sus espacios"
-  },
-  {
-    "estado_relacionado": "Miranda",
-    "titular": "Un plato referente y emblemático en Miranda: Dulce de naranja rellena",
-    "medio": "Notitarde",
-    "url": "https://www.notitarde.com.ve/carabobo/107198/el-dulce-de-naranja-rellena-de-coco-de-los-platos-referentes-en-miranda",
-    "fecha": "2026-10-12T20:30:23.808778+00:00",
-    "extracto": "Nancy Latouche, no es solo conocida por sus habilidades culturales, también se destaca en el área de la gastronomía y en un momento de su vida decidió elaborar la receta"
-  },
-  {
-    "estado_relacionado": "Nacional",
-    "titular": "Pabellón criollo vs. encebollado ecuatoriano: Semifinal del Mundial de Ibai Llanos (+Video)",
-    "medio": "Notitarde",
-    "url": "https://www.notitarde.com.ve/bon-appetit/107279/pabellon-criollo-vs-encebollado-ecuatoriano-semifinal-del-mundial-de-ibai-llanos-video",
-    "fecha": "2026-10-12T20:30:23.808389+00:00",
-    "extracto": "La competencia enfrenta a platos representativos de distintos países mediante votaciones de los usuarios en redes sociales"
-  },
-  {
-    "estado_relacionado": "Nacional",
-    "titular": "\"Se repite la historia\": Venezuela y Perú en la final del Mundial de Comidas de Ibai Llanos (+Video)",
-    "medio": "Notitarde",
-    "url": "https://www.notitarde.com.ve/bon-appetit/107636/se-repite-la-historia-venezuela-y-peru-en-la-final-del-mundial-de-comidas-de-ibai-llanos-video",
-    "fecha": "2026-10-12T20:30:23.808005+00:00",
-    "extracto": "El pabellón criollo venezolano se impuso con 2.308.000 votos ante Ecuador que obtuvo 1.511.000 votos, con el encebollado"
-  },
-  {
-    "estado_relacionado": "Nacional",
-    "titular": "Venezuela vs. Perú: Ibai Llanos lanza la final del Mundial de Comidas (+Video)",
-    "medio": "Notitarde",
-    "url": "https://www.notitarde.com.ve/bon-appetit/107695/venezuela-vs-peru-ibai-llanos-lanza-la-final-del-mundial-de-comidas-video",
-    "fecha": "2026-10-12T20:30:23.807422+00:00",
-    "extracto": "Emocionó a sus seguidores al incorporar en la competición la cachapa, la reina pepiada y el plato tradicional navideño venezolano: hallaca, ensalada de gallina, pan de jamón y pernil, junto al pabellón criollo que arrasó desde el inicio"
-  },
-  {
-    "estado_relacionado": "Nacional",
-    "titular": "¿Gemini caído? Lo que reportan los usuarios este 8-Oct",
-    "medio": "Notitarde",
-    "url": "https://www.notitarde.com.ve/ciencia-y-tec/108676/gemini-caido-lo-que-reportan-los-usuarios-este-8oct",
-    "fecha": "2026-10-12T20:30:23.807081+00:00",
-    "extracto": "Según con reportes publicados en redes sociales por los internautas, las principales fallas estarían relacionadas con la generación de respuestas"
-  },
-  {
-    "estado_relacionado": "Nacional",
-    "titular": "Starlink obtiene autorización legal para operar en Venezuela",
-    "medio": "Notitarde",
-    "url": "https://www.notitarde.com.ve/ciencia-y-tec/108757/starlink-obtiene-autorizacion-legal-para-operar-en-venezuela",
-    "fecha": "2026-10-12T20:30:23.806865+00:00",
-    "extracto": "Así lo informó la Comisión Nacional de Telecomunicaciones (Conatel)"
-  },
-  {
-    "estado_relacionado": "Nacional",
-    "titular": "¡Tricampeones en robótica! Venezuela hace historia en la FIRST Global Challenge 2026",
-    "medio": "Notitarde",
-    "url": "https://www.notitarde.com.ve/ciencia-y-tec/108863/tricampeones-en-robotica-venezuela-hace-historia-en-la-first-global-challenge-2026",
-    "fecha": "2026-10-12T20:30:23.806481+00:00",
-    "extracto": "El gran gran líder de esta hazaña fue \"Guaira\", un robot diseñado y ensamblado por el equipo nacional que demostró una superioridad técnica impecable en la arena de competencia"
-  },
-  {
-    "estado_relacionado": "Nacional",
-    "titular": "Paso a paso: Así se activa la nueva cuenta bancaria virtual de EE. UU. en Airtm para venezolanos",
-    "medio": "Notitarde",
-    "url": "https://www.notitarde.com.ve/ciencia-y-tec/108922/paso-a-paso-asi-se-activa-la-nueva-cuenta-bancaria-virtual-de-ee-uu-en-airtm-para-venezolanos",
-    "fecha": "2026-10-12T20:30:23.806164+00:00",
-    "extracto": "Los titulares pueden disponer de un número de ruta (routing number) y un número de cuenta corriente (checking) a su nombre"
-  },
-  {
-    "estado_relacionado": "Nacional",
-    "titular": "ABCDiario: ​C de Cuando el cochino está gordo, hasta el rabo es chicharrón",
-    "medio": "Notitarde",
-    "url": "https://www.notitarde.com.ve/opinion/108842/c-de-cuando-el-cochino-esta-gordo-hasta-el-rabo-es-chicharron",
-    "fecha": "2026-10-12T20:30:23.805810+00:00",
-    "extracto": "Hubo una época en que los micrófonos no se respondían con palabras raras ni discursos aburridos, sino con pura astucia criolla y refranes para salir del paso"
-  },
-  {
-    "estado_relacionado": "Nacional",
-    "titular": "Tomás Socías López: La inflación",
-    "medio": "Notitarde",
-    "url": "https://www.notitarde.com.ve/opinion/108878/tomas-socias-lopez-la-inflacion",
-    "fecha": "2026-10-12T20:30:23.805167+00:00",
-    "extracto": "Se trata de un índice de medición política y de la aceptación o no aceptación, unido a otras mediciones, de los sistemas económicos para gestiones de gobierno y de los presidentes"
-  },
-  {
-    "estado_relacionado": "Nacional",
     "titular": "Presidenta Delcy Rodríguez sostiene encuentro bilateral con el mandatario de Angola, João Goncalves Lourenço",
     "medio": "Notitarde",
     "url": "https://www.notitarde.com.ve/pais/108914/presidenta-delcy-rodriguez-sostiene-encuentro-bilateral-con-el-mandatario-de-angola-joo-goncalves",
     "fecha": "2026-10-12T20:30:23.804758+00:00",
     "extracto": "La cita oficial entre las delegaciones de Venezuela y Angola prioriza el desarrollo agrícola y productivo conjunto a través del fortalecimiento productivo, intercambio comercial y soberanía alimentaria"
-  },
-  {
-    "estado_relacionado": "Nacional",
-    "titular": "Delcy Rodríguez y Luis Abinader abordan cooperación energética y consular en reunión en Roma",
-    "medio": "Notitarde",
-    "url": "https://www.notitarde.com.ve/pais/108918/luis-abinader-y-delcy-rodriguez-abordan-cooperacion-energetica-y-consular-en-reunion-en-roma",
-    "fecha": "2026-10-12T20:30:23.804439+00:00",
-    "extracto": "En este primer encuentro giró en torno a la cooperación energética, las relaciones consulares y el turismo"
-  },
-  {
-    "estado_relacionado": "Nacional",
-    "titular": "Llegan a Venezuela nuevos equipos y repuestos destinados a mejorar el Sistema Eléctrico",
-    "medio": "Notitarde",
-    "url": "https://www.notitarde.com.ve/pais/108920/llegan-a-venezuela-nuevos-equipos-y-repuestos-destinados-a-mejorar-el-sistema-electrico",
-    "fecha": "2026-10-12T20:30:23.804067+00:00",
-    "extracto": "Las nuevas adquisiciones fueron posibles gracias a \"las alianzas del Gobierno Nacional con el sector privado y el esfuerzo de los ingenieros venezolanos\""
-  },
-  {
-    "estado_relacionado": "Nacional",
-    "titular": "Alerta sanitaria en Venezuela por lote falsificado de medicamento oncológico",
-    "medio": "Notitarde",
-    "url": "https://www.notitarde.com.ve/salud/108525/alerta-sanitaria-en-venezuela-por-lote-falsificado-de-medicamento-oncologico",
-    "fecha": "2026-10-12T20:30:23.803725+00:00",
-    "extracto": "Confirman que el lote no figura en registros oficiales de fabricación ni ha ingresado al país mediante canales de importación formal"
-  },
-  {
-    "estado_relacionado": "Nacional",
-    "titular": "OMS evalúa como \"muy bajo\" el riesgo sanitario para Europa tras un posible caso fatal de peste neumónica en Rusia",
-    "medio": "Notitarde",
-    "url": "https://www.notitarde.com.ve/salud/108566/oms-evalua-como-muy-bajo-el-riesgo-sanitario-para-europa-tras-un-posible-caso-fatal-de-peste-en",
-    "fecha": "2026-10-12T20:30:23.803195+00:00",
-    "extracto": "La institución fue notificada por las autoridades rusas sobre la muerte de la laboratorista, ocurrida el pasado 2 de octubre"
-  },
-  {
-    "estado_relacionado": "Nacional",
-    "titular": "¿Tienes problemas con el sueño?: Este fruto seco podría ayudar",
-    "medio": "Notitarde",
-    "url": "https://www.notitarde.com.ve/salud/108874/tienes-problemas-con-el-sueno-este-fruto-seco-podria-ayudar",
-    "fecha": "2026-10-12T20:30:23.802855+00:00",
-    "extracto": "Investigadores analizaron estudios sobre los nutrientes y componentes bioactivos de este fruto seco y sus posibles efectos sobre el descanso"
-  },
-  {
-    "estado_relacionado": "Nacional",
-    "titular": "Zelenski acepta la \"tregua\" de Trump, Putin da largas y la Unión Europea adopta más sanciones",
-    "medio": "Notitarde",
-    "url": "https://www.notitarde.com.ve/internacional/108912/zelenski-acepta-la-tregua-de-trump-putin-da-largas-y-la-union-europea-adopta-mas-sanciones",
-    "fecha": "2026-10-12T20:30:23.802302+00:00",
-    "extracto": "\"Estamos listos para respetar un alto el fuego energético si Rusia está lista para hacer lo mismo. Estamos de acuerdo si ellos están de acuerdo\", dijo Zelenski en una intervención por videoconferencia ante el Foro de Seguridad de Varsovia"
-  },
-  {
-    "estado_relacionado": "Nacional",
-    "titular": "Hijas de Petro denunciarán al dueño de revista Semana por acusación contra ex primera dama",
-    "medio": "Notitarde",
-    "url": "https://www.notitarde.com.ve/internacional/108916/hijas-de-petro-denunciaran-al-dueno-de-revista-semana-por-acusacion-contra-ex-primera-dama",
-    "fecha": "2026-10-12T20:30:23.801784+00:00",
-    "extracto": "La reacción del exmandatario se produce después de que la revista publicara el fin de semana una entrevista con la española Eva Ferrer, quien fue asesora de Alcocer y consejera de su gobierno (2022-2026)"
-  },
-  {
-    "estado_relacionado": "Nacional",
-    "titular": "Países latinoamericanos piden en la FAO innovación y multilateralismo contra el hambre",
-    "medio": "Notitarde",
-    "url": "https://www.notitarde.com.ve/internacional/108919/paises-latinoamericanos-piden-en-la-fao-innovacion-y-multilateralismo-contra-el-hambre",
-    "fecha": "2026-10-12T20:30:23.800011+00:00",
-    "extracto": "Durante la inauguración del Foro Mundial de la Alimentación 2026, los representantes latinoamericanos coincidieron en que la seguridad alimentaria es imprescindible para el desarrollo"
   },
   {
     "estado_relacionado": "Lara",
@@ -630,46 +1702,6 @@
     "url": "https://www.notitarde.com.ve/deportes/108906/luis-lara-embiste-al-as-el-novato-venezolano-castiga-a-skubal-y-los-cerveceros-dan-el-primer-golpe",
     "fecha": "2026-10-12T20:30:23.799546+00:00",
     "extracto": "El equipo no sólo le dio la oportunidad, sino que apostó su futuro por él y Lara parece no defraudar"
-  },
-  {
-    "estado_relacionado": "Aragua",
-    "titular": "Tigres de Aragua inicia su camino en la temporada 2026-2027 de la LVBP",
-    "medio": "Notitarde",
-    "url": "https://www.notitarde.com.ve/deportes/108921/tigres-de-aragua-inicia-su-camino-en-la-temporada-20262027-de-la-lvbp",
-    "fecha": "2026-10-12T20:30:23.799470+00:00",
-    "extracto": "El torneo rinde homenaje a la victoria nacional bajo la denominación “Campeones del Clásico Mundial de Béisbol 2026”"
-  },
-  {
-    "estado_relacionado": "Nacional",
-    "titular": "Cristiano Ronaldo asegura ser “el jugador más completo” de la historia",
-    "medio": "Notitarde",
-    "url": "https://www.notitarde.com.ve/deportes/108924/cristiano-ronaldo-asegura-ser-el-jugador-mas-completo-de-la-historia",
-    "fecha": "2026-10-12T20:30:23.798890+00:00",
-    "extracto": "Durante la conversación, el futbolista fue cuestionado sobre las comparaciones con otras grandes figuras del futbol mundial, entre ellas Lionel Messi, Pelé y Diego Armando Maradona"
-  },
-  {
-    "estado_relacionado": "Cojedes",
-    "titular": "Una mujer resultó lesionada tras derrape de una motocicleta en Cojedes",
-    "medio": "Notitarde",
-    "url": "https://www.notitarde.com.ve/sucesos/108882/una-mujer-resulto-lesionada-tras-derrape-de-una-motocicleta-en-cojedes",
-    "fecha": "2026-10-12T20:30:23.798744+00:00",
-    "extracto": "El hecho se produjo en horas de la madrugada en la avenida Rómulo Betancourt, adyacente al NEC del municipio San Carlos"
-  },
-  {
-    "estado_relacionado": "Carabobo",
-    "titular": "Bomberos de Valencia y Carabobo rescatan a un septuagenario atrapado en Residencias Los Pinos",
-    "medio": "Notitarde",
-    "url": "https://www.notitarde.com.ve/sucesos/108911/bomberos-de-valencia-y-carabobo-rescatan-a-un-septuagenario-atrapado-en-residencias-los-pinos",
-    "fecha": "2026-10-12T20:30:23.798589+00:00",
-    "extracto": "Los vecinos alertaron a la Policía Municipal de Valencia, organismo que coordinó con los cuerpos de bomberos"
-  },
-  {
-    "estado_relacionado": "Anzoátegui",
-    "titular": "Adolescente gravemente herido tras impactar su moto de agua contra una lancha en Lechería",
-    "medio": "Notitarde",
-    "url": "https://www.notitarde.com.ve/sucesos/108925/adolescente-gravemente-herido-tras-impactar-su-moto-de-agua-contra-una-lancha-en-lecheria",
-    "fecha": "2026-10-12T20:30:23.798534+00:00",
-    "extracto": "Cámaras de seguridad de la zona residencial registraron el momento exacto del suceso"
   },
   {
     "estado_relacionado": "Nacional",
@@ -681,110 +1713,6 @@
   },
   {
     "estado_relacionado": "Nacional",
-    "titular": "Muere Penélope Knuth, exviolista de la Orquesta Sinfónica de Venezuela, tras accidente en Chile",
-    "medio": "Notitarde",
-    "url": "https://www.notitarde.com.ve/espectaculos/108865/muere-penelope-knuth-exviolista-de-la-orquesta-sinfonica-de-venezuela-tras-accidente-en-chile",
-    "fecha": "2026-10-12T20:30:23.797698+00:00",
-    "extracto": "Los diez heridos fueron trasladados al hospital, y tres de ellos presentan lesiones de gravedad, entre los cuales se encuentra un hombre de 62 años, quien tiene un trauma pulmonar bilateral y hemotórax"
-  },
-  {
-    "estado_relacionado": "Distrito Capital",
-    "titular": "Cristian Noguera brilla en EE.UU. con dos nominaciones en los Lone Star EMMY® Awards",
-    "medio": "Notitarde",
-    "url": "https://www.notitarde.com.ve/espectaculos/108886/cristian-noguera-brilla-en-eeuu-con-dos-nominaciones-en-los-lone-star-emmy-awards",
-    "fecha": "2026-10-12T20:30:23.797441+00:00",
-    "extracto": "Su carrera comenzó en Venezuela a los 18 años como asistente en productoras de Caracas"
-  },
-  {
-    "estado_relacionado": "Nacional",
-    "titular": "Gracie Bon responde tras ser criticada por fotografiarse entre escombros en Panamá (+Fotos)",
-    "medio": "Notitarde",
-    "url": "https://www.notitarde.com.ve/espectaculos/108917/gracie-bon-responde-tras-ser-criticada-por-fotografiarse-entre-escombros-en-panama",
-    "fecha": "2026-10-12T20:30:23.797134+00:00",
-    "extracto": "Cientos de comentarios han llenado la publicación cuestionando a la mujer por la necesidad de las fotografías después de la tragedia"
-  },
-  {
-    "estado_relacionado": "Carabobo",
-    "titular": "Iglesias del eje oriental de Carabobo presentan afectaciones en sus estructuras internas y externas (+Video)",
-    "medio": "Notitarde",
-    "url": "https://www.notitarde.com.ve/carabobo/104017/iglesias-del-eje-oriental-de-carabobo-presentan-afectaciones-en-sus-estructuras-internas-y-externas",
-    "fecha": "2026-10-12T20:30:23.797045+00:00",
-    "extracto": "Templos de Guacara y San Joaquín se mantienen cerrados"
-  },
-  {
-    "estado_relacionado": "Nacional",
-    "titular": "Reto La Calceta dejó en evidencia la destreza física y superación personal de cada competidor (+Fotos)",
-    "medio": "Notitarde",
-    "url": "https://www.notitarde.com.ve/carabobo/88803/reto-la-calceta-dejo-en-evidencia-la-destreza-fisica-y-superacion-personal-de-cada-competidor",
-    "fecha": "2026-10-12T20:30:23.796778+00:00",
-    "extracto": "Un evento que contó con más de 300 atletas provenientes de diversas partes del país"
-  },
-  {
-    "estado_relacionado": "Nacional",
-    "titular": "Bonos activos en Patria del 12 al 17 de octubre: Montos y beneficiarios",
-    "medio": "Notitarde",
-    "url": "https://www.notitarde.com.ve/economia/108864/bonos-activos-en-patria-del-12-al-17-de-octubre-montos-y-beneficiarios",
-    "fecha": "2026-10-12T20:30:23.796461+00:00",
-    "extracto": "Los beneficiarios de estas nuevas asignaciones por parte del Gobierno nacional recibirán una notificación de texto personalizada desde el número corto 3532"
-  },
-  {
-    "estado_relacionado": "Nacional",
-    "titular": "UC rendirá homenaje al escritor y poeta Carlos Osorio Granado",
-    "medio": "Notitarde",
-    "url": "https://www.notitarde.com.ve/carabobo/108883/uc-rendira-homenaje-al-escritor-y-poeta-carlos-osorio-granado",
-    "fecha": "2026-10-12T20:30:23.796176+00:00",
-    "extracto": "Osorio Granado, poeta, traductor, artista plástico y músico se consolidó como figura intelectual en la región central"
-  },
-  {
-    "estado_relacionado": "Nacional",
-    "titular": "Jornadas de salud integral y dignidad escolar transforman comunidades",
-    "medio": "Notitarde",
-    "url": "https://www.notitarde.com.ve/carabobo/108884/jornadas-de-salud-integral-y-dignidad-escolar-transforman-comunidades",
-    "fecha": "2026-10-12T20:30:23.795941+00:00",
-    "extracto": "En el municipio San Joaquín"
-  },
-  {
-    "estado_relacionado": "Nacional",
-    "titular": "Conmemoran en Juan José Mora el Día de la Resistencia Indígena con actos solemnes y culturales",
-    "medio": "Notitarde",
-    "url": "https://www.notitarde.com.ve/carabobo/108910/conmemoran-en-juan-jose-mora-el-dia-de-la-resistencia-indigena-con-actos-solemnes-y-culturales",
-    "fecha": "2026-10-12T20:30:23.795610+00:00",
-    "extracto": "​Durante el acto solemne, la alcaldesa Emily Riera ofreció unas palabras centradas en el valor histórico de esta efeméride"
-  },
-  {
-    "estado_relacionado": "Nacional",
-    "titular": "Conmemorarán Día de la Resistencia Indígena con taller de bandanas, plumas y tradición",
-    "medio": "Notitarde",
-    "url": "https://www.notitarde.com.ve/carabobo/108923/conmemoraran-dia-de-la-resistencia-indigena-con-taller-de-bandanas-plumas-y-tradicion",
-    "fecha": "2026-10-12T20:30:23.795116+00:00",
-    "extracto": "Continuando con la programación correspondiente al mes de octubre, en “El Autobús de Nancy”, el viernes 15 de octubre en el marco de la efemérides “Día Mundial de la Alimentación”, se tiene planificado el taller gastronómico lleno de imaginación"
-  },
-  {
-    "estado_relacionado": "Carabobo",
-    "titular": "LVBP 2026-2027: Calendario, transmisión y todo sobre la jornada inaugural de hoy",
-    "medio": "Notitarde",
-    "url": "https://www.notitarde.com.ve/deportes/108904/lvbp-20262027-calendario-transmision-y-todo-sobre-la-jornada-inaugural-de-hoy",
-    "fecha": "2026-10-12T20:30:23.794969+00:00",
-    "extracto": "El juego oficial de apertura tendrá como escenario el Estadio José Bernardo Pérez de Valencia este lunes 12 de octubre, donde los vigentes campeones, Navegantes del Magallanes recibirán a Tiburones de La Guaira"
-  },
-  {
-    "estado_relacionado": "Nacional",
-    "titular": "SINSECRETOSCB: El Gordelio Bello y el Dopadín, dos rufianes de postín",
-    "medio": "Notitarde",
-    "url": "https://www.notitarde.com.ve/opinion/108877/sinsecretoscb-el-gordelio-bello-y-el-dopadin-dos-rufianes-de-postin",
-    "fecha": "2026-10-12T20:30:23.794566+00:00",
-    "extracto": "Uno de estos aturdidos pero ocurrentes truhanes es “Dopadín”, que también es conocido con el estigmatizante alias del “Dopado Caminante”"
-  },
-  {
-    "estado_relacionado": "Nacional",
-    "titular": "Álvaro Pulido, socio de Alex Saab, comparecerá este martes ante una corte de Miami tras ser entregado por Venezuela",
-    "medio": "Notitarde",
-    "url": "https://www.notitarde.com.ve/internacional/108909/alvaro-pulido-socio-de-alex-saab-comparecera-este-martes-ante-una-corte-de-miami-tras-ser-entregado",
-    "fecha": "2026-10-12T20:30:23.794136+00:00",
-    "extracto": "El Departamento de Estado había ofrecido anteriormente una recompensa de hasta $10 millones por información que condujera a su arresto o condena"
-  },
-  {
-    "estado_relacionado": "Nacional",
     "titular": "Delcy Rodríguez sostuvo encuentro con el presidente dominicano Luis Abinader en Roma",
     "medio": "Notitarde",
     "url": "https://www.notitarde.com.ve/pais/108913/delcy-rodriguez-sostuvo-encuentro-con-luis-abinader-presidente-de-republica-dominicana",
@@ -793,539 +1721,11 @@
   },
   {
     "estado_relacionado": "Nacional",
-    "titular": "Delcy Rodríguez anuncia el \"Plan Venezuela Alimenta\" para alcanzar la meta de Hambre Cero",
-    "medio": "Notitarde",
-    "url": "https://www.notitarde.com.ve/pais/108903/presidenta-delcy-rodriguez-anuncia-el-plan-venezuela-alimenta-para-alcanzar-la-meta-de-hambre-cero",
-    "fecha": "2026-10-12T20:30:23.793119+00:00",
-    "extracto": "Además, en su intervención, la mandataria nacional adelantó que en los próximos días presentará ante el país un proyecto de ley para la economía local"
-  },
-  {
-    "estado_relacionado": "Nacional",
-    "titular": "Inaugurado Parque Lineal Río Guaire",
-    "medio": "Globovisión",
-    "url": "https://www.globovision.com/sociedad/63013/inaugurado-parque-lineal-rio-guaire",
-    "fecha": "2026-10-12T20:30:22.655421+00:00",
-    "extracto": "Inaugurado Parque Lineal Río Guaire"
-  },
-  {
-    "estado_relacionado": "Aragua",
-    "titular": "El Zoológico Las Delicias de Maracay presenta oficialmente a nuevos cachorros de león",
-    "medio": "Globovisión",
-    "url": "https://www.globovision.com/sociedad/63002/el-zoologico-las-delicias-de-maracay-presenta-oficialmente-a-nuevos-cachorros-de-leon",
-    "fecha": "2026-10-12T20:30:22.655330+00:00",
-    "extracto": "El Zoológico Las Delicias de Maracay presenta oficialmente a nuevos cachorros de león"
-  },
-  {
-    "estado_relacionado": "Nacional",
-    "titular": "Venezuela conmemora el Día de la Resistencia Indígena a 534 años de lucha y soberanía ancestral",
-    "medio": "Globovisión",
-    "url": "https://www.globovision.com/sociedad/62999/venezuela-conmemora-el-dia-de-la-resistencia-indigena-a-534-anos-de-lucha-y-soberania-ancestral",
-    "fecha": "2026-10-12T20:30:22.655257+00:00",
-    "extracto": "Venezuela conmemora el Día de la Resistencia Indígena a 534 años de lucha y soberanía ancestral"
-  },
-  {
-    "estado_relacionado": "Distrito Capital",
-    "titular": "La Ruta de Lola: lo que debes saber del evento en Caracas por el Mes Rosa",
-    "medio": "Globovisión",
-    "url": "https://www.globovision.com/sociedad/62825/la-ruta-de-lola-reunira-a-ciclistas-y-motociclistas-este-10-de-octubre-en-apoyo-a-la-prevencion-del",
-    "fecha": "2026-10-12T20:30:22.655045+00:00",
-    "extracto": "La Ruta de Lola: lo que debes saber del evento en Caracas por el Mes Rosa"
-  },
-  {
-    "estado_relacionado": "Nacional",
-    "titular": "Nobel de Economía para estadounidenses Hall y Woodford",
-    "medio": "Globovisión",
-    "url": "https://www.globovision.com/economia/62996/nobel-de-economia-para-estadounidenses-hall-y-woodford",
-    "fecha": "2026-10-12T20:30:22.654460+00:00",
-    "extracto": "Nobel de Economía para estadounidenses Hall y Woodford"
-  },
-  {
-    "estado_relacionado": "Nacional",
     "titular": "​\"Venezuela no es una mezcla homogénea, es un mosaico cultural\": Antropólogo Juan Carlos Rey analiza el 12 de octubre",
     "medio": "Globovisión",
     "url": "https://www.globovision.com/sociedad/63004/antropologo-juan-carlos-rey-gonzalez-analiza-la-evolucion-historica-en-la-conmemoracion-del-dia-de",
     "fecha": "2026-10-12T20:30:22.654040+00:00",
     "extracto": "​\"Venezuela no es una mezcla homogénea, es un mosaico cultural\": Antropólogo Juan Carlos Rey analiza el 12 de octubre"
-  },
-  {
-    "estado_relacionado": "Nacional",
-    "titular": "Venezuela y Angola evalúan alianzas agroalimentarias en el marco del Foro Mundial de la FAO",
-    "medio": "Globovisión",
-    "url": "https://www.globovision.com/politica/63015/venezuela-y-angola-evaluan-alianzas-agroalimentarias-en-el-marco-del-foro-mundial-de-la-fao",
-    "fecha": "2026-10-12T20:30:22.653832+00:00",
-    "extracto": "Venezuela y Angola evalúan alianzas agroalimentarias en el marco del Foro Mundial de la FAO"
-  },
-  {
-    "estado_relacionado": "Nacional",
-    "titular": "Día de la Resistencia Indígena: Delcy Rodríguez destaca la herencia y dignidad de los pueblos originarios",
-    "medio": "Globovisión",
-    "url": "https://www.globovision.com/politica/62992/dia-de-la-resistencia-indigena-delcy-rodriguez-destaca-la-herencia-y-dignidad-de-los-pueblos",
-    "fecha": "2026-10-12T20:30:22.653671+00:00",
-    "extracto": "Día de la Resistencia Indígena: Delcy Rodríguez destaca la herencia y dignidad de los pueblos originarios"
-  },
-  {
-    "estado_relacionado": "Nacional",
-    "titular": "Pedro Maioriello: Villa del Rosario produce 150 mil litros de leche diarios para abastecer el centro del país",
-    "medio": "Globovisión",
-    "url": "https://www.globovision.com/regiones/63001/pedro-maioriello-villa-del-rosario-produce-150-mil-litros-de-leche-diarios-para-abastecer-el-centro",
-    "fecha": "2026-10-12T20:30:22.653490+00:00",
-    "extracto": "Pedro Maioriello: Villa del Rosario produce 150 mil litros de leche diarios para abastecer el centro del país"
-  },
-  {
-    "estado_relacionado": "Nacional",
-    "titular": "Delcy Rodríguez y Luis Abinader se reúnen en Roma para fortalecer la cooperación entre Venezuela y República Dominicana",
-    "medio": "Globovisión",
-    "url": "https://www.globovision.com/politica/63016/delcy-rodriguez-y-el-mandatario-dominicano-luis-abinader-afianzan-alianzas-bilatelares-en-roma",
-    "fecha": "2026-10-12T20:30:22.653218+00:00",
-    "extracto": "Delcy Rodríguez y Luis Abinader se reúnen en Roma para fortalecer la cooperación entre Venezuela y República Dominicana"
-  },
-  {
-    "estado_relacionado": "Nacional",
-    "titular": "Delcy Rodríguez en la FAO: Venezuela redujo la subalimentación del 5,3 % en 2025 al 3 % en 2026",
-    "medio": "Globovisión",
-    "url": "https://www.globovision.com/politica/63010/delcy-rodriguez-venezuela-redujo-la-subalimentacion-de-53-en-2025-a-3-en-2026",
-    "fecha": "2026-10-12T20:30:22.652995+00:00",
-    "extracto": "Delcy Rodríguez en la FAO: Venezuela redujo la subalimentación del 5,3 % en 2025 al 3 % en 2026"
-  },
-  {
-    "estado_relacionado": "Nacional",
-    "titular": "Delcy Rodríguez afirma en la FAO que el diálogo con la oposición y con EE. UU. ha dado estabilidad para producir y crecer",
-    "medio": "Globovisión",
-    "url": "https://www.globovision.com/politica/63007/delcy-rodriguez-el-dialogo-nacional-y-diplomatico-aporta-estabilidad-politica-para-impulsar-la",
-    "fecha": "2026-10-12T20:30:22.652793+00:00",
-    "extracto": "Delcy Rodríguez afirma en la FAO que el diálogo con la oposición y con EE. UU. ha dado estabilidad para producir y crecer"
-  },
-  {
-    "estado_relacionado": "Nacional",
-    "titular": "Presidenta Delcy Rodríguez anuncia en la FAO el Plan Venezuela Alimenta para alcanzar el “hambre cero”",
-    "medio": "Globovisión",
-    "url": "https://www.globovision.com/politica/63008/delcy-rodriguez-presenta-el-plan-venezuela-alimenta-durante-el-foro-mundial-de-la-alimentacion",
-    "fecha": "2026-10-12T20:30:22.652535+00:00",
-    "extracto": "Presidenta Delcy Rodríguez anuncia en la FAO el Plan Venezuela Alimenta para alcanzar el “hambre cero”"
-  },
-  {
-    "estado_relacionado": "Nacional",
-    "titular": "Leer noticias recientes",
-    "medio": "Banca y Negocios",
-    "url": "https://www.bancaynegocios.com/news/",
-    "fecha": "2026-10-12T20:30:22.600559+00:00",
-    "extracto": "Leer noticias recientes"
-  },
-  {
-    "estado_relacionado": "Nacional",
-    "titular": "Gobierno de Panamá declara emergencia para canalizar hasta 100 millones de dólares tras terremoto",
-    "medio": "Banca y Negocios",
-    "url": "https://www.bancaynegocios.com/gobierno-de-panama-declara-emergencia-para-canalizar-hasta-100-millones-de-dolares-tras-terremoto/",
-    "fecha": "2026-10-12T20:30:22.600476+00:00",
-    "extracto": "Gobierno de Panamá declara emergencia para canalizar hasta 100 millones de dólares tras terremoto"
-  },
-  {
-    "estado_relacionado": "Nacional",
-    "titular": "Delcy Rodríguez llega a Italia: Desarrollará agenda de seguridad alimentaria en el Foro Mundial de la FAO",
-    "medio": "Banca y Negocios",
-    "url": "https://www.bancaynegocios.com/delcy-rodriguez-llega-a-italia-desarrollara-agenda-de-seguridad-alimentaria-en-el-foro-mundial-de-la-fao/",
-    "fecha": "2026-10-12T20:30:22.600313+00:00",
-    "extracto": "Delcy Rodríguez llega a Italia: Desarrollará agenda de seguridad alimentaria en el Foro Mundial de la FAO"
-  },
-  {
-    "estado_relacionado": "Nacional",
-    "titular": "Zelenski dispuesto a una tregua energética con Rusia",
-    "medio": "Banca y Negocios",
-    "url": "https://www.bancaynegocios.com/zelenski-dispuesto-a-una-tregua-energetica-con-rusia/",
-    "fecha": "2026-10-12T20:30:22.600145+00:00",
-    "extracto": "Zelenski dispuesto a una tregua energética con Rusia"
-  },
-  {
-    "estado_relacionado": "Nacional",
-    "titular": "#Perfil Nathalie Quintero: Ingeniera venezolana en la columna vertebral del programa Artemis",
-    "medio": "Banca y Negocios",
-    "url": "https://www.bancaynegocios.com/perfil-nathalie-quintero-ingeniera-venezolana-en-la-columna-vertebral-del-programa-artemis/",
-    "fecha": "2026-10-12T20:30:22.600039+00:00",
-    "extracto": "#Perfil Nathalie Quintero: Ingeniera venezolana en la columna vertebral del programa Artemis"
-  },
-  {
-    "estado_relacionado": "Nacional",
-    "titular": "Invierten US$40 millones en la renovación del Trasnocho Cultural y el Hotel Paseo Las Mercedes",
-    "medio": "Banca y Negocios",
-    "url": "https://www.bancaynegocios.com/invierten-us40-millones-en-la-renovacion-del-trasnocho-cultural-y-el-hotel-paseo-las-mercedes/",
-    "fecha": "2026-10-12T20:30:22.599861+00:00",
-    "extracto": "Invierten US$40 millones en la renovación del Trasnocho Cultural y el Hotel Paseo Las Mercedes"
-  },
-  {
-    "estado_relacionado": "Nacional",
-    "titular": "Culmina la contingencia aérea en Colombia tras el terremoto registrado en Panamá",
-    "medio": "Banca y Negocios",
-    "url": "https://www.bancaynegocios.com/culmina-la-contingencia-aerea-en-colombia-tras-el-terremoto-registrado-en-panama/",
-    "fecha": "2026-10-12T20:30:22.599689+00:00",
-    "extracto": "Culmina la contingencia aérea en Colombia tras el terremoto registrado en Panamá"
-  },
-  {
-    "estado_relacionado": "Nacional",
-    "titular": "Román Maniglia: «No quiero que el Seniat crezca a base de multas, sino de crecimiento económico»",
-    "medio": "Banca y Negocios",
-    "url": "https://www.bancaynegocios.com/roman-maniglia-no-quiero-que-el-seniat-crezca-a-base-de-multas-sino-de-crecimiento-economico/",
-    "fecha": "2026-10-12T20:30:22.599539+00:00",
-    "extracto": "Román Maniglia: «No quiero que el Seniat crezca a base de multas, sino de crecimiento económico»"
-  },
-  {
-    "estado_relacionado": "Nacional",
-    "titular": "Sector asegurador acumuló $871 millones en primas al mes de agosto y proyecta cerrar 2026 con alza de 20%",
-    "medio": "Banca y Negocios",
-    "url": "https://www.bancaynegocios.com/sector-asegurador-acumulo-871-millones-en-primas-al-mes-de-agosto-y-proyecta-cerrar-2026-con-alza-de-20-porciento/",
-    "fecha": "2026-10-12T20:30:22.599361+00:00",
-    "extracto": "Sector asegurador acumuló $871 millones en primas al mes de agosto y proyecta cerrar 2026 con alza de 20%"
-  },
-  {
-    "estado_relacionado": "Nacional",
-    "titular": "Wall Street cierra verde tras semana volátil marcada por alza del rendimiento de la deuda",
-    "medio": "Banca y Negocios",
-    "url": "https://www.bancaynegocios.com/wall-street-cierra-verde-tras-semana-volatil-marcada-por-alza-del-rendimiento-de-la-deuda/",
-    "fecha": "2026-10-12T20:30:22.599151+00:00",
-    "extracto": "Wall Street cierra verde tras semana volátil marcada por alza del rendimiento de la deuda"
-  },
-  {
-    "estado_relacionado": "Nacional",
-    "titular": "Bloomberg: Grupo de acreedores de Venezuela crece y ahora concentra casi 40% de la deuda total",
-    "medio": "Banca y Negocios",
-    "url": "https://www.bancaynegocios.com/bloomberg-grupo-de-acreedores-de-venezuela-crece-y-ahora-concentra-casi-40porciento-de-la-deuda-total/",
-    "fecha": "2026-10-12T20:30:22.598973+00:00",
-    "extracto": "Bloomberg: Grupo de acreedores de Venezuela crece y ahora concentra casi 40% de la deuda total"
-  },
-  {
-    "estado_relacionado": "Distrito Capital",
-    "titular": "Sunaval: Monto negociado en la Bolsa de Caracas se multiplicó más de 50 veces entre 2020 y 2026",
-    "medio": "Banca y Negocios",
-    "url": "https://www.bancaynegocios.com/sunaval-monto-negociado-en-la-bolsa-de-caracas-se-multiplico-mas-de-50-veces-entre-2020-y-2026/",
-    "fecha": "2026-10-12T20:30:22.598777+00:00",
-    "extracto": "Sunaval: Monto negociado en la Bolsa de Caracas se multiplicó más de 50 veces entre 2020 y 2026"
-  },
-  {
-    "estado_relacionado": "Nacional",
-    "titular": "Telecomunicaciones: cuando el rezago cambiario se convierte en un impuesto a la inversión",
-    "medio": "Banca y Negocios",
-    "url": "https://www.bancaynegocios.com/telecomunicaciones-cuando-el-rezago-cambiario-se-convierte-en-un-impuesto-a-la-inversion/",
-    "fecha": "2026-10-12T20:30:22.598612+00:00",
-    "extracto": "Telecomunicaciones: cuando el rezago cambiario se convierte en un impuesto a la inversión"
-  },
-  {
-    "estado_relacionado": "Nacional",
-    "titular": "Delcy Rodríguez anuncia reforma tributaria en Venezuela: «Va a ocurrir este año»",
-    "medio": "Banca y Negocios",
-    "url": "https://www.bancaynegocios.com/delcy-rodriguez-anuncia-reforma-tributaria-en-venezuela-va-a-ocurrir-este-ano/",
-    "fecha": "2026-10-12T20:30:22.598457+00:00",
-    "extracto": "Delcy Rodríguez anuncia reforma tributaria en Venezuela: «Va a ocurrir este año»"
-  },
-  {
-    "estado_relacionado": "Falcón",
-    "titular": "Comerciantes de Falcón reportan caída del 70% en las ventas por cortes eléctricos prolongados",
-    "medio": "Banca y Negocios",
-    "url": "https://www.bancaynegocios.com/comerciantes-de-falcon-reportan-caida-del-70-porciento-en-las-ventas-por-cortes-electricos-prolongados/",
-    "fecha": "2026-10-12T20:30:22.598314+00:00",
-    "extracto": "Comerciantes de Falcón reportan caída del 70% en las ventas por cortes eléctricos prolongados"
-  },
-  {
-    "estado_relacionado": "Nacional",
-    "titular": "Equivale a US$117,85: Pagan Bono de «Corresponsabilidad y Formación» de octubre a trabajadores de nómina especial",
-    "medio": "Banca y Negocios",
-    "url": "https://www.bancaynegocios.com/equivale-a-us117punto85-pagan-bono-de-corresponsabilidad-y-formacion-de-octubre-a-trabajadores-de-nomina-especial/",
-    "fecha": "2026-10-12T20:30:22.598239+00:00",
-    "extracto": "Equivale a US$117,85: Pagan Bono de «Corresponsabilidad y Formación» de octubre a trabajadores de nómina especial"
-  },
-  {
-    "estado_relacionado": "Nacional",
-    "titular": "INTT anuncia restricción de circulación para vehículos de carga pesada por 48 horas",
-    "medio": "Banca y Negocios",
-    "url": "https://www.bancaynegocios.com/intt-anuncia-restriccion-de-circulacion-para-vehiculos-de-carga-pesada-por-48-horas/",
-    "fecha": "2026-10-12T20:30:22.598030+00:00",
-    "extracto": "INTT anuncia restricción de circulación para vehículos de carga pesada por 48 horas"
-  },
-  {
-    "estado_relacionado": "Nueva Esparta",
-    "titular": "Exportaciones no petroleras desde Nueva Esparta incrementan 54% en lo que va de 2026",
-    "medio": "Banca y Negocios",
-    "url": "https://www.bancaynegocios.com/exportaciones-no-petroleras-desde-nueva-esparta-incrementan-54-porciento-en-lo-que-va-de-2026/",
-    "fecha": "2026-10-12T20:30:22.597882+00:00",
-    "extracto": "Exportaciones no petroleras desde Nueva Esparta incrementan 54% en lo que va de 2026"
-  },
-  {
-    "estado_relacionado": "Nacional",
-    "titular": "Jorge Roig prevé que se alcanzarán acuerdos laborales respaldados por Gobierno, empresarios y trabajadores",
-    "medio": "Banca y Negocios",
-    "url": "https://www.bancaynegocios.com/jorge-roig-preve-que-se-alcanzaran-acuerdos-laborales-respaldados-por-gobierno-empresarios-y-trabajadores/",
-    "fecha": "2026-10-12T20:30:22.597782+00:00",
-    "extracto": "Jorge Roig prevé que se alcanzarán acuerdos laborales respaldados por Gobierno, empresarios y trabajadores"
-  },
-  {
-    "estado_relacionado": "Nacional",
-    "titular": "Banco Central de Argentina pierde 1.000 millones de dólares en operación respaldada con oro",
-    "medio": "Banca y Negocios",
-    "url": "https://www.bancaynegocios.com/banco-central-de-argentina-pierde-1000-millones-de-dolares-en-operacion-respaldada-con-oro/",
-    "fecha": "2026-10-12T20:30:22.597592+00:00",
-    "extracto": "Banco Central de Argentina pierde 1.000 millones de dólares en operación respaldada con oro"
-  },
-  {
-    "estado_relacionado": "Nacional",
-    "titular": "El Plan Venezuela Renace entrega viviendas a familias del Campamento José Gervasio Artigas",
-    "medio": "Banca y Negocios",
-    "url": "https://www.bancaynegocios.com/el-plan-venezuela-renace-entrega-viviendas-a-familias-del-campamento-jose-gervasio-artigas/",
-    "fecha": "2026-10-12T20:30:22.597441+00:00",
-    "extracto": "El Plan Venezuela Renace entrega viviendas a familias del Campamento José Gervasio Artigas"
-  },
-  {
-    "estado_relacionado": "La Guaira",
-    "titular": "Bancamiga impulsa la recuperación económica de La Guaira con el programa Gente que se levanta",
-    "medio": "Banca y Negocios",
-    "url": "https://www.bancaynegocios.com/bancamiga-impulsa-la-recuperacion-economica-de-la-guaira-con-el-programa-gente-que-se-levanta/",
-    "fecha": "2026-10-12T20:30:22.597288+00:00",
-    "extracto": "Bancamiga impulsa la recuperación económica de La Guaira con el programa Gente que se levanta"
-  },
-  {
-    "estado_relacionado": "Nacional",
-    "titular": "Bancaribe devela todos los detalles de la Ruta Bancaribe 2026 junto a sus aliados y patrocinantes",
-    "medio": "Banca y Negocios",
-    "url": "https://www.bancaynegocios.com/bancaribe-devela-todos-los-detalles-de-la-ruta-bancaribe-2026-junto-a-sus-aliados-y-patrocinantes/",
-    "fecha": "2026-10-12T20:30:22.597154+00:00",
-    "extracto": "Bancaribe devela todos los detalles de la Ruta Bancaribe 2026 junto a sus aliados y patrocinantes"
-  },
-  {
-    "estado_relacionado": "Nacional",
-    "titular": "Cartera de créditos aumentará 40% en 2026, pero el encaje legal le restará 10 puntos de crecimiento",
-    "medio": "Banca y Negocios",
-    "url": "https://www.bancaynegocios.com/cartera-de-credito-aumentara-40-en-2026-pero-el-encaje-legal-le-restara-10-puntos-de-crecimiento/",
-    "fecha": "2026-10-12T20:30:22.596992+00:00",
-    "extracto": "Cartera de créditos aumentará 40% en 2026, pero el encaje legal le restará 10 puntos de crecimiento"
-  },
-  {
-    "estado_relacionado": "Nacional",
-    "titular": "Banco de Venezuela acompaña al Plan Venezuela Renace en entrega de créditos sociales a familias afectadas por el doblete sísmico",
-    "medio": "Banca y Negocios",
-    "url": "https://www.bancaynegocios.com/banco-de-venezuela-acompana-al-plan-venezuela-renace-en-entrega-de-creditos-sociales-a-familias-afectadas-por-el-doblete-sismico/",
-    "fecha": "2026-10-12T20:30:22.596826+00:00",
-    "extracto": "Banco de Venezuela acompaña al Plan Venezuela Renace en entrega de créditos sociales a familias afectadas por el doblete sísmico"
-  },
-  {
-    "estado_relacionado": "Nacional",
-    "titular": "AN difunde lista de aspirantes de la sociedad civil para integrar el Comité de Postulaciones Judiciales",
-    "medio": "Banca y Negocios",
-    "url": "https://www.bancaynegocios.com/an-difunde-lista-de-aspirantes-de-la-sociedad-civil-para-integrar-el-comite-de-postulaciones-judiciales/",
-    "fecha": "2026-10-12T20:30:22.596381+00:00",
-    "extracto": "AN difunde lista de aspirantes de la sociedad civil para integrar el Comité de Postulaciones Judiciales"
-  },
-  {
-    "estado_relacionado": "Nacional",
-    "titular": "El petróleo de Texas sube un 2,1% pendiente de Oriente Medio y del acuerdo Ucrania-Rusia",
-    "medio": "Banca y Negocios",
-    "url": "https://www.bancaynegocios.com/el-petroleo-de-texas-sube-un-2punto1-porciento-pendiente-de-oriente-medio-y-del-acuerdo-ucrania-rusia/",
-    "fecha": "2026-10-12T20:30:22.596212+00:00",
-    "extracto": "El petróleo de Texas sube un 2,1% pendiente de Oriente Medio y del acuerdo Ucrania-Rusia"
-  },
-  {
-    "estado_relacionado": "Nacional",
-    "titular": "El índice global de pobreza aumenta por primera vez desde su creación en 2010",
-    "medio": "Banca y Negocios",
-    "url": "https://www.bancaynegocios.com/el-indice-global-de-pobreza-aumenta-por-primera-vez-desde-su-creacion-en-2010/",
-    "fecha": "2026-10-12T20:30:22.596035+00:00",
-    "extracto": "El índice global de pobreza aumenta por primera vez desde su creación en 2010"
-  },
-  {
-    "estado_relacionado": "La Guaira",
-    "titular": "Más de 2.000 comercios y emprendimientos en La Guaira recibieron US$19 millones en financiamiento",
-    "medio": "Banca y Negocios",
-    "url": "https://www.bancaynegocios.com/mas-de-2000-comercios-y-emprendimientos-en-la-guaira-recibieron-us19-millones-en-financiamiento/",
-    "fecha": "2026-10-12T20:30:22.595897+00:00",
-    "extracto": "Más de 2.000 comercios y emprendimientos en La Guaira recibieron US$19 millones en financiamiento"
-  },
-  {
-    "estado_relacionado": "Nacional",
-    "titular": "Vehículos eléctricos e híbridos registraron ventas récord en Colombia",
-    "medio": "Banca y Negocios",
-    "url": "https://www.bancaynegocios.com/ventas-de-vehiculos-electricos-e-hibridos-registraron-ventas-record-en-colombia/",
-    "fecha": "2026-10-12T20:30:22.595765+00:00",
-    "extracto": "Vehículos eléctricos e híbridos registraron ventas récord en Colombia"
-  },
-  {
-    "estado_relacionado": "Nacional",
-    "titular": "Venezuela se incorpora al Foro Mundial de la Alimentación 2026 de la FAO en Roma",
-    "medio": "Banca y Negocios",
-    "url": "https://www.bancaynegocios.com/venezuela-se-incorpora-al-foro-mundial-de-la-alimentacion-2026-de-la-fao-en-roma/",
-    "fecha": "2026-10-12T20:30:22.595639+00:00",
-    "extracto": "Venezuela se incorpora al Foro Mundial de la Alimentación 2026 de la FAO en Roma"
-  },
-  {
-    "estado_relacionado": "Nacional",
-    "titular": "Autoridades económicas hablan de inflación y deuda en el foro del FMI y el Banco Mundial",
-    "medio": "Banca y Negocios",
-    "url": "https://www.bancaynegocios.com/autoridades-economicas-hablan-de-inflacion-y-deuda-en-el-foro-del-fmi-y-el-banco-mundial/",
-    "fecha": "2026-10-12T20:30:22.595495+00:00",
-    "extracto": "Autoridades económicas hablan de inflación y deuda en el foro del FMI y el Banco Mundial"
-  },
-  {
-    "estado_relacionado": "Nacional",
-    "titular": "La UE aprueba el mayor paquete de sanciones selectivas contra Rusia con casi 1.600 nombres",
-    "medio": "Banca y Negocios",
-    "url": "https://www.bancaynegocios.com/la-ue-aprueba-el-mayor-paquete-de-sanciones-selectivas-contra-rusia-con-casi-1-600-nombres/",
-    "fecha": "2026-10-12T20:30:22.595345+00:00",
-    "extracto": "La UE aprueba el mayor paquete de sanciones selectivas contra Rusia con casi 1.600 nombres"
-  },
-  {
-    "estado_relacionado": "Distrito Capital",
-    "titular": "Leones del Caracas anunció precios de las entradas en el Monumental para la temporada 2026-2027",
-    "medio": "Banca y Negocios",
-    "url": "https://www.bancaynegocios.com/leones-del-caracas-anuncio-precios-de-las-entradas-en-el-monumental-para-la-temporada-2026-2027/",
-    "fecha": "2026-10-12T20:30:22.595194+00:00",
-    "extracto": "Leones del Caracas anunció precios de las entradas en el Monumental para la temporada 2026-2027"
-  },
-  {
-    "estado_relacionado": "Nacional",
-    "titular": "Entre el 80% y 90% del flujo de petróleo del golfo Pérsico se ha restablecido, según EEUU",
-    "medio": "Banca y Negocios",
-    "url": "https://www.bancaynegocios.com/entre-el-80-porciento-y-90-porciento-del-flujo-de-petroleo-del-golfo-persico-se-ha-restablecido-segun-eeuu/",
-    "fecha": "2026-10-12T20:30:22.595040+00:00",
-    "extracto": "Entre el 80% y 90% del flujo de petróleo del golfo Pérsico se ha restablecido, según EEUU"
-  },
-  {
-    "estado_relacionado": "Nacional",
-    "titular": "BDT y Ronald Acuña: ¡Jugada rápida, pago seguro!",
-    "medio": "Banca y Negocios",
-    "url": "https://www.bancaynegocios.com/bdt-y-ronald-acuna-jugada-rapida-pago-seguro/",
-    "fecha": "2026-10-12T20:30:22.594887+00:00",
-    "extracto": "BDT y Ronald Acuña: ¡Jugada rápida, pago seguro!"
-  },
-  {
-    "estado_relacionado": "Nacional",
-    "titular": "ACNUR solo cuenta con 35% de los fondos necesarios para 2026 y ha perdido 8.000 empleados",
-    "medio": "Banca y Negocios",
-    "url": "https://www.bancaynegocios.com/acnur-solo-cuenta-con-35-porciento-de-los-fondos-necesarios-para-2026-y-ha-perdido-8000-empleados/",
-    "fecha": "2026-10-12T20:30:22.594785+00:00",
-    "extracto": "ACNUR solo cuenta con 35% de los fondos necesarios para 2026 y ha perdido 8.000 empleados"
-  },
-  {
-    "estado_relacionado": "Nacional",
-    "titular": "Cuba actualiza ley de petróleo y gas para atraer inversiones en medio de la crisis",
-    "medio": "Banca y Negocios",
-    "url": "https://www.bancaynegocios.com/cuba-actualiza-ley-de-petroleo-y-gas-para-atraer-inversiones-en-medio-de-la-crisis/",
-    "fecha": "2026-10-12T20:30:22.594614+00:00",
-    "extracto": "Cuba actualiza ley de petróleo y gas para atraer inversiones en medio de la crisis"
-  },
-  {
-    "estado_relacionado": "Nacional",
-    "titular": "Petróleo WTI cierra en 93,74 dólares tras ataques en Arabia Saudí y Ucrania",
-    "medio": "Banca y Negocios",
-    "url": "https://www.bancaynegocios.com/petroleo-wti-cierra-en-93punto74-dolares-tras-ataques-en-arabia-saudi-y-ucrania/",
-    "fecha": "2026-10-12T20:30:22.594457+00:00",
-    "extracto": "Petróleo WTI cierra en 93,74 dólares tras ataques en Arabia Saudí y Ucrania"
-  },
-  {
-    "estado_relacionado": "Nacional",
-    "titular": "Meta presenta nuevo modelo de IA y afirma que está al nivel de OpenAI y Anthropic",
-    "medio": "Banca y Negocios",
-    "url": "https://www.bancaynegocios.com/meta-presenta-nuevo-modelo-de-ia-y-afirma-que-esta-al-nivel-de-openai-y-anthropic/",
-    "fecha": "2026-10-12T20:30:22.594320+00:00",
-    "extracto": "Meta presenta nuevo modelo de IA y afirma que está al nivel de OpenAI y Anthropic"
-  },
-  {
-    "estado_relacionado": "Nacional",
-    "titular": "Wall Street cierra mixto tras subida del petróleo y pendiente del dato de inflación",
-    "medio": "Banca y Negocios",
-    "url": "https://www.bancaynegocios.com/wall-street-cierra-mixto-tras-subida-del-petroleo-y-pendiente-del-dato-de-inflacion/",
-    "fecha": "2026-10-12T20:30:22.594177+00:00",
-    "extracto": "Wall Street cierra mixto tras subida del petróleo y pendiente del dato de inflación"
-  },
-  {
-    "estado_relacionado": "Nacional",
-    "titular": "Lo + y lo - de la banca",
-    "medio": "Banca y Negocios",
-    "url": "https://www.bancaynegocios.com/lo-positivo-y-lo-negativo-de-la-banca/",
-    "fecha": "2026-10-12T20:30:22.593981+00:00",
-    "extracto": "Lo + y lo - de la banca"
-  },
-  {
-    "estado_relacionado": "Falcón",
-    "titular": "NetUno expandió sus servicios a Falcón y otras zonas del país donde ya tiene presencia",
-    "medio": "Banca y Negocios",
-    "url": "https://www.bancaynegocios.com/netuno-expandio-sus-servicios-a-falcon-y-otras-zonas-del-pais-donde-ya-tiene-presencia/",
-    "fecha": "2026-10-12T20:30:22.593890+00:00",
-    "extracto": "NetUno expandió sus servicios a Falcón y otras zonas del país donde ya tiene presencia"
-  },
-  {
-    "estado_relacionado": "Nacional",
-    "titular": "Anuncia la llegada a Venezuela de repuestos y equipos para recuperación de termoeléctricas",
-    "medio": "Banca y Negocios",
-    "url": "https://www.bancaynegocios.com/anuncia-la-llegada-a-venezuela-de-repuestos-y-equipos-para-recuperacion-de-termoelectricas/",
-    "fecha": "2026-10-12T20:30:22.593820+00:00",
-    "extracto": "Anuncia la llegada a Venezuela de repuestos y equipos para recuperación de termoeléctricas"
-  },
-  {
-    "estado_relacionado": "Nacional",
-    "titular": "Robert E. Hall y Michael Woodford ganaron el Nobel de Economía por sus aportes al diseño macroeconómico",
-    "medio": "Banca y Negocios",
-    "url": "https://www.bancaynegocios.com/robert-e-hall-y-michael-woodford-ganaron-el-nobel-de-economia-por-sus-aportes-al-diseno-macroeconomico/",
-    "fecha": "2026-10-12T20:30:22.593670+00:00",
-    "extracto": "Robert E. Hall y Michael Woodford ganaron el Nobel de Economía por sus aportes al diseño macroeconómico"
-  },
-  {
-    "estado_relacionado": "Nacional",
-    "titular": "Un latinoamericano y un español integran la lista: Estas son las 20 personas más ricas del mundo",
-    "medio": "Banca y Negocios",
-    "url": "https://www.bancaynegocios.com/un-latinoamericano-y-un-espanol-integran-la-lista-estas-son-las-20-personas-mas-ricas-del-mundo/",
-    "fecha": "2026-10-12T20:30:22.593476+00:00",
-    "extracto": "Un latinoamericano y un español integran la lista: Estas son las 20 personas más ricas del mundo"
-  },
-  {
-    "estado_relacionado": "Nacional",
-    "titular": "#Análisis: ¿Emigrar como opción? La disonancia de una recuperación que no termina de llegar",
-    "medio": "Banca y Negocios",
-    "url": "https://www.bancaynegocios.com/analisis-emigrar-como-opcion-la-disonancia-de-una-recuperacion-que-no-termina-de-llegar/",
-    "fecha": "2026-10-12T20:30:22.593300+00:00",
-    "extracto": "#Análisis: ¿Emigrar como opción? La disonancia de una recuperación que no termina de llegar"
-  },
-  {
-    "estado_relacionado": "Nacional",
-    "titular": "Delcy Rodríguez anuncia una nueva ley para impulsar la producción alimentaria de Venezuela",
-    "medio": "Banca y Negocios",
-    "url": "https://www.bancaynegocios.com/delcy-rodriguez-anuncia-una-nueva-ley-para-impulsar-la-produccion-alimentaria-de-venezuela/",
-    "fecha": "2026-10-12T20:30:22.593130+00:00",
-    "extracto": "Delcy Rodríguez anuncia una nueva ley para impulsar la producción alimentaria de Venezuela"
-  },
-  {
-    "estado_relacionado": "Nacional",
-    "titular": "#InformePrivado El fin de las reglas conocidas: rigor fiscal, choque de liquidez y el nuevo estándar corporativo",
-    "medio": "Banca y Negocios",
-    "url": "https://www.bancaynegocios.com/informeprivado-el-fin-de-las-reglas-conocidas-rigor-fiscal-choque-de-liquidez-y-el-nuevo-estandar-corporativo/",
-    "fecha": "2026-10-12T20:30:22.592976+00:00",
-    "extracto": "#InformePrivado El fin de las reglas conocidas: rigor fiscal, choque de liquidez y el nuevo estándar corporativo"
-  },
-  {
-    "estado_relacionado": "Nacional",
-    "titular": "BCV y banca articulan acciones de política monetaria para consolidar la estabilidad",
-    "medio": "Banca y Negocios",
-    "url": "https://www.bancaynegocios.com/bcv-y-banca-articulan-acciones-de-politica-monetaria-para-consolidar-la-estabilidad/",
-    "fecha": "2026-10-12T20:30:22.592749+00:00",
-    "extracto": "BCV y banca articulan acciones de política monetaria para consolidar la estabilidad"
-  },
-  {
-    "estado_relacionado": "Nacional",
-    "titular": "Venezuela y República Dominicana evalúan reanudar las compras directas de combustibles",
-    "medio": "Banca y Negocios",
-    "url": "https://www.bancaynegocios.com/venezuela-y-republica-dominicana-evaluan-reanudar-las-compras-directas-de-combustibles/",
-    "fecha": "2026-10-12T20:30:22.592571+00:00",
-    "extracto": "Venezuela y República Dominicana evalúan reanudar las compras directas de combustibles"
-  },
-  {
-    "estado_relacionado": "Nacional",
-    "titular": "Glosario Económico-Financiero",
-    "medio": "Banca y Negocios",
-    "url": "https://www.bancaynegocios.com/glosario-economicofinanciero/",
-    "fecha": "2026-10-12T20:30:22.592394+00:00",
-    "extracto": "Glosario Económico-Financiero"
-  },
-  {
-    "estado_relacionado": "Nacional",
-    "titular": "Economía Internacional",
-    "medio": "Banca y Negocios",
-    "url": "https://www.bancaynegocios.com/category/economia/economia-internacional/",
-    "fecha": "2026-10-12T20:30:22.592171+00:00",
-    "extracto": "Economía Internacional"
   },
   {
     "estado_relacionado": "Apure",
@@ -1358,6 +1758,14 @@
     "url": "https://www.bancaynegocios.com/gobierno-de-kast-reporta-que-8243-venezolanos-salieron-voluntariamente-de-chile-este-ano/",
     "fecha": "2026-10-12T20:22:01.564546+00:00",
     "extracto": "Gobierno de Kast reporta que 8.243 venezolanos salieron voluntariamente de Chile este año"
+  },
+  {
+    "estado_relacionado": "Amazonas",
+    "titular": "Delegación venezolana afianza cooperación agroalimentaria con Angola y República Dominicana",
+    "medio": "Últimas Noticias",
+    "url": "https://news.google.com/rss/articles/CBMizAFBVV95cUxPUTRfOFhrUUo5MWdNZlM4NlNVWVpPcVJDVGlYb1RWWGFhdjI4SUMydll3c2F6THgtTVJoVUxIRUFxSHB1LXJwTkh3eU1jRW5FM1U4MENoZzlaOENlVUJkVTRzNnNpTTluZV85MWRHZno1LTVIekJaNmRhQ2drSzRZZHlfU0dZVFZmWTgwTW9BblNkbVBQNFdWaEwwR1U0MlIxYjZlaktyVW8tcjBQWUZ1TjRkSno0TTVXOXJOOUdVa0p1eEp1SDhiTVFMR3g?oc=5",
+    "fecha": "2026-10-12T20:19:59+00:00",
+    "extracto": "Delegación venezolana afianza cooperación agroalimentaria con Angola y República Dominicana Últimas Noticias"
   },
   {
     "estado_relacionado": "Carabobo",
@@ -1393,11 +1801,11 @@
   },
   {
     "estado_relacionado": "Guárico",
-    "titular": "Jornada de captación en urología brinda atención especializada a pacientes de Guárico",
+    "titular": "Inicia jornada de captación urológica para brindar atención especializada al pueblo guariqueño",
     "medio": "VTV",
     "url": "https://vtv.com.ve/jornada-urologia-atencion-especializada-pacientes-guarico/",
     "fecha": "2026-10-12T20:14:30+00:00",
-    "extracto": "Como parte de los esfuerzos por fortalecer el Sistema Público Nacional de Salud (SPNS), en San Juan de los Morros, estado Guárico, se dio inicio a una jornada de captación de pacientes en el área de urología, orientada a garantizar diagnósticos oportunos, orientación médica de calidad y acceso gratuito a intervenciones..."
+    "extracto": "Como parte de los esfuerzos por fortalecer el Sistema Público Nacional de Salud (SPNS), en San Juan de los Morros, estado Guárico, se dio inicio a una jornada de captación de pacientes en el área de urología, orientada a garantizar diagnósticos oportunos, atención de calidad y acceso gratuito a intervenciones quirúrgic..."
   },
   {
     "estado_relacionado": "Nacional",
@@ -1489,6 +1897,14 @@
   },
   {
     "estado_relacionado": "Nacional",
+    "titular": "Ministerio anuncia ajuste en monto de becas: estudiantes recibirán 40 dólares",
+    "medio": "Correo del Caroní",
+    "url": "https://correodelcaroni.com/sociedad/educacion/ministerio-anuncia-ajuste-en-monto-de-becas-estudiantes-recibiran-40-dolares/",
+    "fecha": "2026-10-12T19:59:58+00:00",
+    "extracto": "El proceso de postulación para el Programa Nacional de Becas Universitarias Públicas, en su primera etapa, se desarrollará el 9 al 16 de octubre a través del portal web. The post Ministerio anuncia ajuste en monto de becas: estudiantes recibirán 40 dólares first appeared on Correo del Caroní ."
+  },
+  {
+    "estado_relacionado": "Nacional",
     "titular": "La liga venezolana de béisbol comienza nueva temporada con una docena de jugadores de MLB",
     "medio": "La Prensa de Lara",
     "url": "https://laprensadelara.com/beisbol/beisbol-temporada-jugadores-de-mlb/",
@@ -1568,6 +1984,14 @@
     "extracto": "Las autoridades del Banco Central de Venezuela (BCV) sostuvieron una reunión de trabajo con representantes de la banca pública y privada, así como con la Asociación Bancaria de Venezuela, informó el ente emisor en su página web. La jornada estuvo encabezada por el presidente del BCV, Luis Pérez González. «Este encuentr..."
   },
   {
+    "estado_relacionado": "Nacional",
+    "titular": "Comercios laboraron con normalidad durante feriado",
+    "medio": "Diario Avance Miranda",
+    "url": "https://diarioavance.com/comercios-laboraron-con-normalidad-durante-feriado/",
+    "fecha": "2026-10-12T19:46:14+00:00",
+    "extracto": "La afluencia de personas se mantuvo moderada Comerciantes de los Altos Mirandinos reportaron absoluta normalidad este lunes 12 La entrada Comercios laboraron con normalidad durante feriado se publicó primero en Diario Avance ."
+  },
+  {
     "estado_relacionado": "Portuguesa",
     "titular": "VIDEO | En Portuguesa: Desbordamiento del Canal Piloto deja incomunicadas a varias comunidades en Santa Rosalía #12Oct",
     "medio": "El Impulso",
@@ -1590,6 +2014,14 @@
     "url": "https://vtv.com.ve/adriana-urdaneta-venezuela-comprometido-seguridad-alimentaria/",
     "fecha": "2026-10-12T19:41:09+00:00",
     "extracto": "La presidenta del Instituto Nacional de Nutrición, Adriana Urdaneta, destacó que «la presencia de la presidenta en los espacios internacionales es fundamental, no solo para hablar de los logros, sino para comprometernos a avanzar en lo que aún falta». Asimismo, apuntó que en materia de lactancia materna, durante más de..."
+  },
+  {
+    "estado_relacionado": "Nacional",
+    "titular": "Atentado con carro bomba deja 3 heridos en el Cauca",
+    "medio": "Correo del Caroní",
+    "url": "https://correodelcaroni.com/mundo/atentado-con-carro-bomba-deja-3-heridos-en-el-cauca/",
+    "fecha": "2026-10-12T19:38:04+00:00",
+    "extracto": "Abelardo de la Espriella condenó el atentado y afirmó que los ataques contra la infraestructura perjudican a la población, los transportadores y quienes necesitan desplazarse por carretera. The post Atentado con carro bomba deja 3 heridos en el Cauca first appeared on Correo del Caroní ."
   },
   {
     "estado_relacionado": "Nacional",
@@ -1781,7 +2213,7 @@
     "medio": "VTV",
     "url": "https://vtv.com.ve/venezuela-mantenido-reduccion-sostenida-subalimentacion/",
     "fecha": "2026-10-12T19:03:18+00:00",
-    "extracto": "La presidenta de la República Bolivariana de Venezuela, Delcy Rodríguez, destacó durante su intervención en el Foro Mundial de la Alimentación 2026 en la sede de la Organización de las Naciones Unidas para la Alimentación y la Agricultura (FAO), en Roma que Venezuela ha mostrado una reducción sostenida de la subaliment..."
+    "extracto": "La presidenta de la República Bolivariana de Venezuela, Delcy Rodríguez, durante su intervención en el Foro Mundial de la Alimentación 2026 en la sede de la Organización de las Naciones Unidas para la Alimentación y la Agricultura (FAO), destacó la reducción sostenida de la subalimentación en el país durante los último..."
   },
   {
     "estado_relacionado": "Nacional",
@@ -2278,14 +2710,6 @@
     "url": "https://www.el-carabobeno.com/niegan-fianza-a-wilber-garces-migrante-baleado-en-texas-su-caso-cuestiona-operativos-de-ice/",
     "fecha": "2026-10-12T17:10:27+00:00",
     "extracto": "El caso de Garcés Pérez “deja muy claras algunas de las preocupaciones que tenemos sobre cómo se están llevando a cabo estos operativos de ICE: Los riesgos durante las detenciones y las preguntas sobre el acceso a atención médica para las personas que están bajo custodia”, expone en conversación con TalCual su abogada,..."
-  },
-  {
-    "estado_relacionado": "Amazonas",
-    "titular": "Delegación venezolana afianza cooperación agroalimentaria con Angola y República Dominicana",
-    "medio": "Últimas Noticias",
-    "url": "https://news.google.com/rss/articles/CBMizAFBVV95cUxPUTRfOFhrUUo5MWdNZlM4NlNVWVpPcVJDVGlYb1RWWGFhdjI4SUMydll3c2F6THgtTVJoVUxIRUFxSHB1LXJwTkh3eU1jRW5FM1U4MENoZzlaOENlVUJkVTRzNnNpTTluZV85MWRHZno1LTVIekJaNmRhQ2drSzRZZHlfU0dZVFZmWTgwTW9BblNkbVBQNFdWaEwwR1U0MlIxYjZlaktyVW8tcjBQWUZ1TjRkSno0TTVXOXJOOUdVa0p1eEp1SDhiTVFMR3g?oc=5",
-    "fecha": "2026-10-12T17:09:59+00:00",
-    "extracto": "Delegación venezolana afianza cooperación agroalimentaria con Angola y República Dominicana Últimas Noticias"
   },
   {
     "estado_relacionado": "Nacional",
@@ -3494,6 +3918,14 @@
     "url": "https://news.google.com/rss/articles/CBMia0FVX3lxTE5QRmw0cF9RbEctczk1SHNsRUQ2UW9DalhfQk1kWjJUSHRwZEVtTXJmTzFVSElqRjdiLWxhZWRJbTZwRURnOEJhM1p1amVPand6cngtQXhhSmNfYlpUQ0x6di1YUWEyUTJMOF9Z?oc=5",
     "fecha": "2026-10-12T09:41:50+00:00",
     "extracto": "Rebeca Viloria Peña, author at Últimas Noticias - 296 Page 331 en.ultimasnoticias.com.ve"
+  },
+  {
+    "estado_relacionado": "Táchira",
+    "titular": "News of - en.ultimasnoticias.com.ve",
+    "medio": "Últimas Noticias",
+    "url": "https://news.google.com/rss/articles/CBMic0FVX3lxTE9fREFQNDFzS3ppVlVocXpsclU2cnBaU2dfdjdXcG5tb2xRZ242dmtNZ3lObHNEWUtwU2lYZXphSWluSzlRRi04VTdCM2FBdzhpbHJnNzNVcmJBZFdqTmpQWU95S2RRNG5MRVBZWlY2bFRfekE?oc=5",
+    "fecha": "2026-10-12T08:24:26+00:00",
+    "extracto": "News of en.ultimasnoticias.com.ve"
   },
   {
     "estado_relacionado": "Nueva Esparta",
@@ -5592,14 +6024,6 @@
     "extracto": "Representantes del sector de complejo jose en Anzoátegui evaluaron los avances económicos durante la última semana en Barcelona. Se acordaron mecanismos de articulación crediticia y facilitación de trámites para maximizar el rendimiento productivo."
   },
   {
-    "estado_relacionado": "Carabobo",
-    "titular": "Empresarios de Carabobo destacan reactivación comercial y facilidades aduanales en Valencia",
-    "medio": "Notitarde",
-    "url": "https://www.bancaynegocios.com/noticias/empresarios-de-carabobo-destacan-reactivaci-n-comercial-y-facilidades-aduanales-en-valencia/",
-    "fecha": "2026-10-11T14:00:00Z",
-    "extracto": "Representantes del sector de zona industrial valencia en Carabobo evaluaron los avances económicos durante la última semana en Valencia. Se acordaron mecanismos de articulación crediticia y facilitación de trámites para maximizar el rendimiento productivo."
-  },
-  {
     "estado_relacionado": "Guárico",
     "titular": "Alianza público-privada en Guárico fortalece inversiones estratégicas en el área de sector quesero",
     "medio": "Finanzas Digital",
@@ -5622,6 +6046,14 @@
     "url": "https://www.yaracuyaldia.net/noticias/empresarios-de-yaracuy-destacan-reactivaci-n-comercial-y-facilidades-aduanales-en-san-felipe/",
     "fecha": "2026-10-11T14:00:00Z",
     "extracto": "Representantes del sector de industria papelera en Yaracuy evaluaron los avances económicos durante la última semana en San Felipe. Se acordaron mecanismos de articulación crediticia y facilitación de trámites para maximizar el rendimiento productivo."
+  },
+  {
+    "estado_relacionado": "Carabobo",
+    "titular": "Empresarios de Carabobo destacan reactivación comercial y facilidades aduanales en Valencia",
+    "medio": "Notitarde",
+    "url": "https://www.bancaynegocios.com/noticias/empresarios-de-carabobo-destacan-reactivaci-n-comercial-y-facilidades-aduanales-en-valencia/",
+    "fecha": "2026-10-11T14:00:00Z",
+    "extracto": "Representantes del sector de zona industrial valencia en Carabobo evaluaron los avances económicos durante la última semana en Valencia. Se acordaron mecanismos de articulación crediticia y facilitación de trámites para maximizar el rendimiento productivo."
   },
   {
     "estado_relacionado": "Cojedes",
@@ -7110,6 +7542,14 @@
     "url": "https://www.ultimasnoticias.com.ve/noticias/banca-p-blica-y-privada-activa-mesas-de-financiamiento-para-proyectos-agroindustriales-en-aragua/",
     "fecha": "2026-10-10T15:00:00Z",
     "extracto": "Representantes del sector de agroindustria en Aragua evaluaron los avances económicos durante la última semana en Maracay. Se acordaron mecanismos de articulación crediticia y facilitación de trámites para maximizar el rendimiento productivo."
+  },
+  {
+    "estado_relacionado": "Trujillo",
+    "titular": "News of - en.ultimasnoticias.com.ve",
+    "medio": "Últimas Noticias",
+    "url": "https://news.google.com/rss/articles/CBMidEFVX3lxTFBIU1g0bThaRkdIbmVqTk5aZ0t1MmJEQVZiZkx3a0ZCX1NJdG1SRm0wbzJrTXhENXNhZ1VXVS03bTVWX0ZpeGFBcEktcTRiZVFyY0w0Y1FKU2xsWTlWS2JRVVZ1M3lidElrTUtKSjVHOFNnYVQ4?oc=5",
+    "fecha": "2026-10-10T14:56:22+00:00",
+    "extracto": "News of en.ultimasnoticias.com.ve"
   },
   {
     "estado_relacionado": "Falcón",
@@ -10128,6 +10568,14 @@
     "extracto": "La Guaira inicia segunda evaluación de edificios con etiqueta roja Últimas Noticias"
   },
   {
+    "estado_relacionado": "Falcón",
+    "titular": "La sequía extrema golpea el corazón de la ganadería familiar en Paraguaná",
+    "medio": "Últimas Noticias",
+    "url": "https://news.google.com/rss/articles/CBMitAFBVV95cUxNZVB0TkNiakVNYkR2M1pQUk5DUjEwaEhGVzBsSlJWZTR2TnR0VkF5Z2pIdE45WXNEUzlocVM3S0hmM3lkclBzRnZDNVdWVjRQWElJSV9uT1VJaHcxSzFRMnczTDNISmNlWDdpUUF6OHJvTUFOSmhOOUV0b2o1TDd0OUd3THlOak5EN3NxQnFpbU9tcURudXEzemRpS1hhMzYxTVRzdEhRQzV5dkhlbW1uYmwyVHI?oc=5",
+    "fecha": "2026-10-07T22:07:39+00:00",
+    "extracto": "La sequía extrema golpea el corazón de la ganadería familiar en Paraguaná Últimas Noticias"
+  },
+  {
     "estado_relacionado": "Nacional",
     "titular": "Venezuela se reincorpora como miembro de pleno derecho a la Unión Interparlamentaria Mundial",
     "medio": "El Nacional",
@@ -10696,7 +11144,7 @@
     "extracto": "Reparan troncal en Portuguesa para facilitar traslado de cosecha de arroz y maíz Últimas Noticias"
   },
   {
-    "estado_relacionado": "Portuguesa",
+    "estado_relacionado": "Nacional",
     "titular": "Identifican una nueva especie de pingüino en el Océano Índico",
     "medio": "Últimas Noticias",
     "url": "https://news.google.com/rss/articles/CBMiuAFBVV95cUxPX1FPN1pXYVB3cW1IWW1NSUpSQmVoSHMxNWhLc2tVeU1KRmhta2hkT3FMUmhhUlBEQWlrNFozU3BRa1Q1bjl1VmtxZmxsNm1JUDZVeUF4d0wwUm1tTHlheDZxYlJRUkxTWGs1NkFVR1dWZlZ4ZHNNXzRUdHRlaUp5aTkwbVpwV080NVY5ZzFpNG1vVkdIYWI1NkYzM1IxcVliZGtPQjBFMkRuamxsS3RSeU9ob1BCcTBZ?oc=5",
@@ -11328,6 +11776,22 @@
     "extracto": "They inspect works to complete the General Hospital of Catia la Mar en.ultimasnoticias.com.ve"
   },
   {
+    "estado_relacionado": "Delta Amacuro",
+    "titular": "Cantv restored telecommunications to users of Catia La Mar - en.ultimasnoticias.com.ve",
+    "medio": "Últimas Noticias",
+    "url": "https://news.google.com/rss/articles/CBMipgFBVV95cUxPRXduWGZYNjgydFZ0MVUzamY4OTFuZXppR0RWNmprWi1UaDExNkZ4VDJVYUFZellyUm1SVFIybkZHTVpET0hEYXBZcHVzRHFHNlJ4dTNmVlRZYTAtZHhYLXptZUtWTlVyRHRWMldFaTNxZVE0S2d2dGo3eWwyTTlFS2xTNnk3Y25OSTRxcUhCWlBKQTRIOHI1RFVqcHp6NGo1ZDNxRTJn?oc=5",
+    "fecha": "2023-08-30T07:00:00+00:00",
+    "extracto": "Cantv restored telecommunications to users of Catia La Mar en.ultimasnoticias.com.ve"
+  },
+  {
+    "estado_relacionado": "Anzoátegui",
+    "titular": "Inician obras de restauración en la Catedral de Barcelona",
+    "medio": "Últimas Noticias",
+    "url": "https://news.google.com/rss/articles/CBMiowFBVV95cUxOZ0N0X0w1c1M2X3oyaFhoSFFkbEZJVGozRzZrV240T3ROQXBBYk1IWnAyb2dQOG9nYkJhTjlWQXFoVzlETHNTZ2dNWDg0V0NLdUdMbmJTWkpJWF9DSUpmUmtONGhTdUhFRFYxVEhvOURDNF9YYlphTkxzdHVnM0x0MWRqR0wyWGY5aVZHYTJJU0VIbnFKZllYZGdRSERxcGEwLUFJ?oc=5",
+    "fecha": "2023-08-07T07:00:00+00:00",
+    "extracto": "Inician obras de restauración en la Catedral de Barcelona ultimasnoticias.com.ve"
+  },
+  {
     "estado_relacionado": "Monagas",
     "titular": "News of - en.ultimasnoticias.com.ve",
     "medio": "Últimas Noticias",
@@ -11430,5 +11894,13 @@
     "url": "https://news.google.com/rss/articles/CBMiZEFVX3lxTE1tZVFzMXF4c2tvV090Z0IzVVdTZmFyXzBST2FIajNZbW1HMWZya2NobEVUZ1VNaUt4SVVKcG1JaUxDdDE1YnlHM1RaNWo2TDB1c2tSZXdPTzNoSzFZb0ZtWS11dnY?oc=5",
     "fecha": "2019-04-25T07:00:00+00:00",
     "extracto": "Olga Maribel Navas ultimasnoticias.com.ve"
+  },
+  {
+    "estado_relacionado": "Nacional",
+    "titular": "Últimas Noticias, autor en Últimas Noticias - Página 12216 de 12216",
+    "medio": "Últimas Noticias",
+    "url": "https://news.google.com/rss/articles/CBMia0FVX3lxTE1VSkMzaWVMWFFSWEZZdVM3cDNuY0NNU09CVE1zcnhpR0FrUDhGNVlHMzh5ekpxM0pGTVpxTng0VF9WeVpSTTVUOUxfSENCZDBqaW9tX3IzeDRmaEVRYktoZ3A3LUxQZjhhb0FR?oc=5",
+    "fecha": "2018-06-11T07:00:00+00:00",
+    "extracto": "Últimas Noticias, autor en Últimas Noticias - Página 12216 de 12216 ultimasnoticias.com.ve"
   }
 ]
