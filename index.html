@@ -208,12 +208,12 @@
             border: none !important;
             box-shadow: none !important;
             border-radius: 0;
-            padding: 0 4px 6px 0;
+            padding: 35px 8px 8px 8px; /* Holgura superior amplia para que la cabeza del gobernador nunca se corte */
             display: flex;
             align-items: flex-end;
             max-width: 100%;
             overflow-x: auto;
-            overflow-y: visible;
+            overflow-y: hidden;
             -webkit-overflow-scrolling: touch;
             scroll-behavior: smooth;
         }
@@ -281,8 +281,8 @@
             flex-wrap: nowrap !important;
             align-items: flex-end;
             gap: 12px;
-            padding-top: 48px; /* Margen superior amplio para magnificación de íconos gigantes */
-            padding-bottom: 4px;
+            padding-top: 55px; /* Espacio superior para magnificación gigante sin cortes */
+            padding-bottom: 6px;
         }
 
         .apple-dock-item {
@@ -5438,7 +5438,7 @@
 
                     item.innerHTML = `
                         <div class="apple-dock-icon relative overflow-hidden ${isActive ? 'border-amber-400 ring-2 ring-amber-400/60' : 'border-white'}">
-                            <img src="${photo}" alt="${s.governor}" class="w-full h-full object-cover object-top" onerror="this.onerror=null; this.src=createInstitutionalSvgAvatar('${s.governor}', 'GOB', false);"/>
+                            <img src="${photo}" alt="${s.governor}" class="w-full h-full object-cover" style="object-position: center 10%;" onerror="this.onerror=null; this.src=createInstitutionalSvgAvatar('${s.governor}', 'GOB', false);"/>
                             <img src="${flag}" referrerpolicy="no-referrer" class="absolute bottom-0 right-0 w-4.5 h-3.5 object-cover rounded-tl-[3px] shadow-xs border-t border-l border-white" onerror="this.onerror=null; this.src='${fallbackFlag}';"/>
                         </div>
                         <div class="apple-dock-name font-montserrat">${s.name}</div>
@@ -5519,14 +5519,14 @@
                     let scale = 1;
                     let translateY = 0;
 
-                    // Curva de magnificación parabólica macOS:
-                    // El ícono enfocado crece hasta 1.85x (~112px) y se eleva -28px.
-                    // Los íconos vecinos se escalan armónicamente hasta 140px de distancia.
-                    const maxDist = 140;
+                    // Curva de magnificación fluida macOS:
+                    // El ícono enfocado crece armónicamente hasta 1.55x y se eleva -16px.
+                    // Con los 90px de holgura superior en el contenedor, la cabeza queda 100% visible sin ningún corte.
+                    const maxDist = 135;
                     if (distance < maxDist) {
-                        const factor = Math.cos((distance / maxDist) * (Math.PI / 2)); // Curva cosenoidal suave
-                        scale = 1 + (factor * 0.85); // Magnificación masiva (1.85x)
-                        translateY = -factor * 28;  // Gran elevación
+                        const factor = Math.cos((distance / maxDist) * (Math.PI / 2));
+                        scale = 1 + (factor * 0.55);
+                        translateY = -factor * 16;
                     }
 
                     gsap.to(item, {
@@ -5945,6 +5945,7 @@
             }
 
             // 2. DESAPARECER EL DOCK FLOTANTE CON TRANSICIÓN GSAP SUAVE (2.2 SEGUNDOS)
+            isDockVisible = false;
             const dockContainer = document.getElementById('apple-dock-floating-container');
             if (dockContainer) {
                 gsap.to(dockContainer, {
@@ -5983,9 +5984,12 @@
             const container = document.getElementById('details-content-wrapper');
             
             // Reaparecer Dock en Visión General naciendo desde la franja azul con animación suave
+            isDockVisible = true;
+            updateDockIndicatorUI();
             const dockContainer = document.getElementById('apple-dock-floating-container');
             if (dockContainer) {
                 dockContainer.style.display = 'flex';
+                dockContainer.style.pointerEvents = 'auto';
                 gsap.fromTo(dockContainer, 
                     { y: 85, opacity: 0, scale: 0.95 }, 
                     { y: 0, opacity: 1, scale: 1, duration: 2.2, ease: "power3.out" }
@@ -6402,17 +6406,56 @@
             });
         }
 
-        function focusDockShelf() {
+        let isDockVisible = true;
+
+        function toggleDockVisibility() {
             const dockContainer = document.getElementById('apple-dock-floating-container');
-            const shelf = document.querySelector('.apple-dock-shelf');
-            if (dockContainer) {
+            if (!dockContainer) return;
+
+            if (isDockVisible) {
+                // ESCONDER DOCK FLUIDAMENTE CON GSAP HACIA LA FRANJA AZUL
+                isDockVisible = false;
+                gsap.to(dockContainer, {
+                    y: 110,
+                    opacity: 0,
+                    scale: 0.95,
+                    duration: 0.85,
+                    ease: "power3.inOut",
+                    onComplete: () => {
+                        dockContainer.style.pointerEvents = 'none';
+                    }
+                });
+            } else {
+                // MOSTRAR DOCK FLUIDAMENTE CON GSAP EMERGIENDO DE LA FRANJA AZUL
+                isDockVisible = true;
                 dockContainer.style.display = 'flex';
-                gsap.timeline()
-                    .to(dockContainer, { y: -18, duration: 0.22, ease: "power2.out" })
-                    .to(dockContainer, { y: 0, duration: 0.45, ease: "bounce.out" });
+                dockContainer.style.pointerEvents = 'auto';
+                gsap.fromTo(dockContainer, 
+                    { y: 110, opacity: 0, scale: 0.95 },
+                    { y: 0, opacity: 1, scale: 1, duration: 1.1, ease: "back.out(1.15)" }
+                );
+                const shelf = document.querySelector('.apple-dock-shelf');
+                if (shelf) {
+                    shelf.scrollTo({ left: 0, behavior: 'smooth' });
+                }
             }
-            if (shelf) {
-                shelf.scrollTo({ left: 0, behavior: 'smooth' });
+            updateDockIndicatorUI();
+        }
+
+        function updateDockIndicatorUI() {
+            const arrow = document.getElementById('dock-indicator-arrow');
+            const text = document.getElementById('dock-indicator-text');
+            if (arrow) {
+                if (isDockVisible) {
+                    arrow.style.transform = 'rotate(180deg)';
+                    arrow.classList.remove('animate-bounce');
+                } else {
+                    arrow.style.transform = 'rotate(0deg)';
+                    arrow.classList.add('animate-bounce');
+                }
+            }
+            if (text) {
+                text.textContent = isDockVisible ? 'GOBERNADORES • OCULTAR DOCK' : 'GOBERNADORES • MOSTRAR DOCK';
             }
         }
 
@@ -6428,13 +6471,13 @@
                 // MODO 1: VISIÓN GENERAL / NACIONAL (VENEZUELA)
                 headerContainer.className = "px-4 sm:px-6 md:px-10 py-5 sm:py-6 md:py-8 flex flex-col md:flex-row items-start md:items-center justify-between gap-4 sm:gap-6 cursor-pointer text-white hover:bg-[#002454] transition-all overflow-visible relative";
                 headerContainer.innerHTML = `
-                    <!-- PESTAÑA INDICADORA CON FLECHITA HACIA ARRIBA DESDE DONDE NACE EL DOCK -->
-                    <div id="dock-origin-indicator" class="absolute -top-7 left-6 sm:left-10 z-40 flex items-center gap-2 bg-[#002F6C] hover:bg-[#003d8f] text-amber-300 hover:text-white px-3.5 py-1 rounded-t-xl border-t-2 border-x-2 border-amber-400/80 shadow-[0_-6px_16px_rgba(0,47,108,0.5)] transition-all cursor-pointer select-none group" onclick="event.stopPropagation(); focusDockShelf();" title="Explorar Dock de Gobernadores">
-                        <svg class="w-3.5 h-3.5 transform group-hover:-translate-y-1 transition-transform animate-bounce text-amber-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <!-- PESTAÑA INDICADORA CON FLECHITA QUE MUESTRA / ESCONDE EL DOCK -->
+                    <div id="dock-origin-indicator" class="absolute -top-7 left-6 sm:left-10 z-40 flex items-center gap-2 bg-[#002F6C] hover:bg-[#003d8f] text-amber-300 hover:text-white px-3.5 py-1 rounded-t-xl border-t-2 border-x-2 border-amber-400/80 shadow-[0_-6px_16px_rgba(0,47,108,0.5)] transition-all cursor-pointer select-none group" onclick="event.stopPropagation(); toggleDockVisibility();" title="Ocultar o Mostrar Dock de Gobernadores">
+                        <svg id="dock-indicator-arrow" class="w-3.5 h-3.5 transform transition-transform duration-500 text-amber-400 ${isDockVisible ? 'rotate-180' : 'animate-bounce'}" fill="none" stroke="currentColor" viewBox="0 0 24 24" style="transform: ${isDockVisible ? 'rotate(180deg)' : 'rotate(0deg)'}">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M5 15l7-7 7 7"/>
                         </svg>
-                        <span class="text-[10px] font-black uppercase tracking-wider" style="font-family: 'Montserrat', sans-serif !important;">
-                            GOBERNADORES • DOCK
+                        <span id="dock-indicator-text" class="text-[10px] font-black uppercase tracking-wider font-montserrat" style="font-family: 'Montserrat', sans-serif !important;">
+                            ${isDockVisible ? 'GOBERNADORES • OCULTAR DOCK' : 'GOBERNADORES • MOSTRAR DOCK'}
                         </span>
                     </div>
 
