@@ -1,0 +1,106 @@
+{
+  "AMAZONAS": {
+    "localPath": "./img/banderas/amazonas.svg",
+    "url": "https://upload.wikimedia.org/wikipedia/commons/7/7f/Flag_of_Amazonas_Indigenous_State.svg"
+  },
+  "ANZOATEGUI": {
+    "localPath": "./img/banderas/anzoategui.svg",
+    "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/0/03/Flag_of_Anzo%C3%A1tegui_State_%28original_version%29.svg/1280px-Flag_of_Anzo%C3%A1tegui_State_%28original_version%29.svg.png"
+  },
+  "APURE": {
+    "localPath": "./img/banderas/apure.svg",
+    "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/1/1a/Flag_of_Apure_State.svg/1280px-Flag_of_Apure_State.svg.png"
+  },
+  "ARAGUA": {
+    "localPath": "./img/banderas/aragua.svg",
+    "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/4/4f/Flag_of_Aragua_State.svg/1280px-Flag_of_Aragua_State.svg.png"
+  },
+  "BARINAS": {
+    "localPath": "./img/banderas/barinas.svg",
+    "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/5/5e/Flag_of_Barinas_State.svg/1280px-Flag_of_Barinas_State.svg.png"
+  },
+  "BOLIVAR": {
+    "localPath": "./img/banderas/bolivar.svg",
+    "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/0/06/Flag_of_Bol%C3%ADvar_State.svg/1280px-Flag_of_Bol%C3%ADvar_State.svg.png"
+  },
+  "CARABOBO": {
+    "localPath": "./img/banderas/carabobo.svg",
+    "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/5/52/Flag_of_Carabobo_State.svg/1280px-Flag_of_Carabobo_State.svg.png"
+  },
+  "COJEDES": {
+    "localPath": "./img/banderas/cojedes.svg",
+    "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/7/7d/Flag_of_Cojedes_State.svg/1280px-Flag_of_Cojedes_State.svg.png"
+  },
+  "DELTA AMACURO": {
+    "localPath": "./img/banderas/delta_amacuro.svg",
+    "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/2/20/Flag_of_Delta_Amacuro_State.svg/1280px-Flag_of_Delta_Amacuro_State.svg.png"
+  },
+  "DISTRITO CAPITAL": {
+    "localPath": "./img/banderas/distrito_capital.svg",
+    "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/0/08/Flag_of_Caracas_%282022%29.svg/120px-Flag_of_Caracas_%282022%29.svg.png"
+  },
+  "FALCON": {
+    "localPath": "./img/banderas/falcon.svg",
+    "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/0/0e/Flag_of_Falc%C3%B3n.svg/1280px-Flag_of_Falc%C3%B3n.svg.png"
+  },
+  "GUARICO": {
+    "localPath": "./img/banderas/guarico.svg",
+    "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/a/a2/Flag_of_Gu%C3%A1rico_State.svg/1280px-Flag_of_Gu%C3%A1rico_State.svg.png"
+  },
+  "LA GUAIRA": {
+    "localPath": "./img/banderas/la_guaira.svg",
+    "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/d/d4/Flag_of_La_Guaira_State.svg/1280px-Flag_of_La_Guaira_State.svg.png"
+  },
+  "LARA": {
+    "localPath": "./img/banderas/lara.svg",
+    "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/4/4b/Flag_of_Lara_State.svg/1280px-Flag_of_Lara_State.svg.png"
+  },
+  "MERIDA": {
+    "localPath": "./img/banderas/merida.svg",
+    "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/9/9f/Flag_of_M%C3%A9rida_State.svg/1280px-Flag_of_M%C3%A9rida_State.svg.png"
+  },
+  "MIRANDA": {
+    "localPath": "./img/banderas/miranda.svg",
+    "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/6/6e/Flag_of_Miranda_State_%281970-2006%29.svg/330px-Flag_of_Miranda_State_%281970-2006%29.svg.png"
+  },
+  "NUEVA ESPARTA": {
+    "localPath": "./img/banderas/nueva_esparta.svg",
+    "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/6/6a/Flag_of_Nueva_Esparta.svg/1280px-Flag_of_Nueva_Esparta.svg.png"
+  },
+  "PORTUGUESA": {
+    "localPath": "./img/banderas/portuguesa.svg",
+    "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/8/81/Flag_of_Portuguesa.svg/1280px-Flag_of_Portuguesa.svg.png"
+  },
+  "SUCRE": {
+    "localPath": "./img/banderas/sucre.svg",
+    "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/c/c1/Flag_of_Sucre_State.svg/1280px-Flag_of_Sucre_State.svg.png"
+  },
+  "TACHIRA": {
+    "localPath": "./img/banderas/tachira.svg",
+    "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/0/01/Flag_of_T%C3%A1chira.svg/1280px-Flag_of_T%C3%A1chira.svg.png"
+  },
+  "TRUJILLO": {
+    "localPath": "./img/banderas/trujillo.svg",
+    "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/b/b0/Flag_of_Trujillo_State.svg/1280px-Flag_of_Trujillo_State.svg.png"
+  },
+  "YARACUY": {
+    "localPath": "./img/banderas/yaracuy.svg",
+    "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/1/15/Flag_of_Yaracuy_State.svg/1280px-Flag_of_Yaracuy_State.svg.png"
+  },
+  "ZULIA": {
+    "localPath": "./img/banderas/zulia.svg",
+    "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/c/c6/Flag_of_Zulia_State.svg/1280px-Flag_of_Zulia_State.svg.png"
+  },
+  "DEPENDENCIAS FEDERALES": {
+    "localPath": "./img/banderas/dependencias_federales.svg",
+    "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/0/0b/Federal_dependencies_of_Venezuela%27s_Flag.svg/120px-Federal_dependencies_of_Venezuela%27s_Flag.svg.png"
+  },
+  "GUAYANA ESEQUIBA": {
+    "localPath": "./img/banderas/guayana_esequiba.svg",
+    "url": "https://upload.wikimedia.org/wikipedia/commons/0/06/Flag_of_Venezuela.svg"
+  },
+  "NACIONAL": {
+    "localPath": "./img/banderas/nacional.svg",
+    "url": "https://upload.wikimedia.org/wikipedia/commons/0/06/Flag_of_Venezuela.svg"
+  }
+}
