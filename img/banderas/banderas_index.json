@@ -143,5 +143,10 @@
     "localPath": "./img/banderas/nacional.svg",
     "url": "https://upload.wikimedia.org/wikipedia/commons/0/06/Flag_of_Venezuela.svg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
     "githubRaw": "https://raw.githubusercontent.com/GuevaraGDaniel/noticias-venezuela/main/img/banderas/nacional.svg"
+  },
+  "ESCUDO_NACIONAL": {
+    "localPath": "./img/banderas/escudo_de_venezuela.svg",
+    "url": "https://upload.wikimedia.org/wikipedia/commons/4/46/Coat_of_arms_of_Venezuela.svg",
+    "githubRaw": "https://raw.githubusercontent.com/GuevaraGDaniel/noticias-venezuela/main/img/banderas/escudo_de_venezuela.svg"
   }
 }

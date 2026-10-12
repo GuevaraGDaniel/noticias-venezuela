@@ -135,9 +135,14 @@
             #region-banner { margin-left: 0 !important; width: 100% !important; }
         }
         
-        #region-table-container { overflow: hidden; background-color: white; }
-        .table-collapsed #region-table-container { display: none; opacity: 0; }
-        .table-open #region-table-container { display: block; opacity: 1; max-height: 820px; overflow-y: auto; }
+        #region-table-container { 
+            overflow: hidden; 
+            background-color: white; 
+            display: none;
+            height: 0;
+            opacity: 0;
+            will-change: height, opacity;
+        }
         
         #corporate-footer { opacity: 0; transition: opacity 0.3s ease; }
         #corporate-footer.hidden-by-table { opacity: 0 !important; pointer-events: none; }
@@ -393,47 +398,39 @@
                 <!-- CONTENEDOR CON SCROLL SUAVE -->
                 <div class="space-y-3 flex-grow overflow-y-auto pr-1">
 
-                    <!-- SECCIÓN DINÁMICA: RETRATO OFICIAL DE DELCY vs PORTAL SELECCIONADO -->
-                    <div id="left-identity-card" class="bg-gradient-to-b from-[#002F6C] to-[#00478f] rounded-2xl p-3.5 text-white shadow-md border border-blue-900 relative overflow-hidden group">
+                    <!-- SECCIÓN DINÁMICA: ESCUDO DE ARMAS DE VENEZUELA vs PORTAL SELECCIONADO -->
+                    <div id="left-identity-card" class="bg-gradient-to-b from-[#002F6C] to-[#00478f] rounded-2xl p-3 text-white shadow-md border border-blue-900 relative overflow-hidden group">
                         <div class="flex items-center justify-between mb-2">
-                            <span class="text-[9px] font-black uppercase tracking-wider text-amber-300 bg-amber-950/80 px-2 py-0.5 rounded-full border border-amber-400/50 flex items-center gap-1">
-                                <span class="w-1.5 h-1.5 rounded-full bg-amber-400 animate-ping"></span>
-                                <span>ÁMBITO NACIONAL</span>
+                            <span class="text-[9px] font-black uppercase tracking-wider text-amber-300 bg-amber-950/80 px-2 py-0.5 rounded-full border border-amber-400/50 flex items-center gap-1 shadow-xs">
+                                <span class="w-1.5 h-1.5 rounded-full bg-amber-400 animate-pulse"></span>
+                                <span>VISIÓN GENERAL</span>
                             </span>
-                            <span class="text-[9px] font-bold text-blue-200">Miraflores</span>
+                            <span class="text-[9px] font-bold text-blue-200">Caracas</span>
                         </div>
 
-                        <!-- FOTO EN GRANDE COMO ICONO / BOTÓN CON EL RETRATO EXACTO DE WIKIPEDIA -->
+                        <!-- ESCUDO DE ARMAS OFICIAL DE LA REPÚBLICA -->
                         <div class="flex flex-col items-center text-center mt-1">
-                            <button 
-                                onclick="showNationalOverview()" 
-                                class="relative p-1 rounded-full bg-white/20 backdrop-blur-md border-2 border-amber-400 shadow-xl hover:scale-105 active:scale-95 transition-all cursor-pointer group-hover:border-white mb-2"
-                                title="Ver Flujo Completo del Ámbito Nacional"
-                            >
+                            <div class="relative p-2 rounded-2xl glass-portrait-container ring-3 ring-amber-400/50 shrink-0 bg-white/10 my-1 shadow-xl flex items-center justify-center">
                                 <img 
-                                    src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/a3/Delcy_Rodr%C3%ADguez_portrait.jpg/250px-Delcy_Rodr%C3%ADguez_portrait.jpg" 
-                                    alt="Delcy Rodríguez" 
-                                    class="w-20 h-20 sm:w-24 sm:h-24 rounded-full object-cover object-top border-2 border-white shadow-md"
-                                    onerror="this.src='./img/gobernadores/delcy_rodriguez.jpg'"
-                                    referrerpolicy="no-referrer"
+                                    src="./img/banderas/escudo_de_venezuela.svg" 
+                                    alt="Escudo de Armas de Venezuela" 
+                                    class="w-18 h-18 sm:w-20 sm:h-20 object-contain drop-shadow-[0_8px_16px_rgba(0,0,0,0.45)]"
+                                    onerror="this.onerror=null; this.src='https://upload.wikimedia.org/wikipedia/commons/4/46/Coat_of_arms_of_Venezuela.svg';"
                                 />
-                                <span class="absolute bottom-0 right-1 bg-amber-500 text-slate-950 font-black text-[8px] px-2 py-0.5 rounded-full border border-white shadow-xs">
-                                    EN VIVO
-                                </span>
-                            </button>
+                            </div>
 
-                            <h3 class="text-sm font-black text-white oswald-title tracking-wide leading-tight">
-                                DELCY ELOÍNA RODRÍGUEZ GÓMEZ
+                            <h3 class="text-xs sm:text-sm font-black text-white oswald-title tracking-wide leading-tight uppercase text-center mt-1">
+                                REPÚBLICA BOLIVARIANA DE VENEZUELA
                             </h3>
-                            <span class="text-[10px] font-black text-amber-300 oswald-title mt-0.5 tracking-wider">
-                                PRESIDENTA ENCARGADA
+                            <span class="text-[9px] font-black text-amber-300 oswald-title mt-0.5 tracking-wider text-center block">
+                                ESTADO CONSTITUCIONAL Y SOBERANO
                             </span>
 
                             <button 
                                 onclick="showNationalOverview()" 
-                                class="w-full mt-2 bg-amber-400 hover:bg-amber-300 text-slate-950 font-black text-[10px] py-1.5 px-3 rounded-lg shadow-sm transition-all flex items-center justify-center gap-1.5 uppercase tracking-wide"
+                                class="w-full mt-2.5 bg-amber-400 hover:bg-amber-300 text-slate-950 font-black text-[10px] py-1.5 px-2.5 rounded-lg shadow-sm transition-all flex items-center justify-center gap-1.5 uppercase tracking-wide cursor-pointer oswald-title"
                             >
-                                <span>Ver Noticias Nacionales</span>
+                                <span>Ver Flujo Presidencial</span>
                                 <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6"/></svg>
                             </button>
                         </div>
@@ -5504,46 +5501,42 @@
             if (!cardContainer) return;
 
             if (!currentSelectedMedia) {
-                // MODO 1: ÁMBITO NACIONAL (DELCY RODRÍGUEZ EN VIVO)
+                // MODO 1: REPÚBLICA BOLIVARIANA DE VENEZUELA (ESCUDO DE ARMAS OFICIAL)
                 cardContainer.innerHTML = `
                     <div class="flex items-center justify-between mb-2">
-                        <span class="text-[9px] font-black uppercase tracking-wider text-amber-300 bg-amber-950/80 px-2 py-0.5 rounded-full border border-amber-400/50 flex items-center gap-1">
-                            <span class="w-1.5 h-1.5 rounded-full bg-amber-400 animate-ping"></span>
-                            <span>ÁMBITO NACIONAL</span>
+                        <span class="text-[9px] font-black uppercase tracking-wider text-amber-300 bg-amber-950/80 px-2 py-0.5 rounded-full border border-amber-400/50 flex items-center gap-1 shadow-xs">
+                            <span class="w-1.5 h-1.5 rounded-full bg-amber-400 animate-pulse"></span>
+                            <span>VISIÓN GENERAL</span>
                         </span>
-                        <span class="text-[9px] font-bold text-blue-200">Miraflores</span>
+                        <div class="flex items-center gap-1">
+                            ${getVenezuelaFlagSvg("w-3.5 h-2.5 rounded-[1px]")}
+                            <span class="text-[9px] font-bold text-blue-200">Caracas</span>
+                        </div>
                     </div>
 
                     <div class="flex flex-col items-center text-center mt-1">
-                        <button 
-                            onclick="showNationalOverview()" 
-                            class="relative p-1 rounded-full bg-white/20 backdrop-blur-md border-2 border-amber-400 shadow-xl hover:scale-105 active:scale-95 transition-all cursor-pointer group-hover:border-white mb-2"
-                            title="Ver Flujo Completo del Ámbito Nacional"
-                        >
+                        <!-- ESCUDO DE ARMAS OFICIAL DE LA REPÚBLICA -->
+                        <div class="relative p-2 rounded-2xl glass-portrait-container ring-3 ring-amber-400/50 shrink-0 bg-white/10 my-1 shadow-xl flex items-center justify-center">
                             <img 
-                                src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/a3/Delcy_Rodr%C3%ADguez_portrait.jpg/250px-Delcy_Rodr%C3%ADguez_portrait.jpg" 
-                                alt="Delcy Rodríguez" 
-                                class="w-20 h-20 sm:w-24 sm:h-24 rounded-full object-cover object-top border-2 border-white shadow-md"
-                                onerror="this.src='./img/gobernadores/delcy_rodriguez.jpg'"
-                                referrerpolicy="no-referrer"
+                                src="./img/banderas/escudo_de_venezuela.svg" 
+                                alt="Escudo de Armas de Venezuela" 
+                                class="w-18 h-18 sm:w-20 sm:h-20 object-contain drop-shadow-[0_8px_16px_rgba(0,0,0,0.45)]"
+                                onerror="this.onerror=null; this.src='https://upload.wikimedia.org/wikipedia/commons/4/46/Coat_of_arms_of_Venezuela.svg';"
                             />
-                            <span class="absolute bottom-0 right-1 bg-amber-500 text-slate-950 font-black text-[8px] px-2 py-0.5 rounded-full border border-white shadow-xs">
-                                EN VIVO
-                            </span>
-                        </button>
+                        </div>
 
-                        <h3 class="text-sm font-black text-white oswald-title tracking-wide leading-tight uppercase">
-                            DELCY ELOÍNA RODRÍGUEZ GÓMEZ
+                        <h3 class="text-xs sm:text-sm font-black text-white oswald-title tracking-wide leading-tight uppercase text-center mt-1">
+                            REPÚBLICA BOLIVARIANA DE VENEZUELA
                         </h3>
-                        <span class="text-[10px] font-black text-amber-300 oswald-title mt-0.5 tracking-wider">
-                            PRESIDENTA ENCARGADA
+                        <span class="text-[9px] font-black text-amber-300 oswald-title mt-0.5 tracking-wider text-center block">
+                            ESTADO CONSTITUCIONAL Y SOBERANO
                         </span>
 
                         <button 
                             onclick="showNationalOverview()" 
-                            class="w-full mt-2.5 bg-amber-400 hover:bg-amber-300 text-slate-950 font-black text-[10px] py-1.5 px-3 rounded-lg shadow-sm transition-all flex items-center justify-center gap-1.5 uppercase tracking-wide cursor-pointer"
+                            class="w-full mt-2.5 bg-amber-400 hover:bg-amber-300 text-slate-950 font-black text-[10px] py-1.5 px-2.5 rounded-lg shadow-sm transition-all flex items-center justify-center gap-1.5 uppercase tracking-wide cursor-pointer oswald-title"
                         >
-                            <span>Ver Noticias Nacionales</span>
+                            <span>Ver Flujo Presidencial</span>
                             <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6"/></svg>
                         </button>
                     </div>
@@ -6085,25 +6078,55 @@
             const headerContainer = document.getElementById('banner-header-content');
 
             if (!currentSelectedState) {
-                // MODO 1: VISIÓN GENERAL / NACIONAL (AMPLIADO 25% EN PADDING)
-                headerContainer.className = "px-8 sm:px-10 py-5 sm:py-6 flex items-center justify-between cursor-pointer text-white hover:bg-[#002454] transition-all overflow-visible";
+                // MODO 1: VISIÓN GENERAL / NACIONAL (VENEZUELA: POBLACIÓN, ESTADOS, MUNICIPIOS, PIB EN USD)
+                headerContainer.className = "px-8 sm:px-10 py-7 sm:py-8 flex items-center justify-between cursor-pointer text-white hover:bg-[#002454] transition-all overflow-visible";
                 headerContainer.innerHTML = `
-                    <div class="flex items-center gap-4">
-                        <div class="w-9 h-6 sm:w-12 sm:h-8 rounded-lg overflow-hidden shadow-lg border border-white/50 shrink-0">
-                            <img src="./img/banderas/nacional.svg" alt="Venezuela" class="w-full h-full object-cover" onerror="this.src='https://upload.wikimedia.org/wikipedia/commons/thumb/0/06/Flag_of_Venezuela.svg/320px-Flag_of_Venezuela.svg.png';"/>
+                    <div class="flex flex-wrap items-center gap-6 overflow-visible">
+                        <!-- BANDERA OFICIAL DE VENEZUELA SOBRESALIENDO HACIA ARRIBA EN 3D -->
+                        <div class="relative -mt-10 sm:-mt-12 z-30 shrink-0 group">
+                            <div class="relative rounded-2xl overflow-hidden border-3 border-white shadow-[0_16px_35px_rgba(0,0,0,0.5)] ring-4 ring-amber-400/50 bg-slate-900">
+                                <img 
+                                    src="./img/banderas/nacional.svg" 
+                                    alt="Venezuela" 
+                                    class="w-26 h-16 sm:w-34 sm:h-22 object-cover transform group-hover:scale-105 transition-transform duration-500" 
+                                    onerror="this.onerror=null; this.src='https://upload.wikimedia.org/wikipedia/commons/0/06/Flag_of_Venezuela.svg';"
+                                />
+                                <div class="absolute inset-0 ring-1 ring-inset ring-black/20 rounded-2xl pointer-events-none"></div>
+                            </div>
                         </div>
+
+                        <!-- VENEZUELA CON METADATA COMPLETA: POBLACIÓN, ESTADOS, MUNICIPIOS Y PIB EN USD -->
                         <div>
-                            <h3 class="text-sm sm:text-base font-black uppercase tracking-wider text-white oswald-title">COBERTURA TERRITORIAL Y FLUJO NACIONAL</h3>
-                            <p class="text-xs text-blue-200 font-medium">Consolidado de las 24 Entidades Federales y Flujo Total de Artículos</p>
+                            <div class="flex items-center gap-2.5">
+                                <h3 class="text-2xl sm:text-3xl font-black uppercase tracking-wide text-white oswald-title drop-shadow-md">
+                                    VENEZUELA
+                                </h3>
+                                <span class="bg-amber-400 text-slate-950 font-black text-[10px] sm:text-xs px-3 py-1 rounded-full uppercase shadow-xs oswald-title">
+                                    VISIÓN GENERAL PAÍS
+                                </span>
+                            </div>
+                            <div class="flex flex-wrap items-center gap-3.5 sm:gap-4 text-xs sm:text-sm text-blue-100 mt-1.5">
+                                <span class="oswald-title text-amber-200">POBLACIÓN: <b class="text-amber-300 bg-amber-950/60 border border-amber-400/40 px-2.5 py-1 rounded font-black">28.838.497 HAB.</b></span>
+                                <span class="oswald-title">ESTADOS: <b class="text-white bg-white/10 px-2.5 py-1 rounded font-black">24 ENTIDADES FEDERALES</b></span>
+                                <span class="oswald-title text-blue-200">MUNICIPIOS: <b class="text-white bg-blue-500/80 px-2.5 py-1 rounded font-black">335 MUNICIPIOS</b></span>
+                                <span class="oswald-title text-emerald-300">PIB (USD): <b class="text-emerald-200 bg-emerald-950/70 border border-emerald-400/40 px-2.5 py-1 rounded font-black">$102.300M USD</b></span>
+                                <span class="oswald-title text-blue-100">NOTICIAS: <b class="text-white bg-blue-600/70 px-2.5 py-1 rounded font-black">${filteredNewsData.length} ARTÍCULOS</b></span>
+                            </div>
                         </div>
                     </div>
-                    <div class="flex items-center gap-2.5 bg-white/10 hover:bg-white/20 px-4 py-2.5 rounded-xl border border-white/15 transition-all shadow-xs">
-                        <span id="table-toggle-label" class="text-xs sm:text-sm font-black uppercase tracking-wide oswald-title">
-                            ${isBannerExpanded ? 'Contraer Listado' : 'Ver Listado Completo'}
-                        </span>
-                        <svg id="table-toggle-icon" class="w-4 h-4 transform transition-transform duration-500 ${isBannerExpanded ? 'rotate-180' : ''}" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+
+                    <div class="flex items-center gap-3">
+                        <div class="flex items-center gap-2 bg-amber-400 hover:bg-amber-300 text-slate-950 px-5 py-3 rounded-xl shadow-md font-black text-xs sm:text-sm uppercase tracking-wide transition-all oswald-title cursor-pointer">
+                            <span id="table-toggle-label">
+                                ${isBannerExpanded ? 'Contraer Listado y Datos' : 'Ver Listado Completo'}
+                            </span>
+                            <svg id="table-toggle-icon" class="w-4 h-4 transform transition-transform duration-500 ${isBannerExpanded ? 'rotate-180' : ''}" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+                        </div>
                     </div>
                 `;
+
+                // Transición suave GSAP para el banner nacional
+                gsap.fromTo(headerContainer, { opacity: 0, y: 15 }, { opacity: 1, y: 0, duration: 0.70, ease: "power3.out" });
             } else {
                 // MODO 2: ESTADO SELECCIONADO (25% MÁS GRANDE, BANDERA OFICIAL SOBRESALIENDO CON RELIEVE Y TIPOGRAFÍA OSWALD)
                 headerContainer.className = "px-8 sm:px-10 py-7 sm:py-8 flex items-center justify-between cursor-pointer text-white hover:bg-[#002454] transition-all overflow-visible";
@@ -6310,20 +6333,51 @@
             isBannerExpanded = !isBannerExpanded;
             const banner = document.getElementById('region-banner');
             const footer = document.getElementById('corporate-footer');
+            const container = document.getElementById('region-table-container');
 
             if (isBannerExpanded) {
                 banner.classList.remove('table-collapsed');
                 banner.classList.add('table-open');
-                footer.classList.add('hidden-by-table');
+                if (footer) footer.classList.add('hidden-by-table');
                 renderBottomBannerHeader();
                 renderBottomBannerExpandedContent();
+
+                // Animación GSAP ultra-suave y cinemática de apertura
+                container.style.display = 'block';
+                container.style.overflow = 'hidden';
+                gsap.fromTo(container, 
+                    { height: 0, opacity: 0 }, 
+                    { 
+                        height: 'auto', 
+                        opacity: 1, 
+                        duration: 0.65, 
+                        ease: "power3.out",
+                        onComplete: () => {
+                            container.style.overflowY = 'auto';
+                            container.style.maxHeight = '780px';
+                            adjustLayoutHeight();
+                        }
+                    }
+                );
             } else {
-                banner.classList.remove('table-open');
-                banner.classList.add('table-collapsed');
-                footer.classList.remove('hidden-by-table');
+                if (footer) footer.classList.remove('hidden-by-table');
                 renderBottomBannerHeader();
+
+                // Animación GSAP ultra-suave y cinemática de cierre
+                container.style.overflow = 'hidden';
+                gsap.to(container, {
+                    height: 0,
+                    opacity: 0,
+                    duration: 0.50,
+                    ease: "power3.inOut",
+                    onComplete: () => {
+                        container.style.display = 'none';
+                        banner.classList.remove('table-open');
+                        banner.classList.add('table-collapsed');
+                        adjustLayoutHeight();
+                    }
+                });
             }
-            setTimeout(adjustLayoutHeight, 350);
         }
 
         function switchBannerTab(tab) {
