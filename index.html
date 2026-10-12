@@ -42,7 +42,6 @@
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
 
     <style>
-        /* Tipografía estricta: Montserrat para todo, excepto Oswald para gobernadores y presidencia */
         *, html, body, input, select, button, div, span, p, h1, h2, h3, h4, h5, h6, table, tr, th, td {
             font-family: 'Montserrat', sans-serif !important;
         }
@@ -61,14 +60,15 @@
         #app-container { display: flex; width: 100vw; opacity: 0; position: relative; z-index: 10; }
         
         #filters-panel { 
-            width: 380px; background: white; box-shadow: 2px 0 14px rgba(0,0,0,0.08); 
+            width: 350px; background: white; box-shadow: 2px 0 14px rgba(0,0,0,0.08); 
             z-index: 1000; padding: 1.25rem; display: flex; flex-direction: column; transition: transform 0.3s ease; 
         }
         #map { flex-grow: 1; height: 100%; z-index: 1; }
         
+        /* PANEL DERECHO CON ANCHO OPTIMIZADO (420px) PARA MAYOR VISIÓN DEL MAPA */
         #details-panel { 
-            position: absolute; right: -560px; top: 0; width: 560px; height: 100%; 
-            background: white; box-shadow: -6px 0 35px rgba(0,0,0,0.22); 
+            position: absolute; right: -420px; top: 0; width: 420px; height: 100%; 
+            background: white; box-shadow: -6px 0 30px rgba(0,0,0,0.22); 
             z-index: 1001; padding: 0; transition: right 0.4s cubic-bezier(0.25, 0.8, 0.25, 1); 
             overflow-y: auto; display: flex; flex-direction: column;
         }
@@ -76,14 +76,14 @@
         
         .close-btn { 
             position: absolute; top: 1.25rem; right: 1.25rem; cursor: pointer; color: white; 
-            font-size: 1.6rem; transition: all 0.2s; z-index: 30; 
+            font-size: 1.5rem; transition: all 0.2s; z-index: 30; 
             text-shadow: 0 2px 6px rgba(0,0,0,0.7);
-            background: rgba(0,0,0,0.35); width: 34px; height: 34px; border-radius: 50%;
+            background: rgba(0,0,0,0.35); width: 32px; height: 32px; border-radius: 50%;
             display: flex; align-items: center; justify-content: center;
         }
         .close-btn:hover { color: #fef08a; background: rgba(0,0,0,0.7); transform: scale(1.1); }
         
-        /* Marcadores corporativos sobre los estados */
+        /* Marcadores sobre los estados */
         .state-news-marker { 
             background-color: #002F6C; border-radius: 50%; 
             border: 2.5px solid white; box-shadow: 0 4px 12px rgba(0,0,0,0.45); cursor: pointer; 
@@ -96,7 +96,7 @@
         #mobile-filter-btn { display: none; position: absolute; bottom: 20px; left: 50%; transform: translateX(-50%); z-index: 1000; }
         
         @media (max-width: 768px) {
-            #filters-panel { position: absolute; left: -380px; height: 100%; }
+            #filters-panel { position: absolute; left: -350px; height: 100%; }
             #filters-panel.open { left: 0; }
             #mobile-filter-btn { display: block; }
             #details-panel { width: 100%; right: -100%; }
@@ -114,7 +114,7 @@
         }
         
         @media (min-width: 768px) {
-            #region-banner.table-collapsed { margin-left: 380px; width: calc(100% - 380px); }
+            #region-banner.table-collapsed { margin-left: 350px; width: calc(100% - 350px); }
             #region-banner.table-open { margin-left: 0; width: 100%; }
         }
         @media (max-width: 767px) {
@@ -157,19 +157,33 @@
         }
 
         /* ==========================================
-           APPLE-STYLE DOCK STYLING (FISHEYE ANIMATED)
+           APPLE DOCK FLOTANTE EN LA PARTE INFERIOR
            ========================================== */
+        #apple-dock-floating-container {
+            position: absolute;
+            bottom: 24px;
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: 1000;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            pointer-events: auto;
+            transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+            max-width: 90vw;
+        }
+
         .apple-dock-shelf {
             background: rgba(255, 255, 255, 0.65);
-            backdrop-filter: blur(20px);
-            -webkit-backdrop-filter: blur(20px);
-            border: 1.5px solid rgba(255, 255, 255, 0.7);
-            box-shadow: 0 15px 35px -5px rgba(0, 32, 90, 0.15), inset 0 1px 0 rgba(255, 255, 255, 0.8);
-            border-radius: 20px;
-            padding: 8px 10px;
+            backdrop-filter: blur(25px);
+            -webkit-backdrop-filter: blur(25px);
+            border: 1.5px solid rgba(255, 255, 255, 0.8);
+            box-shadow: 0 20px 45px -8px rgba(0, 47, 108, 0.25), inset 0 1px 0 rgba(255, 255, 255, 0.9);
+            border-radius: 26px;
+            padding: 10px 14px;
             display: flex;
             align-items: flex-end;
-            gap: 8px;
+            gap: 10px;
             overflow-x: auto;
             scrollbar-width: none;
             perspective: 1000px;
@@ -187,13 +201,15 @@
             user-select: none;
             will-change: transform;
         }
+
+        /* Iconos más grandes y redondeados con acento azul */
         .apple-dock-icon {
-            width: 44px;
-            height: 44px;
-            border-radius: 14px;
+            width: 58px;
+            height: 58px;
+            border-radius: 18px;
             overflow: hidden;
-            border: 2px solid white;
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+            border: 2.5px solid white;
+            box-shadow: 0 6px 14px rgba(0, 30, 80, 0.16);
             transition: box-shadow 0.2s ease, border-color 0.2s ease;
             background: white;
             display: flex;
@@ -201,39 +217,43 @@
             justify-content: center;
         }
         .apple-dock-item:hover .apple-dock-icon {
-            box-shadow: 0 10px 22px rgba(0, 94, 184, 0.35);
-            border-color: #fef08a;
+            box-shadow: 0 12px 25px rgba(0, 94, 184, 0.4);
+            border-color: #005EB8;
         }
+        .apple-dock-item.active-dock .apple-dock-icon {
+            border-color: #005EB8;
+            box-shadow: 0 0 0 3px rgba(0, 94, 184, 0.35), 0 8px 20px rgba(0, 47, 108, 0.3);
+        }
+
         .apple-dock-dot {
-            width: 4px;
-            height: 4px;
+            width: 5px;
+            height: 5px;
             border-radius: 50%;
             background: transparent;
             margin-top: 4px;
             transition: background 0.2s ease;
         }
         .apple-dock-item.active-dock .apple-dock-dot {
-            background: #002F6C;
-            box-shadow: 0 0 6px #005EB8;
+            background: #005EB8;
+            box-shadow: 0 0 8px #005EB8;
         }
 
-        /* Tooltip flotante al estilo macOS Dock */
         .apple-dock-tooltip {
             position: absolute;
-            bottom: 56px;
-            background: rgba(15, 23, 42, 0.9);
+            bottom: 74px;
+            background: rgba(0, 47, 108, 0.92);
             backdrop-filter: blur(8px);
             color: white;
-            padding: 3px 8px;
+            padding: 4px 10px;
             border-radius: 8px;
-            font-size: 9px;
+            font-size: 10px;
             font-weight: 800;
             white-space: nowrap;
             pointer-events: none;
             opacity: 0;
             transform: translateY(5px);
             transition: opacity 0.15s ease, transform 0.15s ease;
-            box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+            box-shadow: 0 6px 16px rgba(0,0,0,0.25);
             z-index: 100;
         }
         .apple-dock-item:hover .apple-dock-tooltip {
@@ -268,7 +288,7 @@
             <div class="w-48 h-1.5 bg-blue-900/60 rounded-full overflow-hidden border border-white/10">
                 <div class="w-full h-full bg-gradient-to-r from-amber-400 to-blue-400 animate-pulse"></div>
             </div>
-            <span class="text-[10px] text-blue-300 font-bold mt-3 tracking-widest uppercase">Cargando Cartografía Oficial y Banderas Estatales...</span>
+            <span class="text-[10px] text-blue-300 font-bold mt-3 tracking-widest uppercase">Mapeando 500+ Noticias y Cartografía Oficial...</span>
         </div>
     </div>
 
@@ -276,7 +296,7 @@
     <div id="main-wrapper">
         <div id="app-container" class="relative">
             
-            <!-- PANEL LATERAL IZQUIERDO: FILTROS, RETRATO OFICIAL Y APPLE DOCK -->
+            <!-- PANEL LATERAL IZQUIERDO: FILTROS Y RETRATO OFICIAL DE DELCY -->
             <div id="filters-panel">
                 <!-- Branding Header -->
                 <div class="border-b border-gray-100 pb-2.5 mb-2.5">
@@ -333,34 +353,6 @@
                                 <span>Ver Noticias Nacionales</span>
                                 <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6"/></svg>
                             </button>
-                        </div>
-                    </div>
-
-                    <!-- SELECTOR TIPO DOCK DE APPLE CON TRANSICIONES ANIMADAS GSAP -->
-                    <div class="bg-slate-100/80 border border-slate-200/90 rounded-2xl p-2.5 shadow-xs">
-                        <div class="flex items-center justify-between mb-1.5 px-1">
-                            <span class="text-[10px] font-black uppercase text-nativa-marine tracking-wide flex items-center gap-1">
-                                <span>🖥️</span> <span>DOCK INTERACTIVO</span>
-                            </span>
-                            
-                            <!-- Suiche del Dock: Gobernadores vs Portales -->
-                            <div class="inline-flex p-0.5 bg-white rounded-lg border border-gray-200 text-[9px] font-bold">
-                                <button id="dock-btn-gov" onclick="setDockMode('gov')" class="px-2 py-0.5 rounded bg-nativa-marine text-white transition-all shadow-2xs">Gobernadores (24)</button>
-                                <button id="dock-btn-media" onclick="setDockMode('media')" class="px-2 py-0.5 rounded text-gray-500 hover:text-nativa-marine transition-all">Portales</button>
-                            </div>
-                        </div>
-
-                        <!-- Indicador animado del elemento bajo el foco del Dock -->
-                        <div class="text-center py-1 bg-white rounded-lg border border-gray-100 shadow-2xs mb-2">
-                            <span id="dock-status-label" class="text-[10px] font-black text-nativa-marine truncate block px-2">Desliza el cursor sobre el dock</span>
-                            <span id="dock-status-sub" class="text-[8px] text-gray-400 font-medium block">24 Mandatarios Regionales</span>
-                        </div>
-
-                        <!-- Contenedor del Apple Dock con efecto lupa parabólica GSAP -->
-                        <div class="relative py-1">
-                            <div id="apple-dock" class="apple-dock-shelf">
-                                <!-- Elementos inyectados por JS (Gobernadores o Portales) -->
-                            </div>
                         </div>
                     </div>
 
@@ -426,8 +418,28 @@
                 </div>
             </div>
 
-            <!-- MAPA LEAFLET INTERACTIVO CON OPENSTREETMAP 100% ABIERTO (CENTRO) -->
+            <!-- MAPA LEAFLET INTERACTIVO CON OPENSTREETMAP (CENTRO) -->
             <div id="map"></div>
+
+            <!-- APPLE-STYLE DOCK FLOTANTE EN LA PARTE INFERIOR DEL MAPA (CON ICONOS GRANDES Y ACENTO AZUL) -->
+            <div id="apple-dock-floating-container">
+                <!-- Suiche de Selección del Dock (Gobernadores vs Portales) -->
+                <div class="inline-flex p-1 bg-slate-900/85 backdrop-blur-md rounded-full shadow-lg border border-white/20 text-[10px] font-bold text-white mb-2">
+                    <button id="dock-btn-gov" onclick="setDockMode('gov')" class="px-3.5 py-1 rounded-full bg-nativa-light text-white font-black transition-all shadow-xs flex items-center gap-1.5">
+                        <span>🏛️</span> <span>Gobernadores (24)</span>
+                    </button>
+                    <button id="dock-btn-media" onclick="setDockMode('media')" class="px-3.5 py-1 rounded-full text-blue-200 hover:text-white transition-all flex items-center gap-1.5">
+                        <span>📰</span> <span>Portales Informativos</span>
+                    </button>
+                </div>
+
+                <!-- Shelf del Dock con Efecto Lupa GSAP -->
+                <div class="apple-dock-shelf">
+                    <div id="apple-dock">
+                        <!-- Iconos grandes y redondeados inyectados dinámicamente por JS -->
+                    </div>
+                </div>
+            </div>
 
             <!-- BOTÓN MÓVIL PARA MOSTRAR FILTROS -->
             <button id="mobile-filter-btn" onclick="toggleMobileFilters()" class="bg-nativa-marine text-white font-bold text-xs py-2.5 px-5 rounded-full shadow-xl flex items-center gap-2 border border-white/20">
@@ -435,7 +447,7 @@
                 <span>Filtros y Controles</span>
             </button>
 
-            <!-- PANEL DESLIZANTE DERECHO: DOSSIER EJECUTIVO / REGIONAL -->
+            <!-- PANEL DESLIZANTE DERECHO (ANCHO COMPACTO 420px): DOSSIER EJECUTIVO / REGIONAL -->
             <div id="details-panel">
                 <div class="close-btn" onclick="closeDetails()" title="Cerrar panel">&times;</div>
                 <div id="details-content-wrapper" class="h-full flex flex-col">
@@ -448,7 +460,7 @@
         <!-- ====================================================================
              BANNER INFERIOR DINÁMICO:
              - VISIÓN GENERAL: COBERTURA TERRITORIAL Y FLUJO NACIONAL
-             - ESTADO SELECCIONADO: BANDERA GRANDE, CAPITAL, POBLACIÓN Y NOTICIAS
+             - ESTADO SELECCIONADO: BANDERA GRANDE, CAPITAL, POBLACIÓN, OSWALD Y NOTICIAS
              ==================================================================== -->
         <div id="region-banner" class="table-collapsed">
             <!-- Barra Superior Dinámica Clickeable para Expandir/Contraer -->
@@ -4757,6 +4769,9 @@
         const venezuelaStatesData = {"AMAZONAS":{"name":"Amazonas","capital":"Puerto Ayacucho","governor":"Miguel Leonardo Rodríguez","governorTitle":"Gobernador del Estado Amazonas","startDate":"20 de octubre de 2017","party":"PSUV / GPPSB","instagram":"miguelr_amazonas","governorPhoto":"https://estatico.mazo4f.com/1637524563127253479xg.jpg","flag":"https://upload.wikimedia.org/wikipedia/commons/thumb/4/41/Flag_of_Amazonas_Indigenous_State.svg/320px-Flag_of_Amazonas_Indigenous_State.svg.png","economicProfile":"Ecosistema de minería sustentable, potencial hídrico, turismo ecológico fluvial y comercio transfronterizo con Colombia y Brasil.","keySectors":["Ecoturismo","Comercio Fronterizo","Recursos Hídricos","Agroforestal"],"lat":3.4167,"lng":-65.75,"region":"Guayana / Sur","photoLocal":"./img/gobernadores/amazonas_miguel_rodriguez.jpg","poblacion":"198.400 hab."},"ANZOATEGUI":{"name":"Anzoátegui","capital":"Barcelona","governor":"Luis José Marcano","governorTitle":"Gobernador del Estado Anzoátegui","startDate":"3 de diciembre de 2021","party":"PSUV / GPPSB","instagram":"luismarcanos","governorPhoto":"https://upload.wikimedia.org/wikipedia/commons/9/91/Luis_Marcano_Gobernador_de_Anzo%C3%A1tegui.jpg","flag":"https://upload.wikimedia.org/wikipedia/commons/thumb/7/77/Flag_of_Anzo%C3%A1tegui_State.svg/320px-Flag_of_Anzo%C3%A1tegui_State.svg.png","economicProfile":"Eje neurálgico energético: Complejo Criogénico de Jose, Faja Petrolífera del Orinoco, refinación, terminales portuarios y turismo costero.","keySectors":["Petróleo y Gas","Petroquímica","Turismo Costero","Pesca Industrial"],"lat":8.95,"lng":-64.4,"region":"Nororiental","photoLocal":"./img/gobernadores/anzoategui_luis_marcano.jpg","poblacion":"1.745.500 hab."},"APURE":{"name":"Apure","capital":"San Fernando de Apure","governor":"Wilmer Rodríguez","governorTitle":"Gobernador del Estado Apure","startDate":"10 de septiembre de 2024","party":"PSUV / GPPSB","instagram":"wilmerodriguezv","governorPhoto":"http://avn.info.ve/wp-content/uploads/2025/06/images-19-1.jpg","flag":"https://upload.wikimedia.org/wikipedia/commons/thumb/e/e0/Bandera_del_Estado_Apure.svg/320px-Bandera_del_Estado_Apure.svg.png","economicProfile":"Epicentro de ganadería extensiva bovina y bufalina, producción cárnica y quesera, piscicultura continental y comercio fluvial llanero.","keySectors":["Ganadería Bovina y Bufalina","Lácteos y Quesos","Piscicultura","Comercio Llanero"],"lat":7.0,"lng":-68.5,"region":"Los Llanos","photoLocal":"./img/gobernadores/apure_wilmer_rodriguez.jpg","poblacion":"630.500 hab."},"ARAGUA":{"name":"Aragua","capital":"Maracay","governor":"Joana Sánchez","governorTitle":"Gobernadora del Estado Aragua","startDate":"5 de junio de 2025","party":"PSUV / GPPSB","instagram":"johanitakenpo","governorPhoto":"http://www.psuv.org.ve/wp-content/uploads/2025/04/Alcaldesa-Joana-Sanchez-envio-un-mensaje.jpg","flag":"https://upload.wikimedia.org/wikipedia/commons/thumb/2/23/Flag_of_Aragua_State.svg/320px-Flag_of_Aragua_State.svg.png","economicProfile":"Potente corredor agroindustrial, ensamblaje automotriz, parques industriales de Cagua y La Victoria, farmacéutica y turismo en Ocumare y Choroní.","keySectors":["Agroindustria","Metalmecánica","Farmacéutica","Textil"],"lat":10.05,"lng":-67.15,"region":"Central","photoLocal":"./img/gobernadores/aragua_joana_sanchez.jpg","poblacion":"1.878.700 hab."},"BARINAS":{"name":"Barinas","capital":"Barinas","governor":"Adán Chávez","governorTitle":"Gobernador del Estado Barinas","startDate":"9 de junio de 2025","party":"PSUV / GPPSB","instagram":"adanchavezoficial","governorPhoto":"https://upload.wikimedia.org/wikipedia/commons/3/3c/Ad%C3%A1n_Ch%C3%A1vez_%28cropped%29.jpg","flag":"https://upload.wikimedia.org/wikipedia/commons/thumb/5/52/Flag_of_Barinas_State.svg/320px-Flag_of_Barinas_State.svg.png","economicProfile":"Cinturón agropecuario: cultivo de cereales (maíz, arroz), ganadería doble propósito, explotación forestal y cuenca petrolera Barinas-Apure.","keySectors":["Cereales y Arroz","Ganadería Bovina","Madera y Silvicultura","Hidrocarburos"],"lat":8.15,"lng":-70.25,"region":"Los Llanos","photoLocal":"./img/gobernadores/barinas_adan_chavez.jpg","poblacion":"970.600 hab."},"BOLIVAR":{"name":"Bolívar","capital":"Ciudad Bolívar","governor":"Yulisbeth García","governorTitle":"Gobernadora del Estado Bolívar","startDate":"4 de junio de 2025","party":"PSUV / GPPSB","instagram":"tatagarcian1","governorPhoto":"https://avn.info.ve/wp-content/uploads/2025/06/andaciresomaeoseearimujeobeelstaol3_20250605001921-scaled.jpg","flag":"https://upload.wikimedia.org/wikipedia/commons/thumb/8/87/Flag_of_Bol%C3%ADvar_State.svg/320px-Flag_of_Bol%C3%ADvar_State.svg.png","economicProfile":"Corazón de la industria pesada nacional: empresas básicas de Guayana (siderúrgica Sidor, aluminio Venalum/Alcasa), oro, bauxita y generación hidroeléctrica del Guri.","keySectors":["Siderurgia y Aluminio","Minería (Oro, Bauxita, Hierro)","Energía Hidroeléctrica","Turismo Gran Sabana"],"lat":6.8,"lng":-63.5,"region":"Guayana","photoLocal":"./img/gobernadores/bolivar_yulisbeth_garcia.jpg","poblacion":"1.824.200 hab."},"CARABOBO":{"name":"Carabobo","capital":"Valencia","governor":"Rafael Lacava","governorTitle":"Gobernador del Estado Carabobo","startDate":"20 de octubre de 2017","party":"PSUV / GPPSB","instagram":"lacava10oficial","governorPhoto":"https://upload.wikimedia.org/wikipedia/commons/0/03/Rafael_Lacava_2025.jpg","flag":"https://upload.wikimedia.org/wikipedia/commons/thumb/1/16/Bandera_del_Estado_Carabobo.svg/320px-Bandera_del_Estado_Carabobo.svg.png","economicProfile":"Principal polo manufacturero del país y sede del puerto comercial más activo de Venezuela (Puerto Cabello), refinación de El Palito, ensamblaje y químicos.","keySectors":["Puerto Cabello (Logística)","Manufactura Industrial","Refinación Petrolera","Alimentos Procesados"],"lat":10.18,"lng":-68.0,"region":"Central","photoLocal":"./img/gobernadores/carabobo_rafael_lacava.jpg","poblacion":"2.543.600 hab."},"COJEDES":{"name":"Cojedes","capital":"San Carlos","governor":"Alberto Galíndez","governorTitle":"Gobernador del Estado Cojedes","startDate":"25 de noviembre de 2021","party":"Vamos Vamos Cojedes / Alianza","instagram":"albertogalindez_","governorPhoto":"https://upload.wikimedia.org/wikipedia/commons/3/3e/Alberto_Gal%C3%ADndez_2022.jpg","flag":"https://upload.wikimedia.org/wikipedia/commons/thumb/c/cd/Flag_of_Cojedes_State.svg/320px-Flag_of_Cojedes_State.svg.png","economicProfile":"Actividad agroindustrial centrada en arroz, sorgo, tabaco, mango, ganadería vacuna y porcina, además de depósitos minerales no metálicos.","keySectors":["Agroindustria Cerealera","Ganadería y Porcinos","Minerales No Metálicos","Comercio Regional"],"lat":9.55,"lng":-68.4,"region":"Los Llanos","photoLocal":"./img/gobernadores/cojedes_alberto_galindez.jpg","poblacion":"370.100 hab."},"DELTA AMACURO":{"name":"Delta Amacuro","capital":"Tucupita","governor":"Loa Tamaronis","governorTitle":"Gobernadora del Estado Delta Amacuro","startDate":"4 de junio de 2025","party":"PSUV / GPPSB","instagram":"loatamaronis","governorPhoto":"https://estatico.mazo4f.com/1749071863928318268xg.jpg","flag":"https://upload.wikimedia.org/wikipedia/commons/thumb/8/81/Flag_of_Delta_Amacuro_State.svg/320px-Flag_of_Delta_Amacuro_State.svg.png","economicProfile":"Riqueza petrolera en la Plataforma Deltana, gas costa afuera, pesca marítima y fluvial, palmito, y salida bioceánica por el caño Manamo hacia el Atlántico.","keySectors":["Gas Costa Afuera","Pesca y Camaroneras","Palmito y Cacao","Salida Portuaria Atlántica"],"lat":8.7,"lng":-61.5,"region":"Guayana","photoLocal":"./img/gobernadores/delta_amacuro_loa_tamaronis.jpg","poblacion":"211.600 hab."},"FALCON":{"name":"Falcón","capital":"Coro","governor":"Víctor Clark","governorTitle":"Gobernador del Estado Falcón","startDate":"20 de octubre de 2017","party":"PSUV / GPPSB","instagram":"vclarkb","governorPhoto":"https://upload.wikimedia.org/wikipedia/commons/b/b6/VictorClark.jpg","flag":"https://upload.wikimedia.org/wikipedia/commons/thumb/6/68/Flag_of_Falc%C3%B3n_State.svg/320px-Flag_of_Falc%C3%B3n_State.svg.png","economicProfile":"Centro de Refinación Paraguaná (Amuay y Cardón) - uno de los más grandes del mundo, Zona Franca de Paraguaná, turismo de playas en Morrocoy y energía eólica.","keySectors":["Refinación Petrolera (CRP)","Zona Libre Paraguaná","Turismo Playero (Morrocoy)","Energía Eólica y Pesca"],"lat":11.15,"lng":-69.85,"region":"Centroccidental","photoLocal":"./img/gobernadores/falcon_victor_clark.jpg","poblacion":"1.077.800 hab."},"GUARICO":{"name":"Guárico","capital":"San Juan de los Morros","governor":"Donald Donaire","governorTitle":"Gobernador del Estado Guárico","startDate":"5 de junio de 2025","party":"PSUV / GPPSB","instagram":"donalddonaire","governorPhoto":"https://guarico.gob.ve/wp-content/uploads/2025/06/Foto-1-Gobernador-Donaire-juramentado-por-amor-a-Guarico.jpg","flag":"https://upload.wikimedia.org/wikipedia/commons/thumb/5/51/Flag_of_Gu%C3%A1rico_State.svg/320px-Flag_of_Gu%C3%A1rico_State.svg.png","economicProfile":"Granero agrícola central de Venezuela: primer productor de arroz y maíz, cebolla, sorgo, ganadería de carne y leche, y enlace geoestratégico nacional.","keySectors":["Arroz y Maíz","Ganadería Bovina","Agroindustria Calabozo","Hortalizas"],"lat":8.9,"lng":-66.45,"region":"Los Llanos","photoLocal":"./img/gobernadores/guarico_donald_donaire.jpg","poblacion":"941.500 hab."},"LARA":{"name":"Lara","capital":"Barquisimeto","governor":"Luis Reyes Reyes","governorTitle":"Gobernador del Estado Lara","startDate":"9 de junio de 2025","party":"PSUV / GPPSB","instagram":"luisreyesreyes_","governorPhoto":"https://cdn.elimpulso.com/media/2025/08/Luis-Reyes-Reyes.jpg","flag":"https://upload.wikimedia.org/wikipedia/commons/thumb/0/02/Bandera_del_Estado_Lara.svg/320px-Bandera_del_Estado_Lara.svg.png","economicProfile":"Encrucijada comercial del occidente del país: Mercado Mayorista Mercabar, agroindustria de caña de azúcar, hortalizas, café, avicultura e industria metalúrgica.","keySectors":["Distribución Mayorista (Mercabar)","Caña de Azúcar y Lácteos","Metalmecánica","Comercio Logístico"],"lat":10.05,"lng":-69.65,"region":"Centroccidental","photoLocal":"./img/gobernadores/lara_luis_reyes_reyes.jpg","poblacion":"2.047.800 hab."},"MERIDA":{"name":"Mérida","capital":"Mérida","governor":"Arnaldo Sánchez","governorTitle":"Gobernador del Estado Mérida","startDate":"3 de junio de 2025","party":"PSUV / GPPSB","instagram":"arnaldosanchez_","governorPhoto":"https://avn.info.ve/wp-content/uploads/2025/05/arnaldosanchezp_1748376030640-e1748376140799.jpg","flag":"https://upload.wikimedia.org/wikipedia/commons/thumb/c/c5/Flag_of_M%C3%A9rida_State.svg/320px-Flag_of_M%C3%A9rida_State.svg.png","economicProfile":"Líder andino en producción de hortalizas (papa, zanahoria, ajo), flores de exportación, turismo de alta montaña (Teleférico Mukumbarí) y polo universitario.","keySectors":["Hortalizas de Altura","Turismo Andino (Mukumbarí)","Polo Universitario ULA","Café y Truchicultura"],"lat":8.5,"lng":-71.2,"region":"Los Andes","photoLocal":"./img/gobernadores/merida_arnaldo_sanchez.jpg","poblacion":"860.900 hab."},"MIRANDA":{"name":"Miranda","capital":"Los Teques","governor":"Elio Serrano","governorTitle":"Gobernador del Estado Miranda","startDate":"10 de septiembre de 2024","party":"PSUV / GPPSB","instagram":"elioserranoc","governorPhoto":"https://www.correodelorinoco.gob.ve/wp-content/uploads/2024/09/elio-serrano.jpg","flag":"https://upload.wikimedia.org/wikipedia/commons/thumb/8/88/Flag_of_Miranda_State.svg/320px-Flag_of_Miranda_State.svg.png","economicProfile":"Segunda economía del país: parques industriales de Guarenas-Guatire y Valles del Tuy, cacao fino de aroma de Barlovento, servicios financieros y tecnología en Chacao/Baruta.","keySectors":["Servicios Financieros y Corporativos","Parques Industriales Guarenas","Cacao de Exportación Barlovento","Farmacéutica y Plásticos"],"lat":10.25,"lng":-66.6,"region":"Capital / Central","photoLocal":"./img/gobernadores/miranda_elio_serrano.jpg","poblacion":"3.222.400 hab."},"MONAGAS":{"name":"Monagas","capital":"Maturín","governor":"Ernesto Luna","governorTitle":"Gobernador del Estado Monagas","startDate":"2 de diciembre de 2021","party":"PSUV / GPPSB","instagram":"ernestolunapsuv","governorPhoto":"https://upload.wikimedia.org/wikipedia/commons/d/d1/Candidato_a_la_Gobernaci%C3%B3n_del_estado_Monagas%2C_por_el_G.P.P_y_el_Partido_Socialista_Unido_de_Venezuela_%28PSUV%29_2021.jpg","flag":"https://upload.wikimedia.org/wikipedia/commons/thumb/2/23/Flag_of_Monagas_State.svg/320px-Flag_of_Monagas_State.svg.png","economicProfile":"Capital petrolera del oriente (Complejo Operacional Furrial), procesamiento de gas natural en Jusepín, plantaciones de pino Caribe en Uverito y cultivo de soya.","keySectors":["Extracción Petrolera El Furrial","Gas Natural (Jusepín)","Forestal (Pino Caribe Uverito)","Soya y Palma Aceitera"],"lat":9.5,"lng":-63.15,"region":"Nororiental","photoLocal":"./img/gobernadores/monagas_ernesto_luna.jpg","poblacion":"1.020.400 hab."},"NUEVA ESPARTA":{"name":"Nueva Esparta","capital":"La Asunción","governor":"Marisel Velásquez","governorTitle":"Gobernadora del Estado Nueva Esparta","startDate":"3 de junio de 2025","party":"PSUV / GPPSB","instagram":"mariselvelasquezoficial","governorPhoto":"https://gbvm.knoios.com/mmedia/20238/cortesia-marisel-velasquez-gobernadora-de-nueva-esparta-42399.jpg","flag":"https://upload.wikimedia.org/wikipedia/commons/thumb/f/f7/Flag_of_Nueva_Esparta.svg/320px-Flag_of_Nueva_Esparta.svg.png","economicProfile":"Principal destino turístico del Caribe venezolano: Isla de Margarita, Puerto Libre de compras, hotelería internacional, pesca artesanal e industrial y conexiones marítimas.","keySectors":["Puerto Libre de Margarita","Turismo y Hotelería","Pesca de Altura","Inmobiliario y Comercio"],"lat":11.0,"lng":-64.0,"region":"Insular","photoLocal":"./img/gobernadores/nueva_esparta_marisel_velasquez.jpg","poblacion":"617.200 hab."},"PORTUGUESA":{"name":"Portuguesa","capital":"Guanare","governor":"Antonio Cedeño (Primitivo Cedeño)","governorTitle":"Gobernador del Estado Portuguesa","startDate":"2 de diciembre de 2021","party":"PSUV / GPPSB","instagram":"primitivo_cedeno","governorPhoto":"https://upload.wikimedia.org/wikipedia/commons/a/ae/Primitivo_Cede%C3%B1o_2023.jpg","flag":"https://upload.wikimedia.org/wikipedia/commons/thumb/7/7b/Bandera_del_Estado_Portuguesa.svg/320px-Bandera_del_Estado_Portuguesa.svg.png","economicProfile":"Puntal indiscutible de la soberanía alimentaria: epicentro nacional de maíz, arroz, azúcar (centrales azucareros), café, oleaginosas y plantas de harina precocida.","keySectors":["Harina Precocida y Maíz","Centrales Azucareros","Café y Oleaginosas","Silos y Almacenamiento"],"lat":9.15,"lng":-69.25,"region":"Los Llanos","photoLocal":"./img/gobernadores/portuguesa_primitivo_cedeno.jpg","poblacion":"1.032.100 hab."},"SUCRE":{"name":"Sucre","capital":"Cumaná","governor":"Jhoanna Carrillo","governorTitle":"Gobernadora del Estado Sucre","startDate":"3 de junio de 2025","party":"PSUV / GPPSB","instagram":"jhoannacarrillo_","governorPhoto":"https://eltiempove.com/wp-content/uploads/2025/03/gobernadora.jpg","flag":"https://upload.wikimedia.org/wikipedia/commons/thumb/9/98/Flag_of_Sucre_State.svg/320px-Flag_of_Sucre_State.svg.png","economicProfile":"Mayor flota y procesamiento atunero de Sudamérica (enlatadoras de Cumaná y Carúpano), salinas de Araya, cacao de Paria de alta calidad y gas en el golfo de Paria.","keySectors":["Pesca de Atún y Enlatados","Salinas de Araya","Cacao Fino de Paria","Gas Marítimo Costa Afuera"],"lat":10.4,"lng":-63.5,"region":"Nororiental","photoLocal":"./img/gobernadores/sucre_jhoanna_carrillo.jpg","poblacion":"1.083.400 hab."},"TACHIRA":{"name":"Táchira","capital":"San Cristóbal","governor":"Freddy Bernal","governorTitle":"Gobernador del Estado Táchira","startDate":"4 de diciembre de 2021","party":"PSUV / GPPSB","instagram":"freddybernalr","governorPhoto":"https://upload.wikimedia.org/wikipedia/commons/c/c9/Freddy_Bernal_%28cropped%29.png","flag":"https://upload.wikimedia.org/wikipedia/commons/thumb/4/4c/Bandera_del_Estado_T%C3%A1chira.svg/320px-Bandera_del_Estado_T%C3%A1chira.svg.png","economicProfile":"Principal paso fronterizo con Colombia (Puente Atanasio Girardot / San Antonio del Táchira), hortalizas de La Grita, manufactura de calzado, confección textil y ganadería andina.","keySectors":["Comercio Binacional Fronterizo","Hortalizas (Ferias de La Grita)","Textil y Calzado","Café y Ganadería Andina"],"lat":7.8,"lng":-72.2,"region":"Los Andes","photoLocal":"./img/gobernadores/tachira_freddy_bernal.jpg","poblacion":"1.271.500 hab."},"TRUJILLO":{"name":"Trujillo","capital":"Trujillo","governor":"Gerardo Márquez","governorTitle":"Gobernador del Estado Trujillo","startDate":"2 de diciembre de 2021","party":"PSUV / GPPSB","instagram":"gerardomarquez4f","governorPhoto":"http://avn.info.ve/wp-content/uploads/2025/06/gerardomarquez4fpsuv_1749080904302.jpg","flag":"https://upload.wikimedia.org/wikipedia/commons/thumb/d/d4/Bandera_del_Estado_Trujillo.svg/320px-Bandera_del_Estado_Trujillo.svg.png","economicProfile":"Líder en café de especialidad, hortalizas de piso térmico, fresas, plátanos en la costa del Lago de Maracaibo, y turismo religioso con el Monumento a la Paz.","keySectors":["Café de Especialidad","Hortalizas Andinas","Plátano y Frutales","Turismo Religioso"],"lat":9.35,"lng":-70.45,"region":"Los Andes","photoLocal":"./img/gobernadores/trujillo_gerardo_marquez.jpg","poblacion":"867.600 hab."},"VARGAS":{"name":"La Guaira","capital":"La Guaira","governor":"José Alejandro Terán","governorTitle":"Gobernador del Estado La Guaira","startDate":"2 de diciembre de 2021","party":"PSUV / GPPSB","instagram":"josealejandro.teran","governorPhoto":"https://avn.info.ve/wp-content/uploads/2025/06/Jose-Alejandro-Teran.png","flag":"https://upload.wikimedia.org/wikipedia/commons/thumb/c/c8/Bandera_del_Estado_La_Guaira.svg/320px-Bandera_del_Estado_La_Guaira.svg.png","economicProfile":"Puerta de entrada internacional: Aeropuerto Internacional de Maiquetía y Puerto de La Guaira. Centro de comercio exterior, aduanas, turismo de litoral y gastronomía marina.","keySectors":["Aeropuerto de Maiquetía","Puerto de La Guaira (Comercio Exterior)","Turismo de Playas","Logística y Aduanas"],"lat":10.6,"lng":-66.9,"region":"Capital / Costera","photoLocal":"./img/gobernadores/la_guaira_jose_alejandro_teran.jpg","poblacion":"398.700 hab."},"YARACUY":{"name":"Yaracuy","capital":"San Felipe","governor":"Leonardo Intoci","governorTitle":"Gobernador del Estado Yaracuy","startDate":"3 de junio de 2025","party":"PSUV / GPPSB","instagram":"leonardointoci","governorPhoto":"https://yaracuyaldia.com/wp-content/uploads/2025/06/WhatsApp-Image-2025-06-04-at-8.59.57-PM.jpeg","flag":"https://upload.wikimedia.org/wikipedia/commons/thumb/d/db/Flag_of_Yaracuy_State.svg/320px-Flag_of_Yaracuy_State.svg.png","economicProfile":"Valle fértil agroindustrial: producción avícola masiva (huevos y carne), naranjas y cítricos, caña de azúcar, maíz y minería de arenas silíceas.","keySectors":["Avicultura Nacional","Cítricos y Naranjas","Caña de Azúcar","Agroindustria Alimentaria"],"lat":10.35,"lng":-68.75,"region":"Centroccidental","photoLocal":"./img/gobernadores/yaracuy_leonardo_intoci.jpg","poblacion":"785.100 hab."},"ZULIA":{"name":"Zulia","capital":"Maracaibo","governor":"Luis Caldera","governorTitle":"Gobernador del Estado Zulia","startDate":"11 de junio de 2025","party":"PSUV / GPPSB","instagram":"luiscalderapsuv","governorPhoto":"https://upload.wikimedia.org/wikipedia/commons/1/1d/Luis_Caldera_%282025%29.png","flag":"https://upload.wikimedia.org/wikipedia/commons/thumb/6/60/Flag_of_Zulia_State.svg/320px-Flag_of_Zulia_State.svg.png","economicProfile":"Primera economía petrolera histórica y agroalimentaria del país: cuenca petrolera del Lago de Maracaibo, petroquímica El Tablazo, carbón, palma aceitera y carne/leche en Sur del Lago.","keySectors":["Petróleo y Gas del Lago","Petroquímica El Tablazo","Ganadería y Palma Sur del Lago","Comercio Maracaibo"],"lat":10.25,"lng":-71.85,"region":"Zuliana / Occidental","photoLocal":"./img/gobernadores/zulia_luis_caldera.jpg","poblacion":"4.311.400 hab."},"DISTRITO CAPITAL":{"name":"Distrito Capital","capital":"Caracas","governor":"Nahum Fernández","governorTitle":"Jefe de Gobierno del Distrito Capital","startDate":"28 de enero de 2021","party":"PSUV / GPPSB","instagram":"nahumjfernandez","governorPhoto":"https://albaciudad.org/wp-content/uploads/2021/01/Es1N72TU4AQp_gz.jpeg","flag":"https://upload.wikimedia.org/wikipedia/commons/thumb/5/5c/Bandera_de_Caracas.svg/320px-Bandera_de_Caracas.svg.png","economicProfile":"Sede de los poderes públicos nacionales, Banco Central de Venezuela, Bolsa de Valores de Caracas, sedes principales de la banca privada y pública, comercio masivo y servicios.","keySectors":["Banca y Finanzas (BCV, Sedes Bancarias)","Telecomunicaciones y Tecnología","Comercio Mayorista y Minorista","Servicios Gubernamentales"],"lat":10.5,"lng":-66.91,"region":"Capital","photoLocal":"./img/gobernadores/distrito_capital_nahum_fernandez.jpg","poblacion":"2.284.900 hab."},"ZONA EN RECLAMACION":{"name":"Guayana Esequiba","capital":"Tumeremo (Administrativa) / Bochinche","governor":"Neil Villamizar","governorTitle":"Gobernador de la Guayana Esequiba","startDate":"3 de junio de 2025","party":"PSUV / GPPSB","instagram":"neilvillamizar","governorPhoto":"https://estatico.mazo4f.com/1749143784445318332xg.jpg","flag":"https://upload.wikimedia.org/wikipedia/commons/thumb/0/06/Flag_of_Venezuela.svg/320px-Flag_of_Venezuela.svg.png","economicProfile":"Territorio geoestratégico de alta riqueza natural: inmensos yacimientos de hidrocarburos costa afuera, oro, diamantes, bauxita, potencial forestal y biodiversidad.","keySectors":["Recursos Energéticos Costa Afuera","Minería Metálica y Minerales","Biodiversidad y Cuencas","Desarrollo Fronterizo"],"lat":6.5,"lng":-59.5,"region":"Esequibo","photoLocal":"./img/gobernadores/guayana_esequiba_neil_villamizar.jpg","poblacion":"125.000 hab. (Estimación)"}};
         const STATE_DETECTION_RULES = {"AMAZONAS":["amazonas","puerto ayacucho","atabapo","maroa","rio negro","autana","manapiare"],"ANZOATEGUI":["anzoategui","anzoátegui","barcelona","puerto la cruz","lecheria","lechería","el tigre","anaco","guanta","cantaura","pariaguan","pariaguán","complejo jose","criogenico de jose","criogénico de jose"],"APURE":["apure","san fernando de apure","achaguas","guasdualito","biruaca","elorza","bruzual"],"ARAGUA":["aragua","maracay","cagua","turmero","la victoria","el limon","el limón","villa de cura","chuao","san mateo","santa cruz de aragua"],"BARINAS":["barinas","barinitas","socopo","socopó","pedraza","santa barbara de barinas","sabaneta"],"BOLIVAR":["bolivar","bolívar","ciudad guayana","puerto ordaz","ciudad bolivar","ciudad bolívar","san felix","san félix","upata","gran sabana","santa elena de uairen","santa elena de uairén","sidor","guri","cvg","venalum","ferrominera"],"CARABOBO":["carabobo","valencia","puerto cabello","guacara","naguanagua","san diego","los guayos","mariara","bejuma","moron","morón","el palmito"],"COJEDES":["cojedes","san carlos","tinaquillo","tinaco","el baul","el baúl"],"DELTA AMACURO":["delta amacuro","tucupita","pedernales","antonio diaz","antonio díaz","curiapo"],"FALCON":["falcon","falcón","coro","punto fijo","paraguana","paraguaná","amuay","cardon","cardón","chichiriviche","tucacas","la vela de coro","morrocoy"],"GUARICO":["guarico","guárico","san juan de los morros","calabozo","valle de la pascua","zaraza","altagracia de orituco","camaguan","camaguán"],"LARA":["lara","barquisimeto","cabudare","carora","el tocuyo","quibor","quíbor","duaca","sarare","sanare"],"MERIDA":["merida","mérida","el vigia","el vigía","tovar","mucuchies","mucuchíes","ejido","lagunillas","pico bolivar"],"MIRANDA":["miranda","los teques","guarenas","guatire","valles del tuy","charallave","cua","cúa","chacao","baruta","el hatillo","petare","higuerote","rio chico","río chico","barlovento","san antonio de los altos","ocumare del tuy"],"MONAGAS":["monagas","maturin","maturín","caripe","punceres","el furrial","temblador","uverito"],"NUEVA ESPARTA":["nueva esparta","margarita","porlamar","pampatar","juan griego","la asuncion","la asunción","coche","isla de margarita","el yaque"],"PORTUGUESA":["portuguesa","guanare","acarigua","araure","turen","turén","ospino","biscucuy"],"SUCRE":["sucre","cumana","cumaná","carupano","carúpano","guiria","güiria","araya","cariaco","paria"],"TACHIRA":["tachira","táchira","san cristobal","san cristóbal","san antonio del tachira","san antonio del táchira","rubio","tariba","táriba","la fria","la fría","ureña","urena","coloncito"],"TRUJILLO":["trujillo","valera","bocono","boconó","betijoque","sabana de mendoza","monay"],"VARGAS":["la guaira","vargas","maiquetia","maiquetía","caraballeda","catia la mar","macuto","naiguata","naiguatá","puerto de la guaira","aeropuerto de maiquetia"],"YARACUY":["yaracuy","san felipe","yaritagua","chivacoa","nirgua","urachiche"],"ZULIA":["zulia","maracaibo","san francisco","cabimas","ciudad ojeda","machiques","la villa del rosario","santa barbara del zulia","costa oriental del lago","el tablazo","lagunillas","mara","guajira","bachaquero"],"DISTRITO CAPITAL":["distrito capital","caracas","municipio libertador","catia","el paraiso","el paraíso","la candelaria","el valle","miraflores","banco central de venezuela","bcv","antimano","sucre de caracas"],"ZONA EN RECLAMACION":["esequibo","esequiba","guayana esequiba","tumeremo","san martin de turumbang"]};
 
+        // Mapa de capas de estados para zoom estricto
+        const stateLayers = new Map();
+
         // Helper para renderizar la Bandera Oficial de Venezuela en SVG Vectorial de alta calidad
         function getVenezuelaFlagSvg(className = "inline-block w-5 h-3.5 rounded-[2px] shadow-sm align-middle mx-1 border border-black/10 shrink-0") {
             return `
@@ -4939,8 +4954,8 @@
         let currentSelectedMedia = null;
         let currentDatePreset = 'all';
         let isBannerExpanded = false;
-        let currentBannerTab = 'entities'; // 'entities' o 'news' (cuando está en vista nacional)
-        let currentDockMode = 'gov'; // 'gov' o 'media'
+        let currentBannerTab = 'entities';
+        let currentDockMode = 'gov';
 
         // ==========================================
         // INICIALIZACIÓN DE LA APLICACIÓN
@@ -4984,7 +4999,7 @@
                 // 4. Poblar opciones de filtros
                 populateFilterOptions();
 
-                // 5. Inicializar el Apple Dock Interactivo con GSAP
+                // 5. Inicializar el Apple Dock Flotante con GSAP
                 renderAppleDock();
                 initAppleDockMagnification();
 
@@ -4995,12 +5010,10 @@
             } catch (err) {
                 console.error("[Monitor País] Error durante la inicialización:", err);
             } finally {
-                // Siempre descartar pantalla de carga
                 setTimeout(dismissOverlay, 600);
             }
         }
 
-        // Failsafe absoluto de 2 segundos para asegurar que el dashboard nunca se congele en la carga
         setTimeout(dismissOverlay, 2000);
 
         function adjustLayoutHeight() {
@@ -5029,7 +5042,6 @@
 
             L.control.zoom({ position: 'bottomright' }).addTo(map);
 
-            // OpenStreetMap TileLayer abierto y libre de APIs
             L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
                 maxZoom: 18,
                 attribution: '&copy; OpenStreetMap contributors'
@@ -5049,7 +5061,7 @@
             
             if (count > 15) {
                 fillColor = '#002F6C';
-                fillOpacity = 0.42;
+                fillOpacity = 0.45;
             } else if (count > 8) {
                 fillColor = '#005EB8';
                 fillOpacity = 0.32;
@@ -5060,7 +5072,7 @@
 
             if (currentSelectedState === stateKey) {
                 fillColor = '#D97706';
-                fillOpacity = 0.58;
+                fillOpacity = 0.60;
             }
 
             return {
@@ -5075,6 +5087,7 @@
 
         function renderGeoJSON() {
             if (geojsonLayer) map.removeLayer(geojsonLayer);
+            stateLayers.clear();
 
             geojsonLayer = L.geoJSON(venezuelaGeoJSON, {
                 style: getPolygonStyle,
@@ -5086,13 +5099,15 @@
                     const count = (newsByState.get(stateKey) || []).length;
                     const flagUrl = stateMeta.flag || 'https://upload.wikimedia.org/wikipedia/commons/thumb/0/06/Flag_of_Venezuela.svg/320px-Flag_of_Venezuela.svg.png';
 
+                    stateLayers.set(stateKey, layer);
+
                     layer.on({
                         mouseover: function(e) {
                             const l = e.target;
                             l.setStyle({
-                                weight: 3,
+                                weight: 3.5,
                                 color: '#ffffff',
-                                fillOpacity: 0.65,
+                                fillOpacity: 0.70,
                                 fillColor: '#002F6C'
                             });
                             if (!L.Browser.ie && !L.Browser.opera && !L.Browser.edge) {
@@ -5154,7 +5169,6 @@
         async function loadNewsData() {
             let raw = null;
 
-            // 1. Intento primario: fetch dinámico
             try {
                 const res = await fetch('data.json?v=' + Date.now());
                 if (res.ok) {
@@ -5162,12 +5176,10 @@
                 }
             } catch (e) {}
 
-            // 2. Intento secundario: data.js (seguro en file://)
             if ((!raw || !Array.isArray(raw) || raw.length === 0) && typeof window.NEWS_DATA !== 'undefined' && Array.isArray(window.NEWS_DATA) && window.NEWS_DATA.length > 0) {
                 raw = window.NEWS_DATA;
             }
 
-            // 3. Intento terciario: FALLBACK_NEWS_DATA integrado
             if ((!raw || !Array.isArray(raw) || raw.length === 0) && typeof FALLBACK_NEWS_DATA !== 'undefined' && Array.isArray(FALLBACK_NEWS_DATA)) {
                 raw = FALLBACK_NEWS_DATA;
             }
@@ -5205,14 +5217,13 @@
         }
 
         // ==========================================
-        // APPLE-STYLE DOCK CON ANIMACIONES GSAP
+        // APPLE-STYLE DOCK FLOTANTE CON GSAP
         // ==========================================
         function renderAppleDock() {
             const dock = document.getElementById('apple-dock');
             dock.innerHTML = '';
 
             if (currentDockMode === 'gov') {
-                // Renderizar 24 Gobernadores con Banderas y Fotos
                 Object.keys(venezuelaStatesData).sort().forEach(k => {
                     const s = venezuelaStatesData[k];
                     const count = (newsByState.get(k) || []).length;
@@ -5224,13 +5235,12 @@
                     item.className = `apple-dock-item ${isActive ? 'active-dock' : ''}`;
                     item.setAttribute('data-key', k);
                     item.setAttribute('data-title', `${s.name} • ${s.governor}`);
-                    item.setAttribute('data-sub', `${count} noticias registradas`);
 
                     item.innerHTML = `
                         <div class="apple-dock-tooltip">${s.name} (${count})</div>
-                        <div class="apple-dock-icon relative overflow-hidden border-2 ${isActive ? 'border-amber-400 ring-2 ring-amber-400' : 'border-white'}">
+                        <div class="apple-dock-icon relative overflow-hidden ${isActive ? 'border-blue-600' : 'border-white'}">
                             <img src="${photo}" alt="${s.governor}" class="w-full h-full object-cover object-top" onerror="this.onerror=null; this.src=createInstitutionalSvgAvatar('${s.governor}', 'GOB', false);"/>
-                            <img src="${flag}" referrerpolicy="no-referrer" class="absolute bottom-0 right-0 w-3.5 h-2.5 object-cover rounded-tl-[2px] shadow-xs border-t border-l border-white"/>
+                            <img src="${flag}" referrerpolicy="no-referrer" class="absolute bottom-0 right-0 w-4 h-3 object-cover rounded-tl-[3px] shadow-xs border-t border-l border-white"/>
                         </div>
                         <div class="apple-dock-dot"></div>
                     `;
@@ -5243,7 +5253,6 @@
                     dock.appendChild(item);
                 });
             } else {
-                // Renderizar Portales de Noticias
                 const mediaCounts = {};
                 rawNewsData.forEach(n => {
                     mediaCounts[n.medio] = (mediaCounts[n.medio] || 0) + 1;
@@ -5258,11 +5267,10 @@
                     item.className = `apple-dock-item ${isActive ? 'active-dock' : ''}`;
                     item.setAttribute('data-key', med);
                     item.setAttribute('data-title', `Portal: ${med}`);
-                    item.setAttribute('data-sub', `${count} artículos • Filtro territorial`);
 
                     item.innerHTML = `
                         <div class="apple-dock-tooltip">${med} (${count})</div>
-                        <div class="apple-dock-icon p-1 ${isActive ? 'border-amber-500 ring-2 ring-amber-400' : 'border-gray-200'}">
+                        <div class="apple-dock-icon p-1.5 ${isActive ? 'border-blue-600' : 'border-gray-200'}">
                             <img src="${logo}" alt="${med}" class="w-full h-full object-contain" onerror="this.src='https://images.vexels.com/media/users/3/135862/isolated/preview/813118c691d25b47377c69ff75167a8d-icono-de-pato.png'"/>
                         </div>
                         <div class="apple-dock-dot"></div>
@@ -5277,14 +5285,12 @@
                 });
             }
 
-            // Animación suave de entrada de los iconos del Dock con GSAP
             gsap.fromTo('.apple-dock-item', 
                 { y: 15, opacity: 0, scale: 0.8 }, 
                 { y: 0, opacity: 1, scale: 1, stagger: 0.02, duration: 0.35, ease: "power2.out" }
             );
         }
 
-        // Efecto Lupa Parabólica de macOS con GSAP
         function initAppleDockMagnification() {
             const dock = document.getElementById('apple-dock');
 
@@ -5300,10 +5306,10 @@
                     let scale = 1;
                     let translateY = 0;
 
-                    if (distance < 90) {
-                        const factor = 1 - (distance / 90);
-                        scale = 1 + factor * 0.45; // escala hasta 1.45x
-                        translateY = -factor * 10;  // se eleva hasta -10px
+                    if (distance < 110) {
+                        const factor = 1 - (distance / 110);
+                        scale = 1 + factor * 0.40; // Magnificación suave hasta 1.40x
+                        translateY = -factor * 12; // Eleva suavemente
                     }
 
                     gsap.to(item, {
@@ -5314,15 +5320,6 @@
                         overwrite: "auto"
                     });
                 });
-
-                // Actualizar texto del label de estado
-                const hoveredItem = document.elementFromPoint(e.clientX, e.clientY)?.closest('.apple-dock-item');
-                if (hoveredItem) {
-                    const title = hoveredItem.getAttribute('data-title');
-                    const sub = hoveredItem.getAttribute('data-sub');
-                    if (title) document.getElementById('dock-status-label').innerText = title;
-                    if (sub) document.getElementById('dock-status-sub').innerText = sub;
-                }
             });
 
             dock.addEventListener('mouseleave', () => {
@@ -5334,27 +5331,12 @@
                     ease: "power2.out",
                     overwrite: "auto"
                 });
-
-                if (currentSelectedState) {
-                    const meta = venezuelaStatesData[currentSelectedState];
-                    if (meta) {
-                        document.getElementById('dock-status-label').innerText = `${meta.name} • ${meta.governor}`;
-                        document.getElementById('dock-status-sub').innerText = `${(newsByState.get(currentSelectedState) || []).length} noticias registradas`;
-                    }
-                } else if (currentSelectedMedia) {
-                    document.getElementById('dock-status-label').innerText = `Portal: ${currentSelectedMedia}`;
-                    document.getElementById('dock-status-sub').innerText = `Distribución activa en el mapa`;
-                } else {
-                    document.getElementById('dock-status-label').innerText = 'Desliza el cursor sobre el dock';
-                    document.getElementById('dock-status-sub').innerText = currentDockMode === 'gov' ? '24 Mandatarios Regionales' : 'Portales de Noticias Monitoreados';
-                }
             });
         }
 
-        // Rebote animado tipo macOS al hacer clic
         function animateDockItemClick(item) {
             gsap.timeline()
-                .to(item, { y: -16, duration: 0.16, ease: "power2.out" })
+                .to(item, { y: -18, duration: 0.16, ease: "power2.out" })
                 .to(item, { y: 0, duration: 0.25, ease: "bounce.out" });
 
             document.querySelectorAll('.apple-dock-item').forEach(el => el.classList.remove('active-dock'));
@@ -5367,13 +5349,11 @@
             const btnMedia = document.getElementById('dock-btn-media');
 
             if (mode === 'gov') {
-                btnGov.className = 'px-2 py-0.5 rounded bg-nativa-marine text-white transition-all shadow-2xs';
-                btnMedia.className = 'px-2 py-0.5 rounded text-gray-500 hover:text-nativa-marine transition-all';
-                document.getElementById('dock-status-sub').innerText = '24 Mandatarios Regionales';
+                btnGov.className = 'px-3.5 py-1 rounded-full bg-nativa-light text-white font-black transition-all shadow-xs flex items-center gap-1.5';
+                btnMedia.className = 'px-3.5 py-1 rounded-full text-blue-200 hover:text-white transition-all flex items-center gap-1.5';
             } else {
-                btnMedia.className = 'px-2 py-0.5 rounded bg-amber-600 text-white transition-all shadow-2xs';
-                btnGov.className = 'px-2 py-0.5 rounded text-gray-500 hover:text-nativa-marine transition-all';
-                document.getElementById('dock-status-sub').innerText = 'Portales de Noticias Monitoreados';
+                btnMedia.className = 'px-3.5 py-1 rounded-full bg-nativa-light text-white font-black transition-all shadow-xs flex items-center gap-1.5';
+                btnGov.className = 'px-3.5 py-1 rounded-full text-blue-200 hover:text-white transition-all flex items-center gap-1.5';
             }
 
             renderAppleDock();
@@ -5381,8 +5361,6 @@
 
         function selectMediaFromDock(medio) {
             currentSelectedMedia = medio;
-            document.getElementById('dock-status-label').innerText = `Filtrando: ${medio}`;
-            document.getElementById('dock-status-sub').innerText = `Distribución territorial en el mapa`;
             applyFilters();
         }
 
@@ -5448,9 +5426,18 @@
             currentSelectedMedia = null;
             currentSelectedState = null;
             setDatePreset('all');
-            document.getElementById('dock-status-label').innerText = 'Desliza el cursor sobre el dock';
-            document.getElementById('dock-status-sub').innerText = '24 Mandatarios Regionales';
-            map.flyTo([7.6, -66.0], 6, { duration: 1 });
+
+            // Restablecer dock flotante en visión general
+            const dockContainer = document.getElementById('apple-dock-floating-container');
+            if (dockContainer) {
+                dockContainer.style.display = 'flex';
+                gsap.fromTo(dockContainer, 
+                    { y: 80, opacity: 0 }, 
+                    { y: 0, opacity: 1, duration: 0.45, ease: "power2.out" }
+                );
+            }
+
+            map.flyTo([7.6, -66.0], 6, { duration: 1.2 });
             showNationalOverview();
             renderBottomBannerHeader();
             renderBottomBannerExpandedContent();
@@ -5467,23 +5454,50 @@
             applyFilters();
         }
 
+        // ==========================================
+        // ZOOM ESTRICTO AL ESTADO Y OCULTAR DOCK
+        // ==========================================
         function focusState(stateKey) {
             currentSelectedState = stateKey;
             document.getElementById('state-select').value = stateKey;
             
-            const meta = venezuelaStatesData[stateKey];
-            if (meta) {
-                document.getElementById('dock-status-label').innerText = `${meta.name} • ${meta.governor}`;
-                document.getElementById('dock-status-sub').innerText = `${(newsByState.get(stateKey) || []).length} noticias registradas`;
+            // 1. ZOOM ESTRICTO AL POLÍGONO DEL ESTADO
+            const layer = stateLayers.get(stateKey);
+            if (layer) {
+                map.fitBounds(layer.getBounds(), {
+                    padding: [60, 60],
+                    maxZoom: 9,
+                    animate: true,
+                    duration: 1.2
+                });
+            } else {
+                const meta = venezuelaStatesData[stateKey];
+                if (meta && meta.lat && meta.lng) {
+                    map.flyTo([meta.lat, meta.lng], 8, { duration: 1.2 });
+                }
             }
 
+            // 2. DESAPARECER EL DOCK FLOTANTE CON TRANSICIÓN GSAP SUAVE
+            const dockContainer = document.getElementById('apple-dock-floating-container');
+            if (dockContainer) {
+                gsap.to(dockContainer, {
+                    y: 120,
+                    opacity: 0,
+                    duration: 0.35,
+                    ease: "power2.in",
+                    onComplete: () => {
+                        dockContainer.style.display = 'none';
+                    }
+                });
+            }
+
+            // 3. Mostrar Dossier del Estado
             showStateDetails(stateKey);
+
+            // 4. Transformar Banner Inferior en Oswald
             renderBottomBannerHeader();
             renderBottomBannerExpandedContent();
 
-            if (meta && meta.lat && meta.lng) {
-                map.flyTo([meta.lat, meta.lng], 7, { duration: 1.2 });
-            }
             renderGeoJSON();
             updateMarkers();
         }
@@ -5496,6 +5510,16 @@
             document.getElementById('state-select').value = 'NACIONAL';
             const container = document.getElementById('details-content-wrapper');
             
+            // Reaparecer Dock en Visión General
+            const dockContainer = document.getElementById('apple-dock-floating-container');
+            if (dockContainer) {
+                dockContainer.style.display = 'flex';
+                gsap.fromTo(dockContainer, 
+                    { y: 80, opacity: 0 }, 
+                    { y: 0, opacity: 1, duration: 0.45, ease: "power2.out" }
+                );
+            }
+
             const nationalNews = rawNewsData.filter(n => n.stateKey === "NACIONAL");
             const nationalWeekNews = nationalNews.filter(n => isDateInRange(n.parsedDate, 'week'));
             const uniqueMedia = new Set(nationalNews.map(n => n.medio)).size;
@@ -5522,7 +5546,7 @@
                             <img 
                                 src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/a3/Delcy_Rodr%C3%ADguez_portrait.jpg/250px-Delcy_Rodr%C3%ADguez_portrait.jpg" 
                                 alt="Delcy Rodríguez" 
-                                class="w-36 h-36 sm:w-40 sm:h-40 rounded-full object-cover object-top border-2 border-white shadow-2xl"
+                                class="w-32 h-32 sm:w-36 sm:h-36 rounded-full object-cover object-top border-2 border-white shadow-2xl"
                                 onerror="this.src='./img/gobernadores/delcy_rodriguez.jpg'"
                                 referrerpolicy="no-referrer"
                             />
@@ -5533,7 +5557,7 @@
 
                         <!-- Ficha de la Presidenta Encargada con Tipografía OSWALD -->
                         <div class="flex-1 text-center sm:text-left">
-                            <h3 class="text-xl sm:text-2xl font-black leading-tight text-white oswald-title drop-shadow-md">
+                            <h3 class="text-lg sm:text-xl font-black leading-tight text-white oswald-title drop-shadow-md">
                                 DELCY ELOÍNA RODRÍGUEZ GÓMEZ
                             </h3>
                             <div class="mt-1 text-amber-300 font-extrabold text-xs sm:text-sm tracking-wide oswald-title flex items-center justify-center sm:justify-start gap-1.5">
@@ -5547,7 +5571,7 @@
                                 Coordinación ejecutiva nacional, rectoría de mesas cambiarias, articulación macroeconómica e integración estratégica con los 24 gobiernos regionales.
                             </p>
                             <div class="mt-2 text-[9px] font-bold text-blue-200 flex items-center justify-center sm:justify-start gap-1">
-                                <span>🏛️ Despacho Presidencial • Palacio de Miraflores</span>
+                                <span>🏛️ Despacho Presidencial • Miraflores</span>
                             </div>
                         </div>
                     </div>
@@ -5573,7 +5597,7 @@
                     </div>
                 </div>
 
-                <!-- 1. TRANSMISIÓN EN VIVO: FLUJO TOTAL DE NOTICIAS NACIONALES (PRIMERO EN EL ORDEN) -->
+                <!-- TRANSMISIÓN EN VIVO: FLUJO TOTAL DE NOTICIAS NACIONALES -->
                 <div class="flex-grow overflow-y-auto px-6 py-4">
                     <div class="flex items-center justify-between border-b border-gray-200 pb-2 mb-3">
                         <div class="flex items-center gap-2">
@@ -5624,49 +5648,13 @@
 
             html += `
                     </div>
-
-                    <!-- 2. SECCIÓN: GOBERNADORES DEL PAÍS BAJO COORDINACIÓN NACIONAL (24 ENTIDADES) -->
-                    <div class="pt-4 border-t border-gray-200 pb-16">
-                        <div class="flex items-center justify-between mb-3">
-                            <div>
-                                <h4 class="text-xs font-black text-nativa-marine uppercase tracking-wider">Gobernadores de Venezuela</h4>
-                                <p class="text-[10px] text-gray-500 font-medium">24 Entidades Federales en Coordinación Nacional</p>
-                            </div>
-                            <span class="text-[10px] font-bold text-nativa-light bg-blue-50 px-2 py-0.5 rounded-full">24 Mandatarios</span>
-                        </div>
-
-                        <!-- Mini Galería de Gobernadores Clickables con Tipografía OSWALD y Banderas Estatales -->
-                        <div class="grid grid-cols-3 gap-2.5">
-            `;
-
-            Object.keys(venezuelaStatesData).forEach(k => {
-                const s = venezuelaStatesData[k];
-                const photo = s.photoLocal || `./img/gobernadores/${k.toLowerCase().replace(/ /g, '_')}.jpg`;
-                const flag = s.flag || 'https://upload.wikimedia.org/wikipedia/commons/thumb/0/06/Flag_of_Venezuela.svg/320px-Flag_of_Venezuela.svg.png';
-                const stateCount = (newsByState.get(k) || []).length;
-                html += `
-                    <div onclick="focusState('${k}')" class="governor-thumb bg-slate-50 hover:bg-blue-50 border border-slate-200 hover:border-nativa-light p-2 rounded-xl cursor-pointer flex flex-col items-center text-center transition-all shadow-2xs group relative">
-                        <div class="w-12 h-12 rounded-full overflow-hidden border-2 border-nativa-marine group-hover:border-nativa-light mb-1.5 shadow-sm bg-white shrink-0 relative">
-                            <img src="${photo}" alt="${s.governor}" class="w-full h-full object-cover object-top" onerror="this.onerror=null; this.src=createInstitutionalSvgAvatar('${s.governor}', 'GOB', false);"/>
-                            <img src="${flag}" referrerpolicy="no-referrer" class="absolute bottom-0 right-0 w-3.5 h-2.5 object-cover rounded-tl shadow-xs border-t border-l border-white"/>
-                        </div>
-                        <span class="text-[10px] font-extrabold text-nativa-marine truncate w-full group-hover:text-nativa-light">${s.name}</span>
-                        <span class="text-[9px] text-gray-700 truncate w-full font-bold oswald-title">${s.governor}</span>
-                        <span class="text-[8px] font-bold text-nativa-light mt-0.5 bg-white px-1.5 rounded-full border border-gray-200">${stateCount} noticias</span>
-                    </div>
-                `;
-            });
-
-            html += `
-                        </div>
-                    </div>
                 </div>
             `;
 
             container.innerHTML = html;
             const panel = document.getElementById('details-panel');
             panel.classList.add('open');
-            gsap.fromTo(panel, { right: -560 }, { right: 0, duration: 0.45, ease: "power2.out" });
+            gsap.fromTo(panel, { right: -420 }, { right: 0, duration: 0.40, ease: "power2.out" });
         }
 
         // ==========================================
@@ -5687,22 +5675,22 @@
                 <!-- Cabecera del Estado con Bandera Oficial de Wikipedia y Retrato del Gobernador -->
                 <div class="bg-gradient-to-b from-nativa-marine to-nativa-light pt-8 pb-6 px-6 text-white relative shadow-inner">
                     <div class="flex items-center justify-between mb-3">
-                        <button onclick="showNationalOverview()" class="text-[10px] font-extrabold text-blue-200 hover:text-white bg-white/10 hover:bg-white/20 px-2.5 py-1 rounded-full border border-white/20 flex items-center gap-1.5 transition-all">
+                        <button onclick="resetAllFilters()" class="text-[10px] font-extrabold text-blue-200 hover:text-white bg-white/10 hover:bg-white/20 px-2.5 py-1 rounded-full border border-white/20 flex items-center gap-1.5 transition-all">
                             <svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18"></path></svg>
-                            <span>Volver a Visión Nacional</span>
+                            <span>Volver a Visión General</span>
                         </button>
                         <span class="text-[9px] font-black uppercase text-blue-200 bg-white/10 px-2.5 py-0.5 rounded-full border border-white/15">
                             ${stateData.region || 'REGIÓN'}
                         </span>
                     </div>
 
-                    <div class="flex flex-col sm:flex-row items-center gap-5 mt-2">
+                    <div class="flex flex-col sm:flex-row items-center gap-4 mt-2">
                         <!-- Retrato Grande, Circular y Glasificado del Mandatario Regional -->
-                        <div class="relative p-1.5 rounded-full glass-portrait-container ring-4 ring-blue-400/40 shrink-0">
+                        <div class="relative p-1 rounded-full glass-portrait-container ring-4 ring-blue-400/40 shrink-0">
                             <img 
                                 src="${photo}" 
                                 alt="${stateData.governor}" 
-                                class="w-32 h-32 sm:w-36 sm:h-36 rounded-full object-cover object-top border-2 border-white shadow-2xl"
+                                class="w-28 h-28 sm:w-32 sm:h-32 rounded-full object-cover object-top border-2 border-white shadow-2xl"
                                 onerror="this.onerror=null; this.src=createInstitutionalSvgAvatar('${stateData.governor}', 'GOBERNADOR', false);"
                             />
                             <div class="absolute bottom-1 right-2 bg-blue-500 text-white border border-white text-[8px] font-black px-1.5 py-0.5 rounded-full shadow-md uppercase">
@@ -5716,7 +5704,7 @@
                                 <img src="${flag}" referrerpolicy="no-referrer" class="w-8 h-5 object-cover rounded shadow border border-white/60"/>
                                 <h2 class="text-xs font-black uppercase tracking-widest text-blue-200">ESTADO ${stateData.name.toUpperCase()}</h2>
                             </div>
-                            <h3 class="text-lg sm:text-xl font-black leading-snug drop-shadow-md text-white oswald-title">
+                            <h3 class="text-base sm:text-lg font-black leading-snug drop-shadow-md text-white oswald-title">
                                 ${stateData.governor}
                             </h3>
                             <p class="text-xs font-bold text-amber-300 mt-0.5 oswald-title">
@@ -5829,7 +5817,7 @@
             container.innerHTML = html;
             const panel = document.getElementById('details-panel');
             panel.classList.add('open');
-            gsap.fromTo(panel, { right: -560 }, { right: 0, duration: 0.45, ease: "power2.out" });
+            gsap.fromTo(panel, { right: -420 }, { right: 0, duration: 0.40, ease: "power2.out" });
         }
 
         function closeDetails() {
@@ -5838,7 +5826,7 @@
 
         // ====================================================================
         // BANNER INFERIOR DINÁMICO:
-        // - VISIÓN GENERAL vs ESTADO SELECCIONADO (BANDERA GRANDE, POBLACIÓN, CAPITAL)
+        // - VISIÓN GENERAL vs ESTADO SELECCIONADO (CON FUENTE OSWALD Y TRANSICIÓN GSAP)
         // ====================================================================
         function renderBottomBannerHeader() {
             const headerContainer = document.getElementById('banner-header-content');
@@ -5861,7 +5849,7 @@
                     </div>
                 `;
             } else {
-                // MODO 2: ESTADO SELECCIONADO (BANDERA GRANDE, CAPITAL, POBLACIÓN Y NOTICIAS)
+                // MODO 2: ESTADO SELECCIONADO (BANDERA GRANDE, OSWALD Y DATOS RELEVANTES)
                 const s = venezuelaStatesData[currentSelectedState] || { name: currentSelectedState };
                 const flagUrl = s.flag || 'https://upload.wikimedia.org/wikipedia/commons/thumb/0/06/Flag_of_Venezuela.svg/320px-Flag_of_Venezuela.svg.png';
                 const count = (newsByState.get(currentSelectedState) || []).length;
@@ -5869,25 +5857,25 @@
                 headerContainer.innerHTML = `
                     <div class="flex flex-wrap items-center gap-4">
                         <!-- BANDERA EN GRANDE DEL ESTADO SELECCIONADO -->
-                        <div class="relative rounded-lg overflow-hidden border-2 border-white/60 shadow-lg shrink-0">
-                            <img src="${flagUrl}" referrerpolicy="no-referrer" alt="${s.name}" class="w-14 h-9 sm:w-16 sm:h-10 object-cover" onerror="this.src='https://upload.wikimedia.org/wikipedia/commons/thumb/0/06/Flag_of_Venezuela.svg/320px-Flag_of_Venezuela.svg.png'"/>
+                        <div class="relative rounded-lg overflow-hidden border-2 border-white/80 shadow-lg shrink-0">
+                            <img src="${flagUrl}" referrerpolicy="no-referrer" alt="${s.name}" class="w-16 h-10 sm:w-20 sm:h-12 object-cover" onerror="this.src='https://upload.wikimedia.org/wikipedia/commons/thumb/0/06/Flag_of_Venezuela.svg/320px-Flag_of_Venezuela.svg.png'"/>
                         </div>
 
-                        <!-- NOMBRE, GOBERNADOR Y ESTADÍSTICAS EN GRANDE -->
+                        <!-- NOMBRE, GOBERNADOR Y ESTADÍSTICAS EN TIPOGRAFÍA OSWALD -->
                         <div>
                             <div class="flex items-center gap-2">
-                                <h3 class="text-sm sm:text-base font-black uppercase tracking-wide text-white oswald-title">
+                                <h3 class="text-base sm:text-lg font-black uppercase tracking-wide text-white oswald-title">
                                     ESTADO ${s.name.toUpperCase()}
                                 </h3>
-                                <span class="bg-amber-400 text-slate-950 font-black text-[9px] px-2 py-0.5 rounded-full uppercase shadow-xs">
+                                <span class="bg-amber-400 text-slate-950 font-black text-[9px] px-2 py-0.5 rounded-full uppercase shadow-xs oswald-title">
                                     EN ENFOQUE
                                 </span>
                             </div>
-                            <div class="flex flex-wrap items-center gap-3 text-[11px] text-blue-100 font-semibold mt-0.5">
-                                <span>🏛️ Capital: <b class="text-white">${s.capital || 'N/A'}</b></span>
-                                <span>👥 Población (Censo INE): <b class="text-amber-200">${s.poblacion || 'N/A'}</b></span>
-                                <span>📰 Noticias Actuales: <b class="text-white bg-white/20 px-1.5 py-0.2 rounded">${count} artículos</b></span>
-                                <span>👤 Mandatario: <b class="text-amber-300 oswald-title">${s.governor}</b></span>
+                            <div class="flex flex-wrap items-center gap-3 text-xs text-blue-100 mt-0.5">
+                                <span class="oswald-title">CAPITAL: <b class="text-white">${s.capital || 'N/A'}</b></span>
+                                <span class="oswald-title text-amber-200">POBLACIÓN: <b class="text-white">${s.poblacion || 'N/A'}</b></span>
+                                <span class="oswald-title text-blue-200">NOTICIAS: <b class="text-amber-300 bg-white/10 px-1.5 py-0.5 rounded">${count} ARTÍCULOS</b></span>
+                                <span class="oswald-title text-amber-300">GOBERNADOR: <b>${s.governor}</b></span>
                             </div>
                         </div>
                     </div>
@@ -5896,7 +5884,7 @@
                         <button onclick="event.stopPropagation(); resetAllFilters();" class="text-[10px] font-extrabold text-blue-200 hover:text-white bg-white/10 hover:bg-white/20 px-2.5 py-1.5 rounded-lg border border-white/20 transition-all flex items-center gap-1">
                             <span>Volver a Visión General</span>
                         </button>
-                        <div class="flex items-center gap-2 bg-amber-400 hover:bg-amber-300 text-slate-950 px-3 py-1.5 rounded-lg shadow-sm font-black text-[11px] uppercase tracking-wide transition-all">
+                        <div class="flex items-center gap-2 bg-amber-400 hover:bg-amber-300 text-slate-950 px-3 py-1.5 rounded-lg shadow-sm font-black text-[11px] uppercase tracking-wide transition-all oswald-title">
                             <span id="table-toggle-label">
                                 ${isBannerExpanded ? 'Ocultar Noticias' : 'Ver Noticias del Estado'}
                             </span>
@@ -5904,15 +5892,16 @@
                         </div>
                     </div>
                 `;
+
+                // Transición suave GSAP para el banner de estado
+                gsap.fromTo(headerContainer, { opacity: 0, y: 15 }, { opacity: 1, y: 0, duration: 0.40, ease: "power2.out" });
             }
         }
 
-        // Renderizado del contenido desplegable del Banner inferior
         function renderBottomBannerExpandedContent() {
             const container = document.getElementById('banner-expanded-content');
 
             if (!currentSelectedState) {
-                // VISIÓN GENERAL: Mostrar Suiche [Entidades vs Flujo Completo]
                 container.innerHTML = `
                     <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between p-4 bg-slate-100 border-b border-gray-200 gap-3">
                         <div class="inline-flex p-1 bg-white rounded-xl shadow-inner border border-gray-300">
@@ -5979,7 +5968,6 @@
                 renderBannerEntitiesTable();
                 renderBannerNewsTable();
             } else {
-                // ESTADO SELECCIONADO: Desplegar directamente las Noticias del Estado con LOGOS EXTRA GRANDES
                 const stateData = venezuelaStatesData[currentSelectedState] || { name: currentSelectedState };
                 const stateNews = rawNewsData.filter(n => n.stateKey === currentSelectedState);
 
@@ -5987,11 +5975,11 @@
                     <div class="p-4 bg-slate-50 border-b border-gray-200 flex items-center justify-between">
                         <div class="flex items-center gap-2">
                             <span class="w-2.5 h-2.5 rounded-full bg-nativa-light animate-pulse"></span>
-                            <h4 class="text-xs font-black text-nativa-marine uppercase tracking-wider">
+                            <h4 class="text-xs font-black text-nativa-marine uppercase tracking-wider oswald-title">
                                 Cobertura Noticiosa en el Estado ${stateData.name} (${stateNews.length} artículos)
                             </h4>
                         </div>
-                        <span class="text-[11px] font-bold text-gray-500">Logos ampliados de cada portal reseñador</span>
+                        <span class="text-[11px] font-bold text-gray-500">Logos ampliados de cada portal</span>
                     </div>
 
                     <div class="p-6 overflow-y-auto max-h-[650px] space-y-4">
@@ -6010,7 +5998,6 @@
 
                         newsHtml += `
                             <div class="bg-white p-4 rounded-2xl border border-gray-200 shadow-sm hover:shadow-md hover:border-nativa-light transition-all flex flex-col sm:flex-row items-start gap-4">
-                                <!-- LOGO EXTRA GRANDE DEL PORTAL QUE RESEÑÓ LA NOTICIA -->
                                 <div class="w-12 h-12 sm:w-14 sm:h-14 rounded-2xl bg-white p-2 border-2 border-gray-200 shadow-md flex items-center justify-center shrink-0">
                                     <img src="${logoUrl}" alt="${n.medio}" class="w-full h-full object-contain" onerror="this.src='https://images.vexels.com/media/users/3/135862/isolated/preview/813118c691d25b47377c69ff75167a8d-icono-de-pato.png'"/>
                                 </div>
