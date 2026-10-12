@@ -233,43 +233,34 @@
             background: #002F6C;
         }
 
-        /* ETIQUETA EN TIPOGRAFÍA OSWALD ARRIBA DE CADA ÍCONO */
+        /* ETIQUETA EN TIPOGRAFÍA OSWALD ARRIBA DE CADA ÍCONO - VISIBLE SÓLO AL PASAR EL CURSOR (HOVER) */
         .apple-dock-label {
             font-family: 'Oswald', sans-serif !important;
             font-size: 10px;
             font-weight: 700;
             text-transform: uppercase;
             letter-spacing: 0.04em;
-            color: #0f172a;
-            background: rgba(255, 255, 255, 0.94);
-            backdrop-filter: blur(8px);
-            -webkit-backdrop-filter: blur(8px);
-            padding: 2.5px 7px;
-            border-radius: 6px;
-            border: 1px solid rgba(0, 47, 108, 0.2);
-            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
-            margin-bottom: 5px;
-            white-space: nowrap;
-            pointer-events: none;
-            transition: all 0.2s ease;
-            text-align: center;
-            max-width: 95px;
-            overflow: hidden;
-            text-overflow: ellipsis;
-        }
-        .apple-dock-item:hover .apple-dock-label {
             color: #ffffff;
             background: #002F6C;
-            border-color: #005EB8;
-            box-shadow: 0 4px 10px rgba(0, 94, 184, 0.5);
-            transform: scale(1.06);
+            border: 1px solid #005EB8;
+            box-shadow: 0 4px 12px rgba(0, 47, 108, 0.5);
+            padding: 3px 8px;
+            border-radius: 6px;
+            margin-bottom: 6px;
+            white-space: nowrap;
+            pointer-events: none;
+            opacity: 0;
+            transform: translateY(6px);
+            transition: opacity 0.22s cubic-bezier(0.16, 1, 0.3, 1), transform 0.22s cubic-bezier(0.16, 1, 0.3, 1);
+            text-align: center;
+            max-width: 110px;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            z-index: 50;
         }
-        .apple-dock-item.active-dock .apple-dock-label {
-            color: #ffffff;
-            background: #005EB8;
-            border-color: #fef08a;
-            font-weight: 800;
-            box-shadow: 0 0 8px rgba(0, 94, 184, 0.5);
+        .apple-dock-item:hover .apple-dock-label {
+            opacity: 1;
+            transform: translateY(0);
         }
 
         /* Contenedor estrictamente horizontal de los items del dock */
@@ -464,20 +455,56 @@
                             </div>
                         </div>
 
-                        <!-- Selector Dropdown Tradicional -->
-                        <div>
+                        <!-- Selector Personalizado de Entidad Federal con Banderas Cargadas -->
+                        <div class="relative" id="custom-state-dropdown-container">
                             <label class="block text-[10px] font-extrabold text-gray-400 uppercase tracking-wider mb-1">Entidad Federal</label>
-                            <select 
-                                id="state-select" 
-                                class="w-full text-xs bg-gray-50 border border-gray-200 rounded-lg px-3 py-2 focus:bg-white focus:border-nativa-light outline-none font-semibold text-gray-700"
-                                onchange="onSelectStateChange(this.value)"
+                            
+                            <!-- Botón Trigger del Selector Personalizado -->
+                            <button 
+                                type="button"
+                                id="state-dropdown-trigger" 
+                                onclick="toggleStateDropdown()"
+                                class="w-full text-xs bg-gray-50 hover:bg-gray-100/90 border border-gray-200 rounded-lg px-2.5 py-2 flex items-center justify-between outline-none transition-all cursor-pointer font-semibold text-gray-800 shadow-2xs"
                             >
+                                <div class="flex items-center gap-2 truncate">
+                                    <span id="selected-state-flag-slot" class="w-5 h-3.5 rounded-[2px] overflow-hidden shadow-2xs border border-gray-300 shrink-0 flex items-center justify-center bg-gray-100">
+                                        <img src="./img/banderas/nacional.svg" class="w-full h-full object-cover" onerror="this.src='https://upload.wikimedia.org/wikipedia/commons/0/06/Flag_of_Venezuela.svg';"/>
+                                    </span>
+                                    <span id="selected-state-label" class="truncate text-[11px] font-bold text-gray-800">Todas las Entidades (24)</span>
+                                </div>
+                                <svg id="state-dropdown-arrow" class="w-3.5 h-3.5 text-gray-500 transform transition-transform duration-200 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+                            </button>
+
+                            <!-- Select Nativo Oculto para compatibilidad total con el motor de filtros -->
+                            <select id="state-select" class="hidden" onchange="onSelectStateChange(this.value)">
                                 <option value="">Todas las Entidades (24 Estados + Nacional)</option>
                                 <option value="NACIONAL">Ámbito Nacional (Poder Ejecutivo)</option>
                             </select>
+
+                            <!-- Menú Desplegable con Banderas Oficiales -->
+                            <div 
+                                id="state-dropdown-menu" 
+                                class="hidden absolute top-full left-0 right-0 mt-1 bg-white rounded-xl shadow-2xl border border-gray-200 z-[1200] max-h-60 overflow-y-auto p-1 space-y-0.5 divide-y divide-gray-50"
+                            >
+                                <div 
+                                    onclick="selectCustomState('', 'Todas las Entidades (24)', './img/banderas/nacional.svg')" 
+                                    class="p-2 hover:bg-blue-50 rounded-lg flex items-center gap-2 cursor-pointer transition-colors text-xs font-semibold text-gray-700"
+                                >
+                                    <img src="./img/banderas/nacional.svg" class="w-5 h-3.5 object-cover rounded-[2px] shadow-2xs border border-gray-300 shrink-0" onerror="this.src='https://upload.wikimedia.org/wikipedia/commons/0/06/Flag_of_Venezuela.svg';"/>
+                                    <span class="truncate">Todas las Entidades (24)</span>
+                                </div>
+                                <div 
+                                    onclick="selectCustomState('NACIONAL', 'Ámbito Nacional (Poder Ejecutivo)', './img/banderas/nacional.svg')" 
+                                    class="p-2 hover:bg-blue-50 rounded-lg flex items-center gap-2 cursor-pointer transition-colors text-xs font-semibold text-nativa-marine"
+                                >
+                                    <img src="./img/banderas/nacional.svg" class="w-5 h-3.5 object-cover rounded-[2px] shadow-2xs border border-gray-300 shrink-0" onerror="this.src='https://upload.wikimedia.org/wikipedia/commons/0/06/Flag_of_Venezuela.svg';"/>
+                                    <span class="truncate font-bold">Ámbito Nacional</span>
+                                </div>
+                                <div id="custom-state-items-slot" class="space-y-0.5 pt-0.5"></div>
+                            </div>
                         </div>
 
-                        <!-- Tarjetas de Métricas -->
+                        <!-- Tarjetas de Métricas (Números Totales) -->
                         <div class="grid grid-cols-2 gap-2 pt-0.5">
                             <div class="bg-blue-50/70 p-2 rounded-xl border border-blue-100">
                                 <span class="block text-[9px] font-bold text-nativa-marine uppercase">Noticias Activas</span>
@@ -486,6 +513,19 @@
                             <div class="bg-amber-50/70 p-2 rounded-xl border border-amber-100">
                                 <span class="block text-[9px] font-bold text-amber-700 uppercase">Total en Base</span>
                                 <span id="total-news-count" class="text-xl font-black text-amber-700">0</span>
+                            </div>
+                        </div>
+
+                        <!-- SWITCH GOBERNADORES vs PORTALES INFORMATIVOS (ABAJO DE LOS NÚMEROS TOTALES) -->
+                        <div class="pt-1">
+                            <label class="block text-[10px] font-extrabold text-gray-400 uppercase tracking-wider mb-1.5">Modo de Exploración</label>
+                            <div class="flex p-1 bg-slate-100 rounded-xl border border-gray-200 text-[10px] font-bold">
+                                <button id="dock-btn-gov" onclick="setDockMode('gov')" class="flex-1 py-1.5 rounded-lg bg-nativa-marine text-white font-black transition-all shadow-xs flex items-center justify-center gap-1 cursor-pointer oswald-title">
+                                    <span>🏛️ Gobernadores</span>
+                                </button>
+                                <button id="dock-btn-media" onclick="setDockMode('media')" class="flex-1 py-1.5 rounded-lg text-gray-600 hover:text-nativa-marine font-bold transition-all flex items-center justify-center gap-1 cursor-pointer oswald-title">
+                                    <span>📰 Portales</span>
+                                </button>
                             </div>
                         </div>
                     </div>
@@ -501,24 +541,8 @@
             <!-- MAPA LEAFLET INTERACTIVO CON OPENSTREETMAP (CENTRO) -->
             <div id="map"></div>
 
-            <!-- APPLE-STYLE DOCK FLOTANTE: NACIENDO DESDE LA IZQUIERDA (HORIZONTAL CON SCROLL Y LUPA GSAP) -->
+            <!-- APPLE-STYLE DOCK FLOTANTE: LIMPIO Y SUPERPUESTO (SIN CABECERAS EXTRA) -->
             <div id="apple-dock-floating-container">
-                <!-- Header del Dock: Selector Gobernadores vs Portales + Indicador de Scroll -->
-                <div class="flex items-center gap-2 mb-1.5 ml-1">
-                    <div class="inline-flex p-1 bg-slate-900/85 backdrop-blur-md rounded-full shadow-lg border border-white/20 text-[10px] font-bold text-white">
-                        <button id="dock-btn-gov" onclick="setDockMode('gov')" class="px-3.5 py-1 rounded-full bg-nativa-light text-white font-black transition-all shadow-xs flex items-center gap-1.5 cursor-pointer">
-                            <span>🏛️</span> <span>Gobernadores (24)</span>
-                        </button>
-                        <button id="dock-btn-media" onclick="setDockMode('media')" class="px-3.5 py-1 rounded-full text-blue-200 hover:text-white transition-all flex items-center gap-1.5 cursor-pointer">
-                            <span>📰</span> <span>Portales Informativos</span>
-                        </button>
-                    </div>
-                    <div class="hidden sm:inline-flex items-center gap-1.5 text-[10px] font-bold text-slate-800 bg-white/80 backdrop-blur-md px-3 py-1 rounded-full border border-white shadow-xs">
-                        <span class="text-nativa-light font-black text-xs">⟷</span>
-                        <span>Desliza horizontalmente</span>
-                    </div>
-                </div>
-
                 <!-- Shelf del Dock con Efecto Lupa GSAP y Scroll Horizontal -->
                 <div class="apple-dock-shelf">
                     <div id="apple-dock">
@@ -5453,12 +5477,14 @@
             const btnGov = document.getElementById('dock-btn-gov');
             const btnMedia = document.getElementById('dock-btn-media');
 
-            if (mode === 'gov') {
-                btnGov.className = 'px-3.5 py-1 rounded-full bg-nativa-light text-white font-black transition-all shadow-xs flex items-center gap-1.5';
-                btnMedia.className = 'px-3.5 py-1 rounded-full text-blue-200 hover:text-white transition-all flex items-center gap-1.5';
-            } else {
-                btnMedia.className = 'px-3.5 py-1 rounded-full bg-nativa-light text-white font-black transition-all shadow-xs flex items-center gap-1.5';
-                btnGov.className = 'px-3.5 py-1 rounded-full text-blue-200 hover:text-white transition-all flex items-center gap-1.5';
+            if (btnGov && btnMedia) {
+                if (mode === 'gov') {
+                    btnGov.className = 'flex-1 py-1.5 rounded-lg bg-nativa-marine text-white font-black transition-all shadow-xs flex items-center justify-center gap-1 cursor-pointer oswald-title';
+                    btnMedia.className = 'flex-1 py-1.5 rounded-lg text-gray-600 hover:text-nativa-marine font-bold transition-all flex items-center justify-center gap-1 cursor-pointer oswald-title';
+                } else {
+                    btnMedia.className = 'flex-1 py-1.5 rounded-lg bg-nativa-marine text-white font-black transition-all shadow-xs flex items-center justify-center gap-1 cursor-pointer oswald-title';
+                    btnGov.className = 'flex-1 py-1.5 rounded-lg text-gray-600 hover:text-nativa-marine font-bold transition-all flex items-center justify-center gap-1 cursor-pointer oswald-title';
+                }
             }
 
             renderAppleDock();
@@ -5598,13 +5624,110 @@
             gsap.fromTo(cardContainer, { scale: 0.96, opacity: 0.8 }, { scale: 1, opacity: 1, duration: 0.35, ease: "power2.out" });
         }
 
+        // ==========================================
+        // SELECTOR PERSONALIZADO DE ENTIDAD FEDERAL CON BANDERAS
+        // ==========================================
+        function toggleStateDropdown() {
+            const menu = document.getElementById('state-dropdown-menu');
+            const arrow = document.getElementById('state-dropdown-arrow');
+            if (!menu) return;
+            const isOpen = !menu.classList.contains('hidden');
+            if (isOpen) {
+                closeStateDropdown();
+            } else {
+                menu.classList.remove('hidden');
+                if (arrow) arrow.classList.add('rotate-180');
+            }
+        }
+
+        function closeStateDropdown() {
+            const menu = document.getElementById('state-dropdown-menu');
+            const arrow = document.getElementById('state-dropdown-arrow');
+            if (menu) menu.classList.add('hidden');
+            if (arrow) arrow.classList.remove('rotate-180');
+        }
+
+        document.addEventListener('click', function(event) {
+            const container = document.getElementById('custom-state-dropdown-container');
+            if (container && !container.contains(event.target)) {
+                closeStateDropdown();
+            }
+        });
+
+        function updateCustomStateTriggerUI(stateKey, labelOverride, flagOverride) {
+            const flagSlot = document.getElementById('selected-state-flag-slot');
+            const labelSlot = document.getElementById('selected-state-label');
+            if (!flagSlot || !labelSlot) return;
+
+            if (!stateKey || stateKey === '') {
+                labelSlot.textContent = labelOverride || 'Todas las Entidades (24)';
+                flagSlot.innerHTML = `<img src="./img/banderas/nacional.svg" class="w-full h-full object-cover" onerror="this.src='https://upload.wikimedia.org/wikipedia/commons/0/06/Flag_of_Venezuela.svg';"/>`;
+                return;
+            }
+
+            if (stateKey === 'NACIONAL') {
+                labelSlot.textContent = labelOverride || 'Ámbito Nacional';
+                flagSlot.innerHTML = `<img src="./img/banderas/nacional.svg" class="w-full h-full object-cover" onerror="this.src='https://upload.wikimedia.org/wikipedia/commons/0/06/Flag_of_Venezuela.svg';"/>`;
+                return;
+            }
+
+            const stateMeta = venezuelaStatesData[stateKey];
+            if (stateMeta) {
+                labelSlot.textContent = labelOverride || `${stateMeta.name}`;
+                const flagUrl = flagOverride || stateMeta.flagLocal || stateMeta.flag || './img/banderas/nacional.svg';
+                const fallbackFlag = stateMeta.flagGithubRaw || stateMeta.flagFallback || 'https://upload.wikimedia.org/wikipedia/commons/0/06/Flag_of_Venezuela.svg';
+                flagSlot.innerHTML = `<img src="${flagUrl}" class="w-full h-full object-cover" onerror="this.onerror=null; this.src='${fallbackFlag}';"/>`;
+            }
+        }
+
+        function selectCustomState(stateKey, label, flagUrl) {
+            closeStateDropdown();
+            const nativeSelect = document.getElementById('state-select');
+            if (nativeSelect) {
+                nativeSelect.value = stateKey;
+            }
+            updateCustomStateTriggerUI(stateKey, label, flagUrl);
+            onSelectStateChange(stateKey);
+        }
+
         function populateFilterOptions() {
             const stateSelect = document.getElementById('state-select');
+            const customItemsSlot = document.getElementById('custom-state-items-slot');
+            if (customItemsSlot) customItemsSlot.innerHTML = '';
+
             Object.keys(venezuelaStatesData).sort().forEach(k => {
-                const opt = document.createElement('option');
-                opt.value = k;
-                opt.textContent = `${venezuelaStatesData[k].name} (${venezuelaStatesData[k].governor})`;
-                stateSelect.appendChild(opt);
+                const s = venezuelaStatesData[k];
+                // 1. Opción para select nativo
+                if (stateSelect) {
+                    const opt = document.createElement('option');
+                    opt.value = k;
+                    opt.textContent = `${s.name} (${s.governor})`;
+                    stateSelect.appendChild(opt);
+                }
+
+                // 2. Elemento para dropdown personalizado con bandera oficial
+                if (customItemsSlot) {
+                    const flag = s.flagLocal || s.flag || './img/banderas/nacional.svg';
+                    const fallbackFlag = s.flagGithubRaw || s.flagFallback || 'https://upload.wikimedia.org/wikipedia/commons/0/06/Flag_of_Venezuela.svg';
+
+                    const itemDiv = document.createElement('div');
+                    itemDiv.className = 'p-1.5 hover:bg-blue-50/80 rounded-lg flex items-center justify-between cursor-pointer transition-colors group';
+                    itemDiv.onclick = () => selectCustomState(k, s.name, flag);
+
+                    itemDiv.innerHTML = `
+                        <div class="flex items-center gap-2 truncate">
+                            <span class="w-5 h-3.5 rounded-[2px] overflow-hidden shadow-2xs border border-gray-300 shrink-0 flex items-center justify-center bg-gray-100">
+                                <img src="${flag}" referrerpolicy="no-referrer" class="w-full h-full object-cover" onerror="this.onerror=null; this.src='${fallbackFlag}';"/>
+                            </span>
+                            <div class="truncate text-left">
+                                <span class="block text-xs font-bold text-gray-800 group-hover:text-nativa-marine truncate">${s.name}</span>
+                                <span class="block text-[9px] text-gray-500 font-medium truncate">${s.capital || 'Capital'} • ${s.governor}</span>
+                            </div>
+                        </div>
+                        <span class="text-[9px] font-bold text-gray-400 group-hover:text-nativa-light shrink-0 ml-1">›</span>
+                    `;
+                    customItemsSlot.appendChild(itemDiv);
+                }
             });
         }
 
@@ -5660,6 +5783,7 @@
             currentSelectedMedia = null;
             currentSelectedState = null;
             setDatePreset('all');
+            updateCustomStateTriggerUI('');
             renderLeftIdentityCard();
 
             // Restablecer dock flotante en visión general
@@ -5679,6 +5803,7 @@
         }
 
         function onSelectStateChange(val) {
+            updateCustomStateTriggerUI(val);
             if (val === 'NACIONAL') {
                 showNationalOverview();
             } else if (val && venezuelaStatesData[val]) {
@@ -5695,6 +5820,7 @@
         function focusState(stateKey) {
             currentSelectedState = stateKey;
             document.getElementById('state-select').value = stateKey;
+            updateCustomStateTriggerUI(stateKey);
             
             // 1. ZOOM ESTRICTO AL POLÍGONO DEL ESTADO CON TRANSICIÓN SUAVE
             const layer = stateLayers.get(stateKey);
@@ -5743,6 +5869,7 @@
         function showNationalOverview() {
             currentSelectedState = null;
             document.getElementById('state-select').value = 'NACIONAL';
+            updateCustomStateTriggerUI('NACIONAL');
             const container = document.getElementById('details-content-wrapper');
             
             // Reaparecer Dock en Visión General con transición lenta
