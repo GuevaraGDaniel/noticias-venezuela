@@ -2,9 +2,13 @@ Banca y Negocios bancaynegocios.com active ECON
 Finanzas Digital finanzasdigital.com active ECON
 Descifrado descifrado.com active ECON
 Fedecámaras Radio fedecamarasradio.com active ECON
-El Nacional elnacional.com active NEWS
-El Universal eluniversal.com active NEWS
 Últimas Noticias ultimasnoticias.com.ve active NEWS
+VTV vtv.com.ve active NEWS
+Globovisión globovision.com active NEWS
+El Nacional elnacional.com active NEWS
+Caraota Digital caraotadigital.net active NEWS
+El Impulso elimpulso.com active NEWS
+El Universal eluniversal.com active NEWS
 TalCual talcualdigital.com active NEWS
 El Pitazo elpitazo.net active NEWS
 Efecto Cocuyo efectococuyo.com active NEWS
@@ -16,7 +20,6 @@ Noticia al Día noticiaaldia.com active NEWS
 La Verdad laverdad.com active NEWS
 El Carabobeño el-carabobeno.com active NEWS
 Notitarde notitarde.com.ve active NEWS
-El Impulso elimpulso.com active NEWS
 La Prensa de Lara laprensalara.com.ve active NEWS
 Correo del Caroní correodelcaroni.com active NEWS
 Nueva Prensa Digital nuevaprensa.web.ve active NEWS
