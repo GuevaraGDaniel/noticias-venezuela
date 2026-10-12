@@ -361,24 +361,27 @@
 <body>
 
     <!-- PANTALLA DE CARGA CORPORATIVA INSTITUCIONAL -->
-    <div id="loading-overlay" class="fixed inset-0 bg-[#001D45] flex flex-col items-center justify-center z-[9999] overflow-hidden select-none">
-        <!-- Glow de fondo -->
-        <div class="absolute inset-0 bg-radial from-[#003B8A] via-[#001D45] to-[#000D22] opacity-95 pointer-events-none"></div>
+    <div id="loading-overlay" class="fixed inset-0 bg-[#001433] flex flex-col items-center justify-center z-[9999] overflow-hidden select-none">
+        <!-- Glow de fondo institucional -->
+        <div class="absolute inset-0 bg-radial from-[#002F6C] via-[#00173B] to-[#000B1E] opacity-95 pointer-events-none"></div>
 
         <div class="relative z-10 flex flex-col items-center justify-center px-4 sm:px-6 w-full max-w-4xl text-center" id="splash-stage">
             
-            <!-- BIENVENIDO GRANDE POR ENCIMA (EN MONTSERRAT) -->
-            <div id="splash-welcome-container" class="opacity-0 translate-y-[-50px] pointer-events-none mb-3 sm:mb-5">
-                <span class="text-amber-400 font-extrabold tracking-[0.35em] text-xs sm:text-sm uppercase block mb-1.5" style="font-family: 'Montserrat', sans-serif !important;">
-                    República Bolivariana de Venezuela
-                </span>
-                <h1 class="text-white text-4xl sm:text-6xl md:text-7xl font-black tracking-wider uppercase drop-shadow-[0_8px_25px_rgba(0,0,0,0.7)]" style="font-family: 'Montserrat', sans-serif !important;">
-                    BIENVENIDO
-                </h1>
+            <!-- 1. ESCUDO DE ARMAS DE VENEZUELA (APARECE DE GOLPE CON TRANSICIÓN) -->
+            <div id="splash-escudo-container" class="opacity-0 scale-50 mb-2 sm:mb-3 flex items-center justify-center">
+                <div class="relative p-3 sm:p-4 rounded-3xl bg-white/10 backdrop-blur-md border-2 border-amber-400/60 shadow-[0_16px_50px_rgba(0,0,0,0.6)] ring-4 ring-amber-400/30">
+                    <img 
+                        id="splash-escudo-img"
+                        src="./img/banderas/escudo_de_venezuela.svg" 
+                        alt="Escudo de Armas de la República Bolivariana de Venezuela" 
+                        class="w-24 h-24 sm:w-32 sm:h-32 md:w-36 md:h-36 object-contain drop-shadow-[0_10px_25px_rgba(0,0,0,0.7)]"
+                        onerror="this.onerror=null; this.src='https://upload.wikimedia.org/wikipedia/commons/4/46/Coat_of_arms_of_Venezuela.svg';"
+                    />
+                </div>
             </div>
 
-            <!-- LOGO ANCHO DEL GOBIERNO BOLIVARIANO DE VENEZUELA -->
-            <div id="splash-logo-container" class="w-full flex items-center justify-center my-2 sm:my-4 transition-transform">
+            <!-- 2. LOGO ANCHO DE LA REPÚBLICA (SE INTEGRA CON EL ESCUDO) -->
+            <div id="splash-logo-container" class="opacity-0 translate-y-8 w-full flex items-center justify-center my-1.5 sm:my-3">
                 <img 
                     id="splash-gov-logo"
                     src="https://pbs.twimg.com/media/Gxy2xw_WIAAN7Vz?format=webp&name=large" 
@@ -388,14 +391,27 @@
                 />
             </div>
 
-            <!-- INDICADOR DE CARGA CON BARRA DE PROGRESO -->
-            <div id="splash-loading-indicator" class="w-full max-w-xs sm:max-w-md flex flex-col items-center mt-4 sm:mt-6">
-                <div class="w-full h-2 bg-white/10 rounded-full overflow-hidden border border-white/20 shadow-inner mb-3">
-                    <div id="splash-progress-bar" class="w-full h-full bg-gradient-to-r from-amber-400 via-blue-400 to-amber-300 rounded-full animate-pulse"></div>
+            <!-- 3. BIENVENIDO CIUDADANO (EN MONTSERRAT GRANDE) -->
+            <div id="splash-welcome-container" class="opacity-0 translate-y-[-30px] pointer-events-none my-2 sm:my-3">
+                <h1 class="text-white text-3xl sm:text-5xl md:text-6xl font-black tracking-wider uppercase drop-shadow-[0_8px_25px_rgba(0,0,0,0.85)]" style="font-family: 'Montserrat', sans-serif !important;">
+                    BIENVENIDO CIUDADANO
+                </h1>
+                <span class="text-amber-400 font-extrabold tracking-[0.25em] text-[10px] sm:text-xs uppercase block mt-1.5" style="font-family: 'Montserrat', sans-serif !important;">
+                    SISTEMA DE SEGUIMIENTO Y COBERTURA TERRITORIAL
+                </span>
+            </div>
+
+            <!-- 4. INDICADOR DE CARGA CON BARRA TRICOLOR AMARILLA, AZUL Y ROJA -->
+            <div id="splash-loading-indicator" class="w-full max-w-xs sm:max-w-md flex flex-col items-center mt-3 sm:mt-5">
+                <!-- Barra Tricolor de Venezuela: Amarillo, Azul y Rojo -->
+                <div class="w-full h-3.5 bg-black/50 rounded-full overflow-hidden border border-white/30 shadow-[inset_0_2px_6px_rgba(0,0,0,0.7)] mb-3 p-[2px] relative">
+                    <div id="splash-progress-bar" class="h-full rounded-full transition-all duration-300 relative overflow-hidden" style="width: 0%; background: linear-gradient(90deg, #FCE300 0%, #FCE300 33.33%, #003882 33.33%, #003882 66.66%, #DA291C 66.66%, #DA291C 100%); box-shadow: 0 0 14px rgba(252, 227, 0, 0.6);">
+                        <div class="absolute inset-0 bg-white/25 animate-pulse pointer-events-none"></div>
+                    </div>
                 </div>
-                <div class="flex items-center gap-2 text-blue-200 text-xs sm:text-sm font-bold tracking-widest uppercase" style="font-family: 'Montserrat', sans-serif !important;">
+                <div class="flex items-center gap-2 text-blue-100 text-xs sm:text-sm font-bold tracking-widest uppercase" style="font-family: 'Montserrat', sans-serif !important;">
                     <span class="w-2.5 h-2.5 rounded-full bg-amber-400 animate-ping"></span>
-                    <span>Cargando Cobertura Territorial y Medios...</span>
+                    <span id="splash-loading-text">Cargando Cobertura Territorial y Medios...</span>
                 </div>
             </div>
 
@@ -5102,29 +5118,25 @@
         let currentDockMode = 'gov';
 
         // ==========================================
-        // INICIALIZACIÓN DE LA APLICACIÓN
+        // INICIALIZACIÓN DE LA APLICACIÓN & SPLASH CHOREOGRAPHY (7 SEGUNDOS)
         // ==========================================
-        let isOverlayDismissed = false;
-        function dismissOverlay() {
-            if (isOverlayDismissed) return;
-            isOverlayDismissed = true;
+        let isSplashCompleted = false;
 
+        function startMasterSplashTimeline() {
             const overlay = document.getElementById('loading-overlay');
+            const escudo = document.getElementById('splash-escudo-container');
             const logo = document.getElementById('splash-logo-container');
             const welcome = document.getElementById('splash-welcome-container');
             const loadingInd = document.getElementById('splash-loading-indicator');
+            const progressBar = document.getElementById('splash-progress-bar');
             const app = document.getElementById('app-container');
             const footer = document.getElementById('corporate-footer');
 
-            if (!overlay || overlay.style.display === 'none') return;
+            if (!overlay) return;
 
-            // Timeline cinemática fluida:
-            // 1. Ocultar indicador de carga
-            // 2. El logo del gobierno cae suavemente hacia abajo
-            // 3. Grande por encima aparece "BIENVENIDO" en tipografía Montserrat
-            // 4. Pausa de apreciación y desvanecimiento suave hacia el dashboard
-            const tl = gsap.timeline({
+            const masterTl = gsap.timeline({
                 onComplete: () => {
+                    isSplashCompleted = true;
                     overlay.style.display = 'none';
                     if (app) app.style.opacity = '1';
                     if (footer) footer.style.opacity = '1';
@@ -5134,45 +5146,110 @@
                 }
             });
 
-            tl.to(loadingInd, { opacity: 0, duration: 0.5, ease: "power2.out" })
-              // El logo del gobierno cae fluidamente
-              .to(logo, { 
-                  y: 110, 
-                  opacity: 0.35, 
-                  scale: 0.94, 
-                  duration: 1.8, 
-                  ease: "power2.inOut" 
-              }, "-=0.2")
-              // Grande por encima aparece BIENVENIDO en Montserrat
-              .to(welcome, { 
-                  opacity: 1, 
-                  y: 0, 
-                  duration: 1.6, 
-                  ease: "back.out(1.2)" 
-              }, "-=1.4")
-              // Pausa de 1.1s para visualizar bienvenido
-              .to({}, { duration: 1.1 })
-              // Desvanecimiento suave del overlay revelando el dashboard
-              .to(overlay, { 
-                  opacity: 0, 
-                  duration: 1.8, 
-                  ease: "power2.inOut" 
-              })
-              .fromTo([app, footer], 
-                  { opacity: 0 }, 
-                  { opacity: 1, duration: 1.5, ease: "power2.out" }, 
-                  "-=1.2"
-              )
-              .fromTo('#apple-dock-floating-container',
-                  { y: 85, opacity: 0, scale: 0.95 },
-                  { y: 0, opacity: 1, scale: 1, duration: 2.2, ease: "power3.out" },
-                  "-=0.9"
-              );
+            // DURACIÓN TOTAL EXACTA: 7.0 SEGUNDOS
+
+            // 0.0s a 5.2s: Barra tricolor venezolana (amarillo, azul y rojo) llenándose continuamente
+            masterTl.to(progressBar, {
+                width: "100%",
+                duration: 5.2,
+                ease: "power1.inOut"
+            }, 0);
+
+            // 0.15s: APARECE DE GOLPE CON TRANSICIÓN EL ESCUDO DE VENEZUELA
+            // Entrada de impacto institucional: escala explosiva con rebote elástico (back.out(2.4))
+            masterTl.fromTo(escudo, 
+                { scale: 0.15, opacity: 0, rotation: -12 },
+                { scale: 1, opacity: 1, rotation: 0, duration: 0.85, ease: "back.out(2.4)" },
+                0.15
+            );
+
+            // 1.35s: SE INTEGRA A ESO EL LOGO DE LA REPÚBLICA
+            // Reveal horizontal amplio con entrada suave hacia arriba
+            masterTl.fromTo(logo,
+                { y: 50, opacity: 0, scale: 0.90 },
+                { y: 0, opacity: 1, scale: 1, duration: 1.1, ease: "power3.out" },
+                1.35
+            );
+
+            // 2.55s: APARECE "BIENVENIDO CIUDADANO" EN MONTSERRAT GRANDE
+            masterTl.fromTo(welcome,
+                { y: -35, opacity: 0, scale: 0.94 },
+                { y: 0, opacity: 1, scale: 1, duration: 1.0, ease: "back.out(1.4)" },
+                2.55
+            );
+
+            // 2.55s a 4.65s: Pausa solemne de apreciación institucional mientras la barra tricolor se completa
+
+            // 4.65s: SE QUITA EL TEXTO BIENVENIDO
+            masterTl.to(welcome, {
+                y: -35,
+                opacity: 0,
+                duration: 0.65,
+                ease: "power2.in"
+            }, 4.65);
+
+            // 4.75s: QUITAR EL LOGO CON LA ANIMACIÓN CONTRARIA (hacia abajo con repliegue en escala)
+            masterTl.to(logo, {
+                y: 50,
+                opacity: 0,
+                scale: 0.90,
+                duration: 0.75,
+                ease: "power3.in"
+            }, 4.75);
+
+            // 4.85s: QUITAR EL ESCUDO CON LA ANIMACIÓN CONTRARIA (retroceso elástico hacia atrás)
+            masterTl.to(escudo, {
+                scale: 0.15,
+                opacity: 0,
+                rotation: 12,
+                duration: 0.75,
+                ease: "back.in(2.0)"
+            }, 4.85);
+
+            // 5.1s: Desvanecimiento del indicador y barra tricolor
+            masterTl.to(loadingInd, {
+                opacity: 0,
+                duration: 0.5,
+                ease: "power2.out"
+            }, 5.1);
+
+            // 5.8s a 7.0s: Desvanecimiento suave del overlay revelando el dashboard (fin exacto a los 7.0s)
+            masterTl.to(overlay, {
+                opacity: 0,
+                duration: 1.2,
+                ease: "power2.inOut"
+            }, 5.8);
+
+            // A los 5.9s: Revelar la aplicación y el footer
+            masterTl.fromTo([app, footer],
+                { opacity: 0 },
+                { opacity: 1, duration: 1.1, ease: "power2.out" },
+                5.9
+            );
+
+            // A los 6.0s: El dock emerge fluidamente desde la franja azul
+            masterTl.fromTo('#apple-dock-floating-container',
+                { y: 85, opacity: 0, scale: 0.95 },
+                { y: 0, opacity: 1, scale: 1, duration: 1.6, ease: "power3.out" },
+                6.0
+            );
+        }
+
+        function dismissOverlay() {
+            if (isSplashCompleted) return;
+            const overlay = document.getElementById('loading-overlay');
+            if (overlay) overlay.style.display = 'none';
+            const app = document.getElementById('app-container');
+            const footer = document.getElementById('corporate-footer');
+            if (app) app.style.opacity = '1';
+            if (footer) footer.style.opacity = '1';
         }
 
         async function initApp() {
-            const appStartTime = Date.now();
             try {
+                // Iniciar la animación cinematográfica de 7 segundos inmediatamente
+                startMasterSplashTimeline();
+
                 document.querySelectorAll('#splash-flag-container, #header-flag-slot, #footer-flag-slot').forEach(el => {
                     el.innerHTML = getVenezuelaFlagSvg();
                 });
@@ -5204,16 +5281,8 @@
                 renderBottomBannerHeader();
             } catch (err) {
                 console.error("[Gobierno Bolivariano] Error durante la inicialización:", err);
-            } finally {
-                // Dar al menos 3.8 segundos para que el usuario aprecie la bienvenida y logos institucionales
-                const elapsed = Date.now() - appStartTime;
-                const waitTime = Math.max(0, 3800 - elapsed);
-                setTimeout(dismissOverlay, waitTime);
             }
         }
-
-        // Respaldo de seguridad para retirar splash screen
-        setTimeout(dismissOverlay, 6500);
 
         function adjustLayoutHeight() {
             const windowHeight = window.innerHeight;
