@@ -157,38 +157,71 @@
         }
 
         /* ==========================================
-           APPLE DOCK FLOTANTE EN LA PARTE INFERIOR
+           APPLE DOCK FLOTANTE: NACIENDO DESDE LA IZQUIERDA (HORIZONTAL CON SCROLL Y LUPA GSAP)
            ========================================== */
         #apple-dock-floating-container {
             position: absolute;
             bottom: 24px;
-            left: 50%;
-            transform: translateX(-50%);
+            left: 370px; /* Nace desde el borde izquierdo del mapa (al lado del panel de filtros) */
             z-index: 1000;
             display: flex;
             flex-direction: column;
-            align-items: center;
+            align-items: flex-start;
             pointer-events: auto;
-            transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
-            max-width: 90vw;
+            transition: opacity 0.3s ease, transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+            max-width: calc(100vw - 420px);
+        }
+
+        @media (max-width: 768px) {
+            #apple-dock-floating-container {
+                left: 12px;
+                max-width: calc(100vw - 24px);
+            }
         }
 
         .apple-dock-shelf {
-            background: rgba(255, 255, 255, 0.65);
+            background: rgba(255, 255, 255, 0.82);
             backdrop-filter: blur(25px);
             -webkit-backdrop-filter: blur(25px);
-            border: 1.5px solid rgba(255, 255, 255, 0.8);
-            box-shadow: 0 20px 45px -8px rgba(0, 47, 108, 0.25), inset 0 1px 0 rgba(255, 255, 255, 0.9);
-            border-radius: 26px;
-            padding: 10px 14px;
+            border: 1.5px solid rgba(255, 255, 255, 0.95);
+            box-shadow: 0 20px 45px -8px rgba(0, 47, 108, 0.28), inset 0 1px 0 rgba(255, 255, 255, 0.9);
+            border-radius: 28px;
+            padding: 8px 16px 14px 16px;
             display: flex;
             align-items: flex-end;
-            gap: 10px;
+            max-width: 100%;
             overflow-x: auto;
-            scrollbar-width: none;
-            perspective: 1000px;
+            overflow-y: visible;
+            -webkit-overflow-scrolling: touch;
+            scroll-behavior: smooth;
         }
-        .apple-dock-shelf::-webkit-scrollbar { display: none; }
+
+        .apple-dock-shelf::-webkit-scrollbar {
+            height: 6px;
+        }
+        .apple-dock-shelf::-webkit-scrollbar-track {
+            background: rgba(0, 47, 108, 0.06);
+            border-radius: 10px;
+            margin: 0 16px;
+        }
+        .apple-dock-shelf::-webkit-scrollbar-thumb {
+            background: #005EB8;
+            border-radius: 10px;
+        }
+        .apple-dock-shelf::-webkit-scrollbar-thumb:hover {
+            background: #002F6C;
+        }
+
+        /* Contenedor estrictamente horizontal de los items del dock */
+        #apple-dock {
+            display: flex !important;
+            flex-direction: row !important;
+            flex-wrap: nowrap !important;
+            align-items: flex-end;
+            gap: 12px;
+            padding-top: 42px; /* Margen superior amplio para magnificación de íconos gigantes */
+            padding-bottom: 4px;
+        }
 
         .apple-dock-item {
             position: relative;
@@ -204,12 +237,12 @@
 
         /* Iconos más grandes y redondeados con acento azul */
         .apple-dock-icon {
-            width: 58px;
-            height: 58px;
-            border-radius: 18px;
+            width: 60px;
+            height: 60px;
+            border-radius: 20px;
             overflow: hidden;
             border: 2.5px solid white;
-            box-shadow: 0 6px 14px rgba(0, 30, 80, 0.16);
+            box-shadow: 0 6px 14px rgba(0, 30, 80, 0.18);
             transition: box-shadow 0.2s ease, border-color 0.2s ease;
             background: white;
             display: flex;
@@ -217,17 +250,17 @@
             justify-content: center;
         }
         .apple-dock-item:hover .apple-dock-icon {
-            box-shadow: 0 12px 25px rgba(0, 94, 184, 0.4);
+            box-shadow: 0 16px 36px rgba(0, 94, 184, 0.55);
             border-color: #005EB8;
         }
         .apple-dock-item.active-dock .apple-dock-icon {
             border-color: #005EB8;
-            box-shadow: 0 0 0 3px rgba(0, 94, 184, 0.35), 0 8px 20px rgba(0, 47, 108, 0.3);
+            box-shadow: 0 0 0 3.5px rgba(0, 94, 184, 0.45), 0 10px 24px rgba(0, 47, 108, 0.35);
         }
 
         .apple-dock-dot {
-            width: 5px;
-            height: 5px;
+            width: 6px;
+            height: 6px;
             border-radius: 50%;
             background: transparent;
             margin-top: 4px;
@@ -240,31 +273,26 @@
 
         .apple-dock-tooltip {
             position: absolute;
-            bottom: 74px;
-            background: rgba(0, 47, 108, 0.92);
+            bottom: 84px;
+            background: rgba(0, 47, 108, 0.95);
             backdrop-filter: blur(8px);
             color: white;
-            padding: 4px 10px;
-            border-radius: 8px;
-            font-size: 10px;
+            padding: 5px 12px;
+            border-radius: 9px;
+            font-size: 11px;
             font-weight: 800;
             white-space: nowrap;
             pointer-events: none;
             opacity: 0;
-            transform: translateY(5px);
+            transform: translateY(6px);
             transition: opacity 0.15s ease, transform 0.15s ease;
-            box-shadow: 0 6px 16px rgba(0,0,0,0.25);
+            box-shadow: 0 8px 20px rgba(0,0,0,0.3);
             z-index: 100;
         }
         .apple-dock-item:hover .apple-dock-tooltip {
             opacity: 1;
             transform: translateY(0);
         }
-
-        /* Scrollbar suave */
-        ::-webkit-scrollbar { width: 6px; height: 6px; }
-        ::-webkit-scrollbar-track { background: #f1f5f9; }
-        ::-webkit-scrollbar-thumb { background: #cbd5e1; border-radius: 3px; }
         ::-webkit-scrollbar-thumb:hover { background: #94a3b8; }
     </style>
 </head>
@@ -421,22 +449,28 @@
             <!-- MAPA LEAFLET INTERACTIVO CON OPENSTREETMAP (CENTRO) -->
             <div id="map"></div>
 
-            <!-- APPLE-STYLE DOCK FLOTANTE EN LA PARTE INFERIOR DEL MAPA (CON ICONOS GRANDES Y ACENTO AZUL) -->
+            <!-- APPLE-STYLE DOCK FLOTANTE: NACIENDO DESDE LA IZQUIERDA (HORIZONTAL CON SCROLL Y LUPA GSAP) -->
             <div id="apple-dock-floating-container">
-                <!-- Suiche de Selección del Dock (Gobernadores vs Portales) -->
-                <div class="inline-flex p-1 bg-slate-900/85 backdrop-blur-md rounded-full shadow-lg border border-white/20 text-[10px] font-bold text-white mb-2">
-                    <button id="dock-btn-gov" onclick="setDockMode('gov')" class="px-3.5 py-1 rounded-full bg-nativa-light text-white font-black transition-all shadow-xs flex items-center gap-1.5">
-                        <span>🏛️</span> <span>Gobernadores (24)</span>
-                    </button>
-                    <button id="dock-btn-media" onclick="setDockMode('media')" class="px-3.5 py-1 rounded-full text-blue-200 hover:text-white transition-all flex items-center gap-1.5">
-                        <span>📰</span> <span>Portales Informativos</span>
-                    </button>
+                <!-- Header del Dock: Selector Gobernadores vs Portales + Indicador de Scroll -->
+                <div class="flex items-center gap-2 mb-1.5 ml-1">
+                    <div class="inline-flex p-1 bg-slate-900/85 backdrop-blur-md rounded-full shadow-lg border border-white/20 text-[10px] font-bold text-white">
+                        <button id="dock-btn-gov" onclick="setDockMode('gov')" class="px-3.5 py-1 rounded-full bg-nativa-light text-white font-black transition-all shadow-xs flex items-center gap-1.5 cursor-pointer">
+                            <span>🏛️</span> <span>Gobernadores (24)</span>
+                        </button>
+                        <button id="dock-btn-media" onclick="setDockMode('media')" class="px-3.5 py-1 rounded-full text-blue-200 hover:text-white transition-all flex items-center gap-1.5 cursor-pointer">
+                            <span>📰</span> <span>Portales Informativos</span>
+                        </button>
+                    </div>
+                    <div class="hidden sm:inline-flex items-center gap-1.5 text-[10px] font-bold text-slate-800 bg-white/80 backdrop-blur-md px-3 py-1 rounded-full border border-white shadow-xs">
+                        <span class="text-nativa-light font-black text-xs">⟷</span>
+                        <span>Desliza horizontalmente</span>
+                    </div>
                 </div>
 
-                <!-- Shelf del Dock con Efecto Lupa GSAP -->
+                <!-- Shelf del Dock con Efecto Lupa GSAP y Scroll Horizontal -->
                 <div class="apple-dock-shelf">
                     <div id="apple-dock">
-                        <!-- Iconos grandes y redondeados inyectados dinámicamente por JS -->
+                        <!-- Iconos grandes y redondeados en fila horizontal inyectados por JS -->
                     </div>
                 </div>
             </div>
@@ -5293,6 +5327,19 @@
 
         function initAppleDockMagnification() {
             const dock = document.getElementById('apple-dock');
+            const shelf = document.querySelector('.apple-dock-shelf');
+
+            // Desplazamiento horizontal directo con la rueda del ratón (UX nativa estilo macOS)
+            if (shelf) {
+                shelf.addEventListener('wheel', (e) => {
+                    if (e.deltaY !== 0) {
+                        shelf.scrollLeft += e.deltaY;
+                        e.preventDefault();
+                    }
+                }, { passive: false });
+            }
+
+            if (!dock) return;
 
             dock.addEventListener('mousemove', (e) => {
                 const items = dock.querySelectorAll('.apple-dock-item');
@@ -5306,16 +5353,20 @@
                     let scale = 1;
                     let translateY = 0;
 
-                    if (distance < 110) {
-                        const factor = 1 - (distance / 110);
-                        scale = 1 + factor * 0.40; // Magnificación suave hasta 1.40x
-                        translateY = -factor * 12; // Eleva suavemente
+                    // Curva de magnificación parabólica macOS:
+                    // El ícono enfocado crece hasta 1.85x (~112px) y se eleva -28px.
+                    // Los íconos vecinos se escalan armónicamente hasta 140px de distancia.
+                    const maxDist = 140;
+                    if (distance < maxDist) {
+                        const factor = Math.cos((distance / maxDist) * (Math.PI / 2)); // Curva cosenoidal suave
+                        scale = 1 + (factor * 0.85); // Magnificación masiva (1.85x)
+                        translateY = -factor * 28;  // Gran elevación
                     }
 
                     gsap.to(item, {
                         scale: scale,
                         y: translateY,
-                        duration: 0.15,
+                        duration: 0.12,
                         ease: "power1.out",
                         overwrite: "auto"
                     });
@@ -5327,7 +5378,7 @@
                 gsap.to(items, {
                     scale: 1,
                     y: 0,
-                    duration: 0.3,
+                    duration: 0.28,
                     ease: "power2.out",
                     overwrite: "auto"
                 });
