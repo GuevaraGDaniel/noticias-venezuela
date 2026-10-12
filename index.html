@@ -3,14 +3,14 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Monitor País | Dashboard de Noticias Económicas y Cobertura Territorial de Venezuela</title>
+    <title>Monitor País | Dashboard de Inteligencia Económica y Cobertura Territorial de Venezuela</title>
     
     <!-- Google Fonts: Montserrat (Universal) y Oswald (Gobernadores y Presidencia) -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,400;1,600;1,700&family=Oswald:wght@500;600;700&display=swap" rel="stylesheet">
     
-    <!-- Tailwind CSS -->
+    <!-- Tailwind CSS CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
         tailwind.config = {
@@ -40,9 +40,6 @@
 
     <!-- Leaflet CSS -->
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
-    
-    <!-- Swiper.js CSS para el Selector tipo Dial 3D -->
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
 
     <style>
         /* Tipografía estricta: Montserrat para todo, excepto Oswald para gobernadores y presidencia */
@@ -64,14 +61,14 @@
         #app-container { display: flex; width: 100vw; opacity: 0; position: relative; z-index: 10; }
         
         #filters-panel { 
-            width: 370px; background: white; box-shadow: 2px 0 12px rgba(0,0,0,0.08); 
+            width: 380px; background: white; box-shadow: 2px 0 14px rgba(0,0,0,0.08); 
             z-index: 1000; padding: 1.25rem; display: flex; flex-direction: column; transition: transform 0.3s ease; 
         }
         #map { flex-grow: 1; height: 100%; z-index: 1; }
         
         #details-panel { 
-            position: absolute; right: -550px; top: 0; width: 550px; height: 100%; 
-            background: white; box-shadow: -6px 0 30px rgba(0,0,0,0.22); 
+            position: absolute; right: -560px; top: 0; width: 560px; height: 100%; 
+            background: white; box-shadow: -6px 0 35px rgba(0,0,0,0.22); 
             z-index: 1001; padding: 0; transition: right 0.4s cubic-bezier(0.25, 0.8, 0.25, 1); 
             overflow-y: auto; display: flex; flex-direction: column;
         }
@@ -91,7 +88,7 @@
             background-color: #002F6C; border-radius: 50%; 
             border: 2.5px solid white; box-shadow: 0 4px 12px rgba(0,0,0,0.45); cursor: pointer; 
             display: flex; align-items: center; justify-content: center; color: white; 
-            font-weight: 900; font-size: 11px; transition: all 0.2s cubic-bezier(0.34, 1.56, 0.64, 1);
+            font-weight: 900; font-size: 11px; transition: all 0.25s cubic-bezier(0.34, 1.56, 0.64, 1);
         }
         .state-news-marker:hover { background-color: #005EB8; transform: scale(1.25); border-color: #fef08a; }
         .state-news-marker.active-filter { background-color: #D97706; border-color: white; transform: scale(1.3); }
@@ -99,7 +96,7 @@
         #mobile-filter-btn { display: none; position: absolute; bottom: 20px; left: 50%; transform: translateX(-50%); z-index: 1000; }
         
         @media (max-width: 768px) {
-            #filters-panel { position: absolute; left: -370px; height: 100%; }
+            #filters-panel { position: absolute; left: -380px; height: 100%; }
             #filters-panel.open { left: 0; }
             #mobile-filter-btn { display: block; }
             #details-panel { width: 100%; right: -100%; }
@@ -117,7 +114,7 @@
         }
         
         @media (min-width: 768px) {
-            #region-banner.table-collapsed { margin-left: 370px; width: calc(100% - 370px); }
+            #region-banner.table-collapsed { margin-left: 380px; width: calc(100% - 380px); }
             #region-banner.table-open { margin-left: 0; width: 100%; }
         }
         @media (max-width: 767px) {
@@ -159,42 +156,89 @@
             box-shadow: 0 16px 40px rgba(0, 24, 70, 0.4);
         }
 
-        /* Estilos del Dial Swiper 3D */
-        .swiper-container-dial {
-            width: 100%;
-            padding-top: 10px;
-            padding-bottom: 12px;
+        /* ==========================================
+           APPLE-STYLE DOCK STYLING (FISHEYE ANIMATED)
+           ========================================== */
+        .apple-dock-shelf {
+            background: rgba(255, 255, 255, 0.65);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border: 1.5px solid rgba(255, 255, 255, 0.7);
+            box-shadow: 0 15px 35px -5px rgba(0, 32, 90, 0.15), inset 0 1px 0 rgba(255, 255, 255, 0.8);
+            border-radius: 20px;
+            padding: 8px 10px;
+            display: flex;
+            align-items: flex-end;
+            gap: 8px;
+            overflow-x: auto;
+            scrollbar-width: none;
+            perspective: 1000px;
         }
-        .swiper-slide {
-            background-position: center;
-            background-size: cover;
-            width: 90px;
-            height: 125px;
-            transition: all 0.3s ease;
-            opacity: 0.5;
-            transform: scale(0.85);
+        .apple-dock-shelf::-webkit-scrollbar { display: none; }
+
+        .apple-dock-item {
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            cursor: pointer;
+            flex-shrink: 0;
+            transform-origin: bottom center;
+            user-select: none;
+            will-change: transform;
         }
-        .swiper-slide-active {
-            opacity: 1 !important;
-            transform: scale(1.08) !important;
-        }
-        .dial-arrow {
-            width: 24px;
-            height: 24px;
-            border-radius: 50%;
+        .apple-dock-icon {
+            width: 44px;
+            height: 44px;
+            border-radius: 14px;
+            overflow: hidden;
+            border: 2px solid white;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+            transition: box-shadow 0.2s ease, border-color 0.2s ease;
             background: white;
-            box-shadow: 0 2px 6px rgba(0,0,0,0.15);
             display: flex;
             align-items: center;
             justify-content: center;
-            cursor: pointer;
-            transition: all 0.2s;
-            z-index: 10;
         }
-        .dial-arrow:hover {
+        .apple-dock-item:hover .apple-dock-icon {
+            box-shadow: 0 10px 22px rgba(0, 94, 184, 0.35);
+            border-color: #fef08a;
+        }
+        .apple-dock-dot {
+            width: 4px;
+            height: 4px;
+            border-radius: 50%;
+            background: transparent;
+            margin-top: 4px;
+            transition: background 0.2s ease;
+        }
+        .apple-dock-item.active-dock .apple-dock-dot {
             background: #002F6C;
+            box-shadow: 0 0 6px #005EB8;
+        }
+
+        /* Tooltip flotante al estilo macOS Dock */
+        .apple-dock-tooltip {
+            position: absolute;
+            bottom: 56px;
+            background: rgba(15, 23, 42, 0.9);
+            backdrop-filter: blur(8px);
             color: white;
-            transform: scale(1.1);
+            padding: 3px 8px;
+            border-radius: 8px;
+            font-size: 9px;
+            font-weight: 800;
+            white-space: nowrap;
+            pointer-events: none;
+            opacity: 0;
+            transform: translateY(5px);
+            transition: opacity 0.15s ease, transform 0.15s ease;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+            z-index: 100;
+        }
+        .apple-dock-item:hover .apple-dock-tooltip {
+            opacity: 1;
+            transform: translateY(0);
         }
 
         /* Scrollbar suave */
@@ -224,7 +268,7 @@
             <div class="w-48 h-1.5 bg-blue-900/60 rounded-full overflow-hidden border border-white/10">
                 <div class="w-full h-full bg-gradient-to-r from-amber-400 to-blue-400 animate-pulse"></div>
             </div>
-            <span class="text-[10px] text-blue-300 font-bold mt-3 tracking-widest uppercase">Mapeando 500+ Noticias en los 24 Estados...</span>
+            <span class="text-[10px] text-blue-300 font-bold mt-3 tracking-widest uppercase">Cargando Cartografía Oficial y Banderas Estatales...</span>
         </div>
     </div>
 
@@ -232,31 +276,31 @@
     <div id="main-wrapper">
         <div id="app-container" class="relative">
             
-            <!-- PANEL LATERAL IZQUIERDO: FILTROS, DELCY Y SELECTOR TIPO DIAL -->
+            <!-- PANEL LATERAL IZQUIERDO: FILTROS, RETRATO OFICIAL Y APPLE DOCK -->
             <div id="filters-panel">
                 <!-- Branding Header -->
-                <div class="border-b border-gray-100 pb-3 mb-3">
+                <div class="border-b border-gray-100 pb-2.5 mb-2.5">
                     <div class="flex items-center gap-2 mb-1">
                         <span id="header-flag-slot"></span>
                         <h1 class="text-lg font-black text-nativa-marine tracking-tight">MONITOR PAÍS</h1>
                     </div>
-                    <p class="text-[10px] font-semibold text-gray-500">Noticias Económicas de Venezuela y Regiones</p>
+                    <p class="text-[10px] font-semibold text-gray-500">Inteligencia Económica y Cobertura Regional</p>
                 </div>
 
-                <!-- CONTENEDOR EN SCROLL PARA EL PANEL IZQUIERDO -->
-                <div class="space-y-3.5 flex-grow overflow-y-auto pr-1">
+                <!-- CONTENEDOR CON SCROLL SUAVE -->
+                <div class="space-y-3 flex-grow overflow-y-auto pr-1">
 
-                    <!-- SECCIÓN DELCY RODRÍGUEZ: FOTO EN GRANDE COMO BOTÓN OFICIAL -->
+                    <!-- SECCIÓN DELCY RODRÍGUEZ: RETRATO OFICIAL EXACTO DE WIKIPEDIA -->
                     <div class="bg-gradient-to-b from-[#002F6C] to-[#00478f] rounded-2xl p-3.5 text-white shadow-md border border-blue-900 relative overflow-hidden group">
                         <div class="flex items-center justify-between mb-2">
                             <span class="text-[9px] font-black uppercase tracking-wider text-amber-300 bg-amber-950/80 px-2 py-0.5 rounded-full border border-amber-400/50 flex items-center gap-1">
                                 <span class="w-1.5 h-1.5 rounded-full bg-amber-400 animate-ping"></span>
                                 <span>ÁMBITO NACIONAL</span>
                             </span>
-                            <span class="text-[9px] font-bold text-blue-200">Palacio de Miraflores</span>
+                            <span class="text-[9px] font-bold text-blue-200">Miraflores</span>
                         </div>
 
-                        <!-- FOTO EN GRANDE COMO ICONO / BOTÓN CLICKEABLE -->
+                        <!-- FOTO EN GRANDE COMO ICONO / BOTÓN CON EL RETRATO EXACTO DE WIKIPEDIA -->
                         <div class="flex flex-col items-center text-center mt-1">
                             <button 
                                 onclick="showNationalOverview()" 
@@ -264,10 +308,11 @@
                                 title="Ver Flujo Completo del Ámbito Nacional"
                             >
                                 <img 
-                                    src="./img/gobernadores/delcy_rodriguez.jpg" 
+                                    src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/a3/Delcy_Rodr%C3%ADguez_portrait.jpg/250px-Delcy_Rodr%C3%ADguez_portrait.jpg" 
                                     alt="Delcy Rodríguez" 
                                     class="w-20 h-20 sm:w-24 sm:h-24 rounded-full object-cover object-top border-2 border-white shadow-md"
-                                    onerror="this.src='https://images.vexels.com/media/users/3/135862/isolated/preview/813118c691d25b47377c69ff75167a8d-icono-de-pato.png'"
+                                    onerror="this.src='./img/gobernadores/delcy_rodriguez.jpg'"
+                                    referrerpolicy="no-referrer"
                                 />
                                 <span class="absolute bottom-0 right-1 bg-amber-500 text-slate-950 font-black text-[8px] px-2 py-0.5 rounded-full border border-white shadow-xs">
                                     EN VIVO
@@ -283,7 +328,7 @@
 
                             <button 
                                 onclick="showNationalOverview()" 
-                                class="w-full mt-2.5 bg-amber-400 hover:bg-amber-300 text-slate-950 font-black text-[11px] py-1.5 px-3 rounded-lg shadow-sm transition-all flex items-center justify-center gap-1.5 uppercase tracking-wide"
+                                class="w-full mt-2 bg-amber-400 hover:bg-amber-300 text-slate-950 font-black text-[10px] py-1.5 px-3 rounded-lg shadow-sm transition-all flex items-center justify-center gap-1.5 uppercase tracking-wide"
                             >
                                 <span>Ver Noticias Nacionales</span>
                                 <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6"/></svg>
@@ -291,62 +336,39 @@
                         </div>
                     </div>
 
-                    <!-- SELECTOR TIPO DIAL INTERACTIVO CON LIBRERÍA SWIPER -->
-                    <div class="bg-slate-50 border border-slate-200 rounded-2xl p-3 shadow-xs">
-                        <div class="flex items-center justify-between mb-2">
+                    <!-- SELECTOR TIPO DOCK DE APPLE CON TRANSICIONES ANIMADAS GSAP -->
+                    <div class="bg-slate-100/80 border border-slate-200/90 rounded-2xl p-2.5 shadow-xs">
+                        <div class="flex items-center justify-between mb-1.5 px-1">
                             <span class="text-[10px] font-black uppercase text-nativa-marine tracking-wide flex items-center gap-1">
-                                <span>🧭</span> <span>SELECTOR DIAL 3D</span>
+                                <span>🖥️</span> <span>DOCK INTERACTIVO</span>
                             </span>
                             
-                            <!-- Suiche del Dial: Gobernadores vs Portales -->
+                            <!-- Suiche del Dock: Gobernadores vs Portales -->
                             <div class="inline-flex p-0.5 bg-white rounded-lg border border-gray-200 text-[9px] font-bold">
-                                <button id="dial-mode-gov" onclick="setDialMode('gov')" class="px-2 py-0.5 rounded bg-nativa-marine text-white transition-all">Gobernadores</button>
-                                <button id="dial-mode-media" onclick="setDialMode('media')" class="px-2 py-0.5 rounded text-gray-500 hover:text-nativa-marine transition-all">Portales</button>
+                                <button id="dock-btn-gov" onclick="setDockMode('gov')" class="px-2 py-0.5 rounded bg-nativa-marine text-white transition-all shadow-2xs">Gobernadores (24)</button>
+                                <button id="dock-btn-media" onclick="setDockMode('media')" class="px-2 py-0.5 rounded text-gray-500 hover:text-nativa-marine transition-all">Portales</button>
                             </div>
                         </div>
 
-                        <!-- Indicador del elemento seleccionado en el Dial -->
+                        <!-- Indicador animado del elemento bajo el foco del Dock -->
                         <div class="text-center py-1 bg-white rounded-lg border border-gray-100 shadow-2xs mb-2">
-                            <span id="dial-selected-label" class="text-[10px] font-black text-nativa-marine truncate block px-2">Desliza el dial para filtrar</span>
-                            <span id="dial-selected-sub" class="text-[9px] text-gray-400 font-medium block">24 Gobernadores de Venezuela</span>
+                            <span id="dock-status-label" class="text-[10px] font-black text-nativa-marine truncate block px-2">Desliza el cursor sobre el dock</span>
+                            <span id="dock-status-sub" class="text-[8px] text-gray-400 font-medium block">24 Mandatarios Regionales</span>
                         </div>
 
-                        <!-- Dial 1: Swiper 3D Gobernadores -->
-                        <div id="dial-gov-container" class="relative">
-                            <div class="swiper swiper-dial-gov swiper-container-dial">
-                                <div class="swiper-wrapper" id="dial-gov-wrapper">
-                                    <!-- Slides inyectados por JS -->
-                                </div>
-                            </div>
-                            <!-- Flechas de navegación del Dial -->
-                            <div class="flex justify-between items-center px-2 -mt-2">
-                                <div class="dial-arrow swiper-gov-prev text-gray-700">&#8249;</div>
-                                <span class="text-[8px] font-bold text-gray-400 uppercase">Girar Dial</span>
-                                <div class="dial-arrow swiper-gov-next text-gray-700">&#8250;</div>
-                            </div>
-                        </div>
-
-                        <!-- Dial 2: Swiper 3D Portales de Noticias -->
-                        <div id="dial-media-container" class="relative hidden">
-                            <div class="swiper swiper-dial-media swiper-container-dial">
-                                <div class="swiper-wrapper" id="dial-media-wrapper">
-                                    <!-- Slides inyectados por JS -->
-                                </div>
-                            </div>
-                            <!-- Flechas de navegación del Dial Portales -->
-                            <div class="flex justify-between items-center px-2 -mt-2">
-                                <div class="dial-arrow swiper-media-prev text-gray-700">&#8249;</div>
-                                <span class="text-[8px] font-bold text-gray-400 uppercase">Girar Dial</span>
-                                <div class="dial-arrow swiper-media-next text-gray-700">&#8250;</div>
+                        <!-- Contenedor del Apple Dock con efecto lupa parabólica GSAP -->
+                        <div class="relative py-1">
+                            <div id="apple-dock" class="apple-dock-shelf">
+                                <!-- Elementos inyectados por JS (Gobernadores o Portales) -->
                             </div>
                         </div>
                     </div>
 
                     <!-- Filtros Complementarios -->
-                    <div class="space-y-3 pt-1">
+                    <div class="space-y-2.5 pt-0.5">
                         <!-- Presets Rápidos de Fecha -->
                         <div>
-                            <label class="block text-[10px] font-extrabold text-gray-400 uppercase tracking-wider mb-1">Rango de Publicación</label>
+                            <label class="block text-[10px] font-extrabold text-gray-400 uppercase tracking-wider mb-1">Filtro Temporal</label>
                             <div class="grid grid-cols-4 gap-1 bg-gray-100 p-1 rounded-lg">
                                 <button onclick="setDatePreset('all')" id="preset-all" class="preset-btn py-1 text-[10px] font-black rounded text-gray-600 transition-all active-preset bg-white shadow-2xs text-nativa-marine">Todo</button>
                                 <button onclick="setDatePreset('month')" id="preset-month" class="preset-btn py-1 text-[10px] font-black rounded text-gray-600 transition-all">30 Días</button>
@@ -355,9 +377,9 @@
                             </div>
                         </div>
 
-                        <!-- Búsqueda por Palabras Clave -->
+                        <!-- Búsqueda Inteligente por Término o Ciudad -->
                         <div>
-                            <label class="block text-[10px] font-extrabold text-gray-400 uppercase tracking-wider mb-1">Buscar Término o Ciudad</label>
+                            <label class="block text-[10px] font-extrabold text-gray-400 uppercase tracking-wider mb-1">Buscar Ciudad, Término o Sector</label>
                             <div class="relative">
                                 <input 
                                     type="text" 
@@ -370,7 +392,7 @@
                             </div>
                         </div>
 
-                        <!-- Selector Dropdown Tradicional de Entidades -->
+                        <!-- Selector Dropdown Tradicional -->
                         <div>
                             <label class="block text-[10px] font-extrabold text-gray-400 uppercase tracking-wider mb-1">Entidad Federal</label>
                             <select 
@@ -384,7 +406,7 @@
                         </div>
 
                         <!-- Tarjetas de Métricas -->
-                        <div class="grid grid-cols-2 gap-2 pt-1">
+                        <div class="grid grid-cols-2 gap-2 pt-0.5">
                             <div class="bg-blue-50/70 p-2 rounded-xl border border-blue-100">
                                 <span class="block text-[9px] font-bold text-nativa-marine uppercase">Noticias Activas</span>
                                 <span id="filtered-news-count" class="text-xl font-black text-nativa-marine">0</span>
@@ -423,94 +445,21 @@
 
         </div>
 
-        <!-- BANNER INFERIOR EXPANDIBLE (LISTADO COMPLETO Y SUICHE) -->
+        <!-- ====================================================================
+             BANNER INFERIOR DINÁMICO:
+             - VISIÓN GENERAL: COBERTURA TERRITORIAL Y FLUJO NACIONAL
+             - ESTADO SELECCIONADO: BANDERA GRANDE, CAPITAL, POBLACIÓN Y NOTICIAS
+             ==================================================================== -->
         <div id="region-banner" class="table-collapsed">
-            <!-- Barra Superior Clickeable para Expandir/Contraer -->
-            <div class="px-6 py-3.5 flex items-center justify-between cursor-pointer text-white hover:bg-[#002454] transition-colors" onclick="toggleRegionTable()">
-                <div class="flex items-center gap-3">
-                    <span id="banner-flag-slot"></span>
-                    <div>
-                        <h3 class="text-xs font-black uppercase tracking-wider text-white">COBERTURA TERRITORIAL Y FLUJO NACIONAL</h3>
-                        <p class="text-[10px] text-blue-200 font-medium">Consolidado de las 24 Entidades Federales y Flujo Total de Artículos</p>
-                    </div>
-                </div>
-                <div class="flex items-center gap-2 bg-white/10 hover:bg-white/20 px-3 py-1.5 rounded-lg border border-white/15 transition-all">
-                    <span id="table-toggle-label" class="text-[11px] font-black uppercase tracking-wide">Ver Listado Completo</span>
-                    <svg id="table-toggle-icon" class="w-4 h-4 transform transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
-                </div>
+            <!-- Barra Superior Dinámica Clickeable para Expandir/Contraer -->
+            <div id="banner-header-content" class="px-6 py-3.5 flex items-center justify-between cursor-pointer text-white hover:bg-[#002454] transition-colors" onclick="toggleRegionTable()">
+                <!-- Inyectado dinámicamente por JS según haya o no estado seleccionado -->
             </div>
 
-            <!-- Contenedor Desplegable con SUICHE de Dos Vistas -->
+            <!-- Contenedor Desplegable con las Noticias y Tablas -->
             <div id="region-table-container">
-                <!-- Barra del Suiche y Buscador -->
-                <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between p-4 bg-slate-100 border-b border-gray-200 gap-3">
-                    <!-- Suiche Segmentado -->
-                    <div class="inline-flex p-1 bg-white rounded-xl shadow-inner border border-gray-300">
-                        <button 
-                            id="tab-btn-entities" 
-                            onclick="switchBannerTab('entities')" 
-                            class="px-4 py-2 rounded-lg font-bold text-xs transition-all flex items-center gap-2 bg-nativa-marine text-white shadow-sm"
-                        >
-                            <span>🏛️ Entidades Federales (24 Estados)</span>
-                        </button>
-                        <button 
-                            id="tab-btn-news" 
-                            onclick="switchBannerTab('news')" 
-                            class="px-4 py-2 rounded-lg font-bold text-xs transition-all flex items-center gap-2 text-gray-600 hover:text-nativa-marine hover:bg-gray-50"
-                        >
-                            <span>📰 Flujo Completo de Noticias</span>
-                            <span id="banner-news-badge" class="bg-blue-100 text-nativa-marine text-[10px] font-extrabold px-1.5 py-0.5 rounded-full">500+</span>
-                        </button>
-                    </div>
-
-                    <!-- Buscador en Tiempo Real dentro del Listado -->
-                    <div class="relative w-full sm:w-80">
-                        <input 
-                            type="text" 
-                            id="banner-search-input" 
-                            placeholder="Buscar en el listado..." 
-                            class="w-full text-xs bg-white border border-gray-300 rounded-lg pl-8 pr-3 py-2 focus:ring-2 focus:ring-nativa-light outline-none font-medium"
-                            oninput="filterBannerView(this.value)"
-                        />
-                        <svg class="w-4 h-4 text-gray-400 absolute left-2.5 top-2.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/></svg>
-                    </div>
-                </div>
-
-                <!-- VISTA 1: TABLA DE LAS 24 ENTIDADES FEDERALES -->
-                <div id="banner-entities-view" class="p-4 overflow-x-auto">
-                    <table class="w-full text-left border-collapse">
-                        <thead>
-                            <tr class="bg-slate-50 text-[10px] font-black text-gray-500 uppercase border-b border-gray-200">
-                                <th class="p-3">Entidad Federal</th>
-                                <th class="p-3">Capital</th>
-                                <th class="p-3">Gobernador(a) / Autoridad</th>
-                                <th class="p-3">Población (Censo INE)</th>
-                                <th class="p-3 text-center">Noticias Mapeadas</th>
-                                <th class="p-3 text-right">Acción</th>
-                            </tr>
-                        </thead>
-                        <tbody id="entities-table-body" class="divide-y divide-gray-100 text-xs font-medium">
-                            <!-- Inyectado por JS -->
-                        </tbody>
-                    </table>
-                </div>
-
-                <!-- VISTA 2: TABLA DEL FLUJO COMPLETO DE NOTICIAS -->
-                <div id="banner-news-view" class="p-4 overflow-x-auto hidden">
-                    <table class="w-full text-left border-collapse">
-                        <thead>
-                            <tr class="bg-slate-50 text-[10px] font-black text-gray-500 uppercase border-b border-gray-200">
-                                <th class="p-3 w-44">Medio / Portal</th>
-                                <th class="p-3">Titular y Resumen</th>
-                                <th class="p-3 w-36">Ámbito / Estado</th>
-                                <th class="p-3 w-28">Fecha</th>
-                                <th class="p-3 w-28 text-right">Enlace</th>
-                            </tr>
-                        </thead>
-                        <tbody id="news-table-body" class="divide-y divide-gray-100 text-xs font-medium">
-                            <!-- Inyectado por JS -->
-                        </tbody>
-                    </table>
+                <div id="banner-expanded-content">
+                    <!-- Inyectado dinámicamente por JS -->
                 </div>
             </div>
         </div>
@@ -529,10 +478,9 @@
         </footer>
     </div>
 
-    <!-- SCRIPTS EXTERNOS: Leaflet, GSAP y Swiper.js -->
+    <!-- SCRIPTS EXTERNOS: Leaflet & GSAP -->
     <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
 
     <!-- LOGICA MASTER DEL DASHBOARD -->
     <script>
@@ -4806,7 +4754,7 @@
   }
 ];
         const venezuelaGeoJSON = {"type":"FeatureCollection","features":[{"type":"Feature","properties":{"estado":"AMAZONAS"},"geometry":{"type":"Polygon","coordinates":[[[-66.1028,5.697],[-66.0209,5.8051],[-65.9536,5.8131],[-65.8981,5.9101],[-65.8762,5.8829],[-65.8552,5.8977],[-65.8529,6.019],[-65.8204,6.0739],[-65.6006,6.1296],[-65.5625,6.0651],[-65.6161,5.8867],[-65.5979,5.7633],[-65.5561,5.7271],[-65.5426,5.6642],[-65.4199,5.6991],[-65.3691,5.6834],[-65.2935,5.7508],[-65.2285,5.7362],[-65.2344,5.5313],[-65.224,5.5085],[-65.1536,5.4979],[-65.1582,5.3801],[-65.1016,5.3557],[-65.1279,5.3006],[-65.2548,5.2382],[-65.2163,5.116],[-65.1903,5.1222],[-65.1619,5.0719],[-65.1586,4.9801],[-65.0932,4.9744],[-65.1038,4.8992],[-65.0793,4.7999],[-64.9998,4.6932],[-64.9556,4.6831],[-64.9392,4.6323],[-64.8724,4.6329],[-64.8736,4.5663],[-64.7868,4.5513],[-64.748,4.5647],[-64.7163,4.6233],[-64.6706,4.5921],[-64.6374,4.636],[-64.5342,4.6547],[-64.5421,4.5979],[-64.5864,4.5407],[-64.576,4.4458],[-64.6561,4.3922],[-64.6501,4.3415],[-64.6216,4.3174],[-64.6295,4.2112],[-64.6691,4.1809],[-64.6757,4.2759],[-64.7415,4.2714],[-64.7948,4.3098],[-64.8107,4.2821],[-64.7805,4.2405],[-64.8014,4.1724],[-64.7419,4.1368],[-64.7698,4.0863],[-64.7468,4.0529],[-64.69,4.0648],[-64.7019,4.0225],[-64.6287,3.9996],[-64.5103,3.8492],[-64.2964,3.7132],[-64.2751,3.665],[-64.2391,3.6766],[-64.2138,3.6561],[-64.1968,3.5685],[-64.216,3.4918],[-64.1965,3.4577],[-64.1543,3.4455],[-64.1142,3.339],[-64.1346,3.311],[-64.1077,3.2946],[-64.1476,3.244],[-64.1454,3.2034],[-64.2231,3.1302],[-64.135,3.0337],[-64.1354,2.9959],[-64.0705,2.9176],[-63.9893,2.7194],[-63.9958,2.6361],[-64.0607,2.5274],[-64.0519,2.4889],[-64.0185,2.4651],[-63.9511,2.4681],[-63.8423,2.4019],[-63.6525,2.4592],[-63.3556,2.3898],[-63.3711,2.3338],[-63.3541,2.2445],[-63.3902,2.2027],[-63.4039,2.1321],[-63.6089,2.1068],[-63.6523,2.0261],[-63.6869,2.0156],[-63.7168,2.0438],[-63.7557,1.9865],[-63.8181,1.9907],[-63.8517,1.9642],[-63.9684,1.994],[-64.0523,1.9381],[-64.0737,1.6584],[-64.1134,1.5909],[-64.1615,1.5747],[-64.2014,1.5201],[-64.3108,1.4478],[-64.3381,1.3605],[-64.4018,1.4114],[-64.3477,1.5117],[-64.407,1.5088],[-64.528,1.4378],[-64.5719,1.3413],[-64.6645,1.2988],[-64.7226,1.2389],[-64.7709,1.2447],[-64.7863,1.2856],[-64.8326,1.2837],[-64.879,1.2208],[-64.962,1.209],[-65.0024,1.1297],[-65.0228,1.1463],[-65.1204,1.136],[-65.1585,1.0727],[-65.1849,0.9276],[-65.3281,0.9255],[-65.4019,0.8206],[-65.4227,0.7114],[-65.5388,0.6475],[-65.5877,0.7353],[-65.5083,0.8467],[-65.5066,0.8892],[-65.5455,0.9219],[-65.5617,0.9792],[-65.6119,1.0103],[-65.6295,0.993],[-65.7332,1.0035],[-65.7739,0.9629],[-65.8827,0.93],[-65.9718,0.8084],[-66.0783,0.8075],[-66.0896,0.7495],[-66.1533,0.7407],[-66.2165,0.8047],[-66.3092,0.7411],[-66.8662,1.2269],[-66.8483,1.3332],[-66.9034,1.386],[-66.9167,1.4897],[-67.0788,1.86],[-67.1409,1.9199],[-67.0913,2.0579],[-67.1031,2.1186],[-67.1441,2.1239],[-67.2016,2.2456],[-67.1707,2.3257],[-67.1939,2.3859],[-67.4742,2.6199],[-67.4911,2.6637],[-67.566,2.6636],[-67.589,2.772],[-67.6175,2.7996],[-67.7058,2.8017],[-67.733,2.8347],[-67.8598,2.7849],[-67.8636,2.8601],[-67.4402,3.2488],[-67.375,3.2507],[-67.3698,3.2985],[-67.3049,3.3806],[-67.3309,3.4499],[-67.3938,3.4869],[-67.4964,3.7702],[-67.6102,3.7552],[-67.6387,3.7882],[-67.6998,3.9276],[-67.7001,4.0115],[-67.7343,4.1082],[-67.805,4.2154],[-67.7833,4.3433],[-67.7959,4.4162],[-67.8774,4.5292],[-67.8242,4.7584],[-67.8363,4.92],[-67.8038,5.0392],[-67.8408,5.1233],[-67.8292,5.2143],[-67.8619,5.299],[-67.7943,5.3737],[-67.6342,5.4722],[-67.6008,5.5316],[-67.638,5.6654],[-67.6115,5.7844],[-67.5275,5.9054],[-67.4165,5.9996],[-67.4891,6.1189],[-67.4832,6.1644],[-67.4529,6.1966],[-67.3989,6.129],[-67.3339,6.1507],[-67.171,6.1144],[-67.1365,6.0385],[-67.1467,5.966],[-67.1897,5.8977],[-67.188,5.8471],[-67.2384,5.8274],[-67.2033,5.7983],[-67.2423,5.7494],[-67.196,5.7096],[-67.1033,5.752],[-67.0121,5.6402],[-66.8972,5.663],[-66.854,5.6956],[-66.7328,5.695],[-66.6358,5.7491],[-66.5698,5.7297],[-66.5003,5.784],[-66.451,5.6952],[-66.4524,5.6203],[-66.2548,5.5722],[-66.1638,5.6066],[-66.1028,5.697]]]}},{"type":"Feature","properties":{"estado":"ANZOATEGUI"},"geometry":{"type":"Polygon","coordinates":[[[-65.4284,10.1428],[-65.0623,10.0639],[-64.9465,10.1019],[-64.8156,10.089],[-64.7174,10.133],[-64.7056,10.2277],[-64.7043,10.2101],[-64.6662,10.2075],[-64.5988,10.2608],[-64.5763,10.2409],[-64.528,10.2562],[-64.4848,10.1995],[-64.4411,10.1924],[-64.4433,10.1289],[-64.3992,10.1376],[-64.3649,10.0871],[-64.2891,10.0987],[-64.2707,10.0657],[-64.201,10.0645],[-64.0321,10.1229],[-63.9617,10.1093],[-63.9541,10.0529],[-64.0584,10.0552],[-64.0614,10.0069],[-64.0366,9.9326],[-63.9835,9.9435],[-63.9744,9.9033],[-63.9095,9.8537],[-63.953,9.8283],[-63.9593,9.7473],[-63.8229,9.5472],[-63.971,9.4175],[-63.9779,9.3467],[-63.9166,9.2619],[-63.9066,9.1919],[-63.8313,9.232],[-63.7547,9.2259],[-63.6776,9.1609],[-63.6064,9.1469],[-63.5987,9.1008],[-63.5647,9.1056],[-63.5007,9.0518],[-63.4841,9.0611],[-63.4731,9.0208],[-63.4004,9.0065],[-63.3634,8.9523],[-63.3399,8.7694],[-63.3174,8.7887],[-63.2711,8.767],[-62.9313,8.7806],[-62.9668,8.748],[-63.026,8.7508],[-63.0448,8.7059],[-63.0378,8.6021],[-63.0002,8.5568],[-62.7078,8.454],[-62.7039,8.4094],[-62.6646,8.3962],[-62.7113,8.3839],[-62.7734,8.4085],[-62.8173,8.3228],[-62.884,8.287],[-62.9692,8.3428],[-63.0683,8.3228],[-63.1521,8.3371],[-63.2387,8.3175],[-63.2797,8.2716],[-63.4797,8.1689],[-63.5918,8.151],[-63.6714,8.1784],[-63.7276,8.1507],[-63.8023,8.153],[-63.9139,8.0108],[-64.0173,7.9589],[-64.0652,7.9654],[-64.1759,8.0363],[-64.2253,8.1046],[-64.3111,8.0919],[-64.3948,8.0067],[-64.4683,8.0454],[-64.545,8.0141],[-64.5835,7.9704],[-64.5868,7.8756],[-64.4799,7.8228],[-64.5187,7.772],[-64.654,7.7757],[-64.7321,7.7128],[-64.8408,7.6709],[-64.948,7.7015],[-65.0175,7.7758],[-65.1628,7.8425],[-65.3716,7.8833],[-65.4234,7.921],[-65.4957,7.923],[-65.4795,8.0484],[-65.4479,8.0572],[-65.3761,8.16],[-65.3881,8.1767],[-65.3107,8.2366],[-65.2723,8.3189],[-65.202,8.3769],[-65.1441,8.5793],[-65.174,8.6566],[-65.1511,8.7373],[-65.0824,8.7669],[-65.0218,8.7417],[-64.9276,8.7504],[-64.8448,8.7006],[-64.775,8.8394],[-64.8005,8.8986],[-64.9583,9.0145],[-64.9429,9.0485],[-64.9864,9.1178],[-65.0875,9.1751],[-65.1895,9.1746],[-65.2181,9.2377],[-65.2706,9.28],[-65.3097,9.3745],[-65.2491,9.3924],[-65.2021,9.4403],[-65.2233,9.5039],[-65.3142,9.5196],[-65.4048,9.5997],[-65.4293,9.6571],[-65.5014,9.5603],[-65.6606,9.6069],[-65.6962,9.6891],[-65.6693,9.778],[-65.7124,9.8403],[-65.714,9.9706],[-65.691,9.9832],[-65.6339,9.9535],[-65.6021,10.0048],[-65.5525,10.0055],[-65.5276,10.0561],[-65.4521,10.0953],[-65.4284,10.1428]]]}},{"type":"Feature","properties":{"estado":"APURE"},"geometry":{"type":"Polygon","coordinates":[[[-69.8989,7.7945],[-69.8127,7.7955],[-69.7274,7.8273],[-69.562,7.9371],[-69.5331,7.9947],[-69.4336,8.0677],[-69.376,8.0527],[-69.2121,8.0715],[-69.1373,8.0477],[-69.1117,7.9939],[-69.0809,8.0023],[-69.0465,7.976],[-69.0283,8.0058],[-68.9719,8.0078],[-68.9341,7.9271],[-68.8741,7.8979],[-68.7197,7.9057],[-68.6154,7.9667],[-68.4934,7.9302],[-68.3835,7.9264],[-68.3473,7.8841],[-68.262,7.9275],[-68.2023,7.8939],[-68.1186,7.9067],[-68.0597,7.8713],[-67.9415,7.9127],[-67.8661,7.8826],[-67.8243,7.9271],[-67.7581,7.9075],[-67.6936,7.9189],[-67.6772,7.9466],[-67.6439,7.9382],[-67.6465,7.9608],[-67.5943,7.9892],[-67.5143,7.9113],[-67.434,7.8878],[-67.3937,7.9178],[-67.3587,7.8848],[-67.3343,7.8967],[-67.3227,7.8496],[-67.2571,7.8322],[-67.2179,7.7788],[-67.1535,7.7828],[-67.1507,7.7608],[-67.0484,7.7923],[-67.007,7.7599],[-66.9073,7.7582],[-66.8805,7.7288],[-66.8137,7.7336],[-66.7246,7.6892],[-66.6846,7.724],[-66.6817,7.7016],[-66.6474,7.7038],[-66.6337,7.7325],[-66.6609,7.7498],[-66.6539,7.7713],[-66.5502,7.7778],[-66.528,7.8157],[-66.4763,7.7636],[-66.4832,7.7353],[-66.4027,7.7139],[-66.3563,7.7271],[-66.3274,7.6508],[-66.466,7.578],[-66.51,7.504],[-66.5115,7.4463],[-66.5852,7.3915],[-66.6008,7.3213],[-66.7985,7.2672],[-66.8898,7.1757],[-66.9868,7.1866],[-67.0627,7.1173],[-67.0743,7.034],[-67.0145,6.8916],[-67.0317,6.7851],[-67.1092,6.7091],[-67.1535,6.4675],[-67.2757,6.3561],[-67.3206,6.2823],[-67.4102,6.2493],[-67.439,6.1991],[-67.5519,6.2723],[-67.7606,6.2961],[-67.7955,6.3196],[-67.8928,6.2811],[-67.977,6.2005],[-68.1229,6.2345],[-68.3161,6.1716],[-68.4277,6.2068],[-68.5417,6.1542],[-68.6047,6.1638],[-68.6446,6.1268],[-68.8254,6.1825],[-68.9236,6.1691],[-68.9856,6.2082],[-69.0844,6.2145],[-69.2755,6.0634],[-69.3434,6.1394],[-69.4251,6.1018],[-70.1174,6.9782],[-70.2106,6.9823],[-70.2609,6.9451],[-70.3214,6.9377],[-70.4278,7.009],[-70.4996,7.0085],[-70.555,7.0819],[-70.6383,7.0718],[-70.6864,7.1033],[-70.8528,7.0785],[-70.8511,7.0563],[-70.8847,7.0654],[-70.9104,7.0268],[-70.9596,7.0267],[-71.0167,6.9683],[-71.1127,6.99],[-71.103,7.0123],[-71.1287,7.0358],[-71.2391,7.0154],[-71.2641,7.035],[-71.3702,7.02],[-71.4243,7.0405],[-71.4598,7.0137],[-71.4659,7.0372],[-71.5802,7.028],[-71.5891,7.056],[-71.6394,7.0575],[-71.6522,7.0215],[-71.7177,7.0424],[-71.7204,7.0732],[-71.7518,7.0609],[-71.7406,7.0792],[-71.7588,7.0879],[-71.7743,7.0615],[-71.8227,7.0558],[-71.8332,7.0264],[-71.9963,7.013],[-72.0463,7.0439],[-72.1725,7.2637],[-72.1533,7.3334],[-72.1934,7.3873],[-72.3231,7.3784],[-72.4132,7.4027],[-72.3182,7.4383],[-72.2193,7.4367],[-72.1625,7.3853],[-72.0899,7.404],[-72.0557,7.372],[-71.9922,7.3664],[-71.8731,7.4204],[-71.8378,7.4926],[-71.7642,7.4821],[-71.6803,7.4205],[-71.6264,7.4446],[-71.5963,7.4201],[-71.518,7.4222],[-71.4538,7.4659],[-71.424,7.4457],[-71.3064,7.4491],[-71.2131,7.4251],[-71.1547,7.3703],[-71.0848,7.3725],[-70.9554,7.3102],[-70.8604,7.338],[-70.7475,7.2908],[-70.7284,7.3091],[-70.6919,7.2978],[-70.6773,7.3238],[-70.6104,7.3263],[-70.5452,7.3744],[-70.5126,7.3712],[-70.5094,7.4132],[-70.3884,7.4496],[-70.3194,7.6043],[-70.2589,7.6177],[-70.2122,7.5931],[-70.0885,7.7243],[-69.9724,7.7549],[-69.9494,7.7377],[-69.8989,7.7945]]]}},{"type":"Feature","properties":{"estado":"ARAGUA"},"geometry":{"type":"Polygon","coordinates":[[[-67.659,10.1364],[-67.6646,10.3284],[-67.7523,10.3534],[-67.8007,10.3309],[-67.8319,10.3423],[-67.8796,10.3765],[-67.8709,10.464],[-67.856,10.4817],[-67.8366,10.4425],[-67.8219,10.4896],[-67.8093,10.4693],[-67.7999,10.4927],[-67.7523,10.5027],[-67.4138,10.5402],[-67.3462,10.3908],[-67.2464,10.4295],[-67.1635,10.3484],[-67.1814,10.3029],[-67.0935,10.238],[-67.1375,10.1599],[-67.1083,10.094],[-67.0542,10.0605],[-66.9699,10.0738],[-66.9305,10.0136],[-66.9021,10.0243],[-66.8726,10.0023],[-66.8281,10.0297],[-66.7394,9.9909],[-66.6098,9.9749],[-66.5993,9.8694],[-66.5721,9.8424],[-66.62,9.7802],[-66.6305,9.7165],[-66.5559,9.6647],[-66.5457,9.6164],[-66.5846,9.5395],[-66.5559,9.4995],[-66.5657,9.4403],[-66.6542,9.2932],[-66.701,9.2531],[-66.7539,9.3067],[-66.7796,9.3015],[-66.8488,9.3487],[-66.8907,9.3415],[-66.9807,9.4394],[-67.0106,9.4174],[-66.984,9.5109],[-66.9429,9.5458],[-66.8787,9.5535],[-66.8377,9.6208],[-66.8439,9.6617],[-66.9626,9.6979],[-66.9719,9.7568],[-67.0262,9.7646],[-67.0402,9.7946],[-67.1032,9.7894],[-67.1104,9.8305],[-67.1479,9.8432],[-67.1607,9.9316],[-67.2142,9.9376],[-67.2639,9.9084],[-67.2711,9.9378],[-67.3335,9.9287],[-67.4268,9.9955],[-67.5229,9.9538],[-67.5419,9.9996],[-67.6941,10.0253],[-67.659,10.1364]]]}},{"type":"Feature","properties":{"estado":"BARINAS"},"geometry":{"type":"Polygon","coordinates":[[[-70.9044,8.3102],[-70.8903,8.3679],[-70.84,8.412],[-70.8531,8.4237],[-70.8179,8.5028],[-70.8432,8.5989],[-70.7564,8.6191],[-70.7123,8.6546],[-70.7059,8.682],[-70.7549,8.7299],[-70.6392,8.848],[-70.5661,8.8597],[-70.573,8.9107],[-70.4907,9.0101],[-70.3764,9.0618],[-70.274,9.0356],[-70.2328,9.0652],[-70.1851,9.0452],[-70.1656,8.9857],[-70.045,8.9282],[-69.9957,8.8323],[-69.9589,8.8363],[-69.8996,8.7761],[-69.8825,8.7902],[-69.8849,8.7689],[-69.756,8.7516],[-69.6896,8.7107],[-69.6353,8.7369],[-69.5782,8.7319],[-69.5612,8.6978],[-69.5289,8.7056],[-69.5036,8.6741],[-69.4351,8.6704],[-69.375,8.6312],[-69.2825,8.6286],[-69.1912,8.5338],[-69.1748,8.4607],[-69.1102,8.4371],[-69.1404,8.3714],[-69.0916,8.3163],[-69.1,8.2959],[-69.0702,8.3014],[-68.9687,8.2413],[-68.9526,8.19],[-68.89,8.1532],[-68.8529,8.0954],[-68.8171,8.1024],[-68.8455,8.1665],[-68.786,8.3201],[-68.7398,8.3348],[-68.5087,8.5685],[-68.5288,8.602],[-68.1111,8.6074],[-68.0513,8.5808],[-68.0498,8.5419],[-68.0204,8.533],[-68.0,8.4709],[-67.9714,8.4725],[-67.99,8.4416],[-67.9373,8.3784],[-67.898,8.3823],[-67.8692,8.3408],[-67.8534,8.3543],[-67.8765,8.3038],[-67.8415,8.3124],[-67.8303,8.2615],[-67.7868,8.2733],[-67.7691,8.2208],[-67.7082,8.2307],[-67.679,8.2039],[-67.6731,8.1538],[-67.6149,8.1016],[-67.6282,8.0917],[-67.6075,8.1036],[-67.5745,8.0792],[-67.5736,8.0464],[-67.6028,8.0435],[-67.5598,8.013],[-67.5552,7.9694],[-67.5183,7.979],[-67.5015,7.9605],[-67.551,7.9477],[-67.5949,7.9892],[-67.647,7.9604],[-67.6428,7.9388],[-67.6772,7.9466],[-67.7189,7.9118],[-67.8235,7.9273],[-67.849,7.8864],[-67.9415,7.9127],[-68.0597,7.8713],[-68.1186,7.9067],[-68.2023,7.8939],[-68.262,7.9275],[-68.3473,7.8841],[-68.3835,7.9264],[-68.4934,7.9302],[-68.6147,7.9666],[-68.7197,7.9057],[-68.8741,7.8979],[-68.9341,7.9271],[-68.9724,8.0081],[-69.0283,8.0058],[-69.0458,7.9758],[-69.0809,8.0023],[-69.1117,7.9939],[-69.1373,8.0477],[-69.2115,8.0714],[-69.376,8.0527],[-69.4293,8.0692],[-69.5326,7.9952],[-69.562,7.9371],[-69.7274,7.8273],[-69.8127,7.7955],[-69.8925,7.8],[-69.9501,7.7374],[-69.9724,7.7549],[-70.0885,7.7243],[-70.2122,7.5931],[-70.2589,7.6177],[-70.3194,7.6043],[-70.3884,7.4496],[-70.51,7.4129],[-70.5113,7.3722],[-70.5452,7.3744],[-70.6097,7.3266],[-70.6413,7.3356],[-70.6911,7.2979],[-70.7284,7.3091],[-70.7462,7.2908],[-70.8604,7.338],[-70.9554,7.3102],[-71.0848,7.3725],[-71.1547,7.3703],[-71.2131,7.4251],[-71.3064,7.4491],[-71.424,7.4457],[-71.4538,7.4659],[-71.518,7.4222],[-71.5963,7.4201],[-71.6264,7.4446],[-71.6803,7.4205],[-71.7642,7.4821],[-71.8808,7.5078],[-71.8044,7.5488],[-71.7803,7.5285],[-71.7644,7.5504],[-71.7233,7.5345],[-71.6891,7.5508],[-71.581,7.5139],[-71.5703,7.5312],[-71.4877,7.5022],[-71.4446,7.5138],[-71.4,7.4811],[-71.3144,7.4909],[-71.333,7.5176],[-71.3745,7.5027],[-71.4001,7.5569],[-71.4332,7.5608],[-71.4153,7.58],[-71.436,7.5957],[-71.504,7.6108],[-71.4946,7.6645],[-71.4415,7.6993],[-71.462,7.7745],[-71.1081,8.0393],[-71.0113,8.1854],[-71.0327,8.2545],[-70.9837,8.2752],[-70.9388,8.2574],[-70.9051,8.2778],[-70.9044,8.3102]]]}},{"type":"Feature","properties":{"estado":"BOLIVAR"},"geometry":{"type":"Polygon","coordinates":[[[-61.3936,5.9499],[-60.7331,5.2041],[-60.6834,5.1828],[-60.6052,4.9537],[-60.7839,4.7517],[-60.9285,4.6984],[-60.9517,4.647],[-60.9419,4.6032],[-61.0106,4.5321],[-61.1491,4.4921],[-61.3178,4.5396],[-61.3303,4.5096],[-61.2909,4.4562],[-61.3583,4.4153],[-61.5077,4.4023],[-61.5156,4.289],[-61.5694,4.2455],[-61.7647,4.2319],[-61.8305,4.1588],[-61.9325,4.122],[-61.9835,4.1527],[-62.0474,4.1428],[-62.1395,4.0653],[-62.4314,4.1694],[-62.4699,4.1165],[-62.5417,4.0929],[-62.5367,4.0314],[-62.5624,3.9969],[-62.6174,4.0229],[-62.7422,4.0044],[-62.7719,3.8841],[-62.7205,3.7241],[-62.7261,3.6484],[-62.782,3.5779],[-62.9,3.5288],[-62.961,3.5403],[-63.018,3.5993],[-63.2484,3.6538],[-63.3596,3.8436],[-63.4095,3.8422],[-63.4515,3.7578],[-63.5952,3.69],[-63.7113,3.7611],[-63.7622,3.9086],[-63.8048,3.9222],[-63.8699,3.8903],[-63.9987,3.9093],[-64.1086,4.0635],[-64.2531,4.1003],[-64.2485,4.0551],[-64.281,4.0416],[-64.297,4.0735],[-64.4354,4.1074],[-64.5394,4.0567],[-64.6054,4.0654],[-64.6691,4.1809],[-64.6295,4.2112],[-64.6177,4.2602],[-64.6561,4.3922],[-64.576,4.4458],[-64.5864,4.5407],[-64.5421,4.5979],[-64.5342,4.6547],[-64.6374,4.636],[-64.6706,4.5921],[-64.7163,4.6233],[-64.748,4.5647],[-64.7868,4.5513],[-64.8736,4.5663],[-64.8724,4.6329],[-64.9392,4.6323],[-64.9556,4.6831],[-64.9998,4.6932],[-65.0793,4.7999],[-65.1038,4.8992],[-65.0932,4.9744],[-65.1586,4.9801],[-65.1619,5.0719],[-65.1903,5.1222],[-65.2163,5.116],[-65.2548,5.2382],[-65.1279,5.3006],[-65.1022,5.3472],[-65.1582,5.3801],[-65.1479,5.4902],[-65.224,5.5085],[-65.2344,5.5313],[-65.2187,5.5848],[-65.2436,5.6437],[-65.2179,5.721],[-65.2841,5.7527],[-65.3691,5.6834],[-65.4199,5.6991],[-65.5426,5.6642],[-65.5561,5.7271],[-65.5979,5.7633],[-65.6171,5.8957],[-65.5633,6.0564],[-65.593,6.1282],[-65.8204,6.0739],[-65.8512,6.0275],[-65.8426,5.923],[-65.8621,5.8896],[-65.8981,5.9101],[-65.9536,5.8131],[-66.0059,5.8145],[-66.0655,5.7632],[-66.1638,5.6066],[-66.2548,5.5722],[-66.4524,5.6203],[-66.451,5.6952],[-66.5003,5.784],[-66.5668,5.7306],[-66.6507,5.746],[-66.7328,5.695],[-66.858,5.6948],[-66.9857,5.6366],[-67.0501,5.6671],[-67.1088,5.7546],[-67.2144,5.7157],[-67.2433,5.7559],[-67.2036,5.8044],[-67.2384,5.8274],[-67.188,5.8471],[-67.1897,5.8977],[-67.1512,5.9443],[-67.1501,6.0731],[-67.2033,6.1322],[-67.2675,6.122],[-67.3368,6.1508],[-67.4011,6.1296],[-67.4529,6.1966],[-67.4089,6.2502],[-67.3206,6.2823],[-67.2757,6.3561],[-67.1535,6.4675],[-67.1092,6.7091],[-67.0317,6.7851],[-67.0145,6.8916],[-67.0743,7.034],[-67.0627,7.1173],[-66.9868,7.1866],[-66.8898,7.1757],[-66.7985,7.2672],[-66.6008,7.3213],[-66.5852,7.3915],[-66.5115,7.4463],[-66.51,7.504],[-66.466,7.578],[-66.3266,7.6511],[-66.2359,7.6294],[-66.1303,7.6873],[-65.8671,7.6969],[-65.6713,7.8956],[-65.5613,7.9245],[-65.4527,7.8572],[-65.3155,7.8688],[-65.1628,7.8425],[-65.0175,7.7758],[-64.948,7.7015],[-64.8408,7.6709],[-64.7321,7.7128],[-64.654,7.7757],[-64.5187,7.772],[-64.4799,7.8228],[-64.5868,7.8756],[-64.581,7.98],[-64.462,8.0468],[-64.4167,8.0065],[-64.3818,8.01],[-64.2926,8.1003],[-64.2118,8.099],[-64.1759,8.0363],[-64.0652,7.9654],[-64.0173,7.9589],[-63.9139,8.0108],[-63.8069,8.1515],[-63.7276,8.1507],[-63.6714,8.1784],[-63.5918,8.151],[-63.4797,8.1689],[-63.2797,8.2716],[-63.2387,8.3175],[-63.1521,8.3371],[-63.0683,8.3228],[-62.9692,8.3428],[-62.884,8.287],[-62.8173,8.3228],[-62.774,8.4082],[-62.673,8.3914],[-62.6164,8.4562],[-62.248,8.3048],[-61.7048,8.4501],[-61.6824,8.3524],[-61.7114,8.3063],[-61.7799,8.2863],[-61.7849,8.232],[-61.6878,8.0765],[-61.6559,8.0593],[-61.6426,7.9544],[-61.4646,7.8048],[-61.4486,7.8192],[-61.4649,7.8478],[-61.4201,7.919],[-61.2575,7.9914],[-61.213,7.9771],[-61.0727,7.8149],[-60.9355,7.7585],[-60.8905,7.7939],[-60.882,7.8532],[-60.7771,7.9033],[-60.2441,7.916],[-60.3504,7.8139],[-60.4844,7.8591],[-60.5526,7.8357],[-60.6478,7.6228],[-60.7274,7.5467],[-60.7149,7.4938],[-60.6647,7.4728],[-60.6005,7.3673],[-60.6419,7.2958],[-60.6293,7.2231],[-60.5474,7.1641],[-60.4557,7.2391],[-60.4114,7.2087],[-60.3546,7.2175],[-60.2784,7.1593],[-60.285,7.0932],[-60.3414,7.0455],[-60.3755,6.9583],[-60.4381,6.9429],[-60.5074,6.8855],[-60.6463,6.8353],[-60.7015,6.8583],[-60.7409,6.8061],[-60.9215,6.8554],[-60.9601,6.8218],[-60.9399,6.7776],[-60.9958,6.7223],[-61.1366,6.7057],[-61.1715,6.6822],[-61.2106,6.5785],[-61.2466,6.5525],[-61.191,6.5344],[-61.1988,6.4852],[-61.1754,6.4502],[-61.2009,6.3529],[-61.1564,6.2422],[-61.2099,6.182],[-61.1748,6.1501],[-61.202,6.1155],[-61.2925,6.082],[-61.3936,5.9499]]]}},{"type":"Feature","properties":{"estado":"CARABOBO"},"geometry":{"type":"MultiPolygon","coordinates":[[[[-68.009,10.4832],[-68.009,10.4832]]],[[[-67.8339,10.3446],[-67.8014,10.3308],[-67.7523,10.3534],[-67.6646,10.3284],[-67.6553,10.1034],[-67.6941,10.0253],[-67.5419,9.9996],[-67.5149,9.8798],[-67.5645,9.908],[-67.5904,9.8491],[-67.6286,9.8652],[-67.6879,9.8267],[-67.7115,9.8779],[-67.8034,9.9329],[-67.8034,9.8525],[-67.9158,9.815],[-68.0035,9.8348],[-68.0032,9.8847],[-68.1182,9.8472],[-68.1443,9.9209],[-68.2465,9.9835],[-68.2434,10.0288],[-68.1993,10.0648],[-68.2191,10.0828],[-68.2874,10.0754],[-68.3408,10.0041],[-68.3828,10.0073],[-68.377,10.0517],[-68.4018,10.0692],[-68.3964,10.1271],[-68.4263,10.1818],[-68.3524,10.2675],[-68.3908,10.3374],[-68.4023,10.4733],[-68.3583,10.5526],[-68.3035,10.5408],[-68.2392,10.587],[-68.1309,10.4866],[-68.0586,10.4998],[-67.9845,10.465],[-68.0099,10.4878],[-67.9812,10.4933],[-67.9474,10.4648],[-67.9303,10.4754],[-67.931,10.4509],[-67.8575,10.4816],[-67.8797,10.3771],[-67.8339,10.3446]]]]}},{"type":"Feature","properties":{"estado":"COJEDES"},"geometry":{"type":"Polygon","coordinates":[[[-68.1993,10.0648],[-68.2434,10.0288],[-68.2468,9.984],[-68.1443,9.9209],[-68.1169,9.8462],[-68.0034,9.8847],[-68.0035,9.8348],[-67.9158,9.815],[-67.8034,9.8525],[-67.7502,9.7043],[-67.8136,9.6343],[-67.9364,9.6042],[-67.9251,9.5659],[-67.9707,9.5446],[-67.9247,9.484],[-67.9124,9.4155],[-67.9431,9.3228],[-67.8827,9.2487],[-67.8472,9.0962],[-67.9178,8.9477],[-67.9744,8.9245],[-67.9654,8.8681],[-68.0244,8.7706],[-68.0047,8.7486],[-68.0288,8.733],[-68.0,8.7021],[-68.0177,8.5976],[-67.9946,8.5614],[-68.0299,8.5364],[-68.0498,8.5419],[-68.0513,8.5808],[-68.1111,8.6074],[-68.5294,8.6016],[-68.5827,8.6412],[-68.6402,8.6386],[-68.6555,8.7155],[-68.7123,8.7106],[-68.7325,8.7483],[-68.6912,8.749],[-68.6151,8.8231],[-68.5454,8.843],[-68.6563,8.9675],[-68.6262,9.2209],[-68.7766,9.2777],[-68.762,9.3131],[-68.8497,9.3753],[-68.8635,9.4121],[-68.8854,9.4069],[-68.9012,9.5683],[-68.9686,9.725],[-68.9856,9.7241],[-68.9729,9.8457],[-68.8033,9.8459],[-68.7229,9.8824],[-68.7151,9.9422],[-68.6596,9.9784],[-68.6114,9.9706],[-68.5975,9.9332],[-68.5298,9.9402],[-68.5379,9.8913],[-68.5161,9.8894],[-68.3408,10.0041],[-68.2874,10.0754],[-68.2366,10.0882],[-68.1993,10.0648]]]}},{"type":"Feature","properties":{"estado":"DELTA AMACURO"},"geometry":{"type":"Polygon","coordinates":[[[-62.1097,8.7314],[-62.0674,8.7601],[-62.0581,8.821],[-61.9941,8.8875],[-62.0498,8.882],[-62.088,8.9659],[-62.0551,9.0525],[-62.0947,9.0791],[-62.1229,9.0518],[-62.1542,9.1084],[-62.2186,9.061],[-62.2603,9.1345],[-62.3265,9.1317],[-62.2978,9.2279],[-62.342,9.3311],[-62.318,9.3612],[-62.4074,9.4122],[-62.3975,9.4752],[-62.4412,9.4971],[-62.4395,9.5523],[-62.3021,9.77],[-62.3583,9.8555],[-62.3606,9.9903],[-62.3109,9.9993],[-62.2454,10.0694],[-62.2126,10.0241],[-62.0636,9.9788],[-61.9324,9.9029],[-61.8202,9.7997],[-61.8087,9.8248],[-61.7712,9.828],[-61.6,9.7826],[-61.6059,9.8074],[-61.579,9.803],[-61.6235,9.8445],[-61.6073,9.8566],[-61.6551,9.8769],[-61.6522,9.8976],[-61.6091,9.8921],[-61.5188,9.8397],[-61.4221,9.6984],[-61.4269,9.7164],[-61.334,9.6879],[-61.1455,9.5743],[-61.0398,9.5818],[-60.9843,9.5622],[-60.9331,9.4869],[-60.8174,9.3967],[-60.7912,9.3046],[-60.7579,9.2808],[-60.7685,9.2491],[-60.7256,9.1766],[-60.6795,9.1516],[-60.6843,9.0618],[-60.7076,9.0467],[-60.7558,9.0752],[-60.7876,9.0188],[-60.6989,8.8227],[-60.6415,8.7747],[-60.6796,8.6818],[-60.5774,8.6283],[-60.6083,8.6052],[-60.5943,8.5589],[-60.467,8.5249],[-60.4068,8.6318],[-60.3609,8.6457],[-60.0509,8.5876],[-60.0006,8.558],[-59.8003,8.287],[-59.8329,8.2358],[-59.9352,8.2197],[-59.9749,8.1786],[-60.0276,8.03],[-60.1185,8.0211],[-60.2236,7.9548],[-60.2517,7.9098],[-60.7771,7.9033],[-60.882,7.8532],[-60.8905,7.7939],[-60.9355,7.7585],[-61.0727,7.8149],[-61.213,7.9771],[-61.2575,7.9914],[-61.4201,7.919],[-61.4649,7.8478],[-61.4486,7.8192],[-61.4646,7.8048],[-61.6426,7.9544],[-61.6559,8.0593],[-61.6878,8.0765],[-61.7849,8.232],[-61.7799,8.2863],[-61.7114,8.3063],[-61.6824,8.3524],[-61.7048,8.4501],[-62.248,8.3048],[-62.6164,8.4562],[-62.5334,8.525],[-62.4452,8.5532],[-62.3984,8.534],[-62.2919,8.6182],[-62.2577,8.5958],[-62.2383,8.6344],[-62.1097,8.7314]]]}},{"type":"Feature","properties":{"estado":"DISTRITO CAPITAL"},"geometry":{"type":"Polygon","coordinates":[[[-67.0276,10.5364],[-67.0178,10.5684],[-66.9481,10.5453],[-66.8628,10.5534],[-66.8916,10.415],[-66.9435,10.4285],[-67.012,10.3861],[-67.1608,10.4163],[-67.141,10.4535],[-67.0551,10.4709],[-67.061,10.5162],[-67.0276,10.5364]]]}},{"type":"Feature","properties":{"estado":"FALCON"},"geometry":{"type":"Polygon","coordinates":[[[-68.2195,10.8616],[-68.3245,10.8563],[-68.2909,10.8278],[-68.3246,10.8353],[-68.3167,10.746],[-68.2405,10.5865],[-68.6516,10.6129],[-68.6154,10.7771],[-68.6678,10.7268],[-68.7775,10.7315],[-68.791,10.6968],[-68.8582,10.6527],[-68.9434,10.7079],[-69.073,10.6663],[-69.2139,10.708],[-69.2459,10.6934],[-69.3996,10.7141],[-69.5169,10.6785],[-69.5141,10.7454],[-69.6889,10.7226],[-69.733,10.7487],[-69.8174,10.7071],[-69.8172,10.7448],[-70.0593,10.6433],[-70.1419,10.6647],[-70.1755,10.6192],[-70.2742,10.5632],[-70.3172,10.5822],[-70.3932,10.528],[-70.3958,10.4885],[-70.43,10.4554],[-70.4599,10.4725],[-70.5186,10.4465],[-70.5683,10.3293],[-70.6224,10.3329],[-70.6859,10.3036],[-70.76,10.3345],[-70.7563,10.3976],[-70.8007,10.4728],[-70.8766,10.4512],[-71.0162,10.5112],[-71.025,10.5782],[-71.0837,10.622],[-71.0958,10.7755],[-71.1847,10.8392],[-71.2193,10.9359],[-71.2643,10.9503],[-71.2697,10.9784],[-71.3172,10.9654],[-71.161,11.0161],[-70.8498,11.1952],[-70.711,11.2292],[-70.5274,11.2344],[-70.4857,11.2875],[-70.4191,11.2843],[-70.2773,11.3549],[-70.2023,11.353],[-70.1306,11.4531],[-70.1645,11.4701],[-70.0956,11.4271],[-70.0873,11.4515],[-70.0444,11.4398],[-70.027,11.4648],[-70.0504,11.479],[-70.0163,11.4696],[-70.0433,11.5118],[-70.122,11.5219],[-70.0794,11.5333],[-70.1383,11.5691],[-70.0458,11.5138],[-69.9919,11.5165],[-69.963,11.4859],[-69.8916,11.51],[-69.8955,11.4566],[-69.8434,11.425],[-69.7901,11.4281],[-69.7428,11.4694],[-69.7233,11.5139],[-69.7535,11.5426],[-69.8048,11.6961],[-69.9233,11.6502],[-69.9386,11.6742],[-70.192,11.6069],[-70.2349,11.6336],[-70.2094,11.7106],[-70.234,11.7418],[-70.2031,11.7317],[-70.2041,11.7658],[-70.2254,11.7851],[-70.2376,11.7607],[-70.2799,11.8592],[-70.2987,11.8585],[-70.2135,12.0962],[-70.1489,12.1092],[-70.0686,12.1775],[-70.0015,12.2006],[-69.8968,12.146],[-69.8344,12.0315],[-69.7946,11.9424],[-69.8114,11.8888],[-69.758,11.6983],[-69.6964,11.5603],[-69.6269,11.4737],[-69.5719,11.4598],[-69.5139,11.5089],[-69.3669,11.4857],[-69.2646,11.5376],[-69.2057,11.5065],[-69.1051,11.4955],[-69.0505,11.4427],[-68.8274,11.4465],[-68.7632,11.3764],[-68.7062,11.3425],[-68.6611,11.3511],[-68.6011,11.2854],[-68.5557,11.277],[-68.5672,11.2631],[-68.5271,11.2663],[-68.4469,11.1797],[-68.3917,11.1822],[-68.2605,10.9101],[-68.3157,10.9401],[-68.3626,10.9224],[-68.2518,10.8964],[-68.2523,10.9225],[-68.2195,10.8616]]]}},{"type":"Feature","properties":{"estado":"GUARICO"},"geometry":{"type":"Polygon","coordinates":[[[-65.8855,9.9709],[-65.7452,9.9441],[-65.7154,9.9649],[-65.7124,9.8403],[-65.6693,9.778],[-65.6958,9.6892],[-65.6607,9.6074],[-65.4987,9.5639],[-65.4293,9.6571],[-65.4048,9.5997],[-65.3142,9.5196],[-65.2228,9.5035],[-65.2021,9.4403],[-65.2491,9.3924],[-65.3095,9.3751],[-65.2877,9.3548],[-65.3146,9.3498],[-65.2794,9.3321],[-65.2649,9.2718],[-65.2181,9.2377],[-65.1895,9.1746],[-65.0875,9.1751],[-64.9864,9.1178],[-64.9429,9.0485],[-64.9583,9.0145],[-64.7787,8.8734],[-64.7815,8.8171],[-64.8448,8.7006],[-64.917,8.7487],[-65.0218,8.7417],[-65.0824,8.7669],[-65.1404,8.7482],[-65.1725,8.7061],[-65.1441,8.5793],[-65.2023,8.3762],[-65.2723,8.3189],[-65.3107,8.2366],[-65.3881,8.1767],[-65.3754,8.1624],[-65.3979,8.1206],[-65.4795,8.0484],[-65.4969,7.9976],[-65.4957,7.923],[-65.4234,7.921],[-65.3153,7.8688],[-65.4474,7.8561],[-65.5492,7.9227],[-65.6311,7.912],[-65.7069,7.8633],[-65.8613,7.6991],[-66.1303,7.6873],[-66.2379,7.6293],[-66.3274,7.6508],[-66.3571,7.7275],[-66.4027,7.7139],[-66.4838,7.7357],[-66.4763,7.7636],[-66.5288,7.8159],[-66.5502,7.7778],[-66.6539,7.7713],[-66.6609,7.7498],[-66.6337,7.7325],[-66.6474,7.7038],[-66.6817,7.7016],[-66.6846,7.724],[-66.7246,7.6892],[-66.8137,7.7336],[-66.8805,7.7288],[-66.9073,7.7582],[-67.007,7.7599],[-67.0484,7.7923],[-67.1507,7.7608],[-67.1535,7.7828],[-67.2179,7.7788],[-67.2571,7.8322],[-67.3227,7.8496],[-67.3343,7.8967],[-67.3587,7.8848],[-67.3937,7.9178],[-67.434,7.8878],[-67.5159,7.912],[-67.543,7.9452],[-67.5044,7.9698],[-67.5548,7.9689],[-67.5598,8.013],[-67.6025,8.0422],[-67.5736,8.0464],[-67.5816,8.0897],[-67.6282,8.0917],[-67.6269,8.1236],[-67.6731,8.1538],[-67.6652,8.1835],[-67.7056,8.2297],[-67.7683,8.2204],[-67.7868,8.2733],[-67.8303,8.2615],[-67.8415,8.3124],[-67.8765,8.3038],[-67.8523,8.3527],[-67.8692,8.3408],[-67.898,8.3823],[-67.9373,8.3784],[-67.99,8.4416],[-67.9714,8.4725],[-68.0,8.4709],[-68.0299,8.5364],[-67.9946,8.5614],[-68.0177,8.5976],[-68.0,8.7021],[-68.0288,8.733],[-68.0047,8.7486],[-68.0244,8.7706],[-67.9654,8.8681],[-67.9744,8.9245],[-67.9178,8.9477],[-67.8472,9.0962],[-67.8827,9.2487],[-67.9431,9.3228],[-67.9124,9.4155],[-67.9247,9.484],[-67.9707,9.5446],[-67.9251,9.5659],[-67.9368,9.6037],[-67.9145,9.6196],[-67.8252,9.6288],[-67.7524,9.6861],[-67.7594,9.764],[-67.7954,9.7873],[-67.8044,9.9318],[-67.7115,9.8779],[-67.7095,9.84],[-67.6858,9.8265],[-67.6289,9.8652],[-67.5904,9.8491],[-67.5645,9.908],[-67.5149,9.8798],[-67.5326,9.9582],[-67.4355,9.9953],[-67.3335,9.9287],[-67.2711,9.9378],[-67.2639,9.9084],[-67.2142,9.9376],[-67.1607,9.9316],[-67.1479,9.8432],[-67.1104,9.8305],[-67.1032,9.7894],[-67.0402,9.7946],[-67.0262,9.7646],[-66.9719,9.7568],[-66.9626,9.6979],[-66.8439,9.6617],[-66.8377,9.6208],[-66.8787,9.5535],[-66.9429,9.5458],[-66.984,9.5109],[-67.011,9.418],[-66.9807,9.4394],[-66.8907,9.3415],[-66.8488,9.3487],[-66.7796,9.3015],[-66.7539,9.3067],[-66.701,9.2531],[-66.5924,9.3811],[-66.5556,9.4906],[-66.5847,9.5382],[-66.5458,9.6158],[-66.5533,9.6587],[-66.6305,9.7165],[-66.62,9.7802],[-66.5721,9.8424],[-66.5993,9.8694],[-66.6098,9.9749],[-66.5377,9.9695],[-66.4974,9.9868],[-66.48,10.0243],[-66.4403,10.0161],[-66.3837,10.043],[-66.2848,9.9808],[-66.2413,9.9918],[-66.2042,9.9559],[-66.1582,9.9516],[-66.1453,9.9813],[-66.1191,9.959],[-66.0619,9.9726],[-65.9496,9.9377],[-65.8855,9.9709]]]}},{"type":"Feature","properties":{"estado":"LARA"},"geometry":{"type":"Polygon","coordinates":[[[-69.3455,9.7441],[-69.3951,9.619],[-69.383,9.5965],[-69.4379,9.5913],[-69.4416,9.5525],[-69.5703,9.5268],[-69.6223,9.5587],[-69.6179,9.4912],[-69.6522,9.393],[-69.7471,9.4432],[-69.8356,9.4053],[-69.8968,9.4133],[-69.8297,9.5216],[-69.8341,9.5712],[-69.9732,9.5423],[-70.0116,9.4996],[-70.0008,9.4507],[-70.0338,9.4162],[-70.0828,9.4384],[-70.0748,9.4842],[-70.1114,9.5305],[-70.1253,9.6156],[-70.0841,9.6791],[-69.9922,9.6812],[-70.0274,9.7233],[-70.0585,9.7234],[-70.0769,9.7624],[-70.1407,9.7651],[-70.2149,9.8462],[-70.2408,9.7626],[-70.2785,9.827],[-70.3276,9.8262],[-70.319,9.8562],[-70.3578,9.9095],[-70.4132,9.9112],[-70.4663,9.8712],[-70.4876,9.8965],[-70.511,9.8873],[-70.5451,9.9518],[-70.5863,9.9581],[-70.6336,10.0443],[-70.6806,10.0006],[-70.6982,9.8868],[-70.7865,9.919],[-70.8795,10.0548],[-70.7336,10.1568],[-70.7001,10.2095],[-70.6887,10.3042],[-70.5674,10.3301],[-70.5186,10.4465],[-70.4599,10.4725],[-70.43,10.4554],[-70.3958,10.4885],[-70.3932,10.528],[-70.339,10.57],[-70.3121,10.5832],[-70.2736,10.5636],[-70.1755,10.6192],[-70.1737,10.6469],[-70.1411,10.665],[-70.0599,10.6432],[-69.9488,10.7045],[-69.9161,10.6934],[-69.8172,10.7448],[-69.8138,10.7075],[-69.7324,10.7488],[-69.6889,10.7226],[-69.5141,10.7454],[-69.5169,10.6785],[-69.3996,10.7141],[-69.2459,10.6934],[-69.2139,10.708],[-69.073,10.6663],[-69.0002,10.7025],[-68.9028,10.6977],[-68.8744,10.6526],[-68.8822,10.6008],[-68.9378,10.545],[-68.9886,10.5573],[-69.0512,10.52],[-69.0777,10.4234],[-69.0705,10.4027],[-69.0324,10.4167],[-69.0129,10.242],[-69.0462,10.2187],[-69.0884,10.2423],[-69.1199,10.1397],[-69.2211,10.1294],[-69.1885,10.042],[-69.1504,10.0249],[-69.1581,9.9448],[-69.088,9.8436],[-69.0844,9.9595],[-68.9624,10.021],[-68.9457,9.9126],[-68.9723,9.8671],[-68.9734,9.7915],[-68.9983,9.7567],[-69.0528,9.7435],[-69.0631,9.714],[-69.2024,9.6791],[-69.2725,9.7199],[-69.2593,9.775],[-69.2783,9.8443],[-69.3455,9.7441]]]}},{"type":"Feature","properties":{"estado":"MERIDA"},"geometry":{"type":"Polygon","coordinates":[[[-70.6783,8.9716],[-70.5826,9.0302],[-70.5456,9.0068],[-70.5463,8.939],[-70.5762,8.9035],[-70.5656,8.8608],[-70.6392,8.848],[-70.7549,8.7299],[-70.7059,8.682],[-70.7263,8.6338],[-70.8432,8.5989],[-70.8179,8.5028],[-70.8531,8.4237],[-70.84,8.412],[-70.9021,8.3485],[-70.9051,8.2778],[-70.9509,8.2529],[-70.9756,8.2754],[-71.0327,8.2545],[-71.0083,8.1999],[-71.055,8.1032],[-71.1081,8.0393],[-71.233,7.9615],[-71.2651,7.9104],[-71.2877,7.9171],[-71.4516,7.7887],[-71.4676,7.7556],[-71.4415,7.6993],[-71.4929,7.6647],[-71.5317,7.756],[-71.5129,7.9471],[-71.5655,8.004],[-71.5688,8.0427],[-71.6001,8.0597],[-71.6719,8.0084],[-71.7525,8.0613],[-71.8548,8.1825],[-71.9015,8.1652],[-71.9065,8.214],[-71.8057,8.3334],[-71.8102,8.4132],[-71.7709,8.4865],[-71.8209,8.5901],[-71.9111,8.641],[-71.8626,8.6795],[-71.6991,8.6817],[-71.2978,9.0001],[-71.2221,9.0458],[-71.2389,8.9779],[-71.1469,9.0393],[-71.1703,9.0732],[-71.1476,9.1095],[-71.2215,9.1619],[-71.2172,9.202],[-71.1459,9.1541],[-71.0484,9.1517],[-71.0005,9.2006],[-70.9816,9.3312],[-70.9001,9.2656],[-70.8901,9.164],[-70.8649,9.1535],[-70.8439,9.0936],[-70.729,9.0581],[-70.6783,8.9716]],[[-71.1063,9.1102],[-71.1063,9.1102]],[[-71.1137,9.1157],[-71.1137,9.1157]],[[-71.0961,9.056],[-71.0961,9.056]],[[-71.1003,9.0682],[-71.1003,9.0682]],[[-71.2667,8.9284],[-71.2667,8.9284]],[[-71.2653,8.9219],[-71.2653,8.9219]],[[-71.2643,8.9203],[-71.2643,8.9203]],[[-71.371,8.9411],[-71.371,8.9411]],[[-71.3526,8.913],[-71.3526,8.913]],[[-71.3532,8.9118],[-71.3532,8.9118]],[[-71.3536,8.9084],[-71.3536,8.9084]],[[-71.3536,8.9064],[-71.3536,8.9064]],[[-71.354,8.9052],[-71.354,8.9052]],[[-71.3546,8.9026],[-71.3546,8.9026]],[[-71.3532,8.8999],[-71.3532,8.8999]],[[-71.3526,8.8976],[-71.3526,8.8976]],[[-71.3516,8.8968],[-71.3516,8.8968]],[[-71.3507,8.8945],[-71.3507,8.8945]],[[-71.3499,8.8915],[-71.3499,8.8915]],[[-71.0962,9.0541],[-71.0962,9.0541]],[[-71.0939,9.0505],[-71.0939,9.0505]],[[-71.1597,8.9258],[-71.1597,8.9258]],[[-71.1608,8.926],[-71.1608,8.926]],[[-71.1625,8.9261],[-71.1625,8.9261]],[[-71.1637,8.9262],[-71.1637,8.9262]],[[-71.1674,8.9268],[-71.1674,8.9268]],[[-71.1781,8.9273],[-71.1781,8.9273]],[[-71.1803,8.9287],[-71.1803,8.9287]],[[-71.1874,8.9301],[-71.1874,8.9301]],[[-71.1886,8.9303],[-71.1886,8.9303]],[[-71.1923,8.9309],[-71.1923,8.9309]],[[-71.1942,8.9309],[-71.1942,8.9309]],[[-71.1962,8.9305],[-71.1962,8.9305]],[[-71.1987,8.9288],[-71.1987,8.9288]],[[-71.2004,8.9283],[-71.2004,8.9283]],[[-71.2025,8.929],[-71.2025,8.929]],[[-71.2115,8.9304],[-71.2115,8.9304]],[[-71.2121,8.9303],[-71.2121,8.9303]],[[-71.2137,8.9306],[-71.2137,8.9306]],[[-71.2157,8.9305],[-71.2157,8.9305]],[[-71.2191,8.9299],[-71.2191,8.9299]],[[-71.2199,8.9304],[-71.2199,8.9304]],[[-71.2243,8.9332],[-71.2243,8.9332]],[[-71.2253,8.9337],[-71.2253,8.9337]],[[-71.2287,8.937],[-71.2287,8.937]],[[-71.2306,8.9479],[-71.2306,8.9479]],[[-71.2304,8.9507],[-71.2304,8.9507]],[[-70.9462,9.1546],[-70.9462,9.1546]],[[-70.9439,9.1545],[-70.9439,9.1545]],[[-70.9878,9.1056],[-70.9878,9.1056]],[[-70.99,9.1057],[-70.99,9.1057]],[[-70.9907,9.1058],[-70.9907,9.1058]],[[-70.9917,9.1055],[-70.9917,9.1055]],[[-70.992,9.1052],[-70.992,9.1052]],[[-70.9923,9.1051],[-70.9923,9.1051]],[[-70.9931,9.1053],[-70.9931,9.1053]],[[-70.9937,9.1056],[-70.9937,9.1056]],[[-70.9948,9.1065],[-70.9948,9.1065]],[[-70.9951,9.1067],[-70.9951,9.1067]],[[-70.9961,9.1079],[-70.9961,9.1079]],[[-70.9965,9.1086],[-70.9965,9.1086]],[[-70.997,9.1102],[-70.997,9.1102]],[[-70.9979,9.1124],[-70.9979,9.1124]],[[-71.0556,9.0951],[-71.0556,9.0951]],[[-70.9914,9.1057],[-70.9914,9.1057]],[[-71.21,8.9305],[-71.21,8.9305]],[[-71.1848,8.9293],[-71.1848,8.9293]],[[-70.9942,9.106],[-70.9942,9.106]],[[-70.9446,9.1545],[-70.9446,9.1545]],[[-71.1852,8.9294],[-71.1852,8.9294]],[[-70.944,9.1545],[-70.944,9.1545]],[[-70.9915,9.1056],[-70.9915,9.1056]],[[-71.1912,8.9305],[-71.1912,8.9305]],[[-71.2105,8.9304],[-71.2105,8.9304]],[[-71.2178,8.9293],[-71.2178,8.9293]],[[-71.2178,8.9293],[-71.2178,8.9293]],[[-70.9942,9.106],[-70.9942,9.106]],[[-70.9926,9.1051],[-70.9926,9.1051]],[[-70.9926,9.1051],[-70.9926,9.1051]],[[-71.1912,8.9305],[-71.1912,8.9305]]]}},{"type":"Feature","properties":{"estado":"MIRANDA"},"geometry":{"type":"Polygon","coordinates":[[[-65.6843,10.2228],[-65.4275,10.1408],[-65.4521,10.0953],[-65.5276,10.0561],[-65.5525,10.0055],[-65.6021,10.0048],[-65.6346,9.9533],[-65.693,9.9832],[-65.7446,9.9442],[-65.8393,9.9744],[-65.9496,9.9377],[-66.0619,9.9726],[-66.1191,9.959],[-66.1453,9.9813],[-66.1661,9.9509],[-66.242,9.9919],[-66.2853,9.981],[-66.3837,10.043],[-66.4403,10.0161],[-66.48,10.0243],[-66.4974,9.9868],[-66.5377,9.9695],[-66.582,9.986],[-66.6422,9.9706],[-66.8281,10.0297],[-66.8726,10.0023],[-66.9021,10.0243],[-66.9305,10.0136],[-66.9699,10.0738],[-67.0542,10.0605],[-67.1083,10.094],[-67.1375,10.1599],[-67.0937,10.2386],[-67.1814,10.3029],[-67.1862,10.3291],[-67.1617,10.3446],[-67.2187,10.417],[-67.1602,10.4401],[-67.1604,10.4158],[-67.012,10.3861],[-66.9435,10.4285],[-66.896,10.4116],[-66.8628,10.5534],[-66.6052,10.5418],[-66.5828,10.56],[-66.3292,10.5254],[-66.3015,10.6404],[-66.2342,10.6522],[-66.1721,10.6115],[-66.0465,10.5817],[-66.0618,10.5503],[-66.1239,10.5404],[-66.0471,10.4287],[-65.8737,10.2998],[-65.6843,10.2228]]]}},{"type":"Feature","properties":{"estado":"MONAGAS"},"geometry":{"type":"Polygon","coordinates":[[[-63.3642,8.9531],[-63.4004,9.0065],[-63.4731,9.0208],[-63.4841,9.0611],[-63.5007,9.0518],[-63.5647,9.1056],[-63.5987,9.1008],[-63.6064,9.1469],[-63.6776,9.1609],[-63.7547,9.2259],[-63.8313,9.232],[-63.9066,9.1919],[-63.9166,9.2619],[-63.9779,9.3467],[-63.971,9.4175],[-63.8229,9.5472],[-63.9593,9.7473],[-63.953,9.8283],[-63.9095,9.8537],[-63.9744,9.9033],[-63.9835,9.9435],[-64.0366,9.9326],[-64.0609,10.0532],[-63.9829,10.0412],[-63.9513,10.0576],[-63.9556,10.0875],[-63.8145,10.1078],[-63.7682,10.181],[-63.6571,10.2218],[-63.5656,10.2054],[-63.5466,10.2727],[-63.4709,10.3183],[-63.4103,10.2897],[-63.426,10.2592],[-63.2218,10.1934],[-63.1867,10.1477],[-63.1295,10.2286],[-63.0988,10.1887],[-63.0687,10.2049],[-63.0437,10.1252],[-62.9833,10.0731],[-62.9583,10.0974],[-62.933,10.08],[-62.8986,10.0972],[-62.8955,10.059],[-62.863,10.0551],[-62.8432,10.0786],[-62.8179,10.037],[-62.7897,10.037],[-62.7636,10.0849],[-62.6949,10.0646],[-62.6154,10.1063],[-62.6347,10.2037],[-62.6172,10.239],[-62.5371,10.2191],[-62.5005,10.183],[-62.4703,10.0612],[-62.4291,10.0546],[-62.4097,10.0117],[-62.3572,9.9881],[-62.3583,9.8555],[-62.302,9.7826],[-62.4441,9.5409],[-62.4384,9.4904],[-62.3968,9.4734],[-62.4074,9.4122],[-62.318,9.3612],[-62.342,9.3311],[-62.2992,9.1919],[-62.3271,9.1329],[-62.2603,9.1345],[-62.2186,9.061],[-62.1542,9.1084],[-62.1229,9.0518],[-62.0947,9.0791],[-62.0554,9.0531],[-62.088,8.9659],[-62.0498,8.882],[-61.994,8.889],[-62.0581,8.821],[-62.0669,8.7608],[-62.2383,8.6344],[-62.2577,8.5958],[-62.2919,8.6182],[-62.3984,8.534],[-62.4452,8.5532],[-62.5395,8.5224],[-62.6888,8.3942],[-62.7078,8.454],[-63.0002,8.5568],[-63.0378,8.6021],[-63.0448,8.7059],[-63.026,8.7508],[-62.9668,8.748],[-62.9313,8.7806],[-63.2711,8.767],[-63.3174,8.7887],[-63.3399,8.7694],[-63.3642,8.9531]]]}},{"type":"Feature","properties":{"estado":"NUEVA ESPARTA"},"geometry":{"type":"MultiPolygon","coordinates":[[[[-63.9293,10.7955],[-63.8924,10.7605],[-63.8973,10.7372],[-64.003,10.777],[-63.9977,10.8143],[-63.9293,10.7955]]],[[[-64.1593,10.8403],[-64.1545,10.8043],[-64.2193,10.797],[-64.214,10.8291],[-64.1674,10.8229],[-64.1593,10.8403]]],[[[-63.8948,10.886],[-63.9392,10.9098],[-63.8991,10.9168],[-63.9506,10.9339],[-63.9426,10.905],[-64.0613,10.8646],[-64.0614,10.8943],[-64.1039,10.9014],[-64.1051,10.9302],[-64.1677,10.968],[-64.1431,10.9787],[-64.1577,11.0],[-64.2064,10.9377],[-64.4062,10.9758],[-64.3805,11.047],[-64.2122,11.0893],[-64.1494,11.0076],[-64.0418,10.9892],[-64.0099,11.0715],[-63.9714,11.0837],[-63.9758,11.114],[-63.9334,11.1211],[-63.8789,11.183],[-63.776,11.0013],[-63.8155,10.9822],[-63.8143,10.9513],[-63.8801,10.9395],[-63.8948,10.886]]]]}},{"type":"Feature","properties":{"estado":"PORTUGUESA"},"geometry":{"type":"Polygon","coordinates":[[[-68.5163,8.5608],[-68.7398,8.3348],[-68.786,8.3201],[-68.8455,8.1665],[-68.8171,8.1024],[-68.87,8.1061],[-68.89,8.1532],[-68.9526,8.19],[-68.9687,8.2413],[-69.0702,8.3014],[-69.1,8.2959],[-69.0916,8.3163],[-69.1404,8.3714],[-69.1102,8.4371],[-69.1748,8.4607],[-69.1912,8.5338],[-69.2825,8.6286],[-69.375,8.6312],[-69.4351,8.6704],[-69.5036,8.6741],[-69.5289,8.7056],[-69.5612,8.6978],[-69.5782,8.7319],[-69.6353,8.7369],[-69.6896,8.7107],[-69.756,8.7516],[-69.8849,8.7689],[-69.8825,8.7902],[-69.8996,8.7761],[-69.9589,8.8363],[-69.9961,8.8327],[-70.045,8.9282],[-70.1764,8.9983],[-70.1997,9.0582],[-70.09,9.0983],[-70.041,9.1517],[-70.0957,9.2221],[-70.063,9.283],[-70.1115,9.3021],[-70.0266,9.3902],[-70.0336,9.4168],[-70.0008,9.4507],[-70.0112,9.5002],[-69.9477,9.5584],[-69.8678,9.5506],[-69.8341,9.5712],[-69.8297,9.5216],[-69.8968,9.4133],[-69.8356,9.4053],[-69.7471,9.4432],[-69.6522,9.393],[-69.6179,9.4912],[-69.6223,9.5587],[-69.5703,9.5268],[-69.4416,9.5525],[-69.4379,9.5913],[-69.3834,9.5957],[-69.3951,9.619],[-69.3465,9.7527],[-69.2814,9.8435],[-69.2627,9.8292],[-69.2733,9.7219],[-69.2216,9.6825],[-69.0643,9.7135],[-69.052,9.7441],[-68.9768,9.7787],[-68.9856,9.7241],[-68.9686,9.725],[-68.9012,9.5683],[-68.8854,9.4069],[-68.8635,9.4121],[-68.8497,9.3753],[-68.762,9.3131],[-68.7766,9.2777],[-68.6262,9.2209],[-68.6563,8.9675],[-68.5454,8.843],[-68.6068,8.8282],[-68.6416,8.7804],[-68.7325,8.7427],[-68.6952,8.7023],[-68.6549,8.7152],[-68.6402,8.6386],[-68.5795,8.6395],[-68.5288,8.602],[-68.5163,8.5608]]]}},{"type":"Feature","properties":{"estado":"SUCRE"},"geometry":{"type":"Polygon","coordinates":[[[-63.764,10.5273],[-63.9521,10.5835],[-64.0426,10.5778],[-64.0197,10.5961],[-64.0487,10.6002],[-64.051,10.5789],[-64.2015,10.5569],[-64.2295,10.5061],[-64.2946,10.636],[-64.2591,10.6668],[-64.2388,10.6415],[-64.1376,10.6186],[-64.0555,10.6543],[-63.9157,10.6277],[-63.824,10.6536],[-63.8091,10.7112],[-63.7614,10.6623],[-63.5343,10.6308],[-63.4975,10.6373],[-63.4926,10.6591],[-63.4044,10.6671],[-63.384,10.6958],[-63.3364,10.6716],[-63.3232,10.6871],[-63.2421,10.6746],[-63.152,10.7318],[-63.1178,10.7043],[-63.0004,10.7273],[-62.9006,10.6947],[-62.7102,10.7687],[-62.6697,10.7451],[-62.1684,10.6862],[-62.1386,10.708],[-62.0043,10.7123],[-61.9991,10.731],[-61.9763,10.7146],[-61.8615,10.7526],[-61.8452,10.7381],[-61.8755,10.7296],[-61.8912,10.6764],[-61.8964,10.6982],[-61.9007,10.6684],[-61.9536,10.6469],[-62.2477,10.6379],[-62.2861,10.5709],[-62.3448,10.5359],[-62.3911,10.558],[-62.4312,10.5373],[-62.5251,10.5466],[-62.657,10.5812],[-62.8493,10.5366],[-62.8171,10.5008],[-62.7625,10.5023],[-62.6493,10.3542],[-62.6729,10.2977],[-62.6643,10.2278],[-62.6139,10.1213],[-62.6681,10.0695],[-62.7746,10.0797],[-62.7931,10.0356],[-62.8248,10.0396],[-62.8437,10.0788],[-62.8941,10.0581],[-62.8986,10.0972],[-62.933,10.08],[-62.9583,10.0974],[-62.9821,10.0723],[-63.0437,10.1252],[-63.0627,10.2021],[-63.1,10.1892],[-63.1236,10.2279],[-63.1867,10.1477],[-63.2218,10.1934],[-63.426,10.2592],[-63.4103,10.2897],[-63.4709,10.3183],[-63.5466,10.2727],[-63.5656,10.2054],[-63.6404,10.2262],[-63.7645,10.1831],[-63.815,10.1076],[-63.957,10.0873],[-63.9617,10.1093],[-64.0315,10.123],[-64.201,10.0645],[-64.2707,10.0657],[-64.2891,10.0987],[-64.3649,10.0871],[-64.3992,10.1376],[-64.4433,10.1289],[-64.4411,10.1924],[-64.4848,10.1995],[-64.5271,10.2556],[-64.4785,10.2464],[-64.448,10.2816],[-64.3624,10.304],[-64.3711,10.3227],[-64.4399,10.3136],[-64.4602,10.3342],[-64.3774,10.3395],[-64.3934,10.3828],[-64.3627,10.4006],[-64.3444,10.3756],[-64.3672,10.3416],[-64.336,10.3506],[-64.3359,10.4006],[-64.221,10.4193],[-64.1737,10.4827],[-64.1096,10.4799],[-64.0859,10.4516],[-64.0234,10.438],[-63.9514,10.4574],[-63.7946,10.4445],[-63.6409,10.4928],[-63.7017,10.4833],[-63.764,10.5273]]]}},{"type":"Feature","properties":{"estado":"TACHIRA"},"geometry":{"type":"Polygon","coordinates":[[[-72.3861,7.4157],[-72.434,7.4064],[-72.4743,7.4925],[-72.4519,7.5746],[-72.4745,7.6382],[-72.4727,7.755],[-72.4447,7.8647],[-72.4879,7.939],[-72.4162,8.0002],[-72.4104,8.0374],[-72.3462,8.0081],[-72.3494,8.0887],[-72.3713,8.1056],[-72.3517,8.1609],[-72.3901,8.2554],[-72.3784,8.3178],[-72.4016,8.4079],[-72.351,8.4397],[-72.3439,8.5053],[-72.3067,8.3789],[-72.2148,8.4254],[-72.0687,8.4318],[-71.9695,8.5153],[-71.9824,8.6492],[-71.9489,8.6191],[-71.9068,8.6351],[-71.8209,8.5901],[-71.7709,8.4865],[-71.8102,8.4132],[-71.8057,8.3334],[-71.9065,8.214],[-71.9015,8.1652],[-71.8548,8.1825],[-71.7525,8.0613],[-71.6719,8.0084],[-71.6001,8.0597],[-71.5688,8.0427],[-71.5655,8.004],[-71.5101,7.9319],[-71.5317,7.756],[-71.4962,7.7088],[-71.504,7.6108],[-71.4774,7.6193],[-71.4158,7.5811],[-71.4332,7.5608],[-71.4001,7.5569],[-71.3706,7.5001],[-71.333,7.5176],[-71.3131,7.4938],[-71.4,7.4811],[-71.4446,7.5138],[-71.4877,7.5022],[-71.5703,7.5312],[-71.581,7.5139],[-71.6891,7.5508],[-71.7233,7.5345],[-71.7644,7.5504],[-71.781,7.5286],[-71.8044,7.5488],[-71.8814,7.5088],[-71.8376,7.4939],[-71.8606,7.4321],[-71.9922,7.3664],[-72.0557,7.372],[-72.0899,7.404],[-72.1625,7.3853],[-72.2193,7.4367],[-72.3861,7.4157]]]}},{"type":"Feature","properties":{"estado":"TRUJILLO"},"geometry":{"type":"Polygon","coordinates":[[[-70.9035,9.5831],[-70.8415,9.59],[-70.7843,9.6932],[-70.757,9.6965],[-70.7416,9.7612],[-70.6904,9.7686],[-70.665,9.8247],[-70.697,9.8864],[-70.6916,9.9499],[-70.6806,10.0006],[-70.6389,10.0434],[-70.511,9.8873],[-70.4876,9.8965],[-70.4663,9.8712],[-70.4132,9.9112],[-70.3571,9.9093],[-70.319,9.8562],[-70.3276,9.8262],[-70.2785,9.827],[-70.2408,9.7626],[-70.2107,9.8447],[-70.1407,9.7651],[-70.0775,9.7628],[-70.0585,9.7234],[-70.0274,9.7233],[-69.9922,9.6812],[-70.0841,9.6791],[-70.1253,9.6156],[-70.1114,9.5305],[-70.0748,9.4842],[-70.0828,9.4384],[-70.0444,9.4308],[-70.0259,9.3957],[-70.1115,9.3014],[-70.063,9.283],[-70.0957,9.2221],[-70.041,9.1517],[-70.0981,9.094],[-70.2357,9.0647],[-70.2731,9.0357],[-70.3797,9.0607],[-70.4874,9.0122],[-70.5433,8.9576],[-70.5449,9.0057],[-70.5811,9.0305],[-70.6783,8.9716],[-70.729,9.0581],[-70.8439,9.0936],[-70.8649,9.1535],[-70.8885,9.1593],[-70.912,9.2781],[-71.0668,9.3733],[-71.0671,9.4884],[-71.088,9.4877],[-71.0593,9.6198],[-70.9097,9.6026],[-70.9035,9.5831]]]}},{"type":"Feature","properties":{"estado":"VARGAS"},"geometry":{"type":"Polygon","coordinates":[[[-66.965,10.5536],[-67.02,10.5674],[-67.0183,10.5418],[-67.061,10.5162],[-67.0632,10.4665],[-67.2181,10.4132],[-67.2899,10.4274],[-67.3462,10.3908],[-67.4109,10.5162],[-67.3475,10.5466],[-67.1603,10.5617],[-67.0138,10.6167],[-66.9434,10.6023],[-66.8455,10.6262],[-66.4938,10.6353],[-66.3076,10.6156],[-66.3292,10.5254],[-66.5828,10.56],[-66.6052,10.5418],[-66.965,10.5536]]]}},{"type":"Feature","properties":{"estado":"YARACUY"},"geometry":{"type":"Polygon","coordinates":[[[-68.3978,10.3706],[-68.3524,10.2675],[-68.4263,10.1805],[-68.3699,9.9925],[-68.4304,9.9416],[-68.5366,9.89],[-68.5298,9.9402],[-68.5975,9.9332],[-68.6114,9.9706],[-68.6596,9.9784],[-68.7151,9.9422],[-68.7229,9.8824],[-68.8033,9.8459],[-68.968,9.8443],[-68.9457,9.9126],[-68.9624,10.021],[-69.0844,9.9595],[-69.088,9.8436],[-69.1263,9.885],[-69.1582,9.9454],[-69.1504,10.0249],[-69.1885,10.042],[-69.221,10.1299],[-69.1199,10.1397],[-69.0884,10.2423],[-69.0462,10.2187],[-69.0129,10.242],[-69.0324,10.4167],[-69.0791,10.4137],[-69.0523,10.5185],[-68.9886,10.5573],[-68.9507,10.5411],[-68.9103,10.562],[-68.8744,10.6526],[-68.8412,10.6545],[-68.7781,10.7312],[-68.6678,10.7268],[-68.6154,10.7771],[-68.6516,10.6129],[-68.2427,10.586],[-68.3024,10.5412],[-68.3527,10.5546],[-68.3811,10.533],[-68.3978,10.3706]]]}},{"type":"Feature","properties":{"estado":"ZONA EN RECLAMACION"},"geometry":{"type":"Polygon","coordinates":[[[-59.9897,8.5444],[-59.8662,8.4562],[-59.8433,8.3935],[-59.6883,8.3132],[-59.5142,8.2667],[-59.4064,8.2027],[-59.4983,8.2771],[-59.6577,8.3156],[-59.7702,8.3943],[-59.5212,8.3428],[-59.1904,8.1926],[-59.1149,8.0764],[-59.0562,8.0298],[-59.0196,7.96],[-59.0214,7.8967],[-58.8348,7.7419],[-58.7303,7.5689],[-58.7338,7.6089],[-58.5997,7.5182],[-58.4822,7.2787],[-58.4798,6.9932],[-58.5446,6.9355],[-58.5773,6.8523],[-58.6321,6.4464],[-58.5713,6.2693],[-58.5959,6.0516],[-58.5804,5.8889],[-58.6211,5.7877],[-58.6177,5.5911],[-58.6847,5.4329],[-58.8435,5.4175],[-58.8712,5.3792],[-58.8799,5.2975],[-58.8277,5.246],[-58.8192,5.2012],[-58.8512,4.962],[-58.8063,4.775],[-58.7922,4.7472],[-58.7171,4.7431],[-58.6866,4.6521],[-58.4834,4.4662],[-58.4709,4.3458],[-58.505,4.2696],[-58.4745,4.1764],[-58.5828,4.0356],[-58.4358,4.0114],[-58.4243,3.9222],[-58.3697,3.8279],[-58.4183,3.7179],[-58.3406,3.6587],[-58.3432,3.5914],[-58.307,3.5741],[-58.2817,3.4745],[-58.2877,3.3848],[-58.2595,3.3679],[-58.2628,3.2821],[-58.334,3.1384],[-58.1757,2.9963],[-58.2169,2.9542],[-58.1939,2.8679],[-58.2368,2.8443],[-58.1893,2.7657],[-58.2226,2.7091],[-58.2695,2.6937],[-58.2921,2.5367],[-58.338,2.4538],[-58.3663,2.4646],[-58.3366,2.4129],[-58.3438,2.3354],[-58.3197,2.3206],[-58.3111,2.3552],[-58.2833,2.3118],[-58.3222,2.286],[-58.3352,2.2351],[-58.3451,2.2476],[-58.3543,2.1762],[-58.3823,2.2054],[-58.4156,2.1468],[-58.4005,2.0749],[-58.524,1.9568],[-58.5482,1.8305],[-58.537,1.7649],[-58.6194,1.6807],[-58.6123,1.6151],[-58.6353,1.5727],[-58.7272,1.5295],[-58.732,1.4785],[-58.7929,1.4797],[-58.8095,1.4535],[-58.7684,1.3525],[-58.814,1.2921],[-58.8208,1.2391],[-58.8952,1.2586],[-58.9993,1.3282],[-59.1099,1.3348],[-59.2377,1.3835],[-59.2775,1.4158],[-59.3099,1.4929],[-59.4405,1.5856],[-59.5258,1.711],[-59.6298,1.7131],[-59.666,1.7599],[-59.647,1.835],[-59.7548,1.8731],[-59.7206,1.9952],[-59.7396,2.0698],[-59.7121,2.1188],[-59.7382,2.1644],[-59.7124,2.2449],[-59.7276,2.2812],[-59.7857,2.2779],[-59.9071,2.3849],[-59.888,2.4678],[-59.9312,2.5745],[-59.9688,2.6023],[-59.9814,2.8828],[-59.9426,3.0847],[-59.9097,3.1189],[-59.9226,3.1518],[-59.7976,3.3655],[-59.8325,3.4203],[-59.8034,3.4823],[-59.8637,3.5499],[-59.8396,3.5895],[-59.7609,3.6103],[-59.6622,3.6964],[-59.6679,3.752],[-59.5978,3.7974],[-59.5857,3.785],[-59.5706,3.8824],[-59.4992,3.9378],[-59.5112,3.958],[-59.5661,3.9522],[-59.5819,4.008],[-59.6021,4.0017],[-59.5972,4.0271],[-59.6325,4.0543],[-59.6086,4.1394],[-59.7077,4.1654],[-59.7163,4.1856],[-59.73,4.2357],[-59.7014,4.2685],[-59.7214,4.28],[-59.6638,4.3744],[-59.7864,4.4653],[-59.8257,4.4526],[-59.8565,4.4831],[-59.8948,4.4649],[-59.9398,4.5133],[-59.9538,4.478],[-60.0544,4.483],[-60.0515,4.5196],[-60.0749,4.5256],[-60.1112,4.4962],[-60.1512,4.5124],[-60.1457,4.57],[-60.1235,4.5608],[-60.1151,4.595],[-60.06,4.6097],[-60.0638,4.6508],[-60.0182,4.7022],[-60.0137,4.7676],[-60.0333,4.7945],[-59.9681,5.0742],[-60.0798,5.146],[-60.0901,5.1961],[-60.1549,5.2626],[-60.4517,5.1688],[-60.6678,5.2168],[-60.7331,5.2041],[-61.3954,5.9519],[-61.2925,6.082],[-61.202,6.1155],[-61.1748,6.1501],[-61.2099,6.182],[-61.1564,6.2422],[-61.2009,6.3529],[-61.1754,6.4502],[-61.1988,6.4852],[-61.191,6.5344],[-61.2466,6.5525],[-61.2106,6.5785],[-61.1715,6.6822],[-61.1366,6.7057],[-60.9958,6.7223],[-60.9399,6.7776],[-60.9601,6.8218],[-60.9215,6.8554],[-60.7409,6.8061],[-60.7015,6.8583],[-60.6463,6.8353],[-60.5074,6.8855],[-60.4381,6.9429],[-60.3755,6.9583],[-60.3414,7.0455],[-60.285,7.0932],[-60.2784,7.1593],[-60.3546,7.2175],[-60.4114,7.2087],[-60.4557,7.2391],[-60.5474,7.1641],[-60.6293,7.2231],[-60.6419,7.2958],[-60.6005,7.3673],[-60.6647,7.4728],[-60.7149,7.4938],[-60.7258,7.5587],[-60.6478,7.6228],[-60.5526,7.8357],[-60.4844,7.8591],[-60.3404,7.8185],[-60.265,7.8798],[-60.2236,7.9548],[-60.1108,8.0246],[-60.0276,8.03],[-59.9799,8.1709],[-59.9363,8.2191],[-59.8319,8.2369],[-59.8009,8.2843],[-59.8112,8.3202],[-59.9897,8.5444]]]}},{"type":"Feature","properties":{"estado":"ZULIA"},"geometry":{"type":"MultiPolygon","coordinates":[[[[-71.0997,9.1554],[-71.1459,9.1541],[-71.2172,9.2021],[-71.0636,9.3136],[-71.0492,9.3604],[-70.9856,9.3376],[-71.0005,9.2006],[-71.0772,9.1378],[-71.0997,9.1554]],[[-71.089,9.1919],[-71.089,9.1919]],[[-71.085,9.1901],[-71.085,9.1901]],[[-71.0845,9.1894],[-71.0845,9.1894]],[[-71.0848,9.1881],[-71.0848,9.1881]],[[-71.0843,9.1863],[-71.0843,9.1863]],[[-71.0844,9.1849],[-71.0844,9.1849]],[[-71.0831,9.1839],[-71.0831,9.1839]]],[[[-71.5733,10.9814],[-71.5932,10.9926],[-71.5292,10.9481],[-71.5733,10.9814]]],[[[-71.6164,10.971],[-71.6199,10.9946],[-71.6039,10.9593],[-71.6164,10.971]]],[[[-71.5989,10.9334],[-71.5878,10.9502],[-71.5979,10.9125],[-71.5989,10.9334]]],[[[-71.6204,11.0107],[-71.5962,11.0049],[-71.6204,11.0107]]],[[[-71.6244,11.017],[-71.6244,11.017]]],[[[-71.6423,10.9834],[-71.6423,10.9834]]],[[[-71.6511,10.9533],[-71.6789,10.964],[-71.6227,10.9599],[-71.6511,10.9533]]],[[[-71.6207,10.889],[-71.6207,10.889]]],[[[-71.6268,10.8661],[-71.6268,10.8661]]],[[[-71.6248,10.8744],[-71.6248,10.8744]]],[[[-71.6282,10.8586],[-71.6282,10.8586]]],[[[-71.6216,10.8919],[-71.6216,10.8919]]],[[[-71.6205,10.9049],[-71.6205,10.9049]]],[[[-71.63,10.8489],[-71.63,10.8489]]],[[[-71.5056,10.9494],[-71.5056,10.9494]]],[[[-71.4855,10.9435],[-71.4855,10.9435]]],[[[-71.4775,10.9386],[-71.4775,10.9386]]],[[[-71.4742,10.9347],[-71.4742,10.9347]]],[[[-71.5106,10.938],[-71.5106,10.938]]],[[[-71.4708,10.9341],[-71.4708,10.9341]]],[[[-71.5382,10.5523],[-71.5281,10.594],[-71.494,10.6111],[-71.5299,10.6381],[-71.5342,10.7587],[-71.59,10.795],[-71.4308,10.7987],[-71.4458,10.8819],[-71.4073,10.9176],[-71.4328,10.9046],[-71.4982,10.9508],[-71.2703,10.9785],[-71.2643,10.9503],[-71.2186,10.935],[-71.1805,10.8342],[-71.0955,10.775],[-71.0837,10.622],[-71.025,10.5782],[-71.0162,10.5112],[-70.8766,10.4512],[-70.7963,10.4679],[-70.7563,10.3976],[-70.7604,10.335],[-70.6886,10.3039],[-70.7001,10.2095],[-70.739,10.1516],[-70.8361,10.103],[-70.8795,10.0536],[-70.7865,9.919],[-70.6971,9.887],[-70.665,9.8247],[-70.6933,9.7649],[-70.7416,9.7612],[-70.757,9.6965],[-70.7843,9.6932],[-70.8415,9.59],[-70.9038,9.5831],[-70.9097,9.6026],[-71.059,9.6193],[-71.0446,9.702],[-71.0233,9.714],[-71.0882,9.8166],[-71.0804,9.8569],[-71.1457,9.9508],[-71.2123,9.9768],[-71.2645,10.1371],[-71.3542,10.2167],[-71.429,10.3594],[-71.4774,10.3956],[-71.4504,10.4528],[-71.458,10.4924],[-71.5382,10.5523]]],[[[-71.1495,9.111],[-71.1703,9.0732],[-71.1469,9.0393],[-71.2389,8.9779],[-71.2221,9.0458],[-71.2978,9.0001],[-71.6991,8.6817],[-71.8626,8.6795],[-71.9392,8.6186],[-71.9824,8.6492],[-71.9695,8.5153],[-72.0687,8.4318],[-72.2148,8.4254],[-72.3067,8.3789],[-72.3439,8.5053],[-72.351,8.4397],[-72.4013,8.4087],[-72.4093,8.3713],[-72.6518,8.6189],[-72.7748,9.1189],[-72.7929,9.1078],[-72.8196,9.1443],[-72.8237,9.1258],[-72.8784,9.1354],[-72.8946,9.1009],[-72.9446,9.0955],[-72.9839,9.1447],[-72.9527,9.1825],[-72.9951,9.2251],[-72.9832,9.2566],[-73.0091,9.2953],[-73.0704,9.2673],[-73.0881,9.2297],[-73.1282,9.2323],[-73.1741,9.1816],[-73.2491,9.1618],[-73.3776,9.1765],[-73.3547,9.2372],[-73.3179,9.2338],[-73.2401,9.4061],[-73.1882,9.4485],[-73.2005,9.4746],[-73.1718,9.4845],[-73.1348,9.5535],[-73.0815,9.5612],[-73.0528,9.6801],[-72.9429,9.8418],[-72.9923,9.8812],[-72.9765,9.8924],[-72.9909,9.929],[-72.9557,10.053],[-72.9095,10.1115],[-72.9043,10.3541],[-72.8841,10.3895],[-72.9002,10.4387],[-72.8421,10.4905],[-72.8397,10.5427],[-72.7364,10.657],[-72.6459,10.8877],[-72.5733,10.9211],[-72.4786,11.0577],[-72.4934,11.0961],[-72.3471,11.1545],[-72.2433,11.1485],[-71.9702,11.6481],[-71.3771,11.8157],[-71.3868,11.8351],[-71.3349,11.8542],[-71.3368,11.7972],[-71.4383,11.7233],[-71.8072,11.6486],[-71.9568,11.5838],[-71.9503,11.3821],[-71.8821,11.2358],[-71.766,11.093],[-71.605,10.9905],[-71.6717,10.9803],[-71.6632,11.0001],[-71.7355,11.0239],[-71.7753,11.0012],[-71.7179,10.9566],[-71.6658,10.7807],[-71.5782,10.7049],[-71.6149,10.6395],[-71.6255,10.4409],[-71.786,10.3337],[-71.9002,10.1259],[-71.9885,10.0779],[-72.0395,9.9347],[-72.1306,9.8119],[-71.9725,9.6141],[-71.958,9.5495],[-71.8993,9.4729],[-71.8226,9.4306],[-71.7631,9.3602],[-71.7124,9.3874],[-71.7383,9.358],[-71.7165,9.3448],[-71.7458,9.3356],[-71.727,9.2889],[-71.7595,9.2019],[-71.7361,9.155],[-71.7609,9.1134],[-71.7092,9.0976],[-71.6961,9.0628],[-71.6627,9.079],[-71.6381,9.0447],[-71.4935,9.0479],[-71.3433,9.091],[-71.2216,9.1667],[-71.1495,9.111]],[[-71.2636,9.0224],[-71.2636,9.0224]],[[-71.2636,9.0227],[-71.2636,9.0227]]]]}}]};
-        const venezuelaStatesData = {"AMAZONAS":{"name":"Amazonas","capital":"Puerto Ayacucho","governor":"Miguel Leonardo Rodríguez","governorTitle":"Gobernador del Estado Amazonas","startDate":"20 de octubre de 2017","party":"PSUV / GPPSB","instagram":"miguelr_amazonas","governorPhoto":"https://estatico.mazo4f.com/1637524563127253479xg.jpg","flag":"https://upload.wikimedia.org/wikipedia/commons/4/41/Flag_of_Amazonas_Indigenous_State.svg","economicProfile":"Ecosistema de minería sustentable, potencial hídrico, turismo ecológico fluvial y comercio transfronterizo con Colombia y Brasil.","keySectors":["Ecoturismo","Comercio Fronterizo","Recursos Hídricos","Agroforestal"],"lat":3.4167,"lng":-65.75,"region":"Guayana / Sur","photoLocal":"./img/gobernadores/amazonas_miguel_rodriguez.jpg","poblacion":"198.400 hab."},"ANZOATEGUI":{"name":"Anzoátegui","capital":"Barcelona","governor":"Luis José Marcano","governorTitle":"Gobernador del Estado Anzoátegui","startDate":"3 de diciembre de 2021","party":"PSUV / GPPSB","instagram":"luismarcanos","governorPhoto":"https://upload.wikimedia.org/wikipedia/commons/9/91/Luis_Marcano_Gobernador_de_Anzo%C3%A1tegui.jpg","flag":"https://upload.wikimedia.org/wikipedia/commons/7/77/Flag_of_Anzo%C3%A1tegui_State.svg","economicProfile":"Eje neurálgico energético: Complejo Criogénico de Jose, Faja Petrolífera del Orinoco, refinación, terminales portuarios y turismo costero.","keySectors":["Petróleo y Gas","Petroquímica","Turismo Costero","Pesca Industrial"],"lat":8.95,"lng":-64.4,"region":"Nororiental","photoLocal":"./img/gobernadores/anzoategui_luis_marcano.jpg","poblacion":"1.745.500 hab."},"APURE":{"name":"Apure","capital":"San Fernando de Apure","governor":"Wilmer Rodríguez","governorTitle":"Gobernador del Estado Apure","startDate":"10 de septiembre de 2024","party":"PSUV / GPPSB","instagram":"wilmerodriguezv","governorPhoto":"http://avn.info.ve/wp-content/uploads/2025/06/images-19-1.jpg","flag":"https://upload.wikimedia.org/wikipedia/commons/0/0d/Flag_of_Apure_State.svg","economicProfile":"Epicentro de ganadería extensiva bovina y bufalina, producción cárnica y quesera, piscicultura continental y comercio fluvial llanero.","keySectors":["Ganadería Bovina y Bufalina","Lácteos y Quesos","Piscicultura","Comercio Llanero"],"lat":7.0,"lng":-68.5,"region":"Los Llanos","photoLocal":"./img/gobernadores/apure_wilmer_rodriguez.jpg","poblacion":"630.500 hab."},"ARAGUA":{"name":"Aragua","capital":"Maracay","governor":"Joana Sánchez","governorTitle":"Gobernadora del Estado Aragua","startDate":"5 de junio de 2025","party":"PSUV / GPPSB","instagram":"johanitakenpo","governorPhoto":"http://www.psuv.org.ve/wp-content/uploads/2025/04/Alcaldesa-Joana-Sanchez-envio-un-mensaje.jpg","flag":"https://upload.wikimedia.org/wikipedia/commons/2/29/Flag_of_Aragua_State.svg","economicProfile":"Potente corredor agroindustrial, ensamblaje automotriz, parques industriales de Cagua y La Victoria, farmacéutica y turismo en Ocumare y Choroní.","keySectors":["Agroindustria","Metalmecánica","Farmacéutica","Textil"],"lat":10.05,"lng":-67.15,"region":"Central","photoLocal":"./img/gobernadores/aragua_joana_sanchez.jpg","poblacion":"1.878.700 hab."},"BARINAS":{"name":"Barinas","capital":"Barinas","governor":"Adán Chávez","governorTitle":"Gobernador del Estado Barinas","startDate":"9 de junio de 2025","party":"PSUV / GPPSB","instagram":"adanchavezoficial","governorPhoto":"https://upload.wikimedia.org/wikipedia/commons/3/3c/Ad%C3%A1n_Ch%C3%A1vez_%28cropped%29.jpg","flag":"https://upload.wikimedia.org/wikipedia/commons/8/87/Flag_of_Barinas_State.svg","economicProfile":"Cinturón agropecuario: cultivo de cereales (maíz, arroz), ganadería doble propósito, explotación forestal y cuenca petrolera Barinas-Apure.","keySectors":["Cereales y Arroz","Ganadería Bovina","Madera y Silvicultura","Hidrocarburos"],"lat":8.15,"lng":-70.25,"region":"Los Llanos","photoLocal":"./img/gobernadores/barinas_adan_chavez.jpg","poblacion":"970.600 hab."},"BOLIVAR":{"name":"Bolívar","capital":"Ciudad Bolívar","governor":"Yulisbeth García","governorTitle":"Gobernadora del Estado Bolívar","startDate":"4 de junio de 2025","party":"PSUV / GPPSB","instagram":"tatagarcian1","governorPhoto":"https://avn.info.ve/wp-content/uploads/2025/06/andaciresomaeoseearimujeobeelstaol3_20250605001921-scaled.jpg","flag":"https://upload.wikimedia.org/wikipedia/commons/2/2e/Flag_of_Bol%C3%ADvar_State.svg","economicProfile":"Corazón de la industria pesada nacional: empresas básicas de Guayana (siderúrgica Sidor, aluminio Venalum/Alcasa), oro, bauxita y generación hidroeléctrica del Guri.","keySectors":["Siderurgia y Aluminio","Minería (Oro, Bauxita, Hierro)","Energía Hidroeléctrica","Turismo Gran Sabana"],"lat":6.8,"lng":-63.5,"region":"Guayana","photoLocal":"./img/gobernadores/bolivar_yulisbeth_garcia.jpg","poblacion":"1.824.200 hab."},"CARABOBO":{"name":"Carabobo","capital":"Valencia","governor":"Rafael Lacava","governorTitle":"Gobernador del Estado Carabobo","startDate":"20 de octubre de 2017","party":"PSUV / GPPSB","instagram":"lacava10oficial","governorPhoto":"https://upload.wikimedia.org/wikipedia/commons/0/03/Rafael_Lacava_2025.jpg","flag":"https://upload.wikimedia.org/wikipedia/commons/0/00/Flag_of_Carabobo_State.svg","economicProfile":"Principal polo manufacturero del país y sede del puerto comercial más activo de Venezuela (Puerto Cabello), refinación de El Palito, ensamblaje y químicos.","keySectors":["Puerto Cabello (Logística)","Manufactura Industrial","Refinación Petrolera","Alimentos Procesados"],"lat":10.18,"lng":-68.0,"region":"Central","photoLocal":"./img/gobernadores/carabobo_rafael_lacava.jpg","poblacion":"2.543.600 hab."},"COJEDES":{"name":"Cojedes","capital":"San Carlos","governor":"Alberto Galíndez","governorTitle":"Gobernador del Estado Cojedes","startDate":"25 de noviembre de 2021","party":"Vamos Vamos Cojedes / Alianza","instagram":"albertogalindez_","governorPhoto":"https://upload.wikimedia.org/wikipedia/commons/3/3e/Alberto_Gal%C3%ADndez_2022.jpg","flag":"https://upload.wikimedia.org/wikipedia/commons/2/28/Flag_of_Cojedes_State.svg","economicProfile":"Actividad agroindustrial centrada en arroz, sorgo, tabaco, mango, ganadería vacuna y porcina, además de depósitos minerales no metálicos.","keySectors":["Agroindustria Cerealera","Ganadería y Porcinos","Minerales No Metálicos","Comercio Regional"],"lat":9.55,"lng":-68.4,"region":"Los Llanos","photoLocal":"./img/gobernadores/cojedes_alberto_galindez.jpg","poblacion":"370.100 hab."},"DELTA AMACURO":{"name":"Delta Amacuro","capital":"Tucupita","governor":"Loa Tamaronis","governorTitle":"Gobernadora del Estado Delta Amacuro","startDate":"4 de junio de 2025","party":"PSUV / GPPSB","instagram":"loatamaronis","governorPhoto":"https://estatico.mazo4f.com/1749071863928318268xg.jpg","flag":"https://upload.wikimedia.org/wikipedia/commons/c/c3/Flag_of_Delta_Amacuro_State.svg","economicProfile":"Riqueza petrolera en la Plataforma Deltana, gas costa afuera, pesca marítima y fluvial, palmito, y salida bioceánica por el caño Manamo hacia el Atlántico.","keySectors":["Gas Costa Afuera","Pesca y Camaroneras","Palmito y Cacao","Salida Portuaria Atlántica"],"lat":8.7,"lng":-61.5,"region":"Guayana","photoLocal":"./img/gobernadores/delta_amacuro_loa_tamaronis.jpg","poblacion":"211.600 hab."},"FALCON":{"name":"Falcón","capital":"Coro","governor":"Víctor Clark","governorTitle":"Gobernador del Estado Falcón","startDate":"20 de octubre de 2017","party":"PSUV / GPPSB","instagram":"vclarkb","governorPhoto":"https://upload.wikimedia.org/wikipedia/commons/b/b6/VictorClark.jpg","flag":"https://upload.wikimedia.org/wikipedia/commons/d/df/Flag_of_Falc%C3%B3n_State.svg","economicProfile":"Centro de Refinación Paraguaná (Amuay y Cardón) - uno de los más grandes del mundo, Zona Franca de Paraguaná, turismo de playas en Morrocoy y energía eólica.","keySectors":["Refinación Petrolera (CRP)","Zona Libre Paraguaná","Turismo Playero (Morrocoy)","Energía Eólica y Pesca"],"lat":11.15,"lng":-69.85,"region":"Centroccidental","photoLocal":"./img/gobernadores/falcon_victor_clark.jpg","poblacion":"1.077.800 hab."},"GUARICO":{"name":"Guárico","capital":"San Juan de los Morros","governor":"Donald Donaire","governorTitle":"Gobernador del Estado Guárico","startDate":"5 de junio de 2025","party":"PSUV / GPPSB","instagram":"donalddonaire","governorPhoto":"https://guarico.gob.ve/wp-content/uploads/2025/06/Foto-1-Gobernador-Donaire-juramentado-por-amor-a-Guarico.jpg","flag":"https://upload.wikimedia.org/wikipedia/commons/a/ad/Flag_of_Gu%C3%A1rico_State.svg","economicProfile":"Granero agrícola central de Venezuela: primer productor de arroz y maíz, cebolla, sorgo, ganadería de carne y leche, y enlace geoestratégico nacional.","keySectors":["Arroz y Maíz","Ganadería Bovina","Agroindustria Calabozo","Hortalizas"],"lat":8.9,"lng":-66.45,"region":"Los Llanos","photoLocal":"./img/gobernadores/guarico_donald_donaire.jpg","poblacion":"941.500 hab."},"LARA":{"name":"Lara","capital":"Barquisimeto","governor":"Luis Reyes Reyes","governorTitle":"Gobernador del Estado Lara","startDate":"9 de junio de 2025","party":"PSUV / GPPSB","instagram":"luisreyesreyes_","governorPhoto":"https://cdn.elimpulso.com/media/2025/08/Luis-Reyes-Reyes.jpg","flag":"https://upload.wikimedia.org/wikipedia/commons/b/b8/Flag_of_Lara_State.svg","economicProfile":"Encrucijada comercial del occidente del país: Mercado Mayorista Mercabar, agroindustria de caña de azúcar, hortalizas, café, avicultura e industria metalúrgica.","keySectors":["Distribución Mayorista (Mercabar)","Caña de Azúcar y Lácteos","Metalmecánica","Comercio Logístico"],"lat":10.05,"lng":-69.65,"region":"Centroccidental","photoLocal":"./img/gobernadores/lara_luis_reyes_reyes.jpg","poblacion":"2.047.800 hab."},"MERIDA":{"name":"Mérida","capital":"Mérida","governor":"Arnaldo Sánchez","governorTitle":"Gobernador del Estado Mérida","startDate":"3 de junio de 2025","party":"PSUV / GPPSB","instagram":"arnaldosanchez_","governorPhoto":"https://avn.info.ve/wp-content/uploads/2025/05/arnaldosanchezp_1748376030640-e1748376140799.jpg","flag":"https://upload.wikimedia.org/wikipedia/commons/1/15/Flag_of_M%C3%A9rida_State.svg","economicProfile":"Líder andino en producción de hortalizas (papa, zanahoria, ajo), flores de exportación, turismo de alta montaña (Teleférico Mukumbarí) y polo universitario.","keySectors":["Hortalizas de Altura","Turismo Andino (Mukumbarí)","Polo Universitario ULA","Café y Truchicultura"],"lat":8.5,"lng":-71.2,"region":"Los Andes","photoLocal":"./img/gobernadores/merida_arnaldo_sanchez.jpg","poblacion":"860.900 hab."},"MIRANDA":{"name":"Miranda","capital":"Los Teques","governor":"Elio Serrano","governorTitle":"Gobernador del Estado Miranda","startDate":"10 de septiembre de 2024","party":"PSUV / GPPSB","instagram":"elioserranoc","governorPhoto":"https://www.correodelorinoco.gob.ve/wp-content/uploads/2024/09/elio-serrano.jpg","flag":"https://upload.wikimedia.org/wikipedia/commons/8/86/Flag_of_Miranda_State.svg","economicProfile":"Segunda economía del país: parques industriales de Guarenas-Guatire y Valles del Tuy, cacao fino de aroma de Barlovento, servicios financieros y tecnología en Chacao/Baruta.","keySectors":["Servicios Financieros y Corporativos","Parques Industriales Guarenas","Cacao de Exportación Barlovento","Farmacéutica y Plásticos"],"lat":10.25,"lng":-66.6,"region":"Capital / Central","photoLocal":"./img/gobernadores/miranda_elio_serrano.jpg","poblacion":"3.222.400 hab."},"MONAGAS":{"name":"Monagas","capital":"Maturín","governor":"Ernesto Luna","governorTitle":"Gobernador del Estado Monagas","startDate":"2 de diciembre de 2021","party":"PSUV / GPPSB","instagram":"ernestolunapsuv","governorPhoto":"https://upload.wikimedia.org/wikipedia/commons/d/d1/Candidato_a_la_Gobernaci%C3%B3n_del_estado_Monagas%2C_por_el_G.P.P_y_el_Partido_Socialista_Unido_de_Venezuela_%28PSUV%29_2021.jpg","flag":"https://upload.wikimedia.org/wikipedia/commons/0/07/Flag_of_Monagas_State.svg","economicProfile":"Capital petrolera del oriente (Complejo Operacional Furrial), procesamiento de gas natural en Jusepín, plantaciones de pino Caribe en Uverito y cultivo de soya.","keySectors":["Extracción Petrolera El Furrial","Gas Natural (Jusepín)","Forestal (Pino Caribe Uverito)","Soya y Palma Aceitera"],"lat":9.5,"lng":-63.15,"region":"Nororiental","photoLocal":"./img/gobernadores/monagas_ernesto_luna.jpg","poblacion":"1.020.400 hab."},"NUEVA ESPARTA":{"name":"Nueva Esparta","capital":"La Asunción","governor":"Marisel Velásquez","governorTitle":"Gobernadora del Estado Nueva Esparta","startDate":"3 de junio de 2025","party":"PSUV / GPPSB","instagram":"mariselvelasquezoficial","governorPhoto":"https://gbvm.knoios.com/mmedia/20238/cortesia-marisel-velasquez-gobernadora-de-nueva-esparta-42399.jpg","flag":"https://upload.wikimedia.org/wikipedia/commons/5/52/Flag_of_Nueva_Esparta_State.svg","economicProfile":"Principal destino turístico del Caribe venezolano: Isla de Margarita, Puerto Libre de compras, hotelería internacional, pesca artesanal e industrial y conexiones marítimas.","keySectors":["Puerto Libre de Margarita","Turismo y Hotelería","Pesca de Altura","Inmobiliario y Comercio"],"lat":11.0,"lng":-64.0,"region":"Insular","photoLocal":"./img/gobernadores/nueva_esparta_marisel_velasquez.jpg","poblacion":"617.200 hab."},"PORTUGUESA":{"name":"Portuguesa","capital":"Guanare","governor":"Antonio Cedeño (Primitivo Cedeño)","governorTitle":"Gobernador del Estado Portuguesa","startDate":"2 de diciembre de 2021","party":"PSUV / GPPSB","instagram":"primitivo_cedeno","governorPhoto":"https://upload.wikimedia.org/wikipedia/commons/a/ae/Primitivo_Cede%C3%B1o_2023.jpg","flag":"https://upload.wikimedia.org/wikipedia/commons/2/29/Flag_of_Portuguesa_State.svg","economicProfile":"Puntal indiscutible de la soberanía alimentaria: epicentro nacional de maíz, arroz, azúcar (centrales azucareros), café, oleaginosas y plantas de harina precocida.","keySectors":["Harina Precocida y Maíz","Centrales Azucareros","Café y Oleaginosas","Silos y Almacenamiento"],"lat":9.15,"lng":-69.25,"region":"Los Llanos","photoLocal":"./img/gobernadores/portuguesa_primitivo_cedeno.jpg","poblacion":"1.032.100 hab."},"SUCRE":{"name":"Sucre","capital":"Cumaná","governor":"Jhoanna Carrillo","governorTitle":"Gobernadora del Estado Sucre","startDate":"3 de junio de 2025","party":"PSUV / GPPSB","instagram":"jhoannacarrillo_","governorPhoto":"https://eltiempove.com/wp-content/uploads/2025/03/gobernadora.jpg","flag":"https://upload.wikimedia.org/wikipedia/commons/6/6f/Flag_of_Sucre_State.svg","economicProfile":"Mayor flota y procesamiento atunero de Sudamérica (enlatadoras de Cumaná y Carúpano), salinas de Araya, cacao de Paria de alta calidad y gas en el golfo de Paria.","keySectors":["Pesca de Atún y Enlatados","Salinas de Araya","Cacao Fino de Paria","Gas Marítimo Costa Afuera"],"lat":10.4,"lng":-63.5,"region":"Nororiental","photoLocal":"./img/gobernadores/sucre_jhoanna_carrillo.jpg","poblacion":"1.083.400 hab."},"TACHIRA":{"name":"Táchira","capital":"San Cristóbal","governor":"Freddy Bernal","governorTitle":"Gobernador del Estado Táchira","startDate":"4 de diciembre de 2021","party":"PSUV / GPPSB","instagram":"freddybernalr","governorPhoto":"https://upload.wikimedia.org/wikipedia/commons/c/c9/Freddy_Bernal_%28cropped%29.png","flag":"https://upload.wikimedia.org/wikipedia/commons/6/6a/Flag_of_T%C3%A1chira_State.svg","economicProfile":"Principal paso fronterizo con Colombia (Puente Atanasio Girardot / San Antonio del Táchira), hortalizas de La Grita, manufactura de calzado, confección textil y ganadería andina.","keySectors":["Comercio Binacional Fronterizo","Hortalizas (Ferias de La Grita)","Textil y Calzado","Café y Ganadería Andina"],"lat":7.8,"lng":-72.2,"region":"Los Andes","photoLocal":"./img/gobernadores/tachira_freddy_bernal.jpg","poblacion":"1.271.500 hab."},"TRUJILLO":{"name":"Trujillo","capital":"Trujillo","governor":"Gerardo Márquez","governorTitle":"Gobernador del Estado Trujillo","startDate":"2 de diciembre de 2021","party":"PSUV / GPPSB","instagram":"gerardomarquez4f","governorPhoto":"http://avn.info.ve/wp-content/uploads/2025/06/gerardomarquez4fpsuv_1749080904302.jpg","flag":"https://upload.wikimedia.org/wikipedia/commons/d/d4/Flag_of_Trujillo_State.svg","economicProfile":"Líder en café de especialidad, hortalizas de piso térmico, fresas, plátanos en la costa del Lago de Maracaibo, y turismo religioso con el Monumento a la Paz.","keySectors":["Café de Especialidad","Hortalizas Andinas","Plátano y Frutales","Turismo Religioso"],"lat":9.35,"lng":-70.45,"region":"Los Andes","photoLocal":"./img/gobernadores/trujillo_gerardo_marquez.jpg","poblacion":"867.600 hab."},"VARGAS":{"name":"La Guaira","capital":"La Guaira","governor":"José Alejandro Terán","governorTitle":"Gobernador del Estado La Guaira","startDate":"2 de diciembre de 2021","party":"PSUV / GPPSB","instagram":"josealejandro.teran","governorPhoto":"https://avn.info.ve/wp-content/uploads/2025/06/Jose-Alejandro-Teran.png","flag":"https://upload.wikimedia.org/wikipedia/commons/2/23/Flag_of_Vargas_State.svg","economicProfile":"Puerta de entrada internacional: Aeropuerto Internacional de Maiquetía y Puerto de La Guaira. Centro de comercio exterior, aduanas, turismo de litoral y gastronomía marina.","keySectors":["Aeropuerto de Maiquetía","Puerto de La Guaira (Comercio Exterior)","Turismo de Playas","Logística y Aduanas"],"lat":10.6,"lng":-66.9,"region":"Capital / Costera","photoLocal":"./img/gobernadores/la_guaira_jose_alejandro_teran.jpg","poblacion":"398.700 hab."},"YARACUY":{"name":"Yaracuy","capital":"San Felipe","governor":"Leonardo Intoci","governorTitle":"Gobernador del Estado Yaracuy","startDate":"3 de junio de 2025","party":"PSUV / GPPSB","instagram":"leonardointoci","governorPhoto":"https://yaracuyaldia.com/wp-content/uploads/2025/06/WhatsApp-Image-2025-06-04-at-8.59.57-PM.jpeg","flag":"https://upload.wikimedia.org/wikipedia/commons/0/07/Flag_of_Yaracuy_State.svg","economicProfile":"Valle fértil agroindustrial: producción avícola masiva (huevos y carne), naranjas y cítricos, caña de azúcar, maíz y minería de arenas silíceas.","keySectors":["Avicultura Nacional","Cítricos y Naranjas","Caña de Azúcar","Agroindustria Alimentaria"],"lat":10.35,"lng":-68.75,"region":"Centroccidental","photoLocal":"./img/gobernadores/yaracuy_leonardo_intoci.jpg","poblacion":"785.100 hab."},"ZULIA":{"name":"Zulia","capital":"Maracaibo","governor":"Luis Caldera","governorTitle":"Gobernador del Estado Zulia","startDate":"11 de junio de 2025","party":"PSUV / GPPSB","instagram":"luiscalderapsuv","governorPhoto":"https://upload.wikimedia.org/wikipedia/commons/1/1d/Luis_Caldera_%282025%29.png","flag":"https://upload.wikimedia.org/wikipedia/commons/9/9f/Flag_of_Zulia_State.svg","economicProfile":"Primera economía petrolera histórica y agroalimentaria del país: cuenca petrolera del Lago de Maracaibo, petroquímica El Tablazo, carbón, palma aceitera y carne/leche en Sur del Lago.","keySectors":["Petróleo y Gas del Lago","Petroquímica El Tablazo","Ganadería y Palma Sur del Lago","Comercio Maracaibo"],"lat":10.25,"lng":-71.85,"region":"Zuliana / Occidental","photoLocal":"./img/gobernadores/zulia_luis_caldera.jpg","poblacion":"4.311.400 hab."},"DISTRITO CAPITAL":{"name":"Distrito Capital","capital":"Caracas","governor":"Nahum Fernández","governorTitle":"Jefe de Gobierno del Distrito Capital","startDate":"28 de enero de 2021","party":"PSUV / GPPSB","instagram":"nahumjfernandez","governorPhoto":"https://albaciudad.org/wp-content/uploads/2021/01/Es1N72TU4AQp_gz.jpeg","flag":"https://upload.wikimedia.org/wikipedia/commons/9/90/Flag_of_Caracas.svg","economicProfile":"Sede de los poderes públicos nacionales, Banco Central de Venezuela, Bolsa de Valores de Caracas, sedes principales de la banca privada y pública, comercio masivo y servicios.","keySectors":["Banca y Finanzas (BCV, Sedes Bancarias)","Telecomunicaciones y Tecnología","Comercio Mayorista y Minorista","Servicios Gubernamentales"],"lat":10.5,"lng":-66.91,"region":"Capital","photoLocal":"./img/gobernadores/distrito_capital_nahum_fernandez.jpg","poblacion":"2.284.900 hab."},"ZONA EN RECLAMACION":{"name":"Guayana Esequiba","capital":"Tumeremo (Administrativa) / Bochinche","governor":"Neil Villamizar","governorTitle":"Gobernador de la Guayana Esequiba","startDate":"3 de junio de 2025","party":"PSUV / GPPSB","instagram":"neilvillamizar","governorPhoto":"https://estatico.mazo4f.com/1749143784445318332xg.jpg","flag":"https://upload.wikimedia.org/wikipedia/commons/0/06/Flag_of_Venezuela.svg","economicProfile":"Territorio geoestratégico de alta riqueza natural: inmensos yacimientos de hidrocarburos costa afuera, oro, diamantes, bauxita, potencial forestal y biodiversidad.","keySectors":["Recursos Energéticos Costa Afuera","Minería Metálica y Minerales","Biodiversidad y Cuencas","Desarrollo Fronterizo"],"lat":6.5,"lng":-59.5,"region":"Esequibo","photoLocal":"./img/gobernadores/guayana_esequiba_neil_villamizar.jpg","poblacion":"125.000 hab. (Estimación)"}};
+        const venezuelaStatesData = {"AMAZONAS":{"name":"Amazonas","capital":"Puerto Ayacucho","governor":"Miguel Leonardo Rodríguez","governorTitle":"Gobernador del Estado Amazonas","startDate":"20 de octubre de 2017","party":"PSUV / GPPSB","instagram":"miguelr_amazonas","governorPhoto":"https://estatico.mazo4f.com/1637524563127253479xg.jpg","flag":"https://upload.wikimedia.org/wikipedia/commons/thumb/4/41/Flag_of_Amazonas_Indigenous_State.svg/320px-Flag_of_Amazonas_Indigenous_State.svg.png","economicProfile":"Ecosistema de minería sustentable, potencial hídrico, turismo ecológico fluvial y comercio transfronterizo con Colombia y Brasil.","keySectors":["Ecoturismo","Comercio Fronterizo","Recursos Hídricos","Agroforestal"],"lat":3.4167,"lng":-65.75,"region":"Guayana / Sur","photoLocal":"./img/gobernadores/amazonas_miguel_rodriguez.jpg","poblacion":"198.400 hab."},"ANZOATEGUI":{"name":"Anzoátegui","capital":"Barcelona","governor":"Luis José Marcano","governorTitle":"Gobernador del Estado Anzoátegui","startDate":"3 de diciembre de 2021","party":"PSUV / GPPSB","instagram":"luismarcanos","governorPhoto":"https://upload.wikimedia.org/wikipedia/commons/9/91/Luis_Marcano_Gobernador_de_Anzo%C3%A1tegui.jpg","flag":"https://upload.wikimedia.org/wikipedia/commons/thumb/7/77/Flag_of_Anzo%C3%A1tegui_State.svg/320px-Flag_of_Anzo%C3%A1tegui_State.svg.png","economicProfile":"Eje neurálgico energético: Complejo Criogénico de Jose, Faja Petrolífera del Orinoco, refinación, terminales portuarios y turismo costero.","keySectors":["Petróleo y Gas","Petroquímica","Turismo Costero","Pesca Industrial"],"lat":8.95,"lng":-64.4,"region":"Nororiental","photoLocal":"./img/gobernadores/anzoategui_luis_marcano.jpg","poblacion":"1.745.500 hab."},"APURE":{"name":"Apure","capital":"San Fernando de Apure","governor":"Wilmer Rodríguez","governorTitle":"Gobernador del Estado Apure","startDate":"10 de septiembre de 2024","party":"PSUV / GPPSB","instagram":"wilmerodriguezv","governorPhoto":"http://avn.info.ve/wp-content/uploads/2025/06/images-19-1.jpg","flag":"https://upload.wikimedia.org/wikipedia/commons/thumb/e/e0/Bandera_del_Estado_Apure.svg/320px-Bandera_del_Estado_Apure.svg.png","economicProfile":"Epicentro de ganadería extensiva bovina y bufalina, producción cárnica y quesera, piscicultura continental y comercio fluvial llanero.","keySectors":["Ganadería Bovina y Bufalina","Lácteos y Quesos","Piscicultura","Comercio Llanero"],"lat":7.0,"lng":-68.5,"region":"Los Llanos","photoLocal":"./img/gobernadores/apure_wilmer_rodriguez.jpg","poblacion":"630.500 hab."},"ARAGUA":{"name":"Aragua","capital":"Maracay","governor":"Joana Sánchez","governorTitle":"Gobernadora del Estado Aragua","startDate":"5 de junio de 2025","party":"PSUV / GPPSB","instagram":"johanitakenpo","governorPhoto":"http://www.psuv.org.ve/wp-content/uploads/2025/04/Alcaldesa-Joana-Sanchez-envio-un-mensaje.jpg","flag":"https://upload.wikimedia.org/wikipedia/commons/thumb/2/23/Flag_of_Aragua_State.svg/320px-Flag_of_Aragua_State.svg.png","economicProfile":"Potente corredor agroindustrial, ensamblaje automotriz, parques industriales de Cagua y La Victoria, farmacéutica y turismo en Ocumare y Choroní.","keySectors":["Agroindustria","Metalmecánica","Farmacéutica","Textil"],"lat":10.05,"lng":-67.15,"region":"Central","photoLocal":"./img/gobernadores/aragua_joana_sanchez.jpg","poblacion":"1.878.700 hab."},"BARINAS":{"name":"Barinas","capital":"Barinas","governor":"Adán Chávez","governorTitle":"Gobernador del Estado Barinas","startDate":"9 de junio de 2025","party":"PSUV / GPPSB","instagram":"adanchavezoficial","governorPhoto":"https://upload.wikimedia.org/wikipedia/commons/3/3c/Ad%C3%A1n_Ch%C3%A1vez_%28cropped%29.jpg","flag":"https://upload.wikimedia.org/wikipedia/commons/thumb/5/52/Flag_of_Barinas_State.svg/320px-Flag_of_Barinas_State.svg.png","economicProfile":"Cinturón agropecuario: cultivo de cereales (maíz, arroz), ganadería doble propósito, explotación forestal y cuenca petrolera Barinas-Apure.","keySectors":["Cereales y Arroz","Ganadería Bovina","Madera y Silvicultura","Hidrocarburos"],"lat":8.15,"lng":-70.25,"region":"Los Llanos","photoLocal":"./img/gobernadores/barinas_adan_chavez.jpg","poblacion":"970.600 hab."},"BOLIVAR":{"name":"Bolívar","capital":"Ciudad Bolívar","governor":"Yulisbeth García","governorTitle":"Gobernadora del Estado Bolívar","startDate":"4 de junio de 2025","party":"PSUV / GPPSB","instagram":"tatagarcian1","governorPhoto":"https://avn.info.ve/wp-content/uploads/2025/06/andaciresomaeoseearimujeobeelstaol3_20250605001921-scaled.jpg","flag":"https://upload.wikimedia.org/wikipedia/commons/thumb/8/87/Flag_of_Bol%C3%ADvar_State.svg/320px-Flag_of_Bol%C3%ADvar_State.svg.png","economicProfile":"Corazón de la industria pesada nacional: empresas básicas de Guayana (siderúrgica Sidor, aluminio Venalum/Alcasa), oro, bauxita y generación hidroeléctrica del Guri.","keySectors":["Siderurgia y Aluminio","Minería (Oro, Bauxita, Hierro)","Energía Hidroeléctrica","Turismo Gran Sabana"],"lat":6.8,"lng":-63.5,"region":"Guayana","photoLocal":"./img/gobernadores/bolivar_yulisbeth_garcia.jpg","poblacion":"1.824.200 hab."},"CARABOBO":{"name":"Carabobo","capital":"Valencia","governor":"Rafael Lacava","governorTitle":"Gobernador del Estado Carabobo","startDate":"20 de octubre de 2017","party":"PSUV / GPPSB","instagram":"lacava10oficial","governorPhoto":"https://upload.wikimedia.org/wikipedia/commons/0/03/Rafael_Lacava_2025.jpg","flag":"https://upload.wikimedia.org/wikipedia/commons/thumb/1/16/Bandera_del_Estado_Carabobo.svg/320px-Bandera_del_Estado_Carabobo.svg.png","economicProfile":"Principal polo manufacturero del país y sede del puerto comercial más activo de Venezuela (Puerto Cabello), refinación de El Palito, ensamblaje y químicos.","keySectors":["Puerto Cabello (Logística)","Manufactura Industrial","Refinación Petrolera","Alimentos Procesados"],"lat":10.18,"lng":-68.0,"region":"Central","photoLocal":"./img/gobernadores/carabobo_rafael_lacava.jpg","poblacion":"2.543.600 hab."},"COJEDES":{"name":"Cojedes","capital":"San Carlos","governor":"Alberto Galíndez","governorTitle":"Gobernador del Estado Cojedes","startDate":"25 de noviembre de 2021","party":"Vamos Vamos Cojedes / Alianza","instagram":"albertogalindez_","governorPhoto":"https://upload.wikimedia.org/wikipedia/commons/3/3e/Alberto_Gal%C3%ADndez_2022.jpg","flag":"https://upload.wikimedia.org/wikipedia/commons/thumb/c/cd/Flag_of_Cojedes_State.svg/320px-Flag_of_Cojedes_State.svg.png","economicProfile":"Actividad agroindustrial centrada en arroz, sorgo, tabaco, mango, ganadería vacuna y porcina, además de depósitos minerales no metálicos.","keySectors":["Agroindustria Cerealera","Ganadería y Porcinos","Minerales No Metálicos","Comercio Regional"],"lat":9.55,"lng":-68.4,"region":"Los Llanos","photoLocal":"./img/gobernadores/cojedes_alberto_galindez.jpg","poblacion":"370.100 hab."},"DELTA AMACURO":{"name":"Delta Amacuro","capital":"Tucupita","governor":"Loa Tamaronis","governorTitle":"Gobernadora del Estado Delta Amacuro","startDate":"4 de junio de 2025","party":"PSUV / GPPSB","instagram":"loatamaronis","governorPhoto":"https://estatico.mazo4f.com/1749071863928318268xg.jpg","flag":"https://upload.wikimedia.org/wikipedia/commons/thumb/8/81/Flag_of_Delta_Amacuro_State.svg/320px-Flag_of_Delta_Amacuro_State.svg.png","economicProfile":"Riqueza petrolera en la Plataforma Deltana, gas costa afuera, pesca marítima y fluvial, palmito, y salida bioceánica por el caño Manamo hacia el Atlántico.","keySectors":["Gas Costa Afuera","Pesca y Camaroneras","Palmito y Cacao","Salida Portuaria Atlántica"],"lat":8.7,"lng":-61.5,"region":"Guayana","photoLocal":"./img/gobernadores/delta_amacuro_loa_tamaronis.jpg","poblacion":"211.600 hab."},"FALCON":{"name":"Falcón","capital":"Coro","governor":"Víctor Clark","governorTitle":"Gobernador del Estado Falcón","startDate":"20 de octubre de 2017","party":"PSUV / GPPSB","instagram":"vclarkb","governorPhoto":"https://upload.wikimedia.org/wikipedia/commons/b/b6/VictorClark.jpg","flag":"https://upload.wikimedia.org/wikipedia/commons/thumb/6/68/Flag_of_Falc%C3%B3n_State.svg/320px-Flag_of_Falc%C3%B3n_State.svg.png","economicProfile":"Centro de Refinación Paraguaná (Amuay y Cardón) - uno de los más grandes del mundo, Zona Franca de Paraguaná, turismo de playas en Morrocoy y energía eólica.","keySectors":["Refinación Petrolera (CRP)","Zona Libre Paraguaná","Turismo Playero (Morrocoy)","Energía Eólica y Pesca"],"lat":11.15,"lng":-69.85,"region":"Centroccidental","photoLocal":"./img/gobernadores/falcon_victor_clark.jpg","poblacion":"1.077.800 hab."},"GUARICO":{"name":"Guárico","capital":"San Juan de los Morros","governor":"Donald Donaire","governorTitle":"Gobernador del Estado Guárico","startDate":"5 de junio de 2025","party":"PSUV / GPPSB","instagram":"donalddonaire","governorPhoto":"https://guarico.gob.ve/wp-content/uploads/2025/06/Foto-1-Gobernador-Donaire-juramentado-por-amor-a-Guarico.jpg","flag":"https://upload.wikimedia.org/wikipedia/commons/thumb/5/51/Flag_of_Gu%C3%A1rico_State.svg/320px-Flag_of_Gu%C3%A1rico_State.svg.png","economicProfile":"Granero agrícola central de Venezuela: primer productor de arroz y maíz, cebolla, sorgo, ganadería de carne y leche, y enlace geoestratégico nacional.","keySectors":["Arroz y Maíz","Ganadería Bovina","Agroindustria Calabozo","Hortalizas"],"lat":8.9,"lng":-66.45,"region":"Los Llanos","photoLocal":"./img/gobernadores/guarico_donald_donaire.jpg","poblacion":"941.500 hab."},"LARA":{"name":"Lara","capital":"Barquisimeto","governor":"Luis Reyes Reyes","governorTitle":"Gobernador del Estado Lara","startDate":"9 de junio de 2025","party":"PSUV / GPPSB","instagram":"luisreyesreyes_","governorPhoto":"https://cdn.elimpulso.com/media/2025/08/Luis-Reyes-Reyes.jpg","flag":"https://upload.wikimedia.org/wikipedia/commons/thumb/0/02/Bandera_del_Estado_Lara.svg/320px-Bandera_del_Estado_Lara.svg.png","economicProfile":"Encrucijada comercial del occidente del país: Mercado Mayorista Mercabar, agroindustria de caña de azúcar, hortalizas, café, avicultura e industria metalúrgica.","keySectors":["Distribución Mayorista (Mercabar)","Caña de Azúcar y Lácteos","Metalmecánica","Comercio Logístico"],"lat":10.05,"lng":-69.65,"region":"Centroccidental","photoLocal":"./img/gobernadores/lara_luis_reyes_reyes.jpg","poblacion":"2.047.800 hab."},"MERIDA":{"name":"Mérida","capital":"Mérida","governor":"Arnaldo Sánchez","governorTitle":"Gobernador del Estado Mérida","startDate":"3 de junio de 2025","party":"PSUV / GPPSB","instagram":"arnaldosanchez_","governorPhoto":"https://avn.info.ve/wp-content/uploads/2025/05/arnaldosanchezp_1748376030640-e1748376140799.jpg","flag":"https://upload.wikimedia.org/wikipedia/commons/thumb/c/c5/Flag_of_M%C3%A9rida_State.svg/320px-Flag_of_M%C3%A9rida_State.svg.png","economicProfile":"Líder andino en producción de hortalizas (papa, zanahoria, ajo), flores de exportación, turismo de alta montaña (Teleférico Mukumbarí) y polo universitario.","keySectors":["Hortalizas de Altura","Turismo Andino (Mukumbarí)","Polo Universitario ULA","Café y Truchicultura"],"lat":8.5,"lng":-71.2,"region":"Los Andes","photoLocal":"./img/gobernadores/merida_arnaldo_sanchez.jpg","poblacion":"860.900 hab."},"MIRANDA":{"name":"Miranda","capital":"Los Teques","governor":"Elio Serrano","governorTitle":"Gobernador del Estado Miranda","startDate":"10 de septiembre de 2024","party":"PSUV / GPPSB","instagram":"elioserranoc","governorPhoto":"https://www.correodelorinoco.gob.ve/wp-content/uploads/2024/09/elio-serrano.jpg","flag":"https://upload.wikimedia.org/wikipedia/commons/thumb/8/88/Flag_of_Miranda_State.svg/320px-Flag_of_Miranda_State.svg.png","economicProfile":"Segunda economía del país: parques industriales de Guarenas-Guatire y Valles del Tuy, cacao fino de aroma de Barlovento, servicios financieros y tecnología en Chacao/Baruta.","keySectors":["Servicios Financieros y Corporativos","Parques Industriales Guarenas","Cacao de Exportación Barlovento","Farmacéutica y Plásticos"],"lat":10.25,"lng":-66.6,"region":"Capital / Central","photoLocal":"./img/gobernadores/miranda_elio_serrano.jpg","poblacion":"3.222.400 hab."},"MONAGAS":{"name":"Monagas","capital":"Maturín","governor":"Ernesto Luna","governorTitle":"Gobernador del Estado Monagas","startDate":"2 de diciembre de 2021","party":"PSUV / GPPSB","instagram":"ernestolunapsuv","governorPhoto":"https://upload.wikimedia.org/wikipedia/commons/d/d1/Candidato_a_la_Gobernaci%C3%B3n_del_estado_Monagas%2C_por_el_G.P.P_y_el_Partido_Socialista_Unido_de_Venezuela_%28PSUV%29_2021.jpg","flag":"https://upload.wikimedia.org/wikipedia/commons/thumb/2/23/Flag_of_Monagas_State.svg/320px-Flag_of_Monagas_State.svg.png","economicProfile":"Capital petrolera del oriente (Complejo Operacional Furrial), procesamiento de gas natural en Jusepín, plantaciones de pino Caribe en Uverito y cultivo de soya.","keySectors":["Extracción Petrolera El Furrial","Gas Natural (Jusepín)","Forestal (Pino Caribe Uverito)","Soya y Palma Aceitera"],"lat":9.5,"lng":-63.15,"region":"Nororiental","photoLocal":"./img/gobernadores/monagas_ernesto_luna.jpg","poblacion":"1.020.400 hab."},"NUEVA ESPARTA":{"name":"Nueva Esparta","capital":"La Asunción","governor":"Marisel Velásquez","governorTitle":"Gobernadora del Estado Nueva Esparta","startDate":"3 de junio de 2025","party":"PSUV / GPPSB","instagram":"mariselvelasquezoficial","governorPhoto":"https://gbvm.knoios.com/mmedia/20238/cortesia-marisel-velasquez-gobernadora-de-nueva-esparta-42399.jpg","flag":"https://upload.wikimedia.org/wikipedia/commons/thumb/f/f7/Flag_of_Nueva_Esparta.svg/320px-Flag_of_Nueva_Esparta.svg.png","economicProfile":"Principal destino turístico del Caribe venezolano: Isla de Margarita, Puerto Libre de compras, hotelería internacional, pesca artesanal e industrial y conexiones marítimas.","keySectors":["Puerto Libre de Margarita","Turismo y Hotelería","Pesca de Altura","Inmobiliario y Comercio"],"lat":11.0,"lng":-64.0,"region":"Insular","photoLocal":"./img/gobernadores/nueva_esparta_marisel_velasquez.jpg","poblacion":"617.200 hab."},"PORTUGUESA":{"name":"Portuguesa","capital":"Guanare","governor":"Antonio Cedeño (Primitivo Cedeño)","governorTitle":"Gobernador del Estado Portuguesa","startDate":"2 de diciembre de 2021","party":"PSUV / GPPSB","instagram":"primitivo_cedeno","governorPhoto":"https://upload.wikimedia.org/wikipedia/commons/a/ae/Primitivo_Cede%C3%B1o_2023.jpg","flag":"https://upload.wikimedia.org/wikipedia/commons/thumb/7/7b/Bandera_del_Estado_Portuguesa.svg/320px-Bandera_del_Estado_Portuguesa.svg.png","economicProfile":"Puntal indiscutible de la soberanía alimentaria: epicentro nacional de maíz, arroz, azúcar (centrales azucareros), café, oleaginosas y plantas de harina precocida.","keySectors":["Harina Precocida y Maíz","Centrales Azucareros","Café y Oleaginosas","Silos y Almacenamiento"],"lat":9.15,"lng":-69.25,"region":"Los Llanos","photoLocal":"./img/gobernadores/portuguesa_primitivo_cedeno.jpg","poblacion":"1.032.100 hab."},"SUCRE":{"name":"Sucre","capital":"Cumaná","governor":"Jhoanna Carrillo","governorTitle":"Gobernadora del Estado Sucre","startDate":"3 de junio de 2025","party":"PSUV / GPPSB","instagram":"jhoannacarrillo_","governorPhoto":"https://eltiempove.com/wp-content/uploads/2025/03/gobernadora.jpg","flag":"https://upload.wikimedia.org/wikipedia/commons/thumb/9/98/Flag_of_Sucre_State.svg/320px-Flag_of_Sucre_State.svg.png","economicProfile":"Mayor flota y procesamiento atunero de Sudamérica (enlatadoras de Cumaná y Carúpano), salinas de Araya, cacao de Paria de alta calidad y gas en el golfo de Paria.","keySectors":["Pesca de Atún y Enlatados","Salinas de Araya","Cacao Fino de Paria","Gas Marítimo Costa Afuera"],"lat":10.4,"lng":-63.5,"region":"Nororiental","photoLocal":"./img/gobernadores/sucre_jhoanna_carrillo.jpg","poblacion":"1.083.400 hab."},"TACHIRA":{"name":"Táchira","capital":"San Cristóbal","governor":"Freddy Bernal","governorTitle":"Gobernador del Estado Táchira","startDate":"4 de diciembre de 2021","party":"PSUV / GPPSB","instagram":"freddybernalr","governorPhoto":"https://upload.wikimedia.org/wikipedia/commons/c/c9/Freddy_Bernal_%28cropped%29.png","flag":"https://upload.wikimedia.org/wikipedia/commons/thumb/4/4c/Bandera_del_Estado_T%C3%A1chira.svg/320px-Bandera_del_Estado_T%C3%A1chira.svg.png","economicProfile":"Principal paso fronterizo con Colombia (Puente Atanasio Girardot / San Antonio del Táchira), hortalizas de La Grita, manufactura de calzado, confección textil y ganadería andina.","keySectors":["Comercio Binacional Fronterizo","Hortalizas (Ferias de La Grita)","Textil y Calzado","Café y Ganadería Andina"],"lat":7.8,"lng":-72.2,"region":"Los Andes","photoLocal":"./img/gobernadores/tachira_freddy_bernal.jpg","poblacion":"1.271.500 hab."},"TRUJILLO":{"name":"Trujillo","capital":"Trujillo","governor":"Gerardo Márquez","governorTitle":"Gobernador del Estado Trujillo","startDate":"2 de diciembre de 2021","party":"PSUV / GPPSB","instagram":"gerardomarquez4f","governorPhoto":"http://avn.info.ve/wp-content/uploads/2025/06/gerardomarquez4fpsuv_1749080904302.jpg","flag":"https://upload.wikimedia.org/wikipedia/commons/thumb/d/d4/Bandera_del_Estado_Trujillo.svg/320px-Bandera_del_Estado_Trujillo.svg.png","economicProfile":"Líder en café de especialidad, hortalizas de piso térmico, fresas, plátanos en la costa del Lago de Maracaibo, y turismo religioso con el Monumento a la Paz.","keySectors":["Café de Especialidad","Hortalizas Andinas","Plátano y Frutales","Turismo Religioso"],"lat":9.35,"lng":-70.45,"region":"Los Andes","photoLocal":"./img/gobernadores/trujillo_gerardo_marquez.jpg","poblacion":"867.600 hab."},"VARGAS":{"name":"La Guaira","capital":"La Guaira","governor":"José Alejandro Terán","governorTitle":"Gobernador del Estado La Guaira","startDate":"2 de diciembre de 2021","party":"PSUV / GPPSB","instagram":"josealejandro.teran","governorPhoto":"https://avn.info.ve/wp-content/uploads/2025/06/Jose-Alejandro-Teran.png","flag":"https://upload.wikimedia.org/wikipedia/commons/thumb/c/c8/Bandera_del_Estado_La_Guaira.svg/320px-Bandera_del_Estado_La_Guaira.svg.png","economicProfile":"Puerta de entrada internacional: Aeropuerto Internacional de Maiquetía y Puerto de La Guaira. Centro de comercio exterior, aduanas, turismo de litoral y gastronomía marina.","keySectors":["Aeropuerto de Maiquetía","Puerto de La Guaira (Comercio Exterior)","Turismo de Playas","Logística y Aduanas"],"lat":10.6,"lng":-66.9,"region":"Capital / Costera","photoLocal":"./img/gobernadores/la_guaira_jose_alejandro_teran.jpg","poblacion":"398.700 hab."},"YARACUY":{"name":"Yaracuy","capital":"San Felipe","governor":"Leonardo Intoci","governorTitle":"Gobernador del Estado Yaracuy","startDate":"3 de junio de 2025","party":"PSUV / GPPSB","instagram":"leonardointoci","governorPhoto":"https://yaracuyaldia.com/wp-content/uploads/2025/06/WhatsApp-Image-2025-06-04-at-8.59.57-PM.jpeg","flag":"https://upload.wikimedia.org/wikipedia/commons/thumb/d/db/Flag_of_Yaracuy_State.svg/320px-Flag_of_Yaracuy_State.svg.png","economicProfile":"Valle fértil agroindustrial: producción avícola masiva (huevos y carne), naranjas y cítricos, caña de azúcar, maíz y minería de arenas silíceas.","keySectors":["Avicultura Nacional","Cítricos y Naranjas","Caña de Azúcar","Agroindustria Alimentaria"],"lat":10.35,"lng":-68.75,"region":"Centroccidental","photoLocal":"./img/gobernadores/yaracuy_leonardo_intoci.jpg","poblacion":"785.100 hab."},"ZULIA":{"name":"Zulia","capital":"Maracaibo","governor":"Luis Caldera","governorTitle":"Gobernador del Estado Zulia","startDate":"11 de junio de 2025","party":"PSUV / GPPSB","instagram":"luiscalderapsuv","governorPhoto":"https://upload.wikimedia.org/wikipedia/commons/1/1d/Luis_Caldera_%282025%29.png","flag":"https://upload.wikimedia.org/wikipedia/commons/thumb/6/60/Flag_of_Zulia_State.svg/320px-Flag_of_Zulia_State.svg.png","economicProfile":"Primera economía petrolera histórica y agroalimentaria del país: cuenca petrolera del Lago de Maracaibo, petroquímica El Tablazo, carbón, palma aceitera y carne/leche en Sur del Lago.","keySectors":["Petróleo y Gas del Lago","Petroquímica El Tablazo","Ganadería y Palma Sur del Lago","Comercio Maracaibo"],"lat":10.25,"lng":-71.85,"region":"Zuliana / Occidental","photoLocal":"./img/gobernadores/zulia_luis_caldera.jpg","poblacion":"4.311.400 hab."},"DISTRITO CAPITAL":{"name":"Distrito Capital","capital":"Caracas","governor":"Nahum Fernández","governorTitle":"Jefe de Gobierno del Distrito Capital","startDate":"28 de enero de 2021","party":"PSUV / GPPSB","instagram":"nahumjfernandez","governorPhoto":"https://albaciudad.org/wp-content/uploads/2021/01/Es1N72TU4AQp_gz.jpeg","flag":"https://upload.wikimedia.org/wikipedia/commons/thumb/5/5c/Bandera_de_Caracas.svg/320px-Bandera_de_Caracas.svg.png","economicProfile":"Sede de los poderes públicos nacionales, Banco Central de Venezuela, Bolsa de Valores de Caracas, sedes principales de la banca privada y pública, comercio masivo y servicios.","keySectors":["Banca y Finanzas (BCV, Sedes Bancarias)","Telecomunicaciones y Tecnología","Comercio Mayorista y Minorista","Servicios Gubernamentales"],"lat":10.5,"lng":-66.91,"region":"Capital","photoLocal":"./img/gobernadores/distrito_capital_nahum_fernandez.jpg","poblacion":"2.284.900 hab."},"ZONA EN RECLAMACION":{"name":"Guayana Esequiba","capital":"Tumeremo (Administrativa) / Bochinche","governor":"Neil Villamizar","governorTitle":"Gobernador de la Guayana Esequiba","startDate":"3 de junio de 2025","party":"PSUV / GPPSB","instagram":"neilvillamizar","governorPhoto":"https://estatico.mazo4f.com/1749143784445318332xg.jpg","flag":"https://upload.wikimedia.org/wikipedia/commons/thumb/0/06/Flag_of_Venezuela.svg/320px-Flag_of_Venezuela.svg.png","economicProfile":"Territorio geoestratégico de alta riqueza natural: inmensos yacimientos de hidrocarburos costa afuera, oro, diamantes, bauxita, potencial forestal y biodiversidad.","keySectors":["Recursos Energéticos Costa Afuera","Minería Metálica y Minerales","Biodiversidad y Cuencas","Desarrollo Fronterizo"],"lat":6.5,"lng":-59.5,"region":"Esequibo","photoLocal":"./img/gobernadores/guayana_esequiba_neil_villamizar.jpg","poblacion":"125.000 hab. (Estimación)"}};
         const STATE_DETECTION_RULES = {"AMAZONAS":["amazonas","puerto ayacucho","atabapo","maroa","rio negro","autana","manapiare"],"ANZOATEGUI":["anzoategui","anzoátegui","barcelona","puerto la cruz","lecheria","lechería","el tigre","anaco","guanta","cantaura","pariaguan","pariaguán","complejo jose","criogenico de jose","criogénico de jose"],"APURE":["apure","san fernando de apure","achaguas","guasdualito","biruaca","elorza","bruzual"],"ARAGUA":["aragua","maracay","cagua","turmero","la victoria","el limon","el limón","villa de cura","chuao","san mateo","santa cruz de aragua"],"BARINAS":["barinas","barinitas","socopo","socopó","pedraza","santa barbara de barinas","sabaneta"],"BOLIVAR":["bolivar","bolívar","ciudad guayana","puerto ordaz","ciudad bolivar","ciudad bolívar","san felix","san félix","upata","gran sabana","santa elena de uairen","santa elena de uairén","sidor","guri","cvg","venalum","ferrominera"],"CARABOBO":["carabobo","valencia","puerto cabello","guacara","naguanagua","san diego","los guayos","mariara","bejuma","moron","morón","el palmito"],"COJEDES":["cojedes","san carlos","tinaquillo","tinaco","el baul","el baúl"],"DELTA AMACURO":["delta amacuro","tucupita","pedernales","antonio diaz","antonio díaz","curiapo"],"FALCON":["falcon","falcón","coro","punto fijo","paraguana","paraguaná","amuay","cardon","cardón","chichiriviche","tucacas","la vela de coro","morrocoy"],"GUARICO":["guarico","guárico","san juan de los morros","calabozo","valle de la pascua","zaraza","altagracia de orituco","camaguan","camaguán"],"LARA":["lara","barquisimeto","cabudare","carora","el tocuyo","quibor","quíbor","duaca","sarare","sanare"],"MERIDA":["merida","mérida","el vigia","el vigía","tovar","mucuchies","mucuchíes","ejido","lagunillas","pico bolivar"],"MIRANDA":["miranda","los teques","guarenas","guatire","valles del tuy","charallave","cua","cúa","chacao","baruta","el hatillo","petare","higuerote","rio chico","río chico","barlovento","san antonio de los altos","ocumare del tuy"],"MONAGAS":["monagas","maturin","maturín","caripe","punceres","el furrial","temblador","uverito"],"NUEVA ESPARTA":["nueva esparta","margarita","porlamar","pampatar","juan griego","la asuncion","la asunción","coche","isla de margarita","el yaque"],"PORTUGUESA":["portuguesa","guanare","acarigua","araure","turen","turén","ospino","biscucuy"],"SUCRE":["sucre","cumana","cumaná","carupano","carúpano","guiria","güiria","araya","cariaco","paria"],"TACHIRA":["tachira","táchira","san cristobal","san cristóbal","san antonio del tachira","san antonio del táchira","rubio","tariba","táriba","la fria","la fría","ureña","urena","coloncito"],"TRUJILLO":["trujillo","valera","bocono","boconó","betijoque","sabana de mendoza","monay"],"VARGAS":["la guaira","vargas","maiquetia","maiquetía","caraballeda","catia la mar","macuto","naiguata","naiguatá","puerto de la guaira","aeropuerto de maiquetia"],"YARACUY":["yaracuy","san felipe","yaritagua","chivacoa","nirgua","urachiche"],"ZULIA":["zulia","maracaibo","san francisco","cabimas","ciudad ojeda","machiques","la villa del rosario","santa barbara del zulia","costa oriental del lago","el tablazo","lagunillas","mara","guajira","bachaquero"],"DISTRITO CAPITAL":["distrito capital","caracas","municipio libertador","catia","el paraiso","el paraíso","la candelaria","el valle","miraflores","banco central de venezuela","bcv","antimano","sucre de caracas"],"ZONA EN RECLAMACION":["esequibo","esequiba","guayana esequiba","tumeremo","san martin de turumbang"]};
 
         // Helper para renderizar la Bandera Oficial de Venezuela en SVG Vectorial de alta calidad
@@ -4911,7 +4859,6 @@
         function detectStateFromNews(item) {
             const text = ((item.titular || '') + ' ' + (item.extracto || '')).toLowerCase();
             
-            // 1. Verificar coincidencia por reglas de ciudades y gentilicios
             for (const [stKey, keywords] of Object.entries(STATE_DETECTION_RULES)) {
                 for (const kw of keywords) {
                     const regex = new RegExp('\\b' + kw.replace(/[.*+?^${}()|[\]\\]/g, '\\$&') + '\\b', 'i');
@@ -4921,7 +4868,6 @@
                 }
             }
 
-            // 2. Verificar campo original si ya traía un estado
             const orig = (item.estado_relacionado || item.estado || '').toUpperCase().trim();
             if (orig && orig !== 'NACIONAL') {
                 const norm = normalizeStateName(orig);
@@ -4993,24 +4939,21 @@
         let currentSelectedMedia = null;
         let currentDatePreset = 'all';
         let isBannerExpanded = false;
-        let currentBannerTab = 'entities'; // 'entities' o 'news'
-        let currentDialMode = 'gov'; // 'gov' o 'media'
-        let swiperGov = null;
-        let swiperMedia = null;
+        let currentBannerTab = 'entities'; // 'entities' o 'news' (cuando está en vista nacional)
+        let currentDockMode = 'gov'; // 'gov' o 'media'
 
         // ==========================================
         // INICIALIZACIÓN DE LA APLICACIÓN
         // ==========================================
         async function initApp() {
-            // Insertar banderas de Venezuela en los slots
-            document.querySelectorAll('#splash-flag-container, #header-flag-slot, #banner-flag-slot, #footer-flag-slot').forEach(el => {
+            document.querySelectorAll('#splash-flag-container, #header-flag-slot, #footer-flag-slot').forEach(el => {
                 el.innerHTML = getVenezuelaFlagSvg();
             });
 
             adjustLayoutHeight();
             window.addEventListener('resize', adjustLayoutHeight);
 
-            // 1. Inicializar Mapa con OpenStreetMap 100% abierto (Sin Carto, sin API keys)
+            // 1. Inicializar Mapa con OpenStreetMap 100% abierto
             initMap();
 
             // 2. Cargar Noticias (con fallback autónomo) y detectar ciudades/estados
@@ -5023,12 +4966,14 @@
             // 4. Poblar opciones de filtros
             populateFilterOptions();
 
-            // 5. Inicializar el Selector tipo Dial 3D
-            initDialSelectors();
+            // 5. Inicializar el Apple Dock Interactivo con GSAP
+            renderAppleDock();
+            initAppleDockMagnification();
 
             // 6. Aplicar filtros y mostrar Vista Nacional con Delcy
             applyFilters();
             showNationalOverview();
+            renderBottomBannerHeader();
 
             // Animación de entrada GSAP
             setTimeout(() => {
@@ -5040,12 +4985,13 @@
                     const footer = document.getElementById('corporate-footer');
                     gsap.to([app, footer], { opacity: 1, duration: 0.8, ease: "power2.out" });
                 }, 700);
-            }, 1000);
+            }, 900);
         }
 
         function adjustLayoutHeight() {
             const windowHeight = window.innerHeight;
             const bannerHeight = document.getElementById('region-banner').offsetHeight;
+            const footerHeight = document.getElementById('corporate-footer').offsetHeight;
             const availableHeight = windowHeight - bannerHeight;
             
             const appContainer = document.getElementById('app-container');
@@ -5083,7 +5029,6 @@
             const stateKey = normalizeStateName(rawName);
             const count = (newsByState.get(stateKey) || []).length;
             
-            // Densidad de calor según cantidad de noticias
             let fillOpacity = 0.20;
             let fillColor = '#005EB8';
             
@@ -5100,12 +5045,12 @@
 
             if (currentSelectedState === stateKey) {
                 fillColor = '#D97706';
-                fillOpacity = 0.55;
+                fillOpacity = 0.58;
             }
 
             return {
                 fillColor: fillColor,
-                weight: currentSelectedState === stateKey ? 3 : 1.5,
+                weight: currentSelectedState === stateKey ? 3.5 : 1.5,
                 opacity: 0.9,
                 color: currentSelectedState === stateKey ? '#ffffff' : '#ffffff',
                 fillOpacity: fillOpacity,
@@ -5124,6 +5069,7 @@
                     const stateKey = normalizeStateName(rawName);
                     const stateMeta = venezuelaStatesData[stateKey] || { name: rawName, governor: "Autoridad Regional", poblacion: "N/A" };
                     const count = (newsByState.get(stateKey) || []).length;
+                    const flagUrl = stateMeta.flag || 'https://upload.wikimedia.org/wikipedia/commons/thumb/0/06/Flag_of_Venezuela.svg/320px-Flag_of_Venezuela.svg.png';
 
                     layer.on({
                         mouseover: function(e) {
@@ -5148,12 +5094,12 @@
 
                     layer.bindTooltip(`
                         <div class="text-left font-sans">
-                            <div class="flex items-center gap-1.5 mb-1">
-                                ${getVenezuelaFlagSvg("w-4 h-2.5 rounded-[1px]")}
+                            <div class="flex items-center gap-2 mb-1">
+                                <img src="${flagUrl}" referrerpolicy="no-referrer" class="w-5 h-3.5 object-cover rounded-[2px] shadow-2xs border border-gray-300" onerror="this.src='https://upload.wikimedia.org/wikipedia/commons/thumb/0/06/Flag_of_Venezuela.svg/320px-Flag_of_Venezuela.svg.png'"/>
                                 <strong class="text-xs text-nativa-marine font-extrabold uppercase">${stateMeta.name}</strong>
                             </div>
                             <div class="text-[10px] text-gray-700 mb-0.5"><span class="font-bold text-nativa-marine oswald-title">${stateMeta.governor}</span></div>
-                            <div class="text-[9px] text-gray-500 mb-1">Población: <b>${stateMeta.poblacion || 'Censo INE'}</b></div>
+                            <div class="text-[9px] text-gray-500 mb-1">Población (Censo INE): <b>${stateMeta.poblacion || 'Datos INE'}</b></div>
                             <div class="inline-block bg-blue-100 text-nativa-marine font-black text-[10px] px-2 py-0.5 rounded-full border border-blue-200">
                                 ${count} noticias mapeadas
                             </div>
@@ -5193,7 +5139,7 @@
         async function loadNewsData() {
             let raw = null;
 
-            // 1. Intento primario: fetch dinámico (servidor local o HTTP)
+            // 1. Intento primario: fetch dinámico
             try {
                 const res = await fetch('data.json?v=' + Date.now());
                 if (res.ok) {
@@ -5216,7 +5162,6 @@
             rawNewsData = raw.map(item => {
                 const rawDate = item.fecha || item.pubDate || item.date;
                 const parsedDate = parseNewsDate(rawDate);
-                // Detección profunda por ciudades, gentilicios y palabras clave
                 const stateKey = detectStateFromNews(item);
                 return {
                     titular: item.titular || item.title || 'Sin titular',
@@ -5233,7 +5178,6 @@
             rebuildStateNewsIndex(rawNewsData);
 
             document.getElementById('total-news-count').innerText = rawNewsData.length;
-            document.getElementById('banner-news-badge').innerText = rawNewsData.length;
         }
 
         function rebuildStateNewsIndex(newsList) {
@@ -5246,156 +5190,184 @@
         }
 
         // ==========================================
-        // SELECTOR TIPO DIAL 3D (SWIPER.JS)
+        // APPLE-STYLE DOCK CON ANIMACIONES GSAP
         // ==========================================
-        function initDialSelectors() {
-            // 1. Construir slides de Gobernadores (24 entidades)
-            const govWrapper = document.getElementById('dial-gov-wrapper');
-            govWrapper.innerHTML = '';
-            
-            Object.keys(venezuelaStatesData).sort().forEach(k => {
-                const s = venezuelaStatesData[k];
-                const count = (newsByState.get(k) || []).length;
-                const photo = s.photoLocal || `./img/gobernadores/${k.toLowerCase().replace(/ /g, '_')}.jpg`;
-                
-                const slide = document.createElement('div');
-                slide.className = 'swiper-slide cursor-pointer text-center';
-                slide.setAttribute('data-state-key', k);
-                slide.innerHTML = `
-                    <div class="bg-white p-2 rounded-xl shadow-md border border-gray-200 flex flex-col items-center hover:border-nativa-marine transition-all">
-                        <div class="w-12 h-12 rounded-full overflow-hidden border-2 border-nativa-marine mb-1 shadow-sm bg-slate-900 shrink-0">
+        function renderAppleDock() {
+            const dock = document.getElementById('apple-dock');
+            dock.innerHTML = '';
+
+            if (currentDockMode === 'gov') {
+                // Renderizar 24 Gobernadores con Banderas y Fotos
+                Object.keys(venezuelaStatesData).sort().forEach(k => {
+                    const s = venezuelaStatesData[k];
+                    const count = (newsByState.get(k) || []).length;
+                    const photo = s.photoLocal || `./img/gobernadores/${k.toLowerCase().replace(/ /g, '_')}.jpg`;
+                    const flag = s.flag || 'https://upload.wikimedia.org/wikipedia/commons/thumb/0/06/Flag_of_Venezuela.svg/320px-Flag_of_Venezuela.svg.png';
+                    const isActive = currentSelectedState === k;
+
+                    const item = document.createElement('div');
+                    item.className = `apple-dock-item ${isActive ? 'active-dock' : ''}`;
+                    item.setAttribute('data-key', k);
+                    item.setAttribute('data-title', `${s.name} • ${s.governor}`);
+                    item.setAttribute('data-sub', `${count} noticias registradas`);
+
+                    item.innerHTML = `
+                        <div class="apple-dock-tooltip">${s.name} (${count})</div>
+                        <div class="apple-dock-icon relative overflow-hidden border-2 ${isActive ? 'border-amber-400 ring-2 ring-amber-400' : 'border-white'}">
                             <img src="${photo}" alt="${s.governor}" class="w-full h-full object-cover object-top" onerror="this.onerror=null; this.src=createInstitutionalSvgAvatar('${s.governor}', 'GOB', false);"/>
+                            <img src="${flag}" referrerpolicy="no-referrer" class="absolute bottom-0 right-0 w-3.5 h-2.5 object-cover rounded-tl-[2px] shadow-xs border-t border-l border-white"/>
                         </div>
-                        <span class="text-[9px] font-extrabold text-nativa-marine truncate w-full block">${s.name}</span>
-                        <span class="text-[8px] text-gray-500 font-bold oswald-title truncate w-full block">${s.governor.split(' ')[0]}</span>
-                        <span class="bg-blue-100 text-nativa-marine text-[8px] font-black px-1.5 py-0.2 rounded-full mt-0.5">${count}</span>
-                    </div>
-                `;
-                slide.onclick = () => focusState(k);
-                govWrapper.appendChild(slide);
-            });
+                        <div class="apple-dock-dot"></div>
+                    `;
 
-            // 2. Construir slides de Portales Informativos
-            const mediaWrapper = document.getElementById('dial-media-wrapper');
-            mediaWrapper.innerHTML = '';
-            
-            const mediaCounts = {};
-            rawNewsData.forEach(n => {
-                mediaCounts[n.medio] = (mediaCounts[n.medio] || 0) + 1;
-            });
+                    item.onclick = (e) => {
+                        animateDockItemClick(item);
+                        focusState(k);
+                    };
 
-            Object.keys(mediaCounts).sort((a,b) => mediaCounts[b] - mediaCounts[a]).forEach(med => {
-                const logo = getPortalLogoUrl(med);
-                const count = mediaCounts[med];
+                    dock.appendChild(item);
+                });
+            } else {
+                // Renderizar Portales de Noticias
+                const mediaCounts = {};
+                rawNewsData.forEach(n => {
+                    mediaCounts[n.medio] = (mediaCounts[n.medio] || 0) + 1;
+                });
 
-                const slide = document.createElement('div');
-                slide.className = 'swiper-slide cursor-pointer text-center';
-                slide.setAttribute('data-media-name', med);
-                slide.innerHTML = `
-                    <div class="bg-white p-2 rounded-xl shadow-md border border-gray-200 flex flex-col items-center hover:border-amber-500 transition-all">
-                        <div class="w-12 h-12 rounded-xl p-1 bg-white border border-gray-200 shadow-2xs mb-1 flex items-center justify-center shrink-0">
+                Object.keys(mediaCounts).sort((a,b) => mediaCounts[b] - mediaCounts[a]).forEach(med => {
+                    const logo = getPortalLogoUrl(med);
+                    const count = mediaCounts[med];
+                    const isActive = currentSelectedMedia === med;
+
+                    const item = document.createElement('div');
+                    item.className = `apple-dock-item ${isActive ? 'active-dock' : ''}`;
+                    item.setAttribute('data-key', med);
+                    item.setAttribute('data-title', `Portal: ${med}`);
+                    item.setAttribute('data-sub', `${count} artículos • Filtro territorial`);
+
+                    item.innerHTML = `
+                        <div class="apple-dock-tooltip">${med} (${count})</div>
+                        <div class="apple-dock-icon p-1 ${isActive ? 'border-amber-500 ring-2 ring-amber-400' : 'border-gray-200'}">
                             <img src="${logo}" alt="${med}" class="w-full h-full object-contain" onerror="this.src='https://images.vexels.com/media/users/3/135862/isolated/preview/813118c691d25b47377c69ff75167a8d-icono-de-pato.png'"/>
                         </div>
-                        <span class="text-[9px] font-black text-gray-900 truncate w-full block uppercase">${med}</span>
-                        <span class="bg-amber-100 text-amber-800 text-[8px] font-black px-1.5 py-0.2 rounded-full mt-0.5">${count} arts</span>
-                    </div>
-                `;
-                slide.onclick = () => selectMediaFromDial(med);
-                mediaWrapper.appendChild(slide);
-            });
+                        <div class="apple-dock-dot"></div>
+                    `;
 
-            // Inicializar Swiper Gobernadores
-            swiperGov = new Swiper('.swiper-dial-gov', {
-                effect: 'coverflow',
-                grabCursor: true,
-                centeredSlides: true,
-                slidesPerView: 3,
-                coverflowEffect: {
-                    rotate: 15,
-                    stretch: 0,
-                    depth: 60,
-                    modifier: 1,
-                    slideShadows: false,
-                },
-                navigation: {
-                    nextEl: '.swiper-gov-next',
-                    prevEl: '.swiper-gov-prev',
-                },
-                on: {
-                    slideChange: function () {
-                        const active = this.slides[this.activeIndex];
-                        if (active) {
-                            const k = active.getAttribute('data-state-key');
-                            const s = venezuelaStatesData[k];
-                            if (s) {
-                                document.getElementById('dial-selected-label').innerText = `${s.name} • ${s.governor}`;
-                                document.getElementById('dial-selected-sub').innerText = `${(newsByState.get(k) || []).length} noticias en el estado`;
-                            }
-                        }
+                    item.onclick = (e) => {
+                        animateDockItemClick(item);
+                        selectMediaFromDock(med);
+                    };
+
+                    dock.appendChild(item);
+                });
+            }
+
+            // Animación suave de entrada de los iconos del Dock con GSAP
+            gsap.fromTo('.apple-dock-item', 
+                { y: 15, opacity: 0, scale: 0.8 }, 
+                { y: 0, opacity: 1, scale: 1, stagger: 0.02, duration: 0.35, ease: "power2.out" }
+            );
+        }
+
+        // Efecto Lupa Parabólica de macOS con GSAP
+        function initAppleDockMagnification() {
+            const dock = document.getElementById('apple-dock');
+
+            dock.addEventListener('mousemove', (e) => {
+                const items = dock.querySelectorAll('.apple-dock-item');
+                const mouseX = e.clientX;
+
+                items.forEach(item => {
+                    const rect = item.getBoundingClientRect();
+                    const itemCenterX = rect.left + rect.width / 2;
+                    const distance = Math.abs(mouseX - itemCenterX);
+
+                    let scale = 1;
+                    let translateY = 0;
+
+                    if (distance < 90) {
+                        const factor = 1 - (distance / 90);
+                        scale = 1 + factor * 0.45; // escala hasta 1.45x
+                        translateY = -factor * 10;  // se eleva hasta -10px
                     }
+
+                    gsap.to(item, {
+                        scale: scale,
+                        y: translateY,
+                        duration: 0.15,
+                        ease: "power1.out",
+                        overwrite: "auto"
+                    });
+                });
+
+                // Actualizar texto del label de estado
+                const hoveredItem = document.elementFromPoint(e.clientX, e.clientY)?.closest('.apple-dock-item');
+                if (hoveredItem) {
+                    const title = hoveredItem.getAttribute('data-title');
+                    const sub = hoveredItem.getAttribute('data-sub');
+                    if (title) document.getElementById('dock-status-label').innerText = title;
+                    if (sub) document.getElementById('dock-status-sub').innerText = sub;
                 }
             });
 
-            // Inicializar Swiper Portales
-            swiperMedia = new Swiper('.swiper-dial-media', {
-                effect: 'coverflow',
-                grabCursor: true,
-                centeredSlides: true,
-                slidesPerView: 3,
-                coverflowEffect: {
-                    rotate: 15,
-                    stretch: 0,
-                    depth: 60,
-                    modifier: 1,
-                    slideShadows: false,
-                },
-                navigation: {
-                    nextEl: '.swiper-media-next',
-                    prevEl: '.swiper-media-prev',
-                },
-                on: {
-                    slideChange: function () {
-                        const active = this.slides[this.activeIndex];
-                        if (active) {
-                            const med = active.getAttribute('data-media-name');
-                            if (med) {
-                                document.getElementById('dial-selected-label').innerText = `Portal: ${med}`;
-                                document.getElementById('dial-selected-sub').innerText = `Distribución en todo el mapa`;
-                            }
-                        }
+            dock.addEventListener('mouseleave', () => {
+                const items = dock.querySelectorAll('.apple-dock-item');
+                gsap.to(items, {
+                    scale: 1,
+                    y: 0,
+                    duration: 0.3,
+                    ease: "power2.out",
+                    overwrite: "auto"
+                });
+
+                if (currentSelectedState) {
+                    const meta = venezuelaStatesData[currentSelectedState];
+                    if (meta) {
+                        document.getElementById('dock-status-label').innerText = `${meta.name} • ${meta.governor}`;
+                        document.getElementById('dock-status-sub').innerText = `${(newsByState.get(currentSelectedState) || []).length} noticias registradas`;
                     }
+                } else if (currentSelectedMedia) {
+                    document.getElementById('dock-status-label').innerText = `Portal: ${currentSelectedMedia}`;
+                    document.getElementById('dock-status-sub').innerText = `Distribución activa en el mapa`;
+                } else {
+                    document.getElementById('dock-status-label').innerText = 'Desliza el cursor sobre el dock';
+                    document.getElementById('dock-status-sub').innerText = currentDockMode === 'gov' ? '24 Mandatarios Regionales' : 'Portales de Noticias Monitoreados';
                 }
             });
         }
 
-        function setDialMode(mode) {
-            currentDialMode = mode;
-            const btnGov = document.getElementById('dial-mode-gov');
-            const btnMedia = document.getElementById('dial-mode-media');
-            const boxGov = document.getElementById('dial-gov-container');
-            const boxMedia = document.getElementById('dial-media-container');
+        // Rebote animado tipo macOS al hacer clic
+        function animateDockItemClick(item) {
+            gsap.timeline()
+                .to(item, { y: -16, duration: 0.16, ease: "power2.out" })
+                .to(item, { y: 0, duration: 0.25, ease: "bounce.out" });
+
+            document.querySelectorAll('.apple-dock-item').forEach(el => el.classList.remove('active-dock'));
+            item.classList.add('active-dock');
+        }
+
+        function setDockMode(mode) {
+            currentDockMode = mode;
+            const btnGov = document.getElementById('dock-btn-gov');
+            const btnMedia = document.getElementById('dock-btn-media');
 
             if (mode === 'gov') {
-                btnGov.className = 'px-2 py-0.5 rounded bg-nativa-marine text-white transition-all';
+                btnGov.className = 'px-2 py-0.5 rounded bg-nativa-marine text-white transition-all shadow-2xs';
                 btnMedia.className = 'px-2 py-0.5 rounded text-gray-500 hover:text-nativa-marine transition-all';
-                boxGov.classList.remove('hidden');
-                boxMedia.classList.add('hidden');
-                document.getElementById('dial-selected-sub').innerText = '24 Gobernadores de Venezuela';
-                if (swiperGov) swiperGov.update();
+                document.getElementById('dock-status-sub').innerText = '24 Mandatarios Regionales';
             } else {
-                btnMedia.className = 'px-2 py-0.5 rounded bg-amber-600 text-white transition-all';
+                btnMedia.className = 'px-2 py-0.5 rounded bg-amber-600 text-white transition-all shadow-2xs';
                 btnGov.className = 'px-2 py-0.5 rounded text-gray-500 hover:text-nativa-marine transition-all';
-                boxMedia.classList.remove('hidden');
-                boxGov.classList.add('hidden');
-                document.getElementById('dial-selected-sub').innerText = 'Haz clic en un portal para mapearlo';
-                if (swiperMedia) swiperMedia.update();
+                document.getElementById('dock-status-sub').innerText = 'Portales de Noticias Monitoreados';
             }
+
+            renderAppleDock();
         }
 
-        function selectMediaFromDial(medio) {
+        function selectMediaFromDock(medio) {
             currentSelectedMedia = medio;
-            document.getElementById('dial-selected-label').innerText = `Filtrando: ${medio}`;
-            document.getElementById('dial-selected-sub').innerText = `Distribución de noticias en el mapa de Venezuela`;
+            document.getElementById('dock-status-label').innerText = `Filtrando: ${medio}`;
+            document.getElementById('dock-status-sub').innerText = `Distribución territorial en el mapa`;
             applyFilters();
         }
 
@@ -5447,8 +5419,8 @@
             
             renderGeoJSON();
             updateMarkers();
-            renderBannerEntitiesTable();
-            renderBannerNewsTable();
+            renderBottomBannerHeader();
+            renderBottomBannerExpandedContent();
 
             if (currentSelectedState) {
                 showStateDetails(currentSelectedState);
@@ -5461,10 +5433,12 @@
             currentSelectedMedia = null;
             currentSelectedState = null;
             setDatePreset('all');
-            document.getElementById('dial-selected-label').innerText = 'Desliza el dial para filtrar';
-            document.getElementById('dial-selected-sub').innerText = '24 Gobernadores de Venezuela';
+            document.getElementById('dock-status-label').innerText = 'Desliza el cursor sobre el dock';
+            document.getElementById('dock-status-sub').innerText = '24 Mandatarios Regionales';
             map.flyTo([7.6, -66.0], 6, { duration: 1 });
             showNationalOverview();
+            renderBottomBannerHeader();
+            renderBottomBannerExpandedContent();
         }
 
         function onSelectStateChange(val) {
@@ -5484,11 +5458,13 @@
             
             const meta = venezuelaStatesData[stateKey];
             if (meta) {
-                document.getElementById('dial-selected-label').innerText = `${meta.name} • ${meta.governor}`;
-                document.getElementById('dial-selected-sub').innerText = `${(newsByState.get(stateKey) || []).length} noticias vinculadas`;
+                document.getElementById('dock-status-label').innerText = `${meta.name} • ${meta.governor}`;
+                document.getElementById('dock-status-sub').innerText = `${(newsByState.get(stateKey) || []).length} noticias registradas`;
             }
 
             showStateDetails(stateKey);
+            renderBottomBannerHeader();
+            renderBottomBannerExpandedContent();
 
             if (meta && meta.lat && meta.lng) {
                 map.flyTo([meta.lat, meta.lng], 7, { duration: 1.2 });
@@ -5510,7 +5486,7 @@
             const uniqueMedia = new Set(nationalNews.map(n => n.medio)).size;
 
             let html = `
-                <!-- Cabecera Presidencial Oficial con Delcy Rodríguez -->
+                <!-- Cabecera Presidencial Oficial con el Retrato Exacto de Delcy de Wikipedia -->
                 <div class="bg-gradient-to-b from-nativa-marine via-[#00224d] to-nativa-light pt-8 pb-6 px-6 text-white relative shadow-inner">
                     <div class="flex items-center justify-between mb-3">
                         <div class="flex items-center gap-1.5">
@@ -5526,13 +5502,14 @@
                     </div>
 
                     <div class="flex flex-col sm:flex-row items-center gap-5 mt-3">
-                        <!-- Retrato Oficial Agrandado, Circular y Glasificado -->
+                        <!-- Retrato Oficial Agrandado, Circular y Glasificado con la Imagen de Wikipedia -->
                         <div class="relative p-1.5 rounded-full glass-portrait-container ring-4 ring-amber-400/40 shrink-0">
                             <img 
-                                src="./img/gobernadores/delcy_rodriguez.jpg" 
+                                src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/a3/Delcy_Rodr%C3%ADguez_portrait.jpg/250px-Delcy_Rodr%C3%ADguez_portrait.jpg" 
                                 alt="Delcy Rodríguez" 
                                 class="w-36 h-36 sm:w-40 sm:h-40 rounded-full object-cover object-top border-2 border-white shadow-2xl"
-                                onerror="this.onerror=null; this.src=createInstitutionalSvgAvatar('Delcy Eloína Rodríguez', 'PRESIDENTA ENCARGADA', true);"
+                                onerror="this.src='./img/gobernadores/delcy_rodriguez.jpg'"
+                                referrerpolicy="no-referrer"
                             />
                             <div class="absolute bottom-1 right-2 bg-amber-500 text-slate-900 border border-white text-[9px] font-black px-2 py-0.5 rounded-full shadow-md">
                                 OFICIAL
@@ -5643,18 +5620,20 @@
                             <span class="text-[10px] font-bold text-nativa-light bg-blue-50 px-2 py-0.5 rounded-full">24 Mandatarios</span>
                         </div>
 
-                        <!-- Mini Galería de Gobernadores Clickables con Tipografía OSWALD -->
+                        <!-- Mini Galería de Gobernadores Clickables con Tipografía OSWALD y Banderas Estatales -->
                         <div class="grid grid-cols-3 gap-2.5">
             `;
 
             Object.keys(venezuelaStatesData).forEach(k => {
                 const s = venezuelaStatesData[k];
                 const photo = s.photoLocal || `./img/gobernadores/${k.toLowerCase().replace(/ /g, '_')}.jpg`;
+                const flag = s.flag || 'https://upload.wikimedia.org/wikipedia/commons/thumb/0/06/Flag_of_Venezuela.svg/320px-Flag_of_Venezuela.svg.png';
                 const stateCount = (newsByState.get(k) || []).length;
                 html += `
-                    <div onclick="focusState('${k}')" class="governor-thumb bg-slate-50 hover:bg-blue-50 border border-slate-200 hover:border-nativa-light p-2 rounded-xl cursor-pointer flex flex-col items-center text-center transition-all shadow-2xs group">
-                        <div class="w-12 h-12 rounded-full overflow-hidden border-2 border-nativa-marine group-hover:border-nativa-light mb-1.5 shadow-sm bg-white shrink-0">
+                    <div onclick="focusState('${k}')" class="governor-thumb bg-slate-50 hover:bg-blue-50 border border-slate-200 hover:border-nativa-light p-2 rounded-xl cursor-pointer flex flex-col items-center text-center transition-all shadow-2xs group relative">
+                        <div class="w-12 h-12 rounded-full overflow-hidden border-2 border-nativa-marine group-hover:border-nativa-light mb-1.5 shadow-sm bg-white shrink-0 relative">
                             <img src="${photo}" alt="${s.governor}" class="w-full h-full object-cover object-top" onerror="this.onerror=null; this.src=createInstitutionalSvgAvatar('${s.governor}', 'GOB', false);"/>
+                            <img src="${flag}" referrerpolicy="no-referrer" class="absolute bottom-0 right-0 w-3.5 h-2.5 object-cover rounded-tl shadow-xs border-t border-l border-white"/>
                         </div>
                         <span class="text-[10px] font-extrabold text-nativa-marine truncate w-full group-hover:text-nativa-light">${s.name}</span>
                         <span class="text-[9px] text-gray-700 truncate w-full font-bold oswald-title">${s.governor}</span>
@@ -5672,7 +5651,7 @@
             container.innerHTML = html;
             const panel = document.getElementById('details-panel');
             panel.classList.add('open');
-            gsap.fromTo(panel, { right: -550 }, { right: 0, duration: 0.45, ease: "power2.out" });
+            gsap.fromTo(panel, { right: -560 }, { right: 0, duration: 0.45, ease: "power2.out" });
         }
 
         // ==========================================
@@ -5684,12 +5663,13 @@
             const container = document.getElementById('details-content-wrapper');
 
             const photo = stateData.photoLocal || `./img/gobernadores/${stateKey.toLowerCase().replace(/ /g, '_')}.jpg`;
+            const flag = stateData.flag || 'https://upload.wikimedia.org/wikipedia/commons/thumb/0/06/Flag_of_Venezuela.svg/320px-Flag_of_Venezuela.svg.png';
             const stateNews = rawNewsData.filter(n => n.stateKey === stateKey);
             const stateWeekNews = stateNews.filter(n => isDateInRange(n.parsedDate, 'week'));
             const uniqueMedia = new Set(stateNews.map(n => n.medio)).size;
 
             let html = `
-                <!-- Cabecera del Estado y Gobernador -->
+                <!-- Cabecera del Estado con Bandera Oficial de Wikipedia y Retrato del Gobernador -->
                 <div class="bg-gradient-to-b from-nativa-marine to-nativa-light pt-8 pb-6 px-6 text-white relative shadow-inner">
                     <div class="flex items-center justify-between mb-3">
                         <button onclick="showNationalOverview()" class="text-[10px] font-extrabold text-blue-200 hover:text-white bg-white/10 hover:bg-white/20 px-2.5 py-1 rounded-full border border-white/20 flex items-center gap-1.5 transition-all">
@@ -5715,14 +5695,14 @@
                             </div>
                         </div>
 
-                        <!-- Ficha del Mandatario con Tipografía OSWALD -->
+                        <!-- Ficha del Mandatario con Bandera Estatal Grande de Wikipedia -->
                         <div class="flex-1 text-center sm:text-left">
-                            <div class="flex items-center justify-center sm:justify-start gap-1.5 mb-1">
-                                ${stateData.flag ? `<img src="${stateData.flag}" class="w-6 h-4 object-cover rounded shadow border border-white/40"/>` : getVenezuelaFlagSvg("w-5 h-3.5")}
+                            <div class="flex items-center justify-center sm:justify-start gap-2 mb-1">
+                                <img src="${flag}" referrerpolicy="no-referrer" class="w-8 h-5 object-cover rounded shadow border border-white/60"/>
                                 <h2 class="text-xs font-black uppercase tracking-widest text-blue-200">ESTADO ${stateData.name.toUpperCase()}</h2>
                             </div>
                             <h3 class="text-lg sm:text-xl font-black leading-snug drop-shadow-md text-white oswald-title">
-                                ${stateData.governor}
+                                ${{stateData.governor}}
                             </h3>
                             <p class="text-xs font-bold text-amber-300 mt-0.5 oswald-title">
                                 ${stateData.governorTitle || 'GOBERNADOR(A) CONSTITUCIONAL'}
@@ -5834,59 +5814,251 @@
             container.innerHTML = html;
             const panel = document.getElementById('details-panel');
             panel.classList.add('open');
-            gsap.fromTo(panel, { right: -550 }, { right: 0, duration: 0.45, ease: "power2.out" });
+            gsap.fromTo(panel, { right: -560 }, { right: 0, duration: 0.45, ease: "power2.out" });
         }
 
         function closeDetails() {
             document.getElementById('details-panel').classList.remove('open');
         }
 
-        // ==========================================
-        // BANNER EXPANDIBLE Y SUICHE DE VISTAS
-        // ==========================================
+        // ====================================================================
+        // BANNER INFERIOR DINÁMICO:
+        // - VISIÓN GENERAL vs ESTADO SELECCIONADO (BANDERA GRANDE, POBLACIÓN, CAPITAL)
+        // ====================================================================
+        function renderBottomBannerHeader() {
+            const headerContainer = document.getElementById('banner-header-content');
+
+            if (!currentSelectedState) {
+                // MODO 1: VISIÓN GENERAL / NACIONAL
+                headerContainer.innerHTML = `
+                    <div class="flex items-center gap-3">
+                        ${getVenezuelaFlagSvg("w-6 h-4 rounded-[2px] shadow-sm")}
+                        <div>
+                            <h3 class="text-xs font-black uppercase tracking-wider text-white">COBERTURA TERRITORIAL Y FLUJO NACIONAL</h3>
+                            <p class="text-[10px] text-blue-200 font-medium">Consolidado de las 24 Entidades Federales y Flujo Total de Artículos</p>
+                        </div>
+                    </div>
+                    <div class="flex items-center gap-2 bg-white/10 hover:bg-white/20 px-3 py-1.5 rounded-lg border border-white/15 transition-all">
+                        <span id="table-toggle-label" class="text-[11px] font-black uppercase tracking-wide">
+                            ${isBannerExpanded ? 'Contraer Listado' : 'Ver Listado Completo'}
+                        </span>
+                        <svg id="table-toggle-icon" class="w-4 h-4 transform transition-transform duration-300 ${isBannerExpanded ? 'rotate-180' : ''}" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+                    </div>
+                `;
+            } else {
+                // MODO 2: ESTADO SELECCIONADO (BANDERA GRANDE, CAPITAL, POBLACIÓN Y NOTICIAS)
+                const s = venezuelaStatesData[currentSelectedState] || { name: currentSelectedState };
+                const flagUrl = s.flag || 'https://upload.wikimedia.org/wikipedia/commons/thumb/0/06/Flag_of_Venezuela.svg/320px-Flag_of_Venezuela.svg.png';
+                const count = (newsByState.get(currentSelectedState) || []).length;
+
+                headerContainer.innerHTML = `
+                    <div class="flex flex-wrap items-center gap-4">
+                        <!-- BANDERA EN GRANDE DEL ESTADO SELECCIONADO -->
+                        <div class="relative rounded-lg overflow-hidden border-2 border-white/60 shadow-lg shrink-0">
+                            <img src="${flagUrl}" referrerpolicy="no-referrer" alt="${s.name}" class="w-14 h-9 sm:w-16 sm:h-10 object-cover" onerror="this.src='https://upload.wikimedia.org/wikipedia/commons/thumb/0/06/Flag_of_Venezuela.svg/320px-Flag_of_Venezuela.svg.png'"/>
+                        </div>
+
+                        <!-- NOMBRE, GOBERNADOR Y ESTADÍSTICAS EN GRANDE -->
+                        <div>
+                            <div class="flex items-center gap-2">
+                                <h3 class="text-sm sm:text-base font-black uppercase tracking-wide text-white oswald-title">
+                                    ESTADO ${s.name.toUpperCase()}
+                                </h3>
+                                <span class="bg-amber-400 text-slate-950 font-black text-[9px] px-2 py-0.5 rounded-full uppercase shadow-xs">
+                                    EN ENFOQUE
+                                </span>
+                            </div>
+                            <div class="flex flex-wrap items-center gap-3 text-[11px] text-blue-100 font-semibold mt-0.5">
+                                <span>🏛️ Capital: <b class="text-white">${s.capital || 'N/A'}</b></span>
+                                <span>👥 Población (Censo INE): <b class="text-amber-200">${s.poblacion || 'N/A'}</b></span>
+                                <span>📰 Noticias Actuales: <b class="text-white bg-white/20 px-1.5 py-0.2 rounded">${count} artículos</b></span>
+                                <span>👤 Mandatario: <b class="text-amber-300 oswald-title">${s.governor}</b></span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="flex items-center gap-2">
+                        <button onclick="event.stopPropagation(); resetAllFilters();" class="text-[10px] font-extrabold text-blue-200 hover:text-white bg-white/10 hover:bg-white/20 px-2.5 py-1.5 rounded-lg border border-white/20 transition-all flex items-center gap-1">
+                            <span>Volver a Visión General</span>
+                        </button>
+                        <div class="flex items-center gap-2 bg-amber-400 hover:bg-amber-300 text-slate-950 px-3 py-1.5 rounded-lg shadow-sm font-black text-[11px] uppercase tracking-wide transition-all">
+                            <span id="table-toggle-label">
+                                ${isBannerExpanded ? 'Ocultar Noticias' : 'Ver Noticias del Estado'}
+                            </span>
+                            <svg id="table-toggle-icon" class="w-4 h-4 transform transition-transform duration-300 ${isBannerExpanded ? 'rotate-180' : ''}" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+                        </div>
+                    </div>
+                `;
+            }
+        }
+
+        // Renderizado del contenido desplegable del Banner inferior
+        function renderBottomBannerExpandedContent() {
+            const container = document.getElementById('banner-expanded-content');
+
+            if (!currentSelectedState) {
+                // VISIÓN GENERAL: Mostrar Suiche [Entidades vs Flujo Completo]
+                container.innerHTML = `
+                    <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between p-4 bg-slate-100 border-b border-gray-200 gap-3">
+                        <div class="inline-flex p-1 bg-white rounded-xl shadow-inner border border-gray-300">
+                            <button 
+                                id="tab-btn-entities" 
+                                onclick="switchBannerTab('entities')" 
+                                class="px-4 py-2 rounded-lg font-bold text-xs transition-all flex items-center gap-2 ${currentBannerTab === 'entities' ? 'bg-nativa-marine text-white shadow-sm' : 'text-gray-600 hover:text-nativa-marine'}"
+                            >
+                                <span>🏛️ Entidades Federales (24 Estados)</span>
+                            </button>
+                            <button 
+                                id="tab-btn-news" 
+                                onclick="switchBannerTab('news')" 
+                                class="px-4 py-2 rounded-lg font-bold text-xs transition-all flex items-center gap-2 ${currentBannerTab === 'news' ? 'bg-nativa-marine text-white shadow-sm' : 'text-gray-600 hover:text-nativa-marine'}"
+                            >
+                                <span>📰 Flujo Completo de Noticias</span>
+                                <span class="bg-blue-100 text-nativa-marine text-[10px] font-extrabold px-1.5 py-0.5 rounded-full">${filteredNewsData.length}</span>
+                            </button>
+                        </div>
+
+                        <div class="relative w-full sm:w-80">
+                            <input 
+                                type="text" 
+                                placeholder="Buscar en listado..." 
+                                class="w-full text-xs bg-white border border-gray-300 rounded-lg pl-8 pr-3 py-2 focus:ring-2 focus:ring-nativa-light outline-none font-medium"
+                                oninput="filterBannerView(this.value)"
+                            />
+                            <svg class="w-4 h-4 text-gray-400 absolute left-2.5 top-2.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/></svg>
+                        </div>
+                    </div>
+
+                    <div id="banner-entities-view" class="p-4 overflow-x-auto ${currentBannerTab === 'entities' ? '' : 'hidden'}">
+                        <table class="w-full text-left border-collapse">
+                            <thead>
+                                <tr class="bg-slate-50 text-[10px] font-black text-gray-500 uppercase border-b border-gray-200">
+                                    <th class="p-3">Entidad Federal</th>
+                                    <th class="p-3">Capital</th>
+                                    <th class="p-3">Gobernador(a)</th>
+                                    <th class="p-3">Población (Censo INE)</th>
+                                    <th class="p-3 text-center">Noticias Mapeadas</th>
+                                    <th class="p-3 text-right">Acción</th>
+                                </tr>
+                            </thead>
+                            <tbody id="entities-table-body" class="divide-y divide-gray-100 text-xs font-medium"></tbody>
+                        </table>
+                    </div>
+
+                    <div id="banner-news-view" class="p-4 overflow-x-auto ${currentBannerTab === 'news' ? '' : 'hidden'}">
+                        <table class="w-full text-left border-collapse">
+                            <thead>
+                                <tr class="bg-slate-50 text-[10px] font-black text-gray-500 uppercase border-b border-gray-200">
+                                    <th class="p-3 w-48">Medio / Portal</th>
+                                    <th class="p-3">Titular y Resumen</th>
+                                    <th class="p-3 w-36">Ámbito / Estado</th>
+                                    <th class="p-3 w-28">Fecha</th>
+                                    <th class="p-3 w-28 text-right">Enlace</th>
+                                </tr>
+                            </thead>
+                            <tbody id="news-table-body" class="divide-y divide-gray-100 text-xs font-medium"></tbody>
+                        </table>
+                    </div>
+                `;
+
+                renderBannerEntitiesTable();
+                renderBannerNewsTable();
+            } else {
+                // ESTADO SELECCIONADO: Desplegar directamente las Noticias del Estado con LOGOS EXTRA GRANDES
+                const stateData = venezuelaStatesData[currentSelectedState] || { name: currentSelectedState };
+                const stateNews = rawNewsData.filter(n => n.stateKey === currentSelectedState);
+
+                let newsHtml = `
+                    <div class="p-4 bg-slate-50 border-b border-gray-200 flex items-center justify-between">
+                        <div class="flex items-center gap-2">
+                            <span class="w-2.5 h-2.5 rounded-full bg-nativa-light animate-pulse"></span>
+                            <h4 class="text-xs font-black text-nativa-marine uppercase tracking-wider">
+                                Cobertura Noticiosa en el Estado ${stateData.name} (${stateNews.length} artículos)
+                            </h4>
+                        </div>
+                        <span class="text-[11px] font-bold text-gray-500">Logos ampliados de cada portal reseñador</span>
+                    </div>
+
+                    <div class="p-6 overflow-y-auto max-h-[650px] space-y-4">
+                `;
+
+                if (stateNews.length === 0) {
+                    newsHtml += `
+                        <div class="p-8 text-center bg-white rounded-2xl border border-gray-200 text-gray-400">
+                            No se registran noticias en este estado para los filtros activos.
+                        </div>
+                    `;
+                } else {
+                    stateNews.forEach(n => {
+                        const dateStr = n.parsedDate.toLocaleDateString('es-ES', { day: 'numeric', month: 'short', year: 'numeric' });
+                        const logoUrl = getPortalLogoUrl(n.medio, n.url);
+
+                        newsHtml += `
+                            <div class="bg-white p-4 rounded-2xl border border-gray-200 shadow-sm hover:shadow-md hover:border-nativa-light transition-all flex flex-col sm:flex-row items-start gap-4">
+                                <!-- LOGO EXTRA GRANDE DEL PORTAL QUE RESEÑÓ LA NOTICIA -->
+                                <div class="w-12 h-12 sm:w-14 sm:h-14 rounded-2xl bg-white p-2 border-2 border-gray-200 shadow-md flex items-center justify-center shrink-0">
+                                    <img src="${logoUrl}" alt="${n.medio}" class="w-full h-full object-contain" onerror="this.src='https://images.vexels.com/media/users/3/135862/isolated/preview/813118c691d25b47377c69ff75167a8d-icono-de-pato.png'"/>
+                                </div>
+
+                                <div class="flex-grow">
+                                    <div class="flex flex-wrap items-center justify-between gap-2 mb-1.5">
+                                        <div class="flex items-center gap-2">
+                                            <span class="bg-blue-100 text-nativa-marine text-[10px] font-black px-2.5 py-0.5 rounded-md uppercase tracking-wide">
+                                                ${n.medio}
+                                            </span>
+                                            <span class="text-[10px] text-gray-400 font-semibold">${dateStr}</span>
+                                        </div>
+                                        <span class="bg-amber-50 text-amber-800 text-[10px] font-bold px-2 py-0.5 rounded border border-amber-200">
+                                            Estado ${stateData.name}
+                                        </span>
+                                    </div>
+
+                                    <h5 class="text-sm font-bold text-gray-900 leading-snug mb-1.5 hover:text-nativa-light cursor-pointer" onclick="window.open('${n.url}', '_blank')">
+                                        ${n.titular}
+                                    </h5>
+                                    
+                                    ${n.extracto ? `<p class="text-xs text-gray-600 line-clamp-2 mb-2 font-medium leading-relaxed">${n.extracto}</p>` : ''}
+                                    
+                                    <div class="flex items-center justify-between pt-2 border-t border-gray-100">
+                                        <a href="${n.url}" target="_blank" class="text-xs font-bold text-nativa-light hover:text-nativa-marine flex items-center">
+                                            Leer artículo completo en ${n.medio} <svg class="w-3.5 h-3.5 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path></svg>
+                                        </a>
+                                        <span class="text-[10px] text-gray-400 font-medium">Cobertura Territorial</span>
+                                    </div>
+                                </div>
+                            </div>
+                        `;
+                    });
+                }
+
+                newsHtml += `</div>`;
+                container.innerHTML = newsHtml;
+            }
+        }
+
         function toggleRegionTable() {
             isBannerExpanded = !isBannerExpanded;
             const banner = document.getElementById('region-banner');
-            const toggleIcon = document.getElementById('table-toggle-icon');
-            const toggleLabel = document.getElementById('table-toggle-label');
             const footer = document.getElementById('corporate-footer');
 
             if (isBannerExpanded) {
                 banner.classList.remove('table-collapsed');
                 banner.classList.add('table-open');
-                toggleIcon.style.transform = 'rotate(180deg)';
-                toggleLabel.innerText = 'Contraer Listado';
                 footer.classList.add('hidden-by-table');
-                renderBannerEntitiesTable();
-                renderBannerNewsTable();
+                renderBottomBannerHeader();
+                renderBottomBannerExpandedContent();
             } else {
                 banner.classList.remove('table-open');
                 banner.classList.add('table-collapsed');
-                toggleIcon.style.transform = 'rotate(0deg)';
-                toggleLabel.innerText = 'Ver Listado Completo';
                 footer.classList.remove('hidden-by-table');
+                renderBottomBannerHeader();
             }
             setTimeout(adjustLayoutHeight, 350);
         }
 
         function switchBannerTab(tab) {
             currentBannerTab = tab;
-            const btnEntities = document.getElementById('tab-btn-entities');
-            const btnNews = document.getElementById('tab-btn-news');
-            const viewEntities = document.getElementById('banner-entities-view');
-            const viewNews = document.getElementById('banner-news-view');
-
-            if (tab === 'entities') {
-                btnEntities.className = 'px-4 py-2 rounded-lg font-bold text-xs transition-all flex items-center gap-2 bg-nativa-marine text-white shadow-sm';
-                btnNews.className = 'px-4 py-2 rounded-lg font-bold text-xs transition-all flex items-center gap-2 text-gray-600 hover:text-nativa-marine hover:bg-gray-50';
-                viewEntities.classList.remove('hidden');
-                viewNews.classList.add('hidden');
-            } else {
-                btnNews.className = 'px-4 py-2 rounded-lg font-bold text-xs transition-all flex items-center gap-2 bg-nativa-marine text-white shadow-sm';
-                btnEntities.className = 'px-4 py-2 rounded-lg font-bold text-xs transition-all flex items-center gap-2 text-gray-600 hover:text-nativa-marine hover:bg-gray-50';
-                viewNews.classList.remove('hidden');
-                viewEntities.classList.add('hidden');
-            }
+            renderBottomBannerExpandedContent();
         }
 
         function filterBannerView(query) {
@@ -5898,9 +6070,9 @@
             }
         }
 
-        // Renderizado de la Tabla de las 24 Entidades con Población INE
         function renderBannerEntitiesTable(filterTerm = '') {
             const tbody = document.getElementById('entities-table-body');
+            if (!tbody) return;
             tbody.innerHTML = '';
 
             const statesKeys = Object.keys(venezuelaStatesData).sort();
@@ -5908,6 +6080,7 @@
                 const s = venezuelaStatesData[k];
                 const count = (newsByState.get(k) || []).length;
                 const photo = s.photoLocal || `./img/gobernadores/${k.toLowerCase().replace(/ /g, '_')}.jpg`;
+                const flag = s.flag || 'https://upload.wikimedia.org/wikipedia/commons/thumb/0/06/Flag_of_Venezuela.svg/320px-Flag_of_Venezuela.svg.png';
 
                 if (filterTerm) {
                     const matchName = s.name.toLowerCase().includes(filterTerm);
@@ -5925,8 +6098,8 @@
 
                 tr.innerHTML = `
                     <td class="p-3">
-                        <div class="flex items-center gap-2">
-                            ${s.flag ? `<img src="${s.flag}" class="w-6 h-4 object-cover rounded shadow-2xs border border-gray-200"/>` : getVenezuelaFlagSvg("w-5 h-3.5")}
+                        <div class="flex items-center gap-2.5">
+                            <img src="${flag}" referrerpolicy="no-referrer" class="w-7 h-4.5 object-cover rounded shadow-2xs border border-gray-300" onerror="this.src='https://upload.wikimedia.org/wikipedia/commons/thumb/0/06/Flag_of_Venezuela.svg/320px-Flag_of_Venezuela.svg.png'"/>
                             <span class="font-extrabold text-nativa-marine group-hover:text-nativa-light">${s.name}</span>
                         </div>
                     </td>
@@ -5959,9 +6132,9 @@
             });
         }
 
-        // Renderizado de la Tabla del Flujo Completo de Noticias
         function renderBannerNewsTable(filterTerm = '') {
             const tbody = document.getElementById('news-table-body');
+            if (!tbody) return;
             tbody.innerHTML = '';
 
             let displayNews = filteredNewsData.length > 0 ? filteredNewsData : rawNewsData;
@@ -5984,7 +6157,7 @@
                 tr.innerHTML = `
                     <td class="p-3">
                         <div class="flex items-center gap-2.5">
-                            <div class="w-8 h-8 rounded-lg bg-white p-1 border border-gray-200 shadow-2xs flex items-center justify-center shrink-0">
+                            <div class="w-9 h-9 rounded-lg bg-white p-1 border border-gray-200 shadow-2xs flex items-center justify-center shrink-0">
                                 <img src="${logoUrl}" alt="${n.medio}" class="w-full h-full object-contain" onerror="this.src='https://images.vexels.com/media/users/3/135862/isolated/preview/813118c691d25b47377c69ff75167a8d-icono-de-pato.png'"/>
                             </div>
                             <span class="font-extrabold text-nativa-marine text-[11px] uppercase">${n.medio}</span>
